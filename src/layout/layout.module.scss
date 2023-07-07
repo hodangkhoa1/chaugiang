@@ -1,0 +1,123 @@
+.navbarNav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+    margin-bottom: unset;
+
+    .navItem {
+        font-weight: 500;
+        list-style-type: none;
+
+        .navLink {
+            color: #00894f;
+            transition: all 0.5s;
+            font-size: 20px;
+        }
+
+        &.active {
+            .navLink {
+                color: #8dc63f;
+            }
+
+            &::after {
+                content: " ";
+                width: 100%;
+                height: 3px;
+                background: linear-gradient(to right, #8dc63f, #00894f);
+                display: block;
+            }
+        }
+
+        &::after {
+            content: "";
+            width: 0;
+            height: 3px;
+            background: linear-gradient(to right, #8dc63f, #00894f);
+            display: block;
+            transition: all 0.5s;
+            transform: translateY(-12px);
+        }
+
+        &:hover {
+            &::after {
+                content: "";
+                width: 100%;
+                height: 3px;
+                background: linear-gradient(to right, #8dc63f, #00894f);
+                display: block;
+            }
+        }
+
+        &:hover {
+            .navLink {
+                color: #8dc63f;
+            }
+        }
+    }
+}
+
+.headerTool {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .searchBox {
+        border-radius: 55px;
+        height: 50px;
+        background: #ededed;
+        display: flex;
+        align-items: center;
+
+        .buttonSearch {
+            font-size: 20px;
+            cursor: pointer;
+            padding: 0 10px 0 15px;
+
+            .btnSearch {
+                color: #00894f;
+                transition: all .5s;
+            }
+
+            &:hover {
+                .btnSearch {
+                    color: #8dc63f;
+                }
+            }
+        }
+
+        .buttonMic {
+            flex: 1 0 auto;
+            display: flex;
+            cursor: pointer;
+            align-items: center;
+            border: 0;
+            background: transparent;
+            outline: none;
+            padding: 0 8px;
+
+            .goxjub {
+                height: 28px;
+                width: 28px;
+                vertical-align: middle;
+            }
+        }
+
+        input {
+            font-size: 20px;
+            width: 260px;
+            height: 100%;
+            border: 0;
+            background: transparent;
+            outline: none;
+            color: #00894f;
+        }
+
+        .searchPlace {
+            &::placeholder {
+                color: #00894f;
+                opacity: 1;
+            }
+        }
+    }
+}
