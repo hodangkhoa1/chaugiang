@@ -3,12 +3,12 @@ import type { AppProps } from 'next/app';
 import type { NextPage } from 'next';
 import 'antd/dist/reset.css';
 import { ConfigProvider } from 'antd';
-import { Inter } from '@next/font/google';
+import { Baloo_2 } from '@next/font/google';
 import Head from 'next/head';
 import { appWithTranslation } from 'next-i18next';
 import { AppLayout } from '@/layout/layout';
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Baloo_2({ subsets: ['latin'] });
 export type NextPageWithLayout<P = Record<string, unknown>, IP = P> = NextPage<
   P,
   IP
