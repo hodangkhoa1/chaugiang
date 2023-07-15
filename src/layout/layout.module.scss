@@ -14,6 +14,7 @@
             transition: all 0.5s;
             font-size: 18px;
             text-transform: uppercase;
+            font-family: "Baloo_2";
         }
 
         .dropdownContent {
@@ -66,6 +67,7 @@
                             color: #00894f;
                             transition: all .5s;
                             font-size: 16px;
+                            font-family: "Baloo_2";
                         }
 
                         &:hover {
@@ -90,7 +92,7 @@
                 &:nth-child(1) {
                     .subMenu {
                         min-width: 250px;
-                        left: 15rem;
+                        left: 16rem;
 
                         &::after {
                             top: 0;
@@ -101,7 +103,7 @@
                 &:nth-child(2) {
                     .subMenu {
                         min-width: 300px;
-                        left: 15rem;
+                        left: 16rem;
 
                         &::after {
                             top: 65px;
@@ -112,7 +114,7 @@
                 &:nth-child(3) {
                     .subMenu {
                         min-width: 250px;
-                        left: 15.4rem;
+                        left: 16.4rem;
 
                         &::after {
                             top: 130px;
@@ -124,6 +126,7 @@
                     color: #00894f;
                     transition: all .5s;
                     font-size: 16px;
+                    font-family: "Baloo_2";
                 }
 
                 &:hover {
