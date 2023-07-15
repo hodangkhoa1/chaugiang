@@ -16,11 +16,11 @@
 .carouselCertificationBackground {
     .productBrandName {
         position: relative;
-        height: 150px;
+        height: 140px;
         width: 100%;
         display: flex;
         justify-content: center;
-        padding-top: 15px;
+        padding-top: 35px;
 
         h2 {
             position: relative;
@@ -29,6 +29,7 @@
             margin-bottom: unset;
             font-weight: bold;
             text-transform: uppercase;
+            font-family: "Baloo_2";
 
             &::after {
                 content: "";
@@ -37,7 +38,7 @@
                 background: linear-gradient(to right, #00894f, #8dc63f);
                 position: absolute;
                 transform: translate(-50%, 50%);
-                top: 50%;
+                top: 62%;
                 left: 50%;
             }
         }
@@ -45,16 +46,16 @@
 
     .certificationCarousel {
         padding: 0 20px 0 20px;
-    
+
         .certificationCard {
             text-align: center;
             margin-bottom: 4rem;
-    
+
             .certificationCardImage {
                 display: flex;
                 align-items: center;
                 justify-content: center;
-    
+
                 img {
                     width: 300px;
                     height: 430px;
@@ -63,7 +64,7 @@
                     padding: 10px;
                 }
             }
-    
+
             h1 {
                 font-size: 20px;
                 font-weight: bold;
@@ -74,14 +75,115 @@
     }
 }
 
+.dflex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.aboutUs {
+    background-image: url(/images/about_us/backfround_orange.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 768px;
+    display: flex;
+    justify-content: center;
+
+    .aboutUsCover {
+        width: 1180px;
+        height: 575px;
+        background-color: #8ec63fd8;
+        border-bottom-left-radius: 70px;
+        border-bottom-right-radius: 70px;
+        padding: 35px 100px;
+
+        .aboutUsTop {
+            .aboutUsTopCover {
+                position: relative;
+
+                .aboutUsPicture {
+                    width: 100%;
+                    justify-content: end;
+
+                    img {
+                        width: 150px;
+                    }
+
+                    &:nth-child(3) {
+                        justify-content: start;
+                    }
+                }
+
+                .aboutUsTitle {
+                    width: 700px;
+                    text-align: center;
+
+                    h1 {
+                        color: #00894f;
+                        font-size: 3.5em;
+                        margin-bottom: unset;
+                        font-weight: bold;
+                        text-transform: uppercase;
+                        font-family: "Baloo_2";
+                    }
+                }
+
+                .line {
+                    content: "";
+                    width: 280px;
+                    height: 6px;
+                    background: linear-gradient(to right, #00894f, rgb(255, 255, 255));
+                    position: absolute;
+                    transform: translate(-50%, 50%);
+                    bottom: 0;
+                    left: 50%;
+                }
+            }
+
+        }
+
+        h2 {
+            text-align: center;
+            color: #00894f;
+            font-size: 2.2em;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-family: "Baloo_2";
+        }
+
+        .aboutUsCenter {
+            margin-top: 25px;
+            margin-bottom: 20px;
+
+            p {
+                text-align: center;
+            }
+        }
+
+        .aboutUsBottom {
+            .aboutUsItem {
+                width: 100%;
+                flex-direction: column;
+                gap: 10px;
+
+                img {
+                    width: 250px;
+                }
+            }
+        }
+    }
+}
+
 .carouselProductBackground {
     .productTitle {
         position: relative;
-        height: 150px;
+        height: 140px;
         width: 100%;
         display: flex;
         justify-content: center;
-        padding-top: 15px;
+        padding-top: 35px;
 
         h2 {
             position: relative;
@@ -90,6 +192,7 @@
             margin-bottom: unset;
             font-weight: bold;
             text-transform: uppercase;
+            font-family: "Baloo_2";
 
             &::after {
                 content: "";
@@ -98,7 +201,7 @@
                 background: linear-gradient(to right, #00894f, #8dc63f);
                 position: absolute;
                 transform: translate(-50%, 50%);
-                top: 50%;
+                top: 62%;
                 left: 50%;
             }
         }
@@ -112,18 +215,18 @@
             margin-bottom: 4rem;
             box-shadow: 4px 4px 10px -1px #1D4486;
             width: 75% !important;
-    
+
             .productCardImage {
                 display: flex;
                 align-items: center;
                 justify-content: center;
-    
+
                 img {
                     width: 300px;
                     height: 300px;
                 }
             }
-    
+
             h1 {
                 font-size: 20px;
                 font-weight: bold;

@@ -5,7 +5,7 @@ import Style from './home.module.scss';
 import { Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
-import { Carousel } from 'antd';
+import { Carousel, Col, Row } from 'antd';
 
 export default function HomePage() {
   // const { translate: translateHome } = useI18n('common');
@@ -103,23 +103,71 @@ export default function HomePage() {
           </div>
         </Carousel>
       </div>
-      {/* <div className="aboutUs">
-        <div className="aboutUsContent">
-          <img src="" alt="" />
-          <h1 className="aboutUsTitle">About Us</h1>
+
+      <div className={Style.aboutUs}>
+        <div className={Style.aboutUsCover}>
+          <div className={Style.aboutUsTop}>
+            <div className={`${Style.dflex} ${Style.aboutUsTopCover}`}>
+              <div className={`${Style.aboutUsPicture} ${Style.dflex}`}>
+                <img src="images/about_us/nho.png" alt="" />
+              </div>
+
+              <div className={`${Style.dflex} ${Style.aboutUsTitle}`}>
+                <h1>About Us</h1>
+              </div>
+
+              <div className={`${Style.dflex} ${Style.aboutUsPicture}`}>
+                <img src="images/about_us/thom.png" alt="" />
+              </div>
+
+              <div className={Style.line}></div>
+            </div>
+          </div>
+
+          <div className={Style.aboutUsCenter}>
+            <h2>Suppliers, manufacturers top Beverages and Beverages</h2>
+            <p>
+              Established in 1990, Chau Giang Food Processing Trade Company,
+              with more than 33 years of experience, is currently an industry
+              leader in the beverage processing industry by extending its
+              cutting-edge production line system and fostering its expansion
+              into international markets, while continuously providing the
+              highest level of customer service to meet product quality and
+              demand.
+            </p>
+          </div>
+
+          <div className={`${Style.dflex} ${Style.aboutUsBottom}`}>
+            <Row gutter={100}>
+              <Col lg={8} span={24}>
+                <div className={`${Style.dflex} ${Style.aboutUsItem}`}>
+                  <img src="images/about_us/thom.png" alt="" />
+                  <h2>Our family</h2>
+                </div>
+              </Col>
+              <Col lg={8} span={24}>
+                <div className={`${Style.dflex} ${Style.aboutUsItem}`}>
+                  <img src="images/about_us/thom.png" alt="" />
+                  <h2>Our products</h2>
+                </div>
+              </Col>
+              <Col lg={8} span={24}>
+                <div className={`${Style.dflex} ${Style.aboutUsItem}`}>
+                  <img src="images/about_us/thom.png" alt="" />
+                  <h2>Our factory</h2>
+                </div>
+              </Col>
+            </Row>
+          </div>
         </div>
-      </div> */}
+      </div>
+
       <div className={Style.carouselProductBackground}>
         <div className={Style.productTitle}>
           <h2>Product</h2>
         </div>
 
-        <Carousel
-          slidesToShow={4}
-          className={Style.productCarousel}
-          autoplay
-          arrows={true}
-        >
+        <Carousel slidesToShow={4} className={Style.productCarousel} autoplay>
           <div className={Style.productCard}>
             <div className={Style.productCardImage}>
               <img src="images/products/tamarind_330_short_can.png" alt="" />
@@ -131,14 +179,42 @@ export default function HomePage() {
             <div className={Style.productCardImage}>
               <img src="images/products/mixed_330_short_can.png" alt="" />
             </div>
-            <h1>Mixed Juice Drind</h1>
+            <h1>Mixed Juice Drink</h1>
             <h4>330ml</h4>
           </div>
           <div className={Style.productCard}>
             <div className={Style.productCardImage}>
               <img src="images/products/rown_rice_milk.png" alt="" />
             </div>
-            <h1>Rown Rice Milk</h1>
+            <h1>Brown Rice Milk</h1>
+            <h4>250ml</h4>
+          </div>
+          <div className={Style.productCard}>
+            <div className={Style.productCardImage}>
+              <img src="images/products/coconut_mango.png" alt="" />
+            </div>
+            <h1>Coconut Water With Mango</h1>
+            <h4>330ml</h4>
+          </div>
+          <div className={Style.productCard}>
+            <div className={Style.productCardImage}>
+              <img src="images/products/tamarind_330_short_can.png" alt="" />
+            </div>
+            <h1>Tamarind Juice</h1>
+            <h4>330ml</h4>
+          </div>
+          <div className={Style.productCard}>
+            <div className={Style.productCardImage}>
+              <img src="images/products/mixed_330_short_can.png" alt="" />
+            </div>
+            <h1>Mixed Juice Drink</h1>
+            <h4>330ml</h4>
+          </div>
+          <div className={Style.productCard}>
+            <div className={Style.productCardImage}>
+              <img src="images/products/rown_rice_milk.png" alt="" />
+            </div>
+            <h1>Brown Rice Milk</h1>
             <h4>250ml</h4>
           </div>
           <div className={Style.productCard}>
