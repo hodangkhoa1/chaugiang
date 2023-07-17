@@ -129,7 +129,7 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div className={`${Style.dflex} ${Style.aboutUsBottom}`}>
+          <div className={`${Style.aboutUsBottom}`}>
             <Row gutter={100}>
               <Col lg={8} span={24}>
                 <div className={`${Style.dflex} ${Style.aboutUsItem}`}>
@@ -231,6 +231,84 @@ export default function HomePage() {
             <h4>330ml</h4>
           </div>
         </Carousel>
+      </div>
+
+      <div className={`${Style.aboutUs} ${Style.whyChooseUs}`}>
+        <div className={`${Style.aboutUsCover} ${Style.whyChooseUsCover}`}>
+          <div className={Style.aboutUsTop}>
+            <div className={`${Style.dflex} ${Style.aboutUsTopCover}`}>
+              <div className={`${Style.dflex} ${Style.aboutUsTitle}`}>
+                <h1>Why choose Us</h1>
+              </div>
+
+              <div className={`${Style.lineWhyChooseUs} ${Style.line}`}></div>
+            </div>
+          </div>
+
+          <div className={`${Style.aboutUsBottom}`}>
+            <Row gutter={100}>
+              <Col className={Style.colWhyChooseUs} md={12} lg={6} span={24}>
+                <div className={`${Style.dflex} ${Style.aboutUsItem}`}>
+                  <div className={Style.aboutUsBottomImage}>
+                    <img src="images/about_us/our_factory.png" alt="" />
+                  </div>
+                  <h2>Hight Quality</h2>
+                  <p>
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                    Mollitia corrupti ex nisi sed modi ullam saepe, cum totam!
+                    Iure fugit distinctio pariatur quae quia facere dicta ipsa
+                    quas saepe alias?
+                  </p>
+                </div>
+              </Col>
+
+              <Col className={Style.colWhyChooseUs} md={12} lg={6} span={24}>
+                <div className={`${Style.dflex} ${Style.aboutUsItem}`}>
+                  <div className={Style.aboutUsBottomImage}>
+                    <img src="images/about_us/our_factory.png" alt="" />
+                  </div>
+                  <h2>Fast Delevery</h2>
+                  <p>
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                    Mollitia corrupti ex nisi sed modi ullam saepe, cum totam!
+                    Iure fugit distinctio pariatur quae quia facere dicta ipsa
+                    quas saepe alias?
+                  </p>
+                </div>
+              </Col>
+
+              <Col className={Style.colWhyChooseUs} md={12} lg={6} span={24}>
+                <div className={`${Style.dflex} ${Style.aboutUsItem}`}>
+                  <div className={Style.aboutUsBottomImage}>
+                    <img src="images/about_us/our_factory.png" alt="" />
+                  </div>
+                  <h2>Flexible Packaging</h2>
+                  <p>
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                    Mollitia corrupti ex nisi sed modi ullam saepe, cum totam!
+                    Iure fugit distinctio pariatur quae quia facere dicta ipsa
+                    quas saepe alias?
+                  </p>
+                </div>
+              </Col>
+
+              <Col className={Style.colWhyChooseUs} md={12} lg={6} span={24}>
+                <div className={`${Style.dflex} ${Style.aboutUsItem}`}>
+                  <div className={Style.aboutUsBottomImage}>
+                    <img src="images/about_us/our_factory.png" alt="" />
+                  </div>
+                  <h2>Free Sample</h2>
+                  <p>
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                    Mollitia corrupti ex nisi sed modi ullam saepe, cum totam!
+                    Iure fugit distinctio pariatur quae quia facere dicta ipsa
+                    quas saepe alias?
+                  </p>
+                </div>
+              </Col>
+            </Row>
+          </div>
+        </div>
       </div>
     </div>
   );
