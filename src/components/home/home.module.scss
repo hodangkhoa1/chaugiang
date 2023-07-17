@@ -8,8 +8,7 @@
 
     img {
         width: 100%;
-        height: 620px;
-        object-fit: cover;
+        height: 633px;
     }
 }
 
@@ -97,7 +96,7 @@
         background-color: #8ec63fd8;
         border-bottom-left-radius: 70px;
         border-bottom-right-radius: 70px;
-        padding: 35px 100px;
+        padding: 35px 88px;
 
         .aboutUsTop {
             .aboutUsTopCover {
@@ -163,17 +162,30 @@
         }
 
         .aboutUsBottom {
+            padding-top: 50px;
+            
             .aboutUsItem {
                 width: 100%;
                 flex-direction: column;
                 gap: 10px;
 
-                img {
-                    width: 250px;
+                .aboutUsBottomImage {
+                    img {
+                        width: 100%;
+                    }
                 }
             }
         }
     }
+}
+
+.helloSummer {
+    background-image: url(/images/about_us/hello_summer.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 285px;
 }
 
 .carouselProductBackground {

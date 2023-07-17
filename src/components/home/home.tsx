@@ -5,7 +5,7 @@ import Style from './home.module.scss';
 import { Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
-import { Carousel, Col, Row } from 'antd';
+import { Button, Carousel, Col, Row } from 'antd';
 
 export default function HomePage() {
   // const { translate: translateHome } = useI18n('common');
@@ -25,24 +25,16 @@ export default function HomePage() {
         }}
       >
         <SwiperSlide className={Style.swiperSlide}>
-          <img
-            src="https://chaugiangfood.com/wp-content/uploads/2022/07/slide-2.jpg"
-            alt=""
-          />
+          <img src="images/slider_header/slider_background.png" alt="" />
         </SwiperSlide>
         <SwiperSlide className={Style.swiperSlide}>
-          <img
-            src="https://chaugiangfood.com/wp-content/uploads/2022/07/slide-2.jpg"
-            alt=""
-          />
+          <img src="images/slider_header/slider_background.png" alt="" />
         </SwiperSlide>
         <SwiperSlide className={Style.swiperSlide}>
-          <img
-            src="https://chaugiangfood.com/wp-content/uploads/2022/07/slide-2.jpg"
-            alt=""
-          />
+          <img src="images/slider_header/slider_background.png" alt="" />
         </SwiperSlide>
       </Swiper>
+
       <div className={Style.carouselCertificationBackground}>
         <div className={Style.productBrandName}>
           <h2>Our Certifications</h2>
@@ -141,24 +133,38 @@ export default function HomePage() {
             <Row gutter={100}>
               <Col lg={8} span={24}>
                 <div className={`${Style.dflex} ${Style.aboutUsItem}`}>
-                  <img src="images/about_us/thom.png" alt="" />
+                  <div className={Style.aboutUsBottomImage}>
+                    <img src="images/about_us/our_family.png" alt="" />
+                  </div>
                   <h2>Our family</h2>
                 </div>
               </Col>
               <Col lg={8} span={24}>
                 <div className={`${Style.dflex} ${Style.aboutUsItem}`}>
-                  <img src="images/about_us/thom.png" alt="" />
+                  <div className={Style.aboutUsBottomImage}>
+                    <img src="images/about_us/our_products.png" alt="" />
+                  </div>
                   <h2>Our products</h2>
                 </div>
               </Col>
               <Col lg={8} span={24}>
                 <div className={`${Style.dflex} ${Style.aboutUsItem}`}>
-                  <img src="images/about_us/thom.png" alt="" />
+                  <div className={Style.aboutUsBottomImage}>
+                    <img src="images/about_us/our_factory.png" alt="" />
+                  </div>
                   <h2>Our factory</h2>
                 </div>
               </Col>
             </Row>
           </div>
+        </div>
+      </div>
+
+      <div className={Style.helloSummer}>
+        <div className={Style.helloSummerCover}>
+          <Button className={Style.btnChooseToBuy} htmlType="button">
+            Choose to buy
+          </Button>
         </div>
       </div>
 
