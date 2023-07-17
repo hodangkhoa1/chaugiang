@@ -146,7 +146,7 @@
         h2 {
             text-align: center;
             color: #00894f;
-            font-size: 2.2em;
+            font-size: 25px;
             font-weight: bold;
             text-transform: uppercase;
             font-family: "Baloo_2";
@@ -167,9 +167,12 @@
             .aboutUsItem {
                 width: 100%;
                 flex-direction: column;
-                gap: 10px;
+                gap: 15px;
+                margin-bottom: 20px;
 
                 .aboutUsBottomImage {
+                    width: 90px;
+                    height: 88px;
                     img {
                         width: 100%;
                     }
@@ -249,6 +252,32 @@
             h4 {
                 color: #00894f;
             }
+        }
+    }
+}
+
+.whyChooseUs{
+    background-image: unset;
+    height: 520px;
+    background-color: white;
+    padding-top: 50px;
+    .whyChooseUsCover{
+        background-color: unset;
+        padding: unset;
+        .aboutUsTopCover {
+            .lineWhyChooseUs {
+                background: linear-gradient(to right, #00894f, #8dc63f) !important;
+            }
+        }
+
+        .colWhyChooseUs{
+            padding-left: 15px !important;
+            padding-right: 15px !important;
+        }
+
+        p{
+            color: #00894F;
+            text-align: center;
         }
     }
 }
