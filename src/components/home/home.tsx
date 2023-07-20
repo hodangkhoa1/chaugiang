@@ -37,7 +37,7 @@ export default function HomePage() {
 
       <div className={Style.carouselCertificationBackground}>
         <div className={Style.productBrandName}>
-          <h2>Our Certifications</h2>
+          <h1>Our Certifications</h1>
         </div>
 
         <Carousel
@@ -170,7 +170,7 @@ export default function HomePage() {
 
       <div className={Style.carouselProductBackground}>
         <div className={Style.productTitle}>
-          <h2>Product</h2>
+          <h1>Product</h1>
         </div>
 
         <Carousel slidesToShow={4} className={Style.productCarousel} autoplay>
@@ -233,7 +233,7 @@ export default function HomePage() {
         </Carousel>
       </div>
 
-      <div className={`${Style.aboutUs} ${Style.whyChooseUs}`}>
+      <div className={`${Style.whyChooseUs} ${Style.aboutUs}`}>
         <div className={`${Style.aboutUsCover} ${Style.whyChooseUsCover}`}>
           <div className={Style.aboutUsTop}>
             <div className={`${Style.dflex} ${Style.aboutUsTopCover}`}>
@@ -250,7 +250,7 @@ export default function HomePage() {
               <Col className={Style.colWhyChooseUs} md={12} lg={6} span={24}>
                 <div className={`${Style.dflex} ${Style.aboutUsItem}`}>
                   <div className={Style.aboutUsBottomImage}>
-                    <img src="images/about_us/our_factory.png" alt="" />
+                    <img src="images/why_choose_us/Untitled-28.png" alt="" />
                   </div>
                   <h2>Hight Quality</h2>
                   <p>
@@ -265,7 +265,7 @@ export default function HomePage() {
               <Col className={Style.colWhyChooseUs} md={12} lg={6} span={24}>
                 <div className={`${Style.dflex} ${Style.aboutUsItem}`}>
                   <div className={Style.aboutUsBottomImage}>
-                    <img src="images/about_us/our_factory.png" alt="" />
+                    <img src="images/why_choose_us/Untitled-29.png" alt="" />
                   </div>
                   <h2>Fast Delevery</h2>
                   <p>
@@ -280,7 +280,7 @@ export default function HomePage() {
               <Col className={Style.colWhyChooseUs} md={12} lg={6} span={24}>
                 <div className={`${Style.dflex} ${Style.aboutUsItem}`}>
                   <div className={Style.aboutUsBottomImage}>
-                    <img src="images/about_us/our_factory.png" alt="" />
+                    <img src="images/why_choose_us/Untitled-30.png" alt="" />
                   </div>
                   <h2>Flexible Packaging</h2>
                   <p>
@@ -295,7 +295,7 @@ export default function HomePage() {
               <Col className={Style.colWhyChooseUs} md={12} lg={6} span={24}>
                 <div className={`${Style.dflex} ${Style.aboutUsItem}`}>
                   <div className={Style.aboutUsBottomImage}>
-                    <img src="images/about_us/our_factory.png" alt="" />
+                    <img src="images/why_choose_us/Untitled-31.png" alt="" />
                   </div>
                   <h2>Free Sample</h2>
                   <p>

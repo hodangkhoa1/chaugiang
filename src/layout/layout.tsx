@@ -305,20 +305,15 @@ export function AppLayout(props: Props) {
         >
           <main>{props.children}</main>
 
-          <Footer
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              textAlign: 'center',
-              height: `${FOOTER_HEIGHT}px`,
-              backgroundColor: '#00894f',
-            }}
-          >
-            <Text disabled style={{ color: '#fff', fontSize: '16px' }}>
-              Copyright 2022 ©Chau Giang Beverage Companies - chaugiangfood.com
-              Design by Daitran
-            </Text>
+          <Footer className={LayoutStyle.footerCG}>
+            <div className={`${LayoutStyle.info}`}></div>
+
+            <div className={`${LayoutStyle.copyRight}`}>
+              <Text className={LayoutStyle.content} disabled>
+                Copyright 2022 ©Chau Giang Beverage Companies -
+                chaugiangfood.com Design by Daitran
+              </Text>
+            </div>
           </Footer>
         </Content>
       </Layout>

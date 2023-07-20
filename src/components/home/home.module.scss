@@ -21,10 +21,10 @@
         justify-content: center;
         padding-top: 35px;
 
-        h2 {
+        h1 {
             position: relative;
             color: #00894f;
-            font-size: 3.5em;
+            font-size: 45px;
             margin-bottom: unset;
             font-weight: bold;
             text-transform: uppercase;
@@ -121,7 +121,7 @@
 
                     h1 {
                         color: #00894f;
-                        font-size: 3.5em;
+                        font-size: 45px;
                         margin-bottom: unset;
                         font-weight: bold;
                         text-transform: uppercase;
@@ -146,7 +146,7 @@
         h2 {
             text-align: center;
             color: #00894f;
-            font-size: 25px;
+            font-size: 20px;
             font-weight: bold;
             text-transform: uppercase;
             font-family: "Baloo_2";
@@ -200,10 +200,10 @@
         justify-content: center;
         padding-top: 35px;
 
-        h2 {
+        h1 {
             position: relative;
             color: #00894f;
-            font-size: 3.5em;
+            font-size: 45px;
             margin-bottom: unset;
             font-weight: bold;
             text-transform: uppercase;
@@ -262,8 +262,11 @@
     background-color: white;
     padding-top: 50px;
     .whyChooseUsCover{
+        width: unset;
+        height: unset;
         background-color: unset;
         padding: unset;
+        padding: 0 20px;
         .aboutUsTopCover {
             .lineWhyChooseUs {
                 background: linear-gradient(to right, #00894f, #8dc63f) !important;
@@ -271,13 +274,13 @@
         }
 
         .colWhyChooseUs{
-            padding-left: 15px !important;
-            padding-right: 15px !important;
+            padding-bottom: 20px;
         }
 
         p{
             color: #00894F;
             text-align: center;
+            width: 310px;
         }
     }
 }
