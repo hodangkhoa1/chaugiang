@@ -271,3 +271,22 @@
     color: #00894f;
     font-size: 30px;
 }
+
+.footerCG {
+    padding: unset;
+    width: 100%;
+    .info{}
+    .copyRight{
+        display: flex;
+        align-items:center;
+        justify-content: center;
+        text-align: center;
+        height: 50px;
+        background-color: #00894f;
+        width: 100%;
+        .content{
+            color: #fff;
+            font-size: 16px;
+        }
+    }
+}
