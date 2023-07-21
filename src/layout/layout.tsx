@@ -72,6 +72,11 @@ export function AppLayout(props: Props) {
                   <Link href="#" className={LayoutStyle.navLink}>
                     Home
                   </Link>
+                </li>
+                <li className={LayoutStyle.navItem}>
+                  <Link href="#" className={LayoutStyle.navLink}>
+                    Introduce
+                  </Link>
                   <ul className={LayoutStyle.dropdownContent}>
                     <li className={LayoutStyle.dropdownContentItem}>
                       <Link href="#" className={LayoutStyle.linkDropdown}>
@@ -89,11 +94,6 @@ export function AppLayout(props: Props) {
                       </Link>
                     </li>
                   </ul>
-                </li>
-                <li className={LayoutStyle.navItem}>
-                  <Link href="#" className={LayoutStyle.navLink}>
-                    Introduce
-                  </Link>
                 </li>
                 <li className={LayoutStyle.navItem}>
                   <Link href="#" className={LayoutStyle.navLink}>
