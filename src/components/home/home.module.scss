@@ -13,33 +13,33 @@
 }
 
 .carouselCertificationBackground {
-    .productBrandName {
-        position: relative;
-        height: 140px;
+    .certificationTopCover {
         width: 100%;
-        display: flex;
-        justify-content: center;
+        height: 150px;
+        position: relative;
         padding-top: 35px;
+        align-items: flex-start;
 
-        h1 {
-            position: relative;
-            color: #00894f;
-            font-size: 45px;
-            margin-bottom: unset;
-            font-weight: bold;
-            text-transform: uppercase;
-            font-family: "Baloo_2";
-
-            &::after {
-                content: "";
-                width: 200px;
-                height: 3px;
-                background: linear-gradient(to right, #00894f, #8dc63f);
-                position: absolute;
-                transform: translate(-50%, 50%);
-                top: 62%;
-                left: 50%;
+        .certificationTitle {
+            h1 {
+                color: #00894f;
+                font-size: 45px;
+                margin-bottom: unset;
+                font-weight: bold;
+                text-transform: uppercase;
+                font-family: "Baloo_2";
             }
+        }
+
+        .certificationLine {
+            content: "";
+            width: 260px;
+            height: 6px;
+            background: linear-gradient(to right, #00894f 60%, #8dc63f 40%);
+            position: absolute;
+            transform: translate(-50%, 50%);
+            top: 60%;
+            left: 50%;
         }
     }
 
@@ -131,12 +131,12 @@
 
                 .line {
                     content: "";
-                    width: 280px;
+                    width: 270px;
                     height: 6px;
-                    background: linear-gradient(to right, #00894f, rgb(255, 255, 255));
+                    background: linear-gradient(to right, #00894f 50%, rgb(255, 255, 255) 50%);
                     position: absolute;
                     transform: translate(-50%, 50%);
-                    bottom: 0;
+                    top: 80%;
                     left: 50%;
                 }
             }
@@ -163,7 +163,7 @@
 
         .aboutUsBottom {
             padding-top: 50px;
-            
+
             .aboutUsItem {
                 width: 100%;
                 flex-direction: column;
@@ -173,6 +173,7 @@
                 .aboutUsBottomImage {
                     width: 90px;
                     height: 88px;
+
                     img {
                         width: 100%;
                     }
@@ -192,33 +193,33 @@
 }
 
 .carouselProductBackground {
-    .productTitle {
-        position: relative;
-        height: 140px;
+    .productTopCover {
         width: 100%;
-        display: flex;
-        justify-content: center;
+        height: 150px;
+        position: relative;
         padding-top: 35px;
+        align-items: flex-start;
 
-        h1 {
-            position: relative;
-            color: #00894f;
-            font-size: 45px;
-            margin-bottom: unset;
-            font-weight: bold;
-            text-transform: uppercase;
-            font-family: "Baloo_2";
-
-            &::after {
-                content: "";
-                width: 200px;
-                height: 3px;
-                background: linear-gradient(to right, #00894f, #8dc63f);
-                position: absolute;
-                transform: translate(-50%, 50%);
-                top: 62%;
-                left: 50%;
+        .productTitle {
+            h1 {
+                color: #00894f;
+                font-size: 45px;
+                margin-bottom: unset;
+                font-weight: bold;
+                text-transform: uppercase;
+                font-family: "Baloo_2";
             }
+        }
+
+        .productLine {
+            content: "";
+            width: 260px;
+            height: 6px;
+            background: linear-gradient(to right, #00894f 60%, #8dc63f 40%);
+            position: absolute;
+            transform: translate(-50%, 50%);
+            top: 60%;
+            left: 50%;
         }
     }
 
@@ -256,31 +257,202 @@
     }
 }
 
-.whyChooseUs{
+.orderNowBackground {
+    background-image: url(/images/order_now/order_now.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 555px;
+}
+
+.bestSelling {
+    background-color: #fff;
+    width: 100%;
+    height: 500px;
+}
+
+.freshSummerDay {
+    background-image: url(/images/fresh_summer_day/fresh_summer_day.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 500px;
+}
+
+.newProduct {
+    background-color: #fff;
+    width: 100%;
+    height: 500px;
+}
+
+.juiceGuava {
+    background-image: url(/images/juice_guava/juice_guava.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 550px;
+}
+
+.news {
+    width: 100%;
+    height: 550px;
+    background-color: #00894F;
+
+    .newsCover {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        padding-top: 40px;
+
+        .newsTop {
+            .newsTopCover {
+                position: relative;
+
+                .newsTitle {
+                    width: 700px;
+                    text-align: center;
+
+                    h1 {
+                        color: #fff;
+                        font-size: 45px;
+                        margin-bottom: unset;
+                        font-weight: bold;
+                        text-transform: uppercase;
+                        font-family: "Baloo_2";
+                    }
+                }
+
+                .newsLine {
+                    content: "";
+                    width: 210px;
+                    height: 6px;
+                    background: linear-gradient(to right, #fff 60%, #8dc63f 40%);
+                    position: absolute;
+                    transform: translate(-50%, 50%);
+                    top: 110%;
+                    left: 50%;
+                }
+            }
+        }
+    }
+}
+
+.whyChooseUs {
     background-image: unset;
     height: 520px;
     background-color: white;
     padding-top: 50px;
-    .whyChooseUsCover{
+
+    .whyChooseUsCover {
         width: unset;
         height: unset;
         background-color: unset;
         padding: unset;
         padding: 0 20px;
-        .aboutUsTopCover {
+
+        .whyChooseUsTopCover {
+            position: relative;
+
+            .whyChooseUsLine {
+                content: "";
+                width: 280px;
+                height: 6px;
+                background: linear-gradient(to right, #00894f, rgb(255, 255, 255));
+                position: absolute;
+                transform: translate(-50%, 50%);
+                top: 105%;
+                left: 50%;
+            }
+
             .lineWhyChooseUs {
-                background: linear-gradient(to right, #00894f, #8dc63f) !important;
+                background: linear-gradient(to right, #00894f 50%, #8dc63f 50%);
+            }
+
+            .whyChooseUsTitle {
+                width: 700px;
+                text-align: center;
+
+                h1 {
+                    color: #00894f;
+                    font-size: 45px;
+                    margin-bottom: unset;
+                    font-weight: bold;
+                    text-transform: uppercase;
+                    font-family: "Baloo_2";
+                }
             }
         }
 
-        .colWhyChooseUs{
+        .colWhyChooseUs {
             padding-bottom: 20px;
         }
 
-        p{
-            color: #00894F;
+        p {
+            color: #8dc63f;
             text-align: center;
             width: 310px;
+        }
+    }
+}
+
+.customerImformation {
+    background-image: url(/images/customer_imformation/customer_imformation.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 845px;
+
+    .customerImformationCover {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        padding-top: 40px;
+
+        .customerImformationTop {
+            .customerImformationTopCover {
+                position: relative;
+
+                .customerImformationTitle {
+                    width: 700px;
+                    text-align: center;
+
+                    h1 {
+                        color: #fff;
+                        font-size: 45px;
+                        margin-bottom: unset;
+                        font-weight: bold;
+                        text-transform: uppercase;
+                        font-family: "Baloo_2";
+                    }
+                }
+
+                .customerImformationLine {
+                    content: "";
+                    width: 280px;
+                    height: 6px;
+                    background: linear-gradient(to right, #00894f 50%, rgb(255, 255, 255) 50%);
+                    position: absolute;
+                    transform: translate(-50%, 50%);
+                    top: 110%;
+                    left: 50%;
+                }
+            }
+        }
+
+        .customerImformationCenter {
+            margin-top: 40px;
+
+            p {
+                margin-bottom: unset;
+                font-size: 22px;
+                font-family: "Baloo_2";
+            }
         }
     }
 }

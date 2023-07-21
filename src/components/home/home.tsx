@@ -5,7 +5,7 @@ import Style from './home.module.scss';
 import { Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
-import { Button, Carousel, Col, Row } from 'antd';
+import { Carousel, Col, Row } from 'antd';
 
 export default function HomePage() {
   // const { translate: translateHome } = useI18n('common');
@@ -36,8 +36,11 @@ export default function HomePage() {
       </Swiper>
 
       <div className={Style.carouselCertificationBackground}>
-        <div className={Style.productBrandName}>
-          <h1>Our Certifications</h1>
+        <div className={`${Style.dflex} ${Style.certificationTopCover}`}>
+          <div className={Style.certificationTitle}>
+            <h1>Our Certifications</h1>
+          </div>
+          <div className={Style.certificationLine}></div>
         </div>
 
         <Carousel
@@ -160,17 +163,14 @@ export default function HomePage() {
         </div>
       </div>
 
-      <div className={Style.helloSummer}>
-        <div className={Style.helloSummerCover}>
-          <Button className={Style.btnChooseToBuy} htmlType="button">
-            Choose to buy
-          </Button>
-        </div>
-      </div>
+      <div className={Style.helloSummer}></div>
 
       <div className={Style.carouselProductBackground}>
-        <div className={Style.productTitle}>
-          <h1>Product</h1>
+        <div className={`${Style.dflex} ${Style.productTopCover}`}>
+          <div className={Style.productTitle}>
+            <h1>Product</h1>
+          </div>
+          <div className={Style.productLine}></div>
         </div>
 
         <Carousel slidesToShow={4} className={Style.productCarousel} autoplay>
@@ -233,20 +233,56 @@ export default function HomePage() {
         </Carousel>
       </div>
 
+      <div className={Style.orderNowBackground}></div>
+
+      <div className={Style.bestSelling}></div>
+
+      <div className={Style.freshSummerDay}></div>
+
+      <div className={Style.newProduct}></div>
+
+      <div className={Style.juiceGuava}></div>
+
+      <div>
+        <video controls width="100%" height="100%">
+          <source src="/videos/final.mp4" type="video/mp4" />
+          Sorry, your browser doesn&apos;t support videos.
+        </video>
+      </div>
+
+      <div className={Style.news}>
+        <div className={Style.newsCover}>
+          <div className={Style.newsTop}>
+            <div className={`${Style.dflex} ${Style.newsTopCover}`}>
+              <div className={`${Style.dflex} ${Style.newsTitle}`}>
+                <h1>News</h1>
+              </div>
+
+              <div className={Style.newsLine}></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div className={`${Style.whyChooseUs} ${Style.aboutUs}`}>
         <div className={`${Style.aboutUsCover} ${Style.whyChooseUsCover}`}>
           <div className={Style.aboutUsTop}>
-            <div className={`${Style.dflex} ${Style.aboutUsTopCover}`}>
-              <div className={`${Style.dflex} ${Style.aboutUsTitle}`}>
-                <h1>Why choose Us</h1>
+            <div className={`${Style.dflex} ${Style.whyChooseUsTopCover}`}>
+              <div className={`${Style.dflex} ${Style.whyChooseUsTitle}`}>
+                <h1>Why choose Us?</h1>
               </div>
 
-              <div className={`${Style.lineWhyChooseUs} ${Style.line}`}></div>
+              <div
+                className={`${Style.lineWhyChooseUs} ${Style.whyChooseUsLine}`}
+              ></div>
             </div>
           </div>
 
           <div className={`${Style.aboutUsBottom}`}>
-            <Row gutter={100}>
+            <Row
+              gutter={100}
+              style={{ marginLeft: 'unset', marginRight: 'unset' }}
+            >
               <Col className={Style.colWhyChooseUs} md={12} lg={6} span={24}>
                 <div className={`${Style.dflex} ${Style.aboutUsItem}`}>
                   <div className={Style.aboutUsBottomImage}>
@@ -254,10 +290,9 @@ export default function HomePage() {
                   </div>
                   <h2>Hight Quality</h2>
                   <p>
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                    Mollitia corrupti ex nisi sed modi ullam saepe, cum totam!
-                    Iure fugit distinctio pariatur quae quia facere dicta ipsa
-                    quas saepe alias?
+                    Nam Viet continuously develops new drinks which bring
+                    original natural tastes, high nutrition facts, catch the
+                    newest trends in the market.
                   </p>
                 </div>
               </Col>
@@ -267,12 +302,11 @@ export default function HomePage() {
                   <div className={Style.aboutUsBottomImage}>
                     <img src="images/why_choose_us/Untitled-29.png" alt="" />
                   </div>
-                  <h2>Fast Delevery</h2>
+                  <h2>Fast Delivery</h2>
                   <p>
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                    Mollitia corrupti ex nisi sed modi ullam saepe, cum totam!
-                    Iure fugit distinctio pariatur quae quia facere dicta ipsa
-                    quas saepe alias?
+                    Production runs in accordance with world highest standards
+                    of Food Safety. Big variety of soft drinks, non-alcohol
+                    drinks, fruit juice drinks.
                   </p>
                 </div>
               </Col>
@@ -284,10 +318,9 @@ export default function HomePage() {
                   </div>
                   <h2>Flexible Packaging</h2>
                   <p>
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                    Mollitia corrupti ex nisi sed modi ullam saepe, cum totam!
-                    Iure fugit distinctio pariatur quae quia facere dicta ipsa
-                    quas saepe alias?
+                    Production runs in accordance with world highest standards
+                    of Food Safety. Big variety of soft drinks, non-alcohol
+                    drinks, fruit juice drinks.
                   </p>
                 </div>
               </Col>
@@ -299,14 +332,37 @@ export default function HomePage() {
                   </div>
                   <h2>Free Sample</h2>
                   <p>
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                    Mollitia corrupti ex nisi sed modi ullam saepe, cum totam!
-                    Iure fugit distinctio pariatur quae quia facere dicta ipsa
-                    quas saepe alias?
+                    Production runs in accordance with world highest standards
+                    of Food Safety. Big variety of soft drinks, non-alcohol
+                    drinks, fruit juice drinks.
                   </p>
                 </div>
               </Col>
             </Row>
+          </div>
+        </div>
+      </div>
+
+      <div className={Style.customerImformation}>
+        <div className={Style.customerImformationCover}>
+          <div className={Style.customerImformationTop}>
+            <div
+              className={`${Style.dflex} ${Style.customerImformationTopCover}`}
+            >
+              <div
+                className={`${Style.dflex} ${Style.customerImformationTitle}`}
+              >
+                <h1>Customer Information</h1>
+              </div>
+
+              <div className={Style.customerImformationLine}></div>
+            </div>
+          </div>
+          <div className={Style.customerImformationCenter}>
+            <p>
+              Please provide the information below to receive our free
+              consultation service package
+            </p>
           </div>
         </div>
       </div>
