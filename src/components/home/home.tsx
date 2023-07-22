@@ -244,10 +244,15 @@ export default function HomePage() {
       <div className={Style.juiceGuava}></div>
 
       <div>
-        <video controls width="100%" height="100%">
-          <source src="/videos/final.mp4" type="video/mp4" />
-          Sorry, your browser doesn&apos;t support videos.
-        </video>
+        <iframe
+          width="100%"
+          height="770px"
+          src="https://www.youtube.com/embed/vyqrV-t0sPc"
+          title="YouTube video player"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowFullScreen
+        ></iframe>
       </div>
 
       <div className={Style.news}>
@@ -290,9 +295,10 @@ export default function HomePage() {
                   </div>
                   <h2>Hight Quality</h2>
                   <p>
-                    Nam Viet continuously develops new drinks which bring
-                    original natural tastes, high nutrition facts, catch the
-                    newest trends in the market.
+                    Product quality is always developed by CG Food to meet
+                    national and international requirements. We are certain that
+                    our products will have a natural flavor, be highly
+                    nutritious, and follow the latest trends in the market.
                   </p>
                 </div>
               </Col>
@@ -304,9 +310,10 @@ export default function HomePage() {
                   </div>
                   <h2>Fast Delivery</h2>
                   <p>
-                    Production runs in accordance with world highest standards
-                    of Food Safety. Big variety of soft drinks, non-alcohol
-                    drinks, fruit juice drinks.
+                    In order to ensure the leading time in accordance with
+                    client requests, CG Food has a sizable packing and labeling
+                    area. We also have a skilled logistic crew on hand to assist
+                    you whenever you need it.
                   </p>
                 </div>
               </Col>
@@ -318,9 +325,10 @@ export default function HomePage() {
                   </div>
                   <h2>Flexible Packaging</h2>
                   <p>
-                    Production runs in accordance with world highest standards
-                    of Food Safety. Big variety of soft drinks, non-alcohol
-                    drinks, fruit juice drinks.
+                    We consistently satisfy the demands for product packaging
+                    from clients across the global market by combining modernism
+                    and experience. Our employees are trained to catch up with
+                    recent trends of packing specification.
                   </p>
                 </div>
               </Col>
@@ -332,9 +340,10 @@ export default function HomePage() {
                   </div>
                   <h2>Free Sample</h2>
                   <p>
-                    Production runs in accordance with world highest standards
-                    of Food Safety. Big variety of soft drinks, non-alcohol
-                    drinks, fruit juice drinks.
+                    Because their satisfaction makes us happy, we only deliver
+                    the best products to our consumers. In order for the model
+                    to rapidly reach clients, we always select the best shipping
+                    services.
                   </p>
                 </div>
               </Col>
