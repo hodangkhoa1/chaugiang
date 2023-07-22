@@ -1,0 +1,376 @@
+.dflex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.headerBackground {
+    background-image: url(/images/introduce/header_introduce.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 285px;
+}
+
+.introduceWhoWeAre {
+    padding-left: 80px;
+
+    .introduceWhoWeAreTopCover {
+        width: 100%;
+        height: 140px;
+        position: relative;
+        padding-top: 35px;
+        justify-content: start;
+
+        .introduceWhoWeAreTitle {
+            h1 {
+                color: #00894f;
+                font-size: 40px;
+                margin-bottom: unset;
+                font-weight: bold;
+                text-transform: uppercase;
+                font-family: "Baloo_2";
+            }
+        }
+
+        .introduceWhoWeAreLine {
+            content: "";
+            width: 250px;
+            height: 6px;
+            background: linear-gradient(to right, #00894f 60%, #8dc63f 40%);
+            position: absolute;
+            transform: translate(-50%, 50%);
+            top: 80%;
+            left: 8.5%;
+        }
+    }
+
+    .introduceWhoWeAreBreadcrumb {
+        text-transform: uppercase;
+        color: #00894f;
+        font-weight: 600;
+        font-size: 19px;
+    }
+}
+
+.introduceOurFamily {
+    flex-direction: column;
+
+    .introduceOurFamilyTopCover {
+        width: 100%;
+        height: 100px;
+        position: relative;
+        padding-top: 35px;
+        align-items: flex-start;
+
+        .introduceOurFamilyTitle {
+            h1 {
+                color: #00894f;
+                font-size: 30px;
+                margin-bottom: unset;
+                font-weight: bold;
+                text-transform: uppercase;
+                font-family: "Baloo_2";
+            }
+        }
+
+        .introduceOurFamilyLine {
+            content: "";
+            width: 170px;
+            height: 6px;
+            background: linear-gradient(to right, #00894f 60%, #8dc63f 40%);
+            position: absolute;
+            transform: translate(-50%, 50%);
+            top: 70%;
+            left: 50%;
+        }
+    }
+
+    .introduceOurFamilyCenter {
+        width: 860px;
+
+        p {
+            color: #8dc63f;
+            text-align: center;
+            font-size: 16px;
+        }
+    }
+
+    .introduceOurFamilyLogo {
+        justify-content: space-between;
+        width: 860px;
+    }
+}
+
+.viewCompany {
+    background-image: url(/images/introduce/view_company.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 995px;
+    margin-top: 30px;
+}
+
+.ourProducts {
+    flex-direction: column;
+
+    .ourProductsTopCover {
+        width: 100%;
+        height: 100px;
+        position: relative;
+        padding-top: 35px;
+        align-items: flex-start;
+
+        .ourProductsTitle {
+            h1 {
+                color: #00894f;
+                font-size: 30px;
+                margin-bottom: unset;
+                font-weight: bold;
+                text-transform: uppercase;
+                font-family: "Baloo_2";
+            }
+        }
+
+        .ourProductsLine {
+            content: "";
+            width: 170px;
+            height: 6px;
+            background: linear-gradient(to right, #00894f 60%, #8dc63f 40%);
+            position: absolute;
+            transform: translate(-50%, 50%);
+            top: 70%;
+            left: 50%;
+        }
+    }
+
+    .ourProductsCenter {
+        width: 860px;
+
+        p {
+            color: #8dc63f;
+            text-align: center;
+            font-size: 16px;
+        }
+    }
+
+    .ourProductsLogo {
+        width: 100%;
+
+        .imageOurProduct {
+            width: 100%;
+        }
+    }
+}
+
+.certification {
+    flex-direction: column;
+    align-items: unset;
+
+    .certificationTopCover {
+        width: 100%;
+        height: 100px;
+        position: relative;
+        padding-top: 35px;
+        align-items: flex-start;
+
+        .certificationTitle {
+            h1 {
+                color: #00894f;
+                font-size: 30px;
+                margin-bottom: unset;
+                font-weight: bold;
+                text-transform: uppercase;
+                font-family: "Baloo_2";
+            }
+        }
+
+        .certificationLine {
+            content: "";
+            width: 170px;
+            height: 6px;
+            background: linear-gradient(to right, #00894f 60%, #8dc63f 40%);
+            position: absolute;
+            transform: translate(-50%, 50%);
+            top: 70%;
+            left: 50%;
+        }
+    }
+
+    .certificationCenter {
+        margin: 10px 0 25px 0;
+
+        p {
+            color: #8dc63f;
+            text-align: center;
+            font-size: 16px;
+        }
+    }
+
+    .certificationCarousel {
+        padding: 0 20px 0 20px;
+
+        .certificationCard {
+            text-align: center;
+            margin-bottom: 4rem;
+
+            .certificationCardImage {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                .certificationImg {
+                    width: 250px;
+                    height: 350px;
+                    animation: transform 4s ease-in-out;
+                    border: 8px solid #00894f;
+                    padding: 5px;
+                }
+            }
+
+            h1 {
+                font-size: 20px;
+                font-weight: bold;
+                color: #00894f;
+                margin-top: 10px;
+            }
+        }
+    }
+}
+
+.ourFactory {
+    justify-content: space-between;
+    margin-bottom: 50px;
+
+    .ourFactoryLeft {
+        width: calc(100% - 610px);
+        flex-direction: column;
+
+        .ourFactoryLeftCover {
+            width: 100%;
+            height: 100px;
+            position: relative;
+            padding-top: 35px;
+            align-items: flex-start;
+            margin-bottom: 15px;
+
+            .ourFactoryTitle {
+                h1 {
+                    color: #00894f;
+                    font-size: 30px;
+                    margin-bottom: unset;
+                    font-weight: bold;
+                    text-transform: uppercase;
+                    font-family: "Baloo_2";
+                }
+            }
+
+            .ourFactoryLine {
+                content: "";
+                width: 170px;
+                height: 6px;
+                background: linear-gradient(to right, #00894f 60%, #8dc63f 40%);
+                position: absolute;
+                transform: translate(-50%, 50%);
+                top: 70%;
+                left: 50%;
+            }
+        }
+
+        .ourFactoryLeftCenter {
+            width: 618px;
+
+            p {
+                color: #8dc63f;
+                text-align: center;
+                font-size: 16px;
+            }
+        }
+    }
+}
+
+.whyChooseUs {
+    width: 100%;
+    height: 520px;
+    background-color: white;
+    padding-top: 50px;
+    display: flex;
+    justify-content: center;
+
+    .whyChooseUsCover {
+        padding: 0 20px;
+
+        .whyChooseUsTop {
+
+            .whyChooseUsTopCover {
+                position: relative;
+
+                .whyChooseUsTitle {
+                    width: 700px;
+                    text-align: center;
+
+                    h1 {
+                        color: #00894f;
+                        font-size: 45px;
+                        margin-bottom: unset;
+                        font-weight: bold;
+                        text-transform: uppercase;
+                        font-family: "Baloo_2";
+                    }
+                }
+
+                .whyChooseUsLine {
+                    content: "";
+                    width: 280px;
+                    height: 6px;
+                    background: linear-gradient(to right, #00894f 50%, #8dc63f 50%);
+                    position: absolute;
+                    transform: translate(-50%, 50%);
+                    top: 105%;
+                    left: 50%;
+                }
+            }
+        }
+
+        .whyChooseUsBottom {
+            padding-top: 50px;
+
+            .colWhyChooseUs {
+                padding-bottom: 20px;
+
+                .whyChooseUsItem {
+                    width: 100%;
+                    flex-direction: column;
+                    gap: 15px;
+                    margin-bottom: 20px;
+
+                    .whyChooseUsBottomImage {
+                        width: 90px;
+                        height: 88px;
+
+                        img {
+                            width: 100%;
+                        }
+                    }
+
+                    h2 {
+                        text-align: center;
+                        color: #00894f;
+                        font-size: 23px;
+                        font-weight: bold;
+                        text-transform: uppercase;
+                        font-family: "Baloo_2";
+                    }
+
+                    p {
+                        color: #8dc63f;
+                        text-align: center;
+                        width: 310px;
+                    }
+                }
+            }
+        }
+    }
+}

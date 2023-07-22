@@ -79,7 +79,10 @@ export function AppLayout(props: Props) {
                   </Link>
                   <ul className={LayoutStyle.dropdownContent}>
                     <li className={LayoutStyle.dropdownContentItem}>
-                      <Link href="#" className={LayoutStyle.linkDropdown}>
+                      <Link
+                        href={ROUTERS.WHO_WE_ARE}
+                        className={LayoutStyle.linkDropdown}
+                      >
                         Who we are
                       </Link>
                     </li>
