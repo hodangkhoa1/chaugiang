@@ -87,7 +87,10 @@ export function AppLayout(props: Props) {
                       </Link>
                     </li>
                     <li className={LayoutStyle.dropdownContentItem}>
-                      <Link href="#" className={LayoutStyle.linkDropdown}>
+                      <Link
+                        href={ROUTERS.COMPANY_PROFILE}
+                        className={LayoutStyle.linkDropdown}
+                      >
                         Company Profile
                       </Link>
                     </li>

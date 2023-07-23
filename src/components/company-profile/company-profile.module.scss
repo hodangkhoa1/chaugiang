@@ -1,0 +1,319 @@
+.dflex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.headerBackground {
+    background-image: url(/images/introduce/pure_coconut_water.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 285px;
+}
+
+.introduceCompanyProfile {
+    padding-left: 80px;
+
+    .introduceCompanyProfileTopCover {
+        width: 100%;
+        height: 140px;
+        position: relative;
+        padding-top: 35px;
+        justify-content: start;
+
+        .introduceCompanyProfileTitle {
+            h1 {
+                color: #00894f;
+                font-size: 40px;
+                margin-bottom: unset;
+                font-weight: bold;
+                text-transform: uppercase;
+                font-family: "Baloo_2";
+            }
+        }
+
+        .introduceCompanyProfileLine {
+            content: "";
+            width: 250px;
+            height: 6px;
+            background: linear-gradient(to right, #00894f 60%, #8dc63f 40%);
+            position: absolute;
+            transform: translate(-50%, 50%);
+            top: 80%;
+            left: 8.5%;
+        }
+    }
+
+    .introduceCompanyProfileBreadcrumb {
+        text-transform: uppercase;
+        color: #00894f;
+        font-weight: 600;
+        font-size: 19px;
+    }
+}
+
+.introduceLeadership {
+    flex-direction: column;
+
+    .introduceLeadershipTopCover {
+        width: 100%;
+        height: 100px;
+        position: relative;
+        padding-top: 35px;
+        align-items: flex-start;
+
+        .introduceLeadershipTitle {
+            h1 {
+                color: #00894f;
+                font-size: 30px;
+                margin-bottom: unset;
+                font-weight: bold;
+                text-transform: uppercase;
+                font-family: "Baloo_2";
+            }
+        }
+
+        .introduceLeadershipLine {
+            content: "";
+            width: 170px;
+            height: 6px;
+            background: linear-gradient(to right, #00894f 60%, #8dc63f 40%);
+            position: absolute;
+            transform: translate(-50%, 50%);
+            top: 70%;
+            left: 50%;
+        }
+    }
+
+    .introduceLeadershipCenter {
+        width: 860px;
+
+        p {
+            color: #8dc63f;
+            text-align: center;
+            font-size: 16px;
+        }
+    }
+
+    .introduceLeadershipLogo {
+        width: 100%;
+        margin-top: 15px;
+    }
+}
+
+.aboutTheDirector {
+    justify-content: space-between;
+    margin-top: 50px;
+
+    .aboutTheDirectorLeft {
+        width: calc(100% - 50%);
+
+        .aboutTheDirectorLeftBackground {
+            width: 615px;
+            height: 300px;
+            background-color: #8dc63f;
+        }
+    }
+
+    .aboutTheDirectorRight {
+        width: calc(100% - 50%);
+        flex-direction: column;
+
+        .aboutTheDirectorRightCover {
+            width: 100%;
+            height: 100px;
+            position: relative;
+            padding-top: 35px;
+            align-items: flex-start;
+            margin-bottom: 15px;
+
+            .aboutTheDirectorRightTitle {
+                h1 {
+                    color: #00894f;
+                    font-size: 30px;
+                    margin-bottom: unset;
+                    font-weight: bold;
+                    text-transform: uppercase;
+                    font-family: "Baloo_2";
+                }
+            }
+
+            .aboutTheDirectorRightLine {
+                content: "";
+                width: 170px;
+                height: 6px;
+                background: linear-gradient(to right, #00894f 60%, #8dc63f 40%);
+                position: absolute;
+                transform: translate(-50%, 50%);
+                top: 70%;
+                left: 50%;
+            }
+        }
+
+        .aboutTheDirectorRightCenter {
+            width: 616px;
+
+            p {
+                color: #8dc63f;
+                text-align: center;
+                font-size: 16px;
+            }
+        }
+    }
+}
+
+.employeeSystem {
+    justify-content: space-between;
+    margin: 30px 0 50px 0;
+
+    .employeeSystemLeft {
+        width: calc(100% - 50%);
+        flex-direction: column;
+
+        .employeeSystemLeftCover {
+            width: 100%;
+            height: 100px;
+            position: relative;
+            padding-top: 35px;
+            align-items: flex-start;
+            margin-bottom: 15px;
+
+            .employeeSystemLeftTitle {
+                h1 {
+                    color: #00894f;
+                    font-size: 30px;
+                    margin-bottom: unset;
+                    font-weight: bold;
+                    text-transform: uppercase;
+                    font-family: "Baloo_2";
+                }
+            }
+
+            .employeeSystemLeftLine {
+                content: "";
+                width: 170px;
+                height: 6px;
+                background: linear-gradient(to right, #00894f 60%, #8dc63f 40%);
+                position: absolute;
+                transform: translate(-50%, 50%);
+                top: 70%;
+                left: 50%;
+            }
+        }
+
+        .employeeSystemLeftCenter {
+            width: 616px;
+
+            p {
+                color: #8dc63f;
+                text-align: center;
+                font-size: 16px;
+            }
+        }
+    }
+
+    .employeeSystemRight {
+        width: calc(100% - 50%);
+
+        .employeeSystemRightBackground {
+            width: 615px;
+            height: 300px;
+            background-color: #8dc63f;
+        }
+    }
+}
+
+.orderNowBackground {
+    background-image: url(/images/order_now/order_now.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 555px;
+}
+
+.whyChooseUs {
+    width: 100%;
+    height: 520px;
+    background-color: white;
+    padding-top: 50px;
+    display: flex;
+    justify-content: center;
+
+    .whyChooseUsCover {
+        padding: 0 20px;
+
+        .whyChooseUsTop {
+
+            .whyChooseUsTopCover {
+                position: relative;
+
+                .whyChooseUsTitle {
+                    width: 700px;
+                    text-align: center;
+
+                    h1 {
+                        color: #00894f;
+                        font-size: 45px;
+                        margin-bottom: unset;
+                        font-weight: bold;
+                        text-transform: uppercase;
+                        font-family: "Baloo_2";
+                    }
+                }
+
+                .whyChooseUsLine {
+                    content: "";
+                    width: 280px;
+                    height: 6px;
+                    background: linear-gradient(to right, #00894f 50%, #8dc63f 50%);
+                    position: absolute;
+                    transform: translate(-50%, 50%);
+                    top: 105%;
+                    left: 50%;
+                }
+            }
+        }
+
+        .whyChooseUsBottom {
+            padding-top: 50px;
+
+            .colWhyChooseUs {
+                padding-bottom: 20px;
+
+                .whyChooseUsItem {
+                    width: 100%;
+                    flex-direction: column;
+                    gap: 15px;
+                    margin-bottom: 20px;
+
+                    .whyChooseUsBottomImage {
+                        width: 90px;
+                        height: 88px;
+
+                        img {
+                            width: 100%;
+                        }
+                    }
+
+                    h2 {
+                        text-align: center;
+                        color: #00894f;
+                        font-size: 23px;
+                        font-weight: bold;
+                        text-transform: uppercase;
+                        font-family: "Baloo_2";
+                    }
+
+                    p {
+                        color: #8dc63f;
+                        text-align: center;
+                        width: 310px;
+                    }
+                }
+            }
+        }
+    }
+}

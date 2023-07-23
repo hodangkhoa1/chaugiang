@@ -112,7 +112,7 @@ export default function WhoWeArePage() {
           <div className={Style.certificationCard}>
             <div className={Style.certificationCardImage}>
               <Image
-                src="/images/introduce/HALAL.png"
+                src="/images/certifications/HALAL.png"
                 alt="logo"
                 className={Style.certificationImg}
               />
@@ -122,7 +122,7 @@ export default function WhoWeArePage() {
           <div className={Style.certificationCard}>
             <div className={Style.certificationCardImage}>
               <Image
-                src="/images/introduce/BSCI.png"
+                src="/images/certifications/BSCI.png"
                 alt="logo"
                 className={Style.certificationImg}
               />
@@ -132,7 +132,7 @@ export default function WhoWeArePage() {
           <div className={Style.certificationCard}>
             <div className={Style.certificationCardImage}>
               <Image
-                src="/images/introduce/FDA.png"
+                src="/images/certifications/FDA.png"
                 alt="logo"
                 className={Style.certificationImg}
               />
@@ -142,7 +142,7 @@ export default function WhoWeArePage() {
           <div className={Style.certificationCard}>
             <div className={Style.certificationCardImage}>
               <Image
-                src="/images/introduce/FSSC.png"
+                src="/images/certifications/FSSC.png"
                 alt="logo"
                 className={Style.certificationImg}
               />
@@ -152,7 +152,7 @@ export default function WhoWeArePage() {
           <div className={Style.certificationCard}>
             <div className={Style.certificationCardImage}>
               <Image
-                src="/images/introduce/HALAL.png"
+                src="/images/certifications/HALAL.png"
                 alt="logo"
                 className={Style.certificationImg}
               />
@@ -162,7 +162,7 @@ export default function WhoWeArePage() {
           <div className={Style.certificationCard}>
             <div className={Style.certificationCardImage}>
               <Image
-                src="/images/introduce/BSCI.png"
+                src="/images/certifications/BSCI.png"
                 alt="logo"
                 className={Style.certificationImg}
               />
@@ -172,7 +172,7 @@ export default function WhoWeArePage() {
           <div className={Style.certificationCard}>
             <div className={Style.certificationCardImage}>
               <Image
-                src="/images/introduce/FDA.png"
+                src="/images/certifications/FDA.png"
                 alt="logo"
                 className={Style.certificationImg}
               />
@@ -182,7 +182,7 @@ export default function WhoWeArePage() {
           <div className={Style.certificationCard}>
             <div className={Style.certificationCardImage}>
               <Image
-                src="/images/introduce/FSSC.png"
+                src="/images/certifications/FSSC.png"
                 alt="logo"
                 className={Style.certificationImg}
               />
@@ -270,7 +270,7 @@ export default function WhoWeArePage() {
               <Col className={Style.colWhyChooseUs} md={12} lg={6} span={24}>
                 <div className={`${Style.dflex} ${Style.whyChooseUsItem}`}>
                   <div className={Style.whyChooseUsBottomImage}>
-                    <img src="/images/introduce/Untitled-28.png" alt="" />
+                    <img src="/images/why_choose_us/Untitled-28.png" alt="" />
                   </div>
                   <h2>Hight Quality</h2>
                   <p>
@@ -284,7 +284,7 @@ export default function WhoWeArePage() {
               <Col className={Style.colWhyChooseUs} md={12} lg={6} span={24}>
                 <div className={`${Style.dflex} ${Style.whyChooseUsItem}`}>
                   <div className={Style.whyChooseUsBottomImage}>
-                    <img src="/images/introduce/Untitled-29.png" alt="" />
+                    <img src="/images/why_choose_us/Untitled-29.png" alt="" />
                   </div>
                   <h2>Fast Delivery</h2>
                   <p>
@@ -298,7 +298,7 @@ export default function WhoWeArePage() {
               <Col className={Style.colWhyChooseUs} md={12} lg={6} span={24}>
                 <div className={`${Style.dflex} ${Style.whyChooseUsItem}`}>
                   <div className={Style.whyChooseUsBottomImage}>
-                    <img src="/images/introduce/Untitled-30.png" alt="" />
+                    <img src="/images/why_choose_us/Untitled-30.png" alt="" />
                   </div>
                   <h2>Flexible Packaging</h2>
                   <p>
@@ -312,7 +312,7 @@ export default function WhoWeArePage() {
               <Col className={Style.colWhyChooseUs} md={12} lg={6} span={24}>
                 <div className={`${Style.dflex} ${Style.whyChooseUsItem}`}>
                   <div className={Style.whyChooseUsBottomImage}>
-                    <img src="/images/introduce/Untitled-31.png" alt="" />
+                    <img src="/images/why_choose_us/Untitled-31.png" alt="" />
                   </div>
                   <h2>Free Sample</h2>
                   <p>
