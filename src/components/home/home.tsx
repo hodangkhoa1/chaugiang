@@ -5,7 +5,7 @@ import Style from './home.module.scss';
 import { Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
-import { Carousel, Col, Row } from 'antd';
+import { Carousel, Col, Row, Image } from 'antd';
 
 export default function HomePage() {
   // const { translate: translateHome } = useI18n('common');
@@ -50,49 +50,99 @@ export default function HomePage() {
         >
           <div className={Style.certificationCard}>
             <div className={Style.certificationCardImage}>
-              <img src="images/certifications/HALAL.png" alt="" />
+              <Image
+                src="/images/certifications/HALAL.png"
+                alt="logo"
+                width={300}
+                height={430}
+                className={Style.certificationCardImg}
+              />
             </div>
             <h1>HALAL</h1>
           </div>
           <div className={Style.certificationCard}>
             <div className={Style.certificationCardImage}>
-              <img src="images/certifications/BSCI.png" alt="" />
+              <Image
+                src="/images/certifications/BSCI.png"
+                alt="logo"
+                width={300}
+                height={430}
+                className={Style.certificationCardImg}
+              />
             </div>
             <h1>BSCI</h1>
           </div>
           <div className={Style.certificationCard}>
             <div className={Style.certificationCardImage}>
-              <img src="images/certifications/FDA.png" alt="" />
+              <Image
+                src="/images/certifications/FDA.png"
+                alt="logo"
+                width={300}
+                height={430}
+                className={Style.certificationCardImg}
+              />
             </div>
             <h1>FDA</h1>
           </div>
           <div className={Style.certificationCard}>
             <div className={Style.certificationCardImage}>
-              <img src="images/certifications/FSSC.png" alt="" />
+              <Image
+                src="/images/certifications/FSSC.png"
+                alt="logo"
+                width={300}
+                height={430}
+                className={Style.certificationCardImg}
+              />
             </div>
             <h1>FSSC22000</h1>
           </div>
           <div className={Style.certificationCard}>
             <div className={Style.certificationCardImage}>
-              <img src="images/certifications/HALAL.png" alt="" />
+              <Image
+                src="/images/certifications/SMETA.jpg"
+                alt="logo"
+                width={300}
+                height={430}
+                className={Style.certificationCardImg}
+              />
             </div>
-            <h1>HALAL</h1>
+            <h1>SMETA</h1>
           </div>
           <div className={Style.certificationCard}>
             <div className={Style.certificationCardImage}>
-              <img src="images/certifications/BSCI.png" alt="" />
+              <Image
+                src="/images/certifications/BSCI.png"
+                alt="logo"
+                width={300}
+                height={430}
+                className={Style.certificationCardImg}
+              />
+              {/* <img src="images/certifications/BSCI.png" alt="" /> */}
             </div>
             <h1>BSCI</h1>
           </div>
           <div className={Style.certificationCard}>
             <div className={Style.certificationCardImage}>
-              <img src="images/certifications/FDA.png" alt="" />
+              <Image
+                src="/images/certifications/FDA.png"
+                alt="logo"
+                width={300}
+                height={430}
+                className={Style.certificationCardImg}
+              />
+              {/* <img src="images/certifications/FDA.png" alt="" /> */}
             </div>
             <h1>FDA</h1>
           </div>
           <div className={Style.certificationCard}>
             <div className={Style.certificationCardImage}>
-              <img src="images/certifications/FSSC.png" alt="" />
+              <Image
+                src="/images/certifications/FSSC.png"
+                alt="logo"
+                width={300}
+                height={430}
+                className={Style.certificationCardImg}
+              />
             </div>
             <h1>FSSC22000</h1>
           </div>
@@ -247,7 +297,7 @@ export default function HomePage() {
         <iframe
           width="100%"
           height="770px"
-          src="https://www.youtube.com/embed/vyqrV-t0sPc"
+          src="https://www.youtube.com/embed/vyqrV-t0sPc?autoplay=1&controls=0&rel=0"
           title="YouTube video player"
           frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
