@@ -69,12 +69,12 @@ export function AppLayout(props: Props) {
             <Space>
               <ul className={LayoutStyle.navbarNav}>
                 <li className={LayoutStyle.navItem}>
-                  <Link href="#" className={LayoutStyle.navLink}>
+                  <Link href={ROUTERS.HOME} className={LayoutStyle.navLink}>
                     Home
                   </Link>
                 </li>
                 <li className={LayoutStyle.navItem}>
-                  <Link href={ROUTERS.HOME} className={LayoutStyle.navLink}>
+                  <Link href="#" className={LayoutStyle.navLink}>
                     Introduce
                   </Link>
                   <ul className={LayoutStyle.dropdownContent}>
