@@ -285,13 +285,489 @@ export default function HomePage() {
 
       <div className={Style.orderNowBackground}></div>
 
-      <div className={Style.bestSelling}></div>
+      <div className={Style.bestSelling}>
+        <div className={Style.bestSellingTop}>
+          <div className={Style.bestSellingTop__left}>
+            <div className={Style.left__cover}>
+              <div className={Style.images}>
+                <img src="images/best_selling/nho-xanh.png" alt="" />
+              </div>
+              <div className={Style.coverTitle}>
+                <div className={Style.title}>
+                  <h2>best selling</h2>
+                </div>
+                <div className={Style.line}></div>
+              </div>
+            </div>
+          </div>
+
+          <div className={Style.bestSellingTop__right}>
+            <div className={Style.right__cover}>
+              <div className={Style.menuTop}>
+                <div className={Style.itemLink}>
+                  <a href="">brown rice</a>
+                </div>
+
+                <div className={Style.itemLink}>
+                  <a href="">oats</a>
+                </div>
+
+                <div className={Style.itemLink}>
+                  <a href="">cononut meat</a>
+                </div>
+
+                <div className={Style.itemLink}>
+                  <a href="">sparkling coconut</a>
+                </div>
+              </div>
+
+              <div className={Style.menuBottom}>
+                <div className={Style.itemLink}>
+                  <a href="">tamarind</a>
+                </div>
+
+                <div className={Style.itemLink}>
+                  <a href="">mango</a>
+                </div>
+
+                <div className={Style.itemLink}>
+                  <a href="">bottle of aloe vera</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className={Style.bestSellingBottom}>
+          <Row
+            gutter={100}
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}
+          >
+            <Col lg={6} span={24}>
+              <div className={Style.bestSellingBottom__left}>
+                <div className={Style.images}>
+                  <img src="images/best_selling/nuoc-dua.jpg" alt="" />
+                </div>
+              </div>
+            </Col>
+
+            <Col lg={18} span={24}>
+              <div className={Style.bestSellingBottom__right}>
+                <div className={Style.carousel}>
+                  <Carousel
+                    slidesToShow={4}
+                    className={Style.bestSellingCarousel}
+                    autoplay
+                  >
+                    <div className={Style.bestSellingCard}>
+                      <div className={Style.bestSellingCardImage}>
+                        <img src="images/best_selling/13.png" alt="" />
+                      </div>
+                      <h1>Bird&apos;s Nest Water</h1>
+                      <h4>330ml</h4>
+                    </div>
+
+                    <div className={Style.bestSellingCard}>
+                      <div className={Style.bestSellingCardImage}>
+                        <img src="images/best_selling/15.png" alt="" />
+                      </div>
+                      <h1>Brown Rice Milk</h1>
+                      <h4>250ml</h4>
+                    </div>
+
+                    <div className={Style.bestSellingCard}>
+                      <div className={Style.bestSellingCardImage}>
+                        <img
+                          src="images/best_selling/coconut pine.png"
+                          alt=""
+                        />
+                      </div>
+                      <h1>Coconut Water With Mango</h1>
+                      <h4>330ml</h4>
+                    </div>
+
+                    <div className={Style.bestSellingCard}>
+                      <div className={Style.bestSellingCardImage}>
+                        <img src="images/best_selling/tamSenTra.png" alt="" />
+                      </div>
+                      <h1>Lotus Hert Tea</h1>
+                      <h4>250ml</h4>
+                    </div>
+
+                    <div className={Style.bestSellingCard}>
+                      <div className={Style.bestSellingCardImage}>
+                        <img src="images/best_selling/13.png" alt="" />
+                      </div>
+                      <h1>Bird&apos;s Nest Water</h1>
+                      <h4>330ml</h4>
+                    </div>
+
+                    <div className={Style.bestSellingCard}>
+                      <div className={Style.bestSellingCardImage}>
+                        <img src="images/best_selling/15.png" alt="" />
+                      </div>
+                      <h1>Brown Rice Milk</h1>
+                      <h4>250ml</h4>
+                    </div>
+
+                    <div className={Style.bestSellingCard}>
+                      <div className={Style.bestSellingCardImage}>
+                        <img
+                          src="images/best_selling/coconut pine.png"
+                          alt=""
+                        />
+                      </div>
+                      <h1>Coconut Water With Mango</h1>
+                      <h4>330ml</h4>
+                    </div>
+
+                    <div className={Style.bestSellingCard}>
+                      <div className={Style.bestSellingCardImage}>
+                        <img src="images/best_selling/tamSenTra.png" alt="" />
+                      </div>
+                      <h1>Lotus Hert Tea</h1>
+                      <h4>250ml</h4>
+                    </div>
+                  </Carousel>
+                </div>
+              </div>
+            </Col>
+          </Row>
+        </div>
+      </div>
 
       <div className={Style.freshSummerDay}></div>
 
-      <div className={Style.newProduct}></div>
+      <div className={`${Style.bestSelling} ${Style.newProduct}`}>
+        <div className={Style.bestSellingTop}>
+          <div className={Style.bestSellingTop__left}>
+            <div className={Style.left__cover}>
+              <div className={Style.images}>
+                <img src="images/new_product/nho-xanh.png" alt="" />
+              </div>
+              <div className={Style.coverTitle}>
+                <div className={Style.title}>
+                  <h2>new product</h2>
+                </div>
+                <div className={Style.line}></div>
+              </div>
+            </div>
+          </div>
+
+          <div className={Style.bestSellingTop__right}>
+            <div className={Style.right__cover}>
+              <div className={Style.menuTop}>
+                <div className={Style.itemLink}>
+                  <a href="">sparkling watermelon</a>
+                </div>
+
+                <div className={Style.itemLink}>
+                  <a href="">sparkling fragrant coconut</a>
+                </div>
+
+                <div className={Style.itemLink}>
+                  <a href="">black coffee</a>
+                </div>
+              </div>
+
+              <div className={Style.menuBottom}>
+                <div className={Style.itemLink}>
+                  <a href="">cappuccino</a>
+                </div>
+
+                <div className={Style.itemLink}>
+                  <a href="">custard apple</a>
+                </div>
+
+                <div className={Style.itemLink}>
+                  <a href="">peach tea</a>
+                </div>
+
+                <div className={Style.itemLink}>
+                  <a href="">lemon tea</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className={Style.bestSellingBottom}>
+          <Row
+            gutter={100}
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}
+          >
+            <Col lg={6} span={24}>
+              <div className={Style.bestSellingBottom__left}>
+                <div className={Style.images}>
+                  <img src="images/new_product/newProduct.jpg" alt="" />
+                </div>
+              </div>
+            </Col>
+
+            <Col lg={18} span={24}>
+              <div className={Style.bestSellingBottom__right}>
+                <div className={Style.carousel}>
+                  <Carousel
+                    slidesToShow={4}
+                    className={Style.bestSellingCarousel}
+                    autoplay
+                  >
+                    <div className={Style.bestSellingCard}>
+                      <div className={Style.bestSellingCardImage}>
+                        <img
+                          src="images/new_product/cafe ORIGINAL.png"
+                          alt=""
+                        />
+                      </div>
+                      <h1>coffee original</h1>
+                      <h4>330ml</h4>
+                    </div>
+
+                    <div className={Style.bestSellingCard}>
+                      <div className={Style.bestSellingCardImage}>
+                        <img src="images/new_product/cafeMocha.png" alt="" />
+                      </div>
+                      <h1>coffee mocha</h1>
+                      <h4>250ml</h4>
+                    </div>
+
+                    <div className={Style.bestSellingCard}>
+                      <div className={Style.bestSellingCardImage}>
+                        <img src="images/new_product/19.png" alt="" />
+                      </div>
+                      <h1>energy drink 109</h1>
+                      <h4>250ml</h4>
+                    </div>
+
+                    <div className={Style.bestSellingCard}>
+                      <div className={Style.bestSellingCardImage}>
+                        <img src="images/new_product/20.png" alt="" />
+                      </div>
+                      <h1>strawberry flavor 109</h1>
+                      <h4>250ml</h4>
+                    </div>
+
+                    <div className={Style.bestSellingCard}>
+                      <div className={Style.bestSellingCardImage}>
+                        <img
+                          src="images/new_product/cafe ORIGINAL.png"
+                          alt=""
+                        />
+                      </div>
+                      <h1>coffee original</h1>
+                      <h4>330ml</h4>
+                    </div>
+
+                    <div className={Style.bestSellingCard}>
+                      <div className={Style.bestSellingCardImage}>
+                        <img src="images/new_product/cafeMocha.png" alt="" />
+                      </div>
+                      <h1>coffee mocha</h1>
+                      <h4>250ml</h4>
+                    </div>
+
+                    <div className={Style.bestSellingCard}>
+                      <div className={Style.bestSellingCardImage}>
+                        <img src="images/new_product/19.png" alt="" />
+                      </div>
+                      <h1>energy drink 109</h1>
+                      <h4>250ml</h4>
+                    </div>
+
+                    <div className={Style.bestSellingCard}>
+                      <div className={Style.bestSellingCardImage}>
+                        <img src="images/new_product/20.png" alt="" />
+                      </div>
+                      <h1>strawberry flavor 109</h1>
+                      <h4>250ml</h4>
+                    </div>
+                  </Carousel>
+                </div>
+              </div>
+            </Col>
+          </Row>
+        </div>
+      </div>
 
       <div className={Style.juiceGuava}></div>
+
+      <div className={`${Style.bestSelling} ${Style.featuredProduct}`}>
+        <div className={Style.bestSellingTop}>
+          <div className={Style.bestSellingTop__left}>
+            <div className={Style.left__cover}>
+              <div className={Style.images}>
+                <img src="images/featured_product/nho-xanh.png" alt="" />
+              </div>
+              <div className={Style.coverTitle}>
+                <div className={Style.title}>
+                  <h2>featured product</h2>
+                </div>
+                <div className={Style.line}></div>
+              </div>
+            </div>
+          </div>
+
+          <div className={Style.bestSellingTop__right}>
+            <div className={Style.right__cover}>
+              <div className={Style.menuTop}>
+                <div className={Style.itemLink}>
+                  <a href="">brown rice milk</a>
+                </div>
+
+                <div className={Style.itemLink}>
+                  <a href="">soy milk</a>
+                </div>
+
+                <div className={Style.itemLink}>
+                  <a href="">mung bean milk</a>
+                </div>
+
+                <div className={Style.itemLink}>
+                  <a href="">corn milk</a>
+                </div>
+              </div>
+
+              <div className={Style.menuBottom}>
+                <div className={Style.itemLink}>
+                  <a href="">Bird&apos;s Nest</a>
+                </div>
+
+                <div className={Style.itemLink}>
+                  <a href="">stir-fried Bird&apos;s Nest</a>
+                </div>
+
+                <div className={Style.itemLink}>
+                  <a href="">aloe vera Bird&apos;s Nest</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className={Style.bestSellingBottom}>
+          <Row
+            gutter={100}
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}
+          >
+            <Col lg={6} span={24}>
+              <div className={Style.bestSellingBottom__left}>
+                <div className={Style.images}>
+                  <img
+                    src="images/featured_product/featureProduct.jpg"
+                    alt=""
+                  />
+                </div>
+              </div>
+            </Col>
+
+            <Col lg={18} span={24}>
+              <div className={Style.bestSellingBottom__right}>
+                <div className={Style.carousel}>
+                  <Carousel
+                    slidesToShow={4}
+                    className={Style.bestSellingCarousel}
+                    autoplay
+                  >
+                    <div className={Style.bestSellingCard}>
+                      <div className={Style.bestSellingCardImage}>
+                        <img
+                          src="images/featured_product/mixed 330 short can.png"
+                          alt=""
+                        />
+                      </div>
+                      <h1>mixed juice drink</h1>
+                      <h4>330ml</h4>
+                    </div>
+
+                    <div className={Style.bestSellingCard}>
+                      <div className={Style.bestSellingCardImage}>
+                        <img src="images/featured_product/15.png" alt="" />
+                      </div>
+                      <h1>brown rice milk</h1>
+                      <h4>250ml</h4>
+                    </div>
+
+                    <div className={Style.bestSellingCard}>
+                      <div className={Style.bestSellingCardImage}>
+                        <img
+                          src="images/featured_product/coconut mango 1.png"
+                          alt=""
+                        />
+                      </div>
+                      <h1>Coconut Water With Mango</h1>
+                      <h4>330ml</h4>
+                    </div>
+
+                    <div className={Style.bestSellingCard}>
+                      <div className={Style.bestSellingCardImage}>
+                        <img
+                          src="images/featured_product/energy_250 slin can.png"
+                          alt=""
+                        />
+                      </div>
+                      <h1>energy drink</h1>
+                      <h4>250ml</h4>
+                    </div>
+
+                    <div className={Style.bestSellingCard}>
+                      <div className={Style.bestSellingCardImage}>
+                        <img
+                          src="images/featured_product/mixed 330 short can.png"
+                          alt=""
+                        />
+                      </div>
+                      <h1>mixed juice drink</h1>
+                      <h4>330ml</h4>
+                    </div>
+
+                    <div className={Style.bestSellingCard}>
+                      <div className={Style.bestSellingCardImage}>
+                        <img src="images/featured_product/15.png" alt="" />
+                      </div>
+                      <h1>brown rice milk</h1>
+                      <h4>250ml</h4>
+                    </div>
+
+                    <div className={Style.bestSellingCard}>
+                      <div className={Style.bestSellingCardImage}>
+                        <img
+                          src="images/featured_product/coconut mango 1.png"
+                          alt=""
+                        />
+                      </div>
+                      <h1>Coconut Water With Mango</h1>
+                      <h4>330ml</h4>
+                    </div>
+
+                    <div className={Style.bestSellingCard}>
+                      <div className={Style.bestSellingCardImage}>
+                        <img
+                          src="images/featured_product/energy_250 slin can.png"
+                          alt=""
+                        />
+                      </div>
+                      <h1>energy drink</h1>
+                      <h4>250ml</h4>
+                    </div>
+                  </Carousel>
+                </div>
+              </div>
+            </Col>
+          </Row>
+        </div>
+      </div>
 
       <div>
         <iframe

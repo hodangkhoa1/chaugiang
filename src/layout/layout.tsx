@@ -3,7 +3,7 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import LayoutStyle from './layout.module.scss';
 import { Layout, Space, Typography, Image, Select } from 'antd';
-import { SearchOutlined, ShoppingCartOutlined } from '@ant-design/icons';
+import { SearchOutlined } from '@ant-design/icons';
 import { appLocalStorage } from '@/utils/localstorage';
 import { LOCAL_STORAGE_KEYS } from '@/constant/localstorage';
 import { LANGUAGE } from '@/constant';
@@ -297,9 +297,6 @@ export function AppLayout(props: Props) {
                   { value: 'cn', label: 'Tiếng Trung' },
                 ]}
               />
-            </Space>
-            <Space>
-              <ShoppingCartOutlined className={LayoutStyle.cartIcon} />
             </Space>
           </Space>
         </Header>
