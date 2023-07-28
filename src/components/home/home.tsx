@@ -781,6 +781,28 @@ export default function HomePage() {
         ></iframe>
       </div>
 
+      <div className={Style.brands}>
+        <Row gutter={100}>
+          <Col lg={8} span={24} className={Style.dflex}>
+            <div className={Style.brandImage}>
+              <img src="images/brand/12.png" alt="" />
+            </div>
+          </Col>
+
+          <Col lg={8} span={24} className={Style.dflex}>
+            <div className={Style.brandImage}>
+              <img src="images/brand/13.png" alt="" />
+            </div>
+          </Col>
+
+          <Col lg={8} span={24} className={Style.dflex}>
+            <div className={Style.brandImage}>
+              <img src="images/brand/14.png" alt="" />
+            </div>
+          </Col>
+        </Row>
+      </div>
+
       <div className={Style.news}>
         <div className={Style.newsCover}>
           <div className={Style.newsTop}>
