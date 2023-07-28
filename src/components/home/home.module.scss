@@ -455,6 +455,17 @@
     width: 100%;
 }
 
+.brands{
+    background-color: #fff;
+    padding: 2rem 6rem;
+    .brandImage{
+        width: 400px;
+        img{
+            width: 100%;
+        }
+    }
+}
+
 .news {
     width: 100%;
     height: 550px;
