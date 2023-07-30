@@ -773,7 +773,7 @@ export default function HomePage() {
         <iframe
           width="100%"
           height="770px"
-          src="https://www.youtube.com/embed/vyqrV-t0sPc?autoplay=1&controls=0&rel=0"
+          src="https://www.youtube.com/embed/vyqrV-t0sPc?autoplay=1&controls=0&rel=0&mute=0"
           title="YouTube video player"
           frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -808,7 +808,7 @@ export default function HomePage() {
           <div className={Style.newsTop}>
             <div className={`${Style.dflex} ${Style.newsTopCover}`}>
               <div className={`${Style.dflex} ${Style.newsTitle}`}>
-                <h1>News</h1>
+                <h1>News and event</h1>
               </div>
 
               <div className={Style.newsLine}></div>

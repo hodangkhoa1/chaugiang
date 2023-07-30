@@ -240,12 +240,18 @@ export function AppLayout(props: Props) {
                   </Link>
                   <ul className={LayoutStyle.dropdownContent}>
                     <li className={LayoutStyle.dropdownContentItem}>
-                      <Link href="#" className={LayoutStyle.linkDropdown}>
+                      <Link
+                        href={ROUTERS.BEVERAGE_PRODUCT_DEVELOPMENT}
+                        className={LayoutStyle.linkDropdown}
+                      >
                         Beverage Product Development
                       </Link>
                     </li>
                     <li className={LayoutStyle.dropdownContentItem}>
-                      <Link href="#" className={LayoutStyle.linkDropdown}>
+                      <Link
+                        href={ROUTERS.BEVERAGE_PACKAGING_DESIGN}
+                        className={LayoutStyle.linkDropdown}
+                      >
                         Beverage packaging design
                       </Link>
                     </li>
@@ -276,14 +282,14 @@ export function AppLayout(props: Props) {
             <Space>
               <div className={LayoutStyle.headerTool}>
                 <div id="searchBox" className={LayoutStyle.searchBox}>
-                  <div className={LayoutStyle.buttonSearch}>
-                    <SearchOutlined className={LayoutStyle.btnSearch} />
-                  </div>
                   <input
                     className={LayoutStyle.searchPlace}
                     type="text"
                     placeholder="Search..."
                   />
+                  <div className={LayoutStyle.buttonSearch}>
+                    <SearchOutlined className={LayoutStyle.btnSearch} />
+                  </div>
                 </div>
               </div>
             </Space>

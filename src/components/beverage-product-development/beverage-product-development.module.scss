@@ -1,0 +1,136 @@
+.dflex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.headerBackground {
+    background-image: url(/images/services/service3.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 285px;
+}
+
+.introduce {
+    padding-left: 80px;
+
+    .introduceTopCover {
+        width: 100%;
+        height: 140px;
+        position: relative;
+        padding-top: 35px;
+        justify-content: start;
+
+        .introduceTitle {
+            h1 {
+                color: #00894f;
+                font-size: 40px;
+                margin-bottom: unset;
+                font-weight: bold;
+                text-transform: uppercase;
+            }
+        }
+
+        .introduceLine {
+            content: "";
+            width: 250px;
+            height: 6px;
+            background: linear-gradient(to right, #00894f 60%, #8dc63f 40%);
+            position: absolute;
+            transform: translate(-50%, 50%);
+            top: 80%;
+            left: 8.5%;
+        }
+    }
+
+    .introduceBreadcrumb {
+        text-transform: uppercase;
+        color: #00894f;
+        font-weight: 600;
+        font-size: 19px;
+    }
+}
+
+.whyChooseUs {
+    width: 100%;
+    height: 520px;
+    background-color: #EDEDED;
+    padding-top: 50px;
+    display: flex;
+    justify-content: center;
+
+    .whyChooseUsCover {
+        padding: 0 20px;
+
+        .whyChooseUsTop {
+
+            .whyChooseUsTopCover {
+                position: relative;
+
+                .whyChooseUsTitle {
+                    width: 700px;
+                    text-align: center;
+
+                    h1 {
+                        color: #00894f;
+                        font-size: 45px;
+                        margin-bottom: unset;
+                        font-weight: bold;
+                        text-transform: uppercase;
+                    }
+                }
+
+                .whyChooseUsLine {
+                    content: "";
+                    width: 280px;
+                    height: 6px;
+                    background: linear-gradient(to right, #00894f 50%, #8dc63f 50%);
+                    position: absolute;
+                    transform: translate(-50%, 50%);
+                    top: 105%;
+                    left: 50%;
+                }
+            }
+        }
+
+        .whyChooseUsBottom {
+            padding-top: 50px;
+
+            .colWhyChooseUs {
+                padding-bottom: 20px;
+
+                .whyChooseUsItem {
+                    width: 100%;
+                    flex-direction: column;
+                    gap: 15px;
+                    margin-bottom: 20px;
+
+                    .whyChooseUsBottomImage {
+                        width: 90px;
+                        height: 88px;
+
+                        img {
+                            width: 100%;
+                        }
+                    }
+
+                    h2 {
+                        text-align: center;
+                        color: #00894f;
+                        font-size: 23px;
+                        font-weight: bold;
+                        text-transform: uppercase;
+                    }
+
+                    p {
+                        color: #8dc63f;
+                        text-align: center;
+                        width: 310px;
+                    }
+                }
+            }
+        }
+    }
+}
