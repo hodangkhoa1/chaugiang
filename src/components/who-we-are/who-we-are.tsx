@@ -231,12 +231,6 @@ export default function WhoWeArePage() {
         <div className={Style.ourFactoryRight}>
           <Carousel slidesToShow={1} autoplay>
             <Image
-              src="/images/introduce/our_factory.jpg"
-              alt="logo"
-              width={610}
-              height={650}
-            />
-            <Image
               src="/images/introduce/our_factory_2.jpg"
               alt="logo"
               width={610}
@@ -274,7 +268,7 @@ export default function WhoWeArePage() {
         <iframe
           width="100%"
           height="768px"
-          src="https://www.youtube.com/embed/vyqrV-t0sPc?autoplay=1&controls=0&rel=0"
+          src="https://www.youtube.com/embed/vyqrV-t0sPc?autoplay=1&controls=0&rel=0&mute=0"
           title="YouTube video player"
           frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"

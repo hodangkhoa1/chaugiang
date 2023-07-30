@@ -13,6 +13,8 @@
 }
 
 .carouselCertificationBackground {
+    background-color: #fff;
+
     .certificationTopCover {
         width: 100%;
         height: 150px;
@@ -132,7 +134,7 @@
                     content: "";
                     width: 220px;
                     height: 6px;
-                    background: linear-gradient(to right, #00894f 50%, rgb(255, 255, 255) 50%);
+                    background: linear-gradient(to right, #00894f 60%, rgb(255, 255, 255) 40%);
                     position: absolute;
                     transform: translate(-50%, 50%);
                     top: 80%;
@@ -514,7 +516,7 @@
 .whyChooseUs {
     background-image: unset;
     height: 520px;
-    background-color: white;
+    background-color: #EDEDED;
     padding-top: 50px;
 
     .whyChooseUsCover {
@@ -539,7 +541,7 @@
             }
 
             .lineWhyChooseUs {
-                background: linear-gradient(to right, #00894f 50%, #8dc63f 50%);
+                background: linear-gradient(to right, #00894f 60%, #8dc63f 40%);
             }
 
             .whyChooseUsTitle {

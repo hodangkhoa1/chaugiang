@@ -229,7 +229,7 @@
         .buttonSearch {
             font-size: 20px;
             cursor: pointer;
-            padding: 0 10px 0 15px;
+            padding: 0 15px 0 10px;
 
             .btnSearch {
                 color: #00894f;
@@ -250,12 +250,13 @@
             border: 0;
             background: transparent;
             outline: none;
-            color: #00894f;
+            color: #777777;
+            padding-left: 15px;
         }
 
         .searchPlace {
             &::placeholder {
-                color: #00894f;
+                color: #777777;
                 opacity: 1;
             }
         }
