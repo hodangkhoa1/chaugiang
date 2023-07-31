@@ -1,7 +1,7 @@
 // import useI18n from '@/i18n/useI18N';
 import React from 'react';
 import Style from './beverage-packaging-design.module.scss';
-import { Breadcrumb, Col, Row, Image } from 'antd';
+import { Breadcrumb, Col, Row, Image, Carousel } from 'antd';
 
 export default function BeveragePackagingDesignPage() {
   // const { translate: translateHome } = useI18n('common');
@@ -146,6 +146,67 @@ export default function BeveragePackagingDesignPage() {
           </div>
           <div className={Style.affiliateProductLine}></div>
         </div>
+      </div>
+
+      <div className={Style.carouselProductBackground}>
+        <Carousel slidesToShow={4} className={Style.productCarousel} autoplay>
+          <div className={Style.productCard}>
+            <div className={Style.productCardImage}>
+              <img src="/images/products/tamarind_330_short_can.png" alt="" />
+            </div>
+            <h1>Tamarind Juice</h1>
+            <h4>330ml</h4>
+          </div>
+          <div className={Style.productCard}>
+            <div className={Style.productCardImage}>
+              <img src="/images/products/mixed_330_short_can.png" alt="" />
+            </div>
+            <h1>Mixed Juice Drink</h1>
+            <h4>330ml</h4>
+          </div>
+          <div className={Style.productCard}>
+            <div className={Style.productCardImage}>
+              <img src="/images/products/rown_rice_milk.png" alt="" />
+            </div>
+            <h1>Brown Rice Milk</h1>
+            <h4>250ml</h4>
+          </div>
+          <div className={Style.productCard}>
+            <div className={Style.productCardImage}>
+              <img src="/images/products/coconut_mango.png" alt="" />
+            </div>
+            <h1>Coconut Water With Mango</h1>
+            <h4>330ml</h4>
+          </div>
+          <div className={Style.productCard}>
+            <div className={Style.productCardImage}>
+              <img src="/images/products/tamarind_330_short_can.png" alt="" />
+            </div>
+            <h1>Tamarind Juice</h1>
+            <h4>330ml</h4>
+          </div>
+          <div className={Style.productCard}>
+            <div className={Style.productCardImage}>
+              <img src="/images/products/mixed_330_short_can.png" alt="" />
+            </div>
+            <h1>Mixed Juice Drink</h1>
+            <h4>330ml</h4>
+          </div>
+          <div className={Style.productCard}>
+            <div className={Style.productCardImage}>
+              <img src="/images/products/rown_rice_milk.png" alt="" />
+            </div>
+            <h1>Brown Rice Milk</h1>
+            <h4>250ml</h4>
+          </div>
+          <div className={Style.productCard}>
+            <div className={Style.productCardImage}>
+              <img src="/images/products/coconut_mango.png" alt="" />
+            </div>
+            <h1>Coconut Water With Mango</h1>
+            <h4>330ml</h4>
+          </div>
+        </Carousel>
       </div>
 
       <div className={Style.whyChooseUs}>

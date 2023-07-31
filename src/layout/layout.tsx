@@ -268,12 +268,15 @@ export function AppLayout(props: Props) {
                   </Link>
                 </li>
                 <li className={LayoutStyle.navItem}>
-                  <Link href="#" className={LayoutStyle.navLink}>
+                  <Link href={ROUTERS.CONTACT} className={LayoutStyle.navLink}>
                     Contact
                   </Link>
                 </li>
                 <li className={LayoutStyle.navItem}>
-                  <Link href="#" className={LayoutStyle.navLink}>
+                  <Link
+                    href={ROUTERS.RECRUITMENT}
+                    className={LayoutStyle.navLink}
+                  >
                     Recruitment
                   </Link>
                 </li>
