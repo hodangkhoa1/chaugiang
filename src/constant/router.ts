@@ -6,4 +6,6 @@ export const ROUTERS = {
   BEVERAGE_PACKAGING_DESIGN: '/service/beverage-packaging-design',
   BEVERAGE_PRODUCT_DEVELOPMENT: '/service/beverage-product-development',
   PRIVATE_LABEL_SERVICES: '/service/private-label-services',
+  RECRUITMENT: '/recruitment',
+  CONTACT: '/contact',
 };
