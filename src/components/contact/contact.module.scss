@@ -13,42 +13,201 @@
     height: 285px;
 }
 
-.introduce {
+.contactUs {
+    position: relative;
+    height: 650px;
     padding-left: 80px;
 
-    .introduceTopCover {
-        width: 100%;
-        height: 140px;
-        position: relative;
-        padding-top: 35px;
-        justify-content: start;
+    .background {
+        position: absolute;
+        width: 299px;
+        height: 500px;
+        right: 0;
 
-        .introduceTitle {
-            h1 {
-                color: #00894f;
-                font-size: 40px;
-                margin-bottom: unset;
-                font-weight: bold;
-                text-transform: uppercase;
-            }
-        }
-
-        .introduceLine {
-            content: "";
-            width: 250px;
-            height: 6px;
-            background: linear-gradient(to right, #00894f 60%, #8dc63f 40%);
-            position: absolute;
-            transform: translate(-50%, 50%);
-            top: 80%;
-            left: 8.5%;
+        .backgroundImage {
+            width: 100%;
+            height: 100%;
         }
     }
 
-    .introduceBreadcrumb {
-        text-transform: uppercase;
-        color: #00894f;
-        font-weight: 600;
-        font-size: 19px;
+    .introduce {
+        .introduceTopCover {
+            width: 100%;
+            height: 140px;
+            position: relative;
+            padding-top: 35px;
+            justify-content: start;
+
+            .introduceTitle {
+                h1 {
+                    color: #00894f;
+                    font-size: 40px;
+                    margin-bottom: unset;
+                    font-weight: bold;
+                    text-transform: uppercase;
+                }
+            }
+
+            .introduceLine {
+                content: "";
+                width: 250px;
+                height: 6px;
+                background: linear-gradient(to right, #00894f 60%, #8dc63f 40%);
+                position: absolute;
+                transform: translate(-50%, 50%);
+                top: 80%;
+                left: 8.5%;
+            }
+        }
+
+        .introduceBreadcrumb {
+            text-transform: uppercase;
+            color: #00894f;
+            font-weight: 600;
+            font-size: 19px;
+        }
+    }
+
+    .contactUsBody {
+        margin-top: 50px;
+        width: calc(100% - 299px);
+
+        h1 {
+            color: #00894f;
+            font-size: 20px;
+        }
+
+        h2 {
+            color: #8dc63f;
+            font-size: 16px;
+        }
+
+        .contactUsMeetYou {
+            width: 100%;
+            height: 160px;
+            position: relative;
+            justify-content: start;
+            margin-bottom: 35px;
+
+            .contactUsMeetYouTitle {
+                h1 {
+                    color: #00894f;
+                    font-size: 40px;
+                    margin-bottom: unset;
+                    font-weight: bold;
+                    text-transform: uppercase;
+                }
+            }
+
+            .contactUsMeetYouLine {
+                content: "";
+                width: 90%;
+                height: 6px;
+                background: #8dc63f;
+                position: absolute;
+                transform: translate(-50%, 50%);
+                top: 100%;
+                left: 45%;
+            }
+        }
+
+        h3 {
+            color: #00894f;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+
+        .contactUsBodyAddress {
+            justify-content: start;
+
+            .contactUsBodyAddressIcon {
+                color: #00894f;
+                font-size: 25px;
+                margin-right: 10px;
+            }
+
+            p {
+                color: #8dc63f;
+                font-size: 16px;
+                margin-bottom: unset;
+                margin-right: 130px;
+            }
+        }
+
+        .contactUsBodyHotline {
+            margin-top: 25px;
+            justify-content: start;
+
+            .contactUsBodyHotlineIcon {
+                color: #00894f;
+                font-size: 25px;
+                margin-right: 10px;
+            }
+
+            p {
+                color: #8dc63f;
+                font-size: 16px;
+                margin-bottom: unset;
+                margin-right: 130px;
+            }
+        }
+
+        .contactUsBodyFaxNumber {
+            margin-top: 25px;
+
+            p {
+                color: #8dc63f;
+                margin-left: 35px;
+                font-size: 16px;
+                margin-bottom: unset;
+            }
+
+            .contactUsBodyFaxBody {
+                justify-content: start;
+                margin-top: 5px;
+
+                .contactUsBodyHotlineIcon {
+                    color: #00894f;
+                    font-size: 25px;
+                    margin-right: 10px;
+                }
+
+                p {
+                    margin-left: unset;
+                    margin-right: 5px;
+                }
+
+                .contactUsBodyFaxLink {
+                    color: #8dc63f;
+                    font-size: 16px;
+
+                    &:hover {
+                        color: #00894f;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.contactUsMap {
+    background-image: url(/images/contact/contact3.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 768px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 50px;
+
+    .aboutOurService {
+        h1 {
+            font-size: 40px;
+            color: #fff;
+            text-transform: uppercase;
+            margin-bottom: unset;
+        }
     }
 }
