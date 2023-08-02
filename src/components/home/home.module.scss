@@ -470,7 +470,7 @@
 
 .news {
     width: 100%;
-    height: 550px;
+    padding: 20px 0;
     background-color: #00894F;
 
     .newsCover {
@@ -481,6 +481,7 @@
         padding-top: 40px;
 
         .newsTop {
+            margin-bottom: 20px;
             .newsTopCover {
                 position: relative;
 
@@ -505,8 +506,56 @@
                     background: linear-gradient(to right, #fff 60%, #8dc63f 40%);
                     position: absolute;
                     transform: translate(-50%, 50%);
-                    top: 110%;
+                    bottom: -10%;
                     left: 50%;
+                }
+            }
+        }
+
+        .newsBottomCover{
+            padding: 20px 40px;
+            .newsItem{
+                flex-direction: column;
+                width: 420px;
+                gap: 20px;
+                margin-bottom: 40px;
+                .imageTop{
+                    width:  420px;
+                    img{
+                        width: 100%;
+                    }
+                }
+
+                .contentCover{
+                    .content{
+                        .contentTitle{
+                            h2{
+                                text-transform: uppercase;
+                                font-size: 20px;
+                            }
+                        }
+
+                        .contentBottom{
+                            .contentBottomUp{
+                                    text-transform: uppercase;
+                                    font-size: 15px
+                                }
+                        }
+                    }
+
+                    .btn_see_more{
+                        button{
+                            background-color: #8dc63f;
+                            width: 150px;
+                            height: 35px;
+                            border-radius: 20px;
+                            p{
+                                font-size: 16px;
+                                font-weight: bold;
+                                margin-bottom: unset !important;
+                            }
+                        }
+                    }
                 }
             }
         }
