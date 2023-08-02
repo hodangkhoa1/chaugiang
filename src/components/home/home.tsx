@@ -313,7 +313,7 @@ export default function HomePage() {
                 </div>
 
                 <div className={Style.itemLink}>
-                  <a href="">cononut meat</a>
+                  <a href="">cononut</a>
                 </div>
 
                 <div className={Style.itemLink}>
@@ -810,9 +810,132 @@ export default function HomePage() {
               <div className={`${Style.dflex} ${Style.newsTitle}`}>
                 <h1>News and event</h1>
               </div>
-
               <div className={Style.newsLine}></div>
             </div>
+          </div>
+
+          <div className={Style.newsBottomCover}>
+            <Row gutter={80}>
+              <Col lg={8} span={24} className={`${Style.dflex}`}>
+                <div className={`${Style.dflex} ${Style.newsItem}`}>
+                  <div className={Style.imageTop}>
+                    <img
+                      src="images/news/introduce_leadership_group.png"
+                      alt=""
+                    />
+                  </div>
+                  <div className={Style.contentCover}>
+                    <div className={Style.content}>
+                      <div className={Style.contentTitle}>
+                        <h2>
+                          a sweet meeting and a new energetic week with king
+                          coffee
+                        </h2>
+                      </div>
+
+                      <div className={Style.contentBottom}>
+                        <p>Thanh Trang Ecom 22</p>
+                        <p>Moday 22/05/2022</p>
+                        <p className={Style.contentBottomUp}>
+                          Thanks for visting Chau Giang Food Prcessing trade CO,
+                          LTD
+                        </p>
+                        <p>
+                          Thanks for visting Chau Giang Food Prcessing trade CO,
+                          LTD
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className={Style.btn_see_more}>
+                      <button className={`${Style.dflex}`}>
+                        <p>See More</p>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </Col>
+
+              <Col lg={8} span={24} className={`${Style.dflex}`}>
+                <div className={`${Style.dflex} ${Style.newsItem}`}>
+                  <div className={Style.imageTop}>
+                    <img
+                      src="images/news/introduce_leadership_group.png"
+                      alt=""
+                    />
+                  </div>
+                  <div className={Style.contentCover}>
+                    <div className={Style.content}>
+                      <div className={Style.contentTitle}>
+                        <h2>
+                          a sweet meeting and a new energetic week with king
+                          coffee
+                        </h2>
+                      </div>
+
+                      <div className={Style.contentBottom}>
+                        <p>Thanh Trang Ecom 22</p>
+                        <p>Moday 22/05/2022</p>
+                        <p className={Style.contentBottomUp}>
+                          Thanks for visting Chau Giang Food Prcessing trade CO,
+                          LTD
+                        </p>
+                        <p>
+                          Thanks for visting Chau Giang Food Prcessing trade CO,
+                          LTD
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className={Style.btn_see_more}>
+                      <button className={`${Style.dflex}`}>
+                        <p>See More</p>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </Col>
+
+              <Col lg={8} span={24} className={`${Style.dflex}`}>
+                <div className={`${Style.dflex} ${Style.newsItem}`}>
+                  <div className={Style.imageTop}>
+                    <img
+                      src="images/news/introduce_leadership_group.png"
+                      alt=""
+                    />
+                  </div>
+                  <div className={Style.contentCover}>
+                    <div className={Style.content}>
+                      <div className={Style.contentTitle}>
+                        <h2>
+                          a sweet meeting and a new energetic week with king
+                          coffee
+                        </h2>
+                      </div>
+
+                      <div className={Style.contentBottom}>
+                        <p>Thanh Trang Ecom 22</p>
+                        <p>Moday 22/05/2022</p>
+                        <p className={Style.contentBottomUp}>
+                          Thanks for visting Chau Giang Food Prcessing trade CO,
+                          LTD
+                        </p>
+                        <p>
+                          Thanks for visting Chau Giang Food Prcessing trade CO,
+                          LTD
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className={Style.btn_see_more}>
+                      <button className={`${Style.dflex}`}>
+                        <p>See More</p>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </Col>
+            </Row>
           </div>
         </div>
       </div>
