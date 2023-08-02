@@ -1023,26 +1023,43 @@ export default function HomePage() {
         </div>
       </div>
 
-      <div className={Style.customerImformation}>
-        <div className={Style.customerImformationCover}>
-          <div className={Style.customerImformationTop}>
+      <div className={Style.customerInformation}>
+        <div className={Style.customerInformationCover}>
+          <div className={Style.customerInformationTop}>
             <div
-              className={`${Style.dflex} ${Style.customerImformationTopCover}`}
+              className={`${Style.dflex} ${Style.customerInformationTopCover}`}
             >
               <div
-                className={`${Style.dflex} ${Style.customerImformationTitle}`}
+                className={`${Style.dflex} ${Style.customerInformationTitle}`}
               >
                 <h1>Customer Information</h1>
               </div>
 
-              <div className={Style.customerImformationLine}></div>
+              <div className={Style.customerInformationLine}></div>
             </div>
           </div>
-          <div className={Style.customerImformationCenter}>
+
+          <div className={Style.customerInformationCenter}>
             <p>
               Please provide the information below to receive our free
               consultation service package
             </p>
+          </div>
+
+          <div className={`${Style.dflex} ${Style.customerInformationBottom}`}>
+            <input type="text" placeholder="First and last name" />
+            <input type="tel" placeholder="Phone number" />
+            <input type="text" placeholder="Email" />
+            <textarea
+              cols={22}
+              placeholder="Information needed support"
+            ></textarea>
+
+            <div className={Style.btn_see_more}>
+              <button className={`${Style.dflex}`}>
+                <p>Send information</p>
+              </button>
+            </div>
           </div>
         </div>
       </div>
