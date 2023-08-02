@@ -12,3 +12,316 @@
     width: 100%;
     height: 285px;
 }
+
+.listProduct {
+    background-color: #fff;
+    width: 100%;
+    padding: 20px 40px 0 40px;
+
+    &:nth-child(8){
+        padding-bottom: 40px;
+    }
+
+    .listProductBottom{
+        display: flex;
+        margin-top: 25px;
+        overflow: hidden;
+
+        .listProductBottom__left{
+            .images{
+                width: 280px;
+                img{
+                    width: 100%;
+                    }
+                }
+        }
+
+        .listProductCol{
+            padding-left: unset !important;
+
+            .listProductCard {
+                    text-align: center;
+                    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+                    width: 240px !important;
+                    padding: 10px 0;
+        
+                    .listProductCardImage {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        width: 250px;
+    
+                        img {
+                            width: 100%;
+                        }
+                    }
+        
+                    h1 {
+                        font-size: 16px;
+                        font-weight: bold;
+                        color: #00894f;
+                        margin-top: 10px;
+                    }
+        
+                    h4 {
+                        color: #00894f;
+                    }
+            }
+        }
+
+    }
+}
+
+.aboutUs {
+    background-image: url(/images/about_us/backfround_orange.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 768px;
+    display: flex;
+    justify-content: center;
+
+    .aboutUsCover {
+        width: 1180px;
+        height: 575px;
+        background-color: #8ec63fd8;
+        border-bottom-left-radius: 70px;
+        border-bottom-right-radius: 70px;
+        padding: 35px 88px;
+
+        .aboutUsTop {
+            .aboutUsTopCover {
+                position: relative;
+
+                .aboutUsPicture {
+                    width: 100%;
+                    justify-content: end;
+
+                    img {
+                        width: 150px;
+                    }
+
+                    &:nth-child(3) {
+                        justify-content: start;
+                    }
+                }
+
+                .aboutUsTitle {
+                    width: 700px;
+                    text-align: center;
+
+                    h1 {
+                        color: #00894f;
+                        font-size: 45px;
+                        margin-bottom: unset;
+                        font-weight: bold;
+                        text-transform: uppercase;
+                    }
+                }
+
+                .line {
+                    content: "";
+                    width: 220px;
+                    height: 6px;
+                    background: linear-gradient(to right, #00894f 60%, rgb(255, 255, 255) 40%);
+                    position: absolute;
+                    transform: translate(-50%, 50%);
+                    top: 80%;
+                    left: 50%;
+                }
+            }
+
+        }
+
+        h2 {
+            text-align: center;
+            color: #00894f;
+            font-size: 20px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .aboutUsCenter {
+            margin-top: 25px;
+            margin-bottom: 20px;
+
+            p {
+                text-align: center;
+            }
+        }
+
+        .aboutUsBottom {
+            padding-top: 50px;
+
+            .aboutUsItem {
+                width: 100%;
+                flex-direction: column;
+                gap: 15px;
+                margin-bottom: 20px;
+
+                .aboutUsBottomImage {
+                    width: 90px;
+                    height: 88px;
+
+                    img {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.whyChooseUs {
+    background-image: unset;
+    height: 520px;
+    background-color: #EDEDED;
+    padding-top: 50px;
+
+    .whyChooseUsCover {
+        width: unset;
+        height: unset;
+        background-color: unset;
+        padding: unset;
+        padding: 0 20px;
+
+        .whyChooseUsTopCover {
+            position: relative;
+
+            .whyChooseUsLine {
+                content: "";
+                width: 280px;
+                height: 6px;
+                background: linear-gradient(to right, #00894f, rgb(255, 255, 255));
+                position: absolute;
+                transform: translate(-50%, 50%);
+                top: 105%;
+                left: 50%;
+            }
+
+            .lineWhyChooseUs {
+                background: linear-gradient(to right, #00894f 60%, #8dc63f 40%);
+            }
+
+            .whyChooseUsTitle {
+                width: 700px;
+                text-align: center;
+
+                h1 {
+                    color: #00894f;
+                    font-size: 45px;
+                    margin-bottom: unset;
+                    font-weight: bold;
+                    text-transform: uppercase;
+                    
+                }
+            }
+        }
+
+        .colWhyChooseUs {
+            padding-bottom: 20px;
+        }
+
+        p {
+            color: #8dc63f;
+            text-align: center;
+            width: 310px;
+        }
+    }
+}
+
+.customerInformation {
+    background-image: url(/images/customer_information/customer_imformation.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 845px;
+
+    .customerInformationCover {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        padding-top: 40px;
+
+        .customerInformationTop {
+            .customerInformationTopCover {
+                position: relative;
+
+                .customerInformationTitle {
+                    width: 700px;
+                    text-align: center;
+
+                    h1 {
+                        color: #fff;
+                        font-size: 45px;
+                        margin-bottom: unset;
+                        font-weight: bold;
+                        text-transform: uppercase;
+                        
+                    }
+                }
+
+                .customerInformationLine {
+                    content: "";
+                    width: 280px;
+                    height: 6px;
+                    background: linear-gradient(to right, #00894f 50%, rgb(255, 255, 255) 50%);
+                    position: absolute;
+                    transform: translate(-50%, 50%);
+                    top: 110%;
+                    left: 50%;
+                }
+            }
+        }
+
+        .customerInformationCenter {
+            margin-top: 40px;
+
+            p {
+                margin-bottom: unset;
+                font-size: 18px;
+            }
+        }
+
+        .customerInformationBottom{
+            margin: 30px 0;
+            flex-direction: column;
+            gap: 20px;
+            input{
+                width: 55rem;
+                height: 50px;
+                background-color: #fff;
+                padding: 10px 20px;
+                font-size: 18px;
+                color: #00894F;
+            }
+
+            textarea{
+                width: 55rem;
+                background-color: #fff;
+                padding: 10px 20px;
+                font-size: 18px;
+                color: #000;
+            }
+
+            .btn_see_more{
+                margin-top: 3rem;
+                button{
+                    background-color: #8dc63f;
+                    width: 250px;
+                    height: 35px;
+                    border-radius: 20px;
+                    p{
+                        font-size: 16px;
+                        font-weight: bold;
+                        text-transform: uppercase;
+                        margin-bottom: unset !important;
+                    }
+                }
+            }
+        }
+    }
+}
