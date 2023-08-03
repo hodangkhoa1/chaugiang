@@ -36,9 +36,9 @@ function App({ Component, pageProps }: AppPropsWithLayout) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <L>
-        <div className={inter.className}>
+        <main className={inter.className}>
           <Component {...pageProps} />
-        </div>
+        </main>
       </L>
     </ConfigProvider>
   );

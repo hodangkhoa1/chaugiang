@@ -12,7 +12,7 @@ import Link from 'next/link';
 
 const { Text } = Typography;
 const { Header, Content, Footer } = Layout;
-export const HEADER_HEIGHT = 80;
+export const HEADER_HEIGHT = 85;
 export const FOOTER_HEIGHT = 50;
 
 interface Props {
@@ -47,7 +47,7 @@ export function AppLayout(props: Props) {
             position: 'sticky',
             top: 0,
             zIndex: 999,
-            padding: '0 24px',
+            padding: '0 70px',
             background: '#fff',
             height: HEADER_HEIGHT,
           }}
@@ -57,9 +57,10 @@ export function AppLayout(props: Props) {
               <Image
                 preview={false}
                 style={{
-                  paddingRight: '8px',
+                  paddingRight: '22px',
+                  marginTop: '-10px',
                   cursor: 'pointer',
-                  width: '180px',
+                  width: '222px',
                 }}
                 src="/images/logo.png"
                 onClick={() => router.push(ROUTERS.HOME)}
