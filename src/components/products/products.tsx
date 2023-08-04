@@ -10,6 +10,18 @@ export default function ProductsPage() {
     <div>
       <div className={Style.headerBackground}></div>
 
+      <div className={`${Style.product}`}>
+        <div className={`${Style.productCover}`}>
+          <div className={Style.productTop}>
+            <div className={`${Style.dflex} ${Style.productCover}`}>
+              <div className={`${Style.dflex} ${Style.productTitle}`}>
+                <h1>Product</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div className={Style.productHome}></div>
 
       <div className={Style.listProduct}>
@@ -366,7 +378,7 @@ export default function ProductsPage() {
             <Col lg={6} span={24}>
               <div className={Style.listProductBottom__left}>
                 <div className={Style.images}>
-                  <img src="images/products/nuoc-dua.jpg" alt="" />
+                  <img src="images/products/energy.jpg" alt="" />
                 </div>
               </div>
             </Col>
