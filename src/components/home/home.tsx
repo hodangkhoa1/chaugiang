@@ -5,6 +5,7 @@ import Style from './home.module.scss';
 import { Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
+import { ArrowRightOutlined } from '@ant-design/icons';
 import { Carousel, Col, Row, Image } from 'antd';
 
 export default function HomePage() {
@@ -850,6 +851,7 @@ export default function HomePage() {
                     <div className={Style.btn_see_more}>
                       <button className={`${Style.dflex}`}>
                         <p>See More</p>
+                        <ArrowRightOutlined className={Style.iconBtn} />
                       </button>
                     </div>
                   </div>
@@ -890,6 +892,7 @@ export default function HomePage() {
                     <div className={Style.btn_see_more}>
                       <button className={`${Style.dflex}`}>
                         <p>See More</p>
+                        <ArrowRightOutlined className={Style.iconBtn} />
                       </button>
                     </div>
                   </div>
@@ -930,6 +933,7 @@ export default function HomePage() {
                     <div className={Style.btn_see_more}>
                       <button className={`${Style.dflex}`}>
                         <p>See More</p>
+                        <ArrowRightOutlined className={Style.iconBtn} />
                       </button>
                     </div>
                   </div>
@@ -1058,6 +1062,7 @@ export default function HomePage() {
             <div className={Style.btn_see_more}>
               <button className={`${Style.dflex}`}>
                 <p>Send information</p>
+                <ArrowRightOutlined className={Style.iconBtn} />
               </button>
             </div>
           </div>

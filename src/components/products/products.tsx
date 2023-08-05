@@ -2,6 +2,7 @@
 import React from 'react';
 import Style from './products.module.scss';
 import { Col, Row } from 'antd';
+import { ArrowRightOutlined } from '@ant-design/icons';
 
 export default function ProductsPage() {
   // const { translate: translateHome } = useI18n('common');
@@ -45,49 +46,58 @@ export default function ProductsPage() {
             <Col lg={18} span={24}>
               <Row gutter={100}>
                 <Col lg={6} span={24} className={Style.listProductCol}>
-                  <div className={Style.listProductCard}>
-                    <div className={Style.listProductCardImage}>
-                      <img src="images/products/2.png" alt="" />
+                  <a href="#">
+                    <div className={Style.listProductCard}>
+                      <div className={Style.listProductCardImage}>
+                        <img src="images/products/2.png" alt="" />
+                      </div>
+                      <h1>Pure Coconut Water</h1>
+                      <h1>325ml</h1>
                     </div>
-                    <h1>Pure Coconut Water</h1>
-                    <h1>325ml</h1>
-                  </div>
+                  </a>
                 </Col>
 
                 <Col lg={6} span={24} className={Style.listProductCol}>
-                  <div className={Style.listProductCard}>
-                    <div className={Style.listProductCardImage}>
-                      <img src="images/products/3.png" alt="" />
+                  <a href="#">
+                    <div className={Style.listProductCard}>
+                      <div className={Style.listProductCardImage}>
+                        <img src="images/products/3.png" alt="" />
+                      </div>
+                      <h1>Coconut Water 100% Pure</h1>
+                      <h1>330ml</h1>
                     </div>
-                    <h1>Coconut Water 100% Pure</h1>
-                    <h1>330ml</h1>
-                  </div>
+                  </a>
                 </Col>
 
                 <Col lg={6} span={24} className={Style.listProductCol}>
-                  <div className={Style.listProductCard}>
-                    <div className={Style.listProductCardImage}>
-                      <img
-                        src="images/products/productList/coconut mango 1.png"
-                        alt=""
-                      />
+                  <a href="#">
+                    <div className={Style.listProductCard}>
+                      <div className={Style.listProductCardImage}>
+                        <img
+                          src="images/products/productList/coconut mango 1.png"
+                          alt=""
+                        />
+                      </div>
+                      <h1>Coconut Water With</h1>
+                      <h1>Mango 330ml</h1>
                     </div>
-                    <h1>Coconut Water With</h1>
-                    <h1>Mango 330ml</h1>
-                  </div>
+                  </a>
                 </Col>
+
                 <Col lg={6} span={24} className={Style.listProductCol}>
-                  <div className={Style.listProductCard}>
-                    <div className={Style.listProductCardImage}>
-                      <img
-                        src="images/products/productList/Sparkling coconut pure.png"
-                        alt=""
-                        style={{ width: '178%' }}
-                      />
+                  <a href="#">
+                    <div className={Style.listProductCard}>
+                      <div className={Style.listProductCardImage}>
+                        <img
+                          src="images/products/productList/Sparkling coconut pure.png"
+                          alt=""
+                          style={{ width: '178%' }}
+                        />
+                      </div>
+                      <h1>Sparkling Coconut Water</h1>
+                      <h1>330ml</h1>
                     </div>
-                    <h1>Sparkling Coconut Water</h1>
-                    <h1>330ml</h1>
-                  </div>
+                  </a>
                 </Col>
               </Row>
             </Col>
@@ -116,43 +126,51 @@ export default function ProductsPage() {
             <Col lg={18} span={24}>
               <Row gutter={100}>
                 <Col lg={6} span={24} className={Style.listProductCol}>
-                  <div className={Style.listProductCard}>
-                    <div className={Style.listProductCardImage}>
-                      <img src="images/products/7.png" alt="" />
+                  <a href="#">
+                    <div className={Style.listProductCard}>
+                      <div className={Style.listProductCardImage}>
+                        <img src="images/products/7.png" alt="" />
+                      </div>
+                      <h1>Brown Rice Milk</h1>
+                      <h1>500ml</h1>
                     </div>
-                    <h1>Brown Rice Milk</h1>
-                    <h1>500ml</h1>
-                  </div>
+                  </a>
                 </Col>
 
                 <Col lg={6} span={24} className={Style.listProductCol}>
-                  <div className={Style.listProductCard}>
-                    <div className={Style.listProductCardImage}>
-                      <img src="images/products/productList/16.png" alt="" />
+                  <a href="#">
+                    <div className={Style.listProductCard}>
+                      <div className={Style.listProductCardImage}>
+                        <img src="images/products/productList/16.png" alt="" />
+                      </div>
+                      <h1>Green Bean Milk</h1>
+                      <h1>500ml</h1>
                     </div>
-                    <h1>Green Bean Milk</h1>
-                    <h1>500ml</h1>
-                  </div>
+                  </a>
                 </Col>
 
                 <Col lg={6} span={24} className={Style.listProductCol}>
-                  <div className={Style.listProductCard}>
-                    <div className={Style.listProductCardImage}>
-                      <img src="images/products/productList/17.png" alt="" />
+                  <a href="#">
+                    <div className={Style.listProductCard}>
+                      <div className={Style.listProductCardImage}>
+                        <img src="images/products/productList/17.png" alt="" />
+                      </div>
+                      <h1>Soya Milk</h1>
+                      <h1>500ml</h1>
                     </div>
-                    <h1>Soya Milk</h1>
-                    <h1>500ml</h1>
-                  </div>
+                  </a>
                 </Col>
 
                 <Col lg={6} span={24} className={Style.listProductCol}>
-                  <div className={Style.listProductCard}>
-                    <div className={Style.listProductCardImage}>
-                      <img src="images/products/productList/18.png" alt="" />
+                  <a href="#">
+                    <div className={Style.listProductCard}>
+                      <div className={Style.listProductCardImage}>
+                        <img src="images/products/productList/18.png" alt="" />
+                      </div>
+                      <h1>Corn Milk</h1>
+                      <h1>500ml</h1>
                     </div>
-                    <h1>Corn Milk</h1>
-                    <h1>500ml</h1>
-                  </div>
+                  </a>
                 </Col>
               </Row>
             </Col>
@@ -181,46 +199,54 @@ export default function ProductsPage() {
             <Col lg={18} span={24}>
               <Row gutter={100}>
                 <Col lg={6} span={24} className={Style.listProductCol}>
-                  <div className={Style.listProductCard}>
-                    <div className={Style.listProductCardImage}>
-                      <img src="images/products/12.png" alt="" />
+                  <a href="#">
+                    <div className={Style.listProductCard}>
+                      <div className={Style.listProductCardImage}>
+                        <img src="images/products/12.png" alt="" />
+                      </div>
+                      <h1>Mango Juice</h1>
+                      <h1>330ml</h1>
                     </div>
-                    <h1>Mango Juice</h1>
-                    <h1>330ml</h1>
-                  </div>
+                  </a>
                 </Col>
 
                 <Col lg={6} span={24} className={Style.listProductCol}>
-                  <div className={Style.listProductCard}>
-                    <div className={Style.listProductCardImage}>
-                      <img src="images/products/productList/1.png" alt="" />
+                  <a href="#">
+                    <div className={Style.listProductCard}>
+                      <div className={Style.listProductCardImage}>
+                        <img src="images/products/productList/1.png" alt="" />
+                      </div>
+                      <h1>Tamarind Juice</h1>
+                      <h1>330ml</h1>
                     </div>
-                    <h1>Tamarind Juice</h1>
-                    <h1>330ml</h1>
-                  </div>
+                  </a>
                 </Col>
 
                 <Col lg={6} span={24} className={Style.listProductCol}>
-                  <div className={Style.listProductCard}>
-                    <div className={Style.listProductCardImage}>
-                      <img
-                        src="images/products/productList/soursop 330 short can.png"
-                        alt=""
-                      />
+                  <a href="#">
+                    <div className={Style.listProductCard}>
+                      <div className={Style.listProductCardImage}>
+                        <img
+                          src="images/products/productList/soursop 330 short can.png"
+                          alt=""
+                        />
+                      </div>
+                      <h1>Soursop Juice</h1>
+                      <h1>330ml</h1>
                     </div>
-                    <h1>Soursop Juice</h1>
-                    <h1>330ml</h1>
-                  </div>
+                  </a>
                 </Col>
 
                 <Col lg={6} span={24} className={Style.listProductCol}>
-                  <div className={Style.listProductCard}>
-                    <div className={Style.listProductCardImage}>
-                      <img src="images/products/productList/2.png" alt="" />
+                  <a href="#">
+                    <div className={Style.listProductCard}>
+                      <div className={Style.listProductCardImage}>
+                        <img src="images/products/productList/2.png" alt="" />
+                      </div>
+                      <h1>Orange Fruit</h1>
+                      <h1>330ml</h1>
                     </div>
-                    <h1>Orange Fruit</h1>
-                    <h1>330ml</h1>
-                  </div>
+                  </a>
                 </Col>
               </Row>
             </Col>
@@ -249,46 +275,54 @@ export default function ProductsPage() {
             <Col lg={18} span={24}>
               <Row gutter={100}>
                 <Col lg={6} span={24} className={Style.listProductCol}>
-                  <div className={Style.listProductCard}>
-                    <div className={Style.listProductCardImage}>
-                      <img src="images/products/17.png" alt="" />
+                  <a href="#">
+                    <div className={Style.listProductCard}>
+                      <div className={Style.listProductCardImage}>
+                        <img src="images/products/17.png" alt="" />
+                      </div>
+                      <h1>Aloe Vera 100% Pure</h1>
+                      <h1>500ml</h1>
                     </div>
-                    <h1>Aloe Vera 100% Pure</h1>
-                    <h1>500ml</h1>
-                  </div>
+                  </a>
                 </Col>
 
                 <Col lg={6} span={24} className={Style.listProductCol}>
-                  <div className={Style.listProductCard}>
-                    <div className={Style.listProductCardImage}>
-                      <img src="images/products/18.png" alt="" />
+                  <a href="#">
+                    <div className={Style.listProductCard}>
+                      <div className={Style.listProductCardImage}>
+                        <img src="images/products/18.png" alt="" />
+                      </div>
+                      <h1>Aloe Vera With Pulp</h1>
+                      <h1>Flavor Strawberry 500ml</h1>
                     </div>
-                    <h1>Aloe Vera With Pulp</h1>
-                    <h1>Flavor Strawberry 500ml</h1>
-                  </div>
+                  </a>
                 </Col>
 
                 <Col lg={6} span={24} className={Style.listProductCol}>
-                  <div className={Style.listProductCard}>
-                    <div className={Style.listProductCardImage}>
-                      <img src="images/products/19.png" alt="" />
+                  <a href="#">
+                    <div className={Style.listProductCard}>
+                      <div className={Style.listProductCardImage}>
+                        <img src="images/products/19.png" alt="" />
+                      </div>
+                      <h1>Aloe Vera With Pulp</h1>
+                      <h1>Flavor Passion Fruit 500ml</h1>
                     </div>
-                    <h1>Aloe Vera With Pulp</h1>
-                    <h1>Flavor Passion Fruit 500ml</h1>
-                  </div>
+                  </a>
                 </Col>
 
                 <Col lg={6} span={24} className={Style.listProductCol}>
-                  <div className={Style.listProductCard}>
-                    <div className={Style.listProductCardImage}>
-                      <img
-                        src="images/products/productList/dua hau Pet bottle 500ml.png"
-                        alt=""
-                      />
+                  <a href="#">
+                    <div className={Style.listProductCard}>
+                      <div className={Style.listProductCardImage}>
+                        <img
+                          src="images/products/productList/dua hau Pet bottle 500ml.png"
+                          alt=""
+                        />
+                      </div>
+                      <h1>Aloe Vera With Pulp</h1>
+                      <h1>Flavor Watermelon 500ml</h1>
                     </div>
-                    <h1>Aloe Vera With Pulp</h1>
-                    <h1>Flavor Watermelon 500ml</h1>
-                  </div>
+                  </a>
                 </Col>
               </Row>
             </Col>
@@ -317,47 +351,54 @@ export default function ProductsPage() {
             <Col lg={18} span={24}>
               <Row gutter={100}>
                 <Col lg={6} span={24} className={Style.listProductCol}>
-                  <div className={Style.listProductCard}>
-                    <div className={Style.listProductCardImage}>
-                      <img src="images/products/22.png" alt="" />
+                  <a href="#">
+                    <div className={Style.listProductCard}>
+                      <div className={Style.listProductCardImage}>
+                        <img src="images/products/22.png" alt="" />
+                      </div>
+                      <h1>Coffee Capuchino</h1>
+                      <h1>250ml</h1>
                     </div>
-                    <h1>Coffee Capuchino</h1>
-                    <h1>250ml</h1>
-                  </div>
+                  </a>
                 </Col>
 
                 <Col lg={6} span={24} className={Style.listProductCol}>
-                  <div className={Style.listProductCard}>
-                    <div className={Style.listProductCardImage}>
-                      {/* <img src="images/products/23.png" alt="" /> */}
-                      <img
-                        src="images/products/productList/cafe latte.png"
-                        alt=""
-                      />
+                  <a href="#">
+                    <div className={Style.listProductCard}>
+                      <div className={Style.listProductCardImage}>
+                        <img
+                          src="images/products/productList/cafe latte.png"
+                          alt=""
+                        />
+                      </div>
+                      <h1>Coffee Latte</h1>
+                      <h1>250ml</h1>
                     </div>
-                    <h1>Coffee Latte</h1>
-                    <h1>250ml</h1>
-                  </div>
+                  </a>
                 </Col>
 
                 <Col lg={6} span={24} className={Style.listProductCol}>
-                  <div className={Style.listProductCard}>
-                    <div className={Style.listProductCardImage}>
-                      <img src="images/products/24.png" alt="" />
+                  <a href="#">
+                    <div className={Style.listProductCard}>
+                      <div className={Style.listProductCardImage}>
+                        <img src="images/products/24.png" alt="" />
+                      </div>
+                      <h1>Bubble Tea With Lemon</h1>
+                      <h1>330ml</h1>
                     </div>
-                    <h1>Bubble Tea With Lemon</h1>
-                    <h1>330ml</h1>
-                  </div>
+                  </a>
                 </Col>
 
                 <Col lg={6} span={24} className={Style.listProductCol}>
-                  <div className={Style.listProductCard}>
-                    <div className={Style.listProductCardImage}>
-                      <img src="images/products/25.png" alt="" />
+                  <a href="#">
+                    <div className={Style.listProductCard}>
+                      <div className={Style.listProductCardImage}>
+                        <img src="images/products/25.png" alt="" />
+                      </div>
+                      <h1>Lotus Heart Tea</h1>
+                      <h1>250ml</h1>
                     </div>
-                    <h1>Lotus Heart Tea</h1>
-                    <h1>250ml</h1>
-                  </div>
+                  </a>
                 </Col>
               </Row>
             </Col>
@@ -365,7 +406,7 @@ export default function ProductsPage() {
         </div>
       </div>
 
-      <div className={Style.listProduct}>
+      <div className={`${Style.listProduct} ${Style.listProductLast}`}>
         <div className={Style.listProductBottom}>
           <Row
             gutter={100}
@@ -386,52 +427,60 @@ export default function ProductsPage() {
             <Col lg={18} span={24}>
               <Row gutter={100}>
                 <Col lg={6} span={24} className={Style.listProductCol}>
-                  <div className={Style.listProductCard}>
-                    <div className={Style.listProductCardImage}>
-                      <img src="images/products/27.png" alt="" />
+                  <a href="#">
+                    <div className={Style.listProductCard}>
+                      <div className={Style.listProductCardImage}>
+                        <img src="images/products/27.png" alt="" />
+                      </div>
+                      <h1>Strawberry Flavor 109</h1>
+                      <h1>Energy Drink 250ml</h1>
                     </div>
-                    <h1>Strawberry Flavor 109</h1>
-                    <h1>Energy Drink 250ml</h1>
-                  </div>
+                  </a>
                 </Col>
 
                 <Col lg={6} span={24} className={Style.listProductCol}>
-                  <div className={Style.listProductCard}>
-                    <div className={Style.listProductCardImage}>
-                      <img
-                        src="images/products/productList/19-removebg-preview.png"
-                        alt=""
-                      />
+                  <a href="#">
+                    <div className={Style.listProductCard}>
+                      <div className={Style.listProductCardImage}>
+                        <img
+                          src="images/products/productList/19-removebg-preview.png"
+                          alt=""
+                        />
+                      </div>
+                      <h1>Energy Drink CG 109</h1>
+                      <h1>330ml</h1>
                     </div>
-                    <h1>Energy Drink CG 109</h1>
-                    <h1>330ml</h1>
-                  </div>
+                  </a>
                 </Col>
 
                 <Col lg={6} span={24} className={Style.listProductCol}>
-                  <div className={Style.listProductCard}>
-                    <div className={Style.listProductCardImage}>
-                      <img
-                        src="images/products/productList/250 short can.png"
-                        alt=""
-                      />
+                  <a href="#">
+                    <div className={Style.listProductCard}>
+                      <div className={Style.listProductCardImage}>
+                        <img
+                          src="images/products/productList/250 short can.png"
+                          alt=""
+                        />
+                      </div>
+                      <h1>Energy Drink</h1>
+                      <h1>250ml</h1>
                     </div>
-                    <h1>Energy Drink</h1>
-                    <h1>250ml</h1>
-                  </div>
+                  </a>
                 </Col>
 
                 <Col lg={6} span={24} className={Style.listProductCol}>
-                  <div className={Style.listProductCard}>
-                    <div className={Style.listProductCardImage}>
-                      <img
-                        src="images/products/productList/energy_250 slin can.png"
-                        alt=""
-                      />
+                  <a href="#">
+                    <div className={Style.listProductCard}>
+                      <div className={Style.listProductCardImage}>
+                        <img
+                          src="images/products/productList/energy_250 slin can.png"
+                          alt=""
+                        />
+                      </div>
+                      <h1>Energy Drink</h1>
+                      <h1>250ml</h1>
                     </div>
-                    <h1>Energy Drink</h1>
-                    <h1>250ml</h1>
-                  </div>
+                  </a>
                 </Col>
               </Row>
             </Col>
@@ -557,6 +606,7 @@ export default function ProductsPage() {
             <div className={Style.btn_see_more}>
               <button className={`${Style.dflex}`}>
                 <p>Send information</p>
+                <ArrowRightOutlined className={Style.iconBtn} />
               </button>
             </div>
           </div>

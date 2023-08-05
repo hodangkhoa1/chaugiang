@@ -546,13 +546,19 @@
                     .btn_see_more{
                         button{
                             background-color: #8dc63f;
-                            width: 150px;
+                            width: 120px;
                             height: 35px;
                             border-radius: 20px;
+                            justify-content: space-around;
+        
                             p{
                                 font-size: 16px;
                                 font-weight: bold;
                                 margin-bottom: unset !important;
+                            }
+        
+                            .iconBtn{
+                                font-size: 18px;
                             }
                         }
                     }
@@ -700,14 +706,20 @@
                 margin-top: 3rem;
                 button{
                     background-color: #8dc63f;
-                    width: 250px;
+                    width: 220px;
                     height: 35px;
                     border-radius: 20px;
+                    justify-content: space-around;
+
                     p{
                         font-size: 16px;
                         font-weight: bold;
                         text-transform: uppercase;
                         margin-bottom: unset !important;
+                    }
+
+                    .iconBtn{
+                        font-size: 18px;
                     }
                 }
             }

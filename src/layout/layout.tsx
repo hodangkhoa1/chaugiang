@@ -2,12 +2,19 @@ import React, { useEffect, useState } from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import LayoutStyle from './layout.module.scss';
-import { Layout, Space, Typography, Image, Select } from 'antd';
+import { Layout, Space, Typography, Image, Select, Col, Row } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
 import { appLocalStorage } from '@/utils/localstorage';
 import { LOCAL_STORAGE_KEYS } from '@/constant/localstorage';
 import { LANGUAGE } from '@/constant';
 import { ROUTERS } from '@/constant/router';
+import {
+  EnvironmentOutlined,
+  PhoneOutlined,
+  MailOutlined,
+  GlobalOutlined,
+  CaretRightOutlined,
+} from '@ant-design/icons';
 import Link from 'next/link';
 
 const { Text } = Typography;
@@ -47,9 +54,9 @@ export function AppLayout(props: Props) {
             position: 'sticky',
             top: 0,
             zIndex: 999,
-            padding: '0 70px',
+            padding: '9px 70px 10px 70px',
             background: '#fff',
-            height: HEADER_HEIGHT,
+            height: '80px',
           }}
         >
           <Space style={{ width: '100%', justifyContent: 'space-between' }}>
@@ -319,7 +326,306 @@ export function AppLayout(props: Props) {
           <main>{props.children}</main>
 
           <Footer className={LayoutStyle.footerCG}>
-            <div className={`${LayoutStyle.info}`}></div>
+            <div className={`${LayoutStyle.info}`}>
+              <Row gutter={100}>
+                <Col
+                  md={14}
+                  xl={6}
+                  span={24}
+                  className={LayoutStyle.listFooter}
+                >
+                  <div className={LayoutStyle.footerLogo}>
+                    <img src="/images/logo.png" alt="" />
+                  </div>
+
+                  <div className={LayoutStyle.footerTitle}>
+                    <h1>ChauGiang food beverage</h1>
+                  </div>
+
+                  <div
+                    className={`${LayoutStyle.dflex} ${LayoutStyle.footerBottom}`}
+                  >
+                    <div
+                      className={`${LayoutStyle.dflex} ${LayoutStyle.footerItem}`}
+                    >
+                      <EnvironmentOutlined
+                        className={LayoutStyle.iconFooterOut}
+                      />
+                      <p className={LayoutStyle.contentFooterOut}>
+                        Factory Block 1, Lot C1-1/X6-X7, Road D4, Tan Phu Trung
+                        Industrial Park, Cu Chi District, HCMC, Vietnam.
+                      </p>
+                    </div>
+
+                    <div
+                      className={`${LayoutStyle.dflex} ${LayoutStyle.footerItem}`}
+                    >
+                      <a
+                        className={LayoutStyle.dflex}
+                        href="mailto:chaugiangfood@gmail.com"
+                      >
+                        <MailOutlined className={LayoutStyle.iconFooter} />
+                        <p>chaugiangfood@gmail.com</p>
+                      </a>
+                    </div>
+
+                    <div
+                      className={`${LayoutStyle.dflex} ${LayoutStyle.footerItem}`}
+                    >
+                      <a
+                        className={LayoutStyle.dflex}
+                        href="https://chaugiangfood.com"
+                      >
+                        <GlobalOutlined className={LayoutStyle.iconFooter} />
+                        <p>chaugiangfood.com</p>
+                      </a>
+                    </div>
+
+                    <div
+                      className={`${LayoutStyle.dflex} ${LayoutStyle.footerItem}`}
+                    >
+                      <PhoneOutlined className={LayoutStyle.iconFooterOut} />
+                      <div className={LayoutStyle.content}>
+                        <p>Internal Markets:</p>
+
+                        <a href="tel:+84903772771">
+                          <p>+ (84)903.772.771 (Mrs.Tứ)</p>
+                        </a>
+
+                        <a href="tel:+84353960786">
+                          <p>+ (84)353.960.786 (Mr.Gray)</p>
+                        </a>
+                      </div>
+                    </div>
+
+                    <div
+                      className={`${LayoutStyle.dflex} ${LayoutStyle.footerItem}`}
+                    >
+                      <PhoneOutlined className={LayoutStyle.iconFooterOut} />
+                      <div className={LayoutStyle.content}>
+                        <p>Foreign Markets:</p>
+
+                        <a href="tel:+84903772771">
+                          <p>+ (84)903.772.771 (Mrs.Tứ)</p>
+                        </a>
+
+                        <a href="tel:+84353960786">
+                          <p>+ (84)353.960.786 (Mr.Gray)</p>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </Col>
+
+                <Col
+                  md={10}
+                  xl={6}
+                  span={24}
+                  className={LayoutStyle.listFooter}
+                >
+                  <div
+                    className={`${LayoutStyle.dflex} ${LayoutStyle.footerTitle} ${LayoutStyle.footerTitleUpper}`}
+                  >
+                    <div className={LayoutStyle.upper}>
+                      <p>i</p>
+                    </div>
+                    <h1>Information</h1>
+                  </div>
+
+                  <div
+                    className={`${LayoutStyle.dflex} ${LayoutStyle.footerBottom}`}
+                  >
+                    <div
+                      className={`${LayoutStyle.dflex} ${LayoutStyle.footerItem}`}
+                    >
+                      <a className={LayoutStyle.dflex} href="">
+                        <CaretRightOutlined
+                          className={LayoutStyle.iconFooter}
+                        />
+                        <p>Introduce</p>
+                      </a>
+                    </div>
+
+                    <div
+                      className={`${LayoutStyle.dflex} ${LayoutStyle.footerItem}`}
+                    >
+                      <a className={LayoutStyle.dflex} href="">
+                        <CaretRightOutlined
+                          className={LayoutStyle.iconFooter}
+                        />
+                        <p>Our Services</p>
+                      </a>
+                    </div>
+
+                    <div
+                      className={`${LayoutStyle.dflex} ${LayoutStyle.footerItem}`}
+                    >
+                      <a className={LayoutStyle.dflex} href="">
+                        <CaretRightOutlined
+                          className={LayoutStyle.iconFooter}
+                        />
+                        <p>Story about us</p>
+                      </a>
+                    </div>
+
+                    <div
+                      className={`${LayoutStyle.dflex} ${LayoutStyle.footerItem}`}
+                    >
+                      <a className={LayoutStyle.dflex} href="">
+                        <CaretRightOutlined
+                          className={LayoutStyle.iconFooter}
+                        />
+                        <p>Brands and products</p>
+                      </a>
+                    </div>
+
+                    <div
+                      className={`${LayoutStyle.dflex} ${LayoutStyle.footerItem}`}
+                    >
+                      <a className={LayoutStyle.dflex} href="">
+                        <CaretRightOutlined
+                          className={LayoutStyle.iconFooter}
+                        />
+                        <p>News</p>
+                      </a>
+                    </div>
+
+                    <div
+                      className={`${LayoutStyle.dflex} ${LayoutStyle.footerItem}`}
+                    >
+                      <a className={LayoutStyle.dflex} href="">
+                        <CaretRightOutlined
+                          className={LayoutStyle.iconFooter}
+                        />
+                        <p>Recruitment</p>
+                      </a>
+                    </div>
+
+                    <div
+                      className={`${LayoutStyle.dflex} ${LayoutStyle.footerItem}`}
+                    >
+                      <a href="">
+                        <div className={LayoutStyle.imgMedia}>
+                          <img src="images/products/1.jpg" alt="" />
+                        </div>
+                      </a>
+
+                      <a href="">
+                        <div className={LayoutStyle.imgMedia}>
+                          <img src="images/products/1.jpg" alt="" />
+                        </div>
+                      </a>
+
+                      <a href="">
+                        <div className={LayoutStyle.imgMedia}>
+                          <img src="images/products/1.jpg" alt="" />
+                        </div>
+                      </a>
+
+                      <a href="">
+                        <div className={LayoutStyle.imgMedia}>
+                          <img src="images/products/1.jpg" alt="" />
+                        </div>
+                      </a>
+                    </div>
+
+                    <div
+                      className={`${LayoutStyle.dflex} ${LayoutStyle.footerItem}`}
+                    >
+                      <a href="">
+                        <div
+                          className={`${LayoutStyle.imgMedia} ${LayoutStyle.imgMediaLast}`}
+                        >
+                          <img src="images/products/1.jpg" alt="" />
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                </Col>
+
+                <Col
+                  md={10}
+                  xl={5}
+                  span={24}
+                  className={LayoutStyle.listFooter}
+                >
+                  <div
+                    className={`${LayoutStyle.dflex} ${LayoutStyle.footerTitle} ${LayoutStyle.footerTitleUpper}`}
+                  >
+                    <div className={LayoutStyle.upper}>
+                      <p>P</p>
+                    </div>
+                    <h1>Policy only</h1>
+                  </div>
+
+                  <div
+                    className={`${LayoutStyle.dflex} ${LayoutStyle.footerBottom}`}
+                  >
+                    <div
+                      className={`${LayoutStyle.dflex} ${LayoutStyle.footerItem}`}
+                    >
+                      <a className={LayoutStyle.dflex} href="">
+                        <CaretRightOutlined
+                          className={LayoutStyle.iconFooter}
+                        />
+                        <p>Refund and Return Policy</p>
+                      </a>
+                    </div>
+
+                    <div
+                      className={`${LayoutStyle.dflex} ${LayoutStyle.footerItem}`}
+                    >
+                      <a className={LayoutStyle.dflex} href="">
+                        <CaretRightOutlined
+                          className={LayoutStyle.iconFooter}
+                        />
+                        <p>Privacy Policy</p>
+                      </a>
+                    </div>
+
+                    <div
+                      className={`${LayoutStyle.dflex} ${LayoutStyle.footerItem}`}
+                    >
+                      <a className={LayoutStyle.dflex} href="">
+                        <CaretRightOutlined
+                          className={LayoutStyle.iconFooter}
+                        />
+                        <p>Terms and condition</p>
+                      </a>
+                    </div>
+
+                    <div
+                      className={`${LayoutStyle.dflex} ${LayoutStyle.footerItem}`}
+                    >
+                      <a className={LayoutStyle.dflex} href="">
+                        <CaretRightOutlined
+                          className={LayoutStyle.iconFooter}
+                        />
+                        <p>Frequently asked questions</p>
+                      </a>
+                    </div>
+                  </div>
+                </Col>
+
+                <Col
+                  md={14}
+                  xl={7}
+                  span={24}
+                  className={LayoutStyle.listFooter}
+                >
+                  <div className={LayoutStyle.rectangle}></div>
+
+                  <div className={LayoutStyle.map}>
+                    <iframe
+                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d125387.42749806099!2d106.55453178714727!3d10.860419778307271!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3174d54f5b284dd9%3A0x8a2b57778172399f!2zQ8O0bmcgdHkgVE5ISCBDaOG6vyBCaeG6v24gTMawxqFuZyBUaOG7sWMgVGjhu7FjIFBo4bqpbSBUaMawxqFuZyBN4bqhaSBDaMOidSBHaWFuZw!5e0!3m2!1sen!2s!4v1690885173636!5m2!1sen!2s"
+                      width="100%"
+                      height="400"
+                      loading="lazy"
+                    ></iframe>
+                  </div>
+                </Col>
+              </Row>
+            </div>
 
             <div className={`${LayoutStyle.copyRight}`}>
               <Text className={LayoutStyle.content} disabled>
