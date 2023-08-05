@@ -273,10 +273,131 @@
     font-size: 30px;
 }
 
+.dflex{
+    display: flex;
+    align-items: center;
+}
+
 .footerCG {
     padding: unset;
     width: 100%;
-    .info{}
+
+    p{
+        margin-bottom: unset !important;
+        color: #8dc63f;
+        font-size: 18px;
+        font-weight: 500;
+    }
+    .info{
+        margin: 50px 60px 30px 60px;
+
+        .listFooter{
+            padding-left: 28px !important;
+            padding-right: 12px !important;
+            margin-bottom: 20px;
+            overflow: hidden;
+
+            .footerLogo{
+                width: 300px;
+                margin-bottom: 30px;
+                img{
+                    width: 100%;
+                }
+            }
+
+            .footerTitle{
+                margin: 10px 0;
+                gap: 35px;
+
+                .upper{
+                    height: 75px; 
+                    width: 75px;
+                    background-color: #8dc63f;
+                    border-radius: 50%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    p{
+                        text-transform: uppercase;
+                        color: #fff;
+                        font-weight: bold;
+                        font-size: 50px !important;
+                    }
+                }
+
+                h1{
+                    text-transform: uppercase;
+                    font-weight: bold;
+                    font-size: 22px;
+                    color: #00894f;
+                }
+            }
+
+            .footerTitleUpper{
+                justify-content: start;
+            }
+
+            .footerBottom{
+                flex-direction: column;
+                gap: 15px;
+                margin-top: 15px;
+
+                .footerItem{
+                    width: 100%;
+                    align-items: start;
+                    gap: 10px;
+                    margin-bottom: 10px;
+
+                    .iconFooterOut{
+                        color: #00894f;
+                    }
+
+                    .content{
+                        a{
+                            justify-content: start;
+                            p{}
+                        }
+                    }
+
+                    a{
+                        gap: 5px;
+                        justify-content: start;
+                        
+                        .iconFooter{
+                            color: #00894f;
+                        }
+
+                        .imgMedia{
+                            width: 78px;
+                            height: 78px;
+                            border-radius: 50%;
+                            overflow: hidden;
+                            
+                            img{
+                                width: 100%;
+                                height: 100%;
+                            }
+                        }
+
+                        .imgMediaLast{
+                            border-radius: unset !important;
+                            width: 170px !important;
+                            height: 78px !important;
+                        }
+                    }
+                }
+            }
+
+            .rectangle{
+                width: 100%;
+                height: 130px;
+                background-color: #8dc63f;
+                margin-bottom: 10px;
+            }
+        }
+
+    }
     .copyRight{
         display: flex;
         align-items:center;

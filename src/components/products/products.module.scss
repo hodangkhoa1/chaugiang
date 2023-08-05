@@ -18,10 +18,6 @@
     width: 100%;
     padding: 20px 40px 0 40px;
 
-    &:nth-child(8){
-        padding-bottom: 40px;
-    }
-
     .listProductBottom{
         display: flex;
         margin-top: 25px;
@@ -39,7 +35,8 @@
         .listProductCol{
             padding-left: unset !important;
 
-            .listProductCard {
+            a{
+                .listProductCard {
                     text-align: center;
                     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
                     width: 240px !important;
@@ -67,9 +64,14 @@
                         color: #00894f;
                     }
             }
+            }
         }
 
     }
+}
+
+.listProductLast{
+    padding-bottom: 40px;
 }
 
 .aboutUs {
@@ -311,14 +313,20 @@
                 margin-top: 3rem;
                 button{
                     background-color: #8dc63f;
-                    width: 250px;
+                    width: 220px;
                     height: 35px;
                     border-radius: 20px;
+                    justify-content: space-around;
+
                     p{
                         font-size: 16px;
                         font-weight: bold;
                         text-transform: uppercase;
                         margin-bottom: unset !important;
+                    }
+
+                    .iconBtn{
+                        font-size: 18px;
                     }
                 }
             }
