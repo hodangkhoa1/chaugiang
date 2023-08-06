@@ -9,6 +9,7 @@ import {
   ChromeOutlined,
 } from '@ant-design/icons';
 import Link from 'next/link';
+import { ArrowRightOutlined } from '@ant-design/icons';
 
 export default function ContactPage() {
   // const { translate: translateHome } = useI18n('common');
@@ -31,7 +32,6 @@ export default function ContactPage() {
             <div className={Style.introduceTitle}>
               <h1>Contact Us</h1>
             </div>
-            <div className={Style.introduceLine}></div>
           </div>
 
           <Breadcrumb
@@ -116,20 +116,72 @@ export default function ContactPage() {
       </div>
 
       <div className={Style.contactUsMap}>
-        <div className={Style.aboutOurService}>
-          <div>
-            <h1>Would like</h1>
-            <h1>to learn more</h1>
-            <h1>about our services?</h1>
+        <Row>
+          <Col md={12} lg={12} span={24}>
+            <div className={Style.aboutOurService}>
+              <div>
+                <h1>Would like</h1>
+                <h1>to learn more</h1>
+                <h1>about our services?</h1>
+              </div>
+              <div className={Style.btn_see_more}>
+                <button className={`${Style.dflex}`}>
+                  <p>Our Product</p>
+                  <ArrowRightOutlined className={Style.iconBtn} />
+                </button>
+              </div>
+            </div>
+          </Col>
+          <Col md={12} lg={12} span={24}>
+            <div className={Style.aboutOurMap}>
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d125387.42749806099!2d106.55453178714727!3d10.860419778307271!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3174d54f5b284dd9%3A0x8a2b57778172399f!2zQ8O0bmcgdHkgVE5ISCBDaOG6vyBCaeG6v24gTMawxqFuZyBUaOG7sWMgVGjhu7FjIFBo4bqpbSBUaMawxqFuZyBN4bqhaSBDaMOidSBHaWFuZw!5e0!3m2!1sen!2s!4v1690885173636!5m2!1sen!2s"
+                width="100%"
+                height="600"
+                loading="lazy"
+              ></iframe>
+            </div>
+          </Col>
+        </Row>
+      </div>
+
+      <div className={Style.customerInformation}>
+        <div className={Style.customerInformationCover}>
+          <div className={Style.customerInformationTop}>
+            <div
+              className={`${Style.dflex} ${Style.customerInformationTopCover}`}
+            >
+              <div
+                className={`${Style.dflex} ${Style.customerInformationTitle}`}
+              >
+                <h1>Customer Information</h1>
+              </div>
+            </div>
           </div>
-        </div>
-        <div>
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d125387.42749806099!2d106.55453178714727!3d10.860419778307271!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3174d54f5b284dd9%3A0x8a2b57778172399f!2zQ8O0bmcgdHkgVE5ISCBDaOG6vyBCaeG6v24gTMawxqFuZyBUaOG7sWMgVGjhu7FjIFBo4bqpbSBUaMawxqFuZyBN4bqhaSBDaMOidSBHaWFuZw!5e0!3m2!1sen!2s!4v1690885173636!5m2!1sen!2s"
-            width="768"
-            height="600"
-            loading="lazy"
-          ></iframe>
+
+          <div className={Style.customerInformationCenter}>
+            <p>
+              Please provide the information below to receive our free
+              consultation service package
+            </p>
+          </div>
+
+          <div className={`${Style.dflex} ${Style.customerInformationBottom}`}>
+            <input type="text" placeholder="First and last name" />
+            <input type="tel" placeholder="Phone number" />
+            <input type="text" placeholder="Email" />
+            <textarea
+              cols={22}
+              placeholder="Information needed support"
+            ></textarea>
+
+            <div className={Style.btn_see_more}>
+              <button className={`${Style.dflex}`}>
+                <p>Send information</p>
+                <ArrowRightOutlined className={Style.iconBtn} />
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </div>

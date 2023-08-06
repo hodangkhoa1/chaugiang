@@ -2,6 +2,7 @@
 import React from 'react';
 import Style from './company-profile.module.scss';
 import { Breadcrumb, Col, Image, Row } from 'antd';
+import { ArrowRightOutlined } from '@ant-design/icons';
 
 export default function CompanyProfilePage() {
   // const { translate: translateHome } = useI18n('common');
@@ -17,7 +18,6 @@ export default function CompanyProfilePage() {
           <div className={Style.introduceCompanyProfileTitle}>
             <h1>Introduce</h1>
           </div>
-          <div className={Style.introduceCompanyProfileLine}></div>
         </div>
 
         <Breadcrumb
@@ -41,7 +41,6 @@ export default function CompanyProfilePage() {
           <div className={Style.introduceLeadershipTitle}>
             <h1>Leadership Structure Of The Company</h1>
           </div>
-          <div className={Style.introduceLeadershipLine}></div>
         </div>
 
         <div className={Style.introduceLeadershipCenter}>
@@ -68,60 +67,75 @@ export default function CompanyProfilePage() {
         </div>
       </div>
 
-      <div className={`${Style.dflex} ${Style.aboutTheDirector}`}>
-        <div className={`${Style.dflex} ${Style.aboutTheDirectorLeft}`}>
-          <div className={Style.aboutTheDirectorLeftBackground}></div>
-        </div>
-        <div className={`${Style.dflex} ${Style.aboutTheDirectorRight}`}>
-          <div className={`${Style.dflex} ${Style.aboutTheDirectorRightCover}`}>
-            <div className={Style.aboutTheDirectorRightTitle}>
-              <h1>About The Director</h1>
+      <div className={`${Style.aboutTheDirector}`}>
+        <Row>
+          <Col md={12} lg={12} span={24}>
+            <div className={`${Style.dflex} ${Style.aboutTheDirectorLeft}`}>
+              <div className={Style.aboutTheDirectorLeftBackground}></div>
             </div>
-            <div className={Style.aboutTheDirectorRightLine}></div>
-          </div>
+          </Col>
+          <Col md={12} lg={12} span={24}>
+            <div className={`${Style.dflex} ${Style.aboutTheDirectorRight}`}>
+              <div
+                className={`${Style.dflex} ${Style.aboutTheDirectorRightCover}`}
+              >
+                <div className={Style.aboutTheDirectorRightTitle}>
+                  <h1>About The Director</h1>
+                </div>
+                <div className={Style.aboutTheDirectorRightLine}></div>
+              </div>
 
-          <div className={Style.aboutTheDirectorRightCenter}>
-            <p>
-              Mrs. Lê Thị Tứ is the Director of Chau Giang Food Processing Trade
-              Co., Ltd. Up to now, Mrs. Tứ has contributed to the beverage
-              manufacturing industry for more than 30 years and she is a pioneer
-              in the production and creation of beverages are currently popular
-              on the market today. Her goals are to provide products that are
-              the best for consumers in terms of safety, quality, and taste. CG
-              Food&apos;s products must be prepared with natural and fresh
-              ingredients, particularly they are produced in Vietnam and by
-              Vietnamese workers.
-            </p>
-          </div>
-        </div>
+              <div className={Style.aboutTheDirectorRightCenter}>
+                <p>
+                  Mrs. Lê Thị Tứ is the Director of Chau Giang Food Processing
+                  Trade Co., Ltd. Up to now, Mrs. Tứ has contributed to the
+                  beverage manufacturing industry for more than 30 years and she
+                  is a pioneer in the production and creation of beverages are
+                  currently popular on the market today. Her goals are to
+                  provide products that are the best for consumers in terms of
+                  safety, quality, and taste. CG Food&apos;s products must be
+                  prepared with natural and fresh ingredients, particularly they
+                  are produced in Vietnam and by Vietnamese workers.
+                </p>
+              </div>
+            </div>
+          </Col>
+        </Row>
       </div>
 
-      <div className={`${Style.dflex} ${Style.employeeSystem}`}>
-        <div className={`${Style.dflex} ${Style.employeeSystemLeft}`}>
-          <div className={`${Style.dflex} ${Style.employeeSystemLeftCover}`}>
-            <div className={Style.employeeSystemLeftTitle}>
-              <h1>Employee System</h1>
-            </div>
-            <div className={Style.employeeSystemLeftLine}></div>
-          </div>
+      <div className={`${Style.employeeSystem}`}>
+        <Row>
+          <Col md={12} lg={12} span={24}>
+            <div className={`${Style.dflex} ${Style.employeeSystemLeft}`}>
+              <div
+                className={`${Style.dflex} ${Style.employeeSystemLeftCover}`}
+              >
+                <div className={Style.employeeSystemLeftTitle}>
+                  <h1>Employee System</h1>
+                </div>
+              </div>
 
-          <div className={Style.employeeSystemLeftCenter}>
-            <p>
-              Mrs. Lê Thị Tứ is the Director of Chau Giang Food Processing Trade
-              Co., Ltd. Up to now, Mrs. Tứ has contributed to the beverage
-              manufacturing industry for more than 30 years and she is a pioneer
-              in the production and creation of beverages are currently popular
-              on the market today. Her goals are to provide products that are
-              the best for consumers in terms of safety, quality, and taste. CG
-              Food&apos;s products must be prepared with natural and fresh
-              ingredients, particularly they are produced in Vietnam and by
-              Vietnamese workers.
-            </p>
-          </div>
-        </div>
-        <div className={`${Style.dflex} ${Style.employeeSystemRight}`}>
-          <div className={Style.employeeSystemRightBackground}></div>
-        </div>
+              <div className={Style.employeeSystemLeftCenter}>
+                <p>
+                  Mrs. Lê Thị Tứ is the Director of Chau Giang Food Processing
+                  Trade Co., Ltd. Up to now, Mrs. Tứ has contributed to the
+                  beverage manufacturing industry for more than 30 years and she
+                  is a pioneer in the production and creation of beverages are
+                  currently popular on the market today. Her goals are to
+                  provide products that are the best for consumers in terms of
+                  safety, quality, and taste. CG Food&apos;s products must be
+                  prepared with natural and fresh ingredients, particularly they
+                  are produced in Vietnam and by Vietnamese workers.
+                </p>
+              </div>
+            </div>
+          </Col>
+          <Col md={12} lg={12} span={24}>
+            <div className={`${Style.dflex} ${Style.employeeSystemRight}`}>
+              <div className={Style.employeeSystemRightBackground}></div>
+            </div>
+          </Col>
+        </Row>
       </div>
 
       <div className={Style.orderNowBackground}></div>
@@ -133,8 +147,6 @@ export default function CompanyProfilePage() {
               <div className={`${Style.dflex} ${Style.whyChooseUsTitle}`}>
                 <h1>Why choose Us?</h1>
               </div>
-
-              <div className={Style.whyChooseUsLine}></div>
             </div>
           </div>
 
@@ -199,6 +211,46 @@ export default function CompanyProfilePage() {
                 </div>
               </Col>
             </Row>
+          </div>
+        </div>
+      </div>
+
+      <div className={Style.customerInformation}>
+        <div className={Style.customerInformationCover}>
+          <div className={Style.customerInformationTop}>
+            <div
+              className={`${Style.dflex} ${Style.customerInformationTopCover}`}
+            >
+              <div
+                className={`${Style.dflex} ${Style.customerInformationTitle}`}
+              >
+                <h1>Customer Information</h1>
+              </div>
+            </div>
+          </div>
+
+          <div className={Style.customerInformationCenter}>
+            <p>
+              Please provide the information below to receive our free
+              consultation service package
+            </p>
+          </div>
+
+          <div className={`${Style.dflex} ${Style.customerInformationBottom}`}>
+            <input type="text" placeholder="First and last name" />
+            <input type="tel" placeholder="Phone number" />
+            <input type="text" placeholder="Email" />
+            <textarea
+              cols={22}
+              placeholder="Information needed support"
+            ></textarea>
+
+            <div className={Style.btn_see_more}>
+              <button className={`${Style.dflex}`}>
+                <p>Send information</p>
+                <ArrowRightOutlined className={Style.iconBtn} />
+              </button>
+            </div>
           </div>
         </div>
       </div>

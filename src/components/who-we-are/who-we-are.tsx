@@ -2,6 +2,7 @@
 import React from 'react';
 import Style from './who-we-are.module.scss';
 import { Breadcrumb, Carousel, Col, Image, Row } from 'antd';
+import { ArrowRightOutlined } from '@ant-design/icons';
 
 export default function WhoWeArePage() {
   // const { translate: translateHome } = useI18n('common');
@@ -15,7 +16,6 @@ export default function WhoWeArePage() {
           <div className={Style.introduceWhoWeAreTitle}>
             <h1>Introduce</h1>
           </div>
-          <div className={Style.introduceWhoWeAreLine}></div>
         </div>
 
         <Breadcrumb
@@ -39,7 +39,6 @@ export default function WhoWeArePage() {
           <div className={Style.introduceOurFamilyTitle}>
             <h1>Our Family</h1>
           </div>
-          <div className={Style.introduceOurFamilyLine}></div>
         </div>
 
         <div className={Style.introduceOurFamilyCenter}>
@@ -68,7 +67,6 @@ export default function WhoWeArePage() {
           <div className={Style.ourProductsTitle}>
             <h1>Our Products</h1>
           </div>
-          <div className={Style.ourProductsLine}></div>
         </div>
 
         <div className={Style.ourProductsCenter}>
@@ -95,7 +93,6 @@ export default function WhoWeArePage() {
           <div className={Style.certificationTitle}>
             <h1>Certifications</h1>
           </div>
-          <div className={Style.certificationLine}></div>
         </div>
 
         <div className={Style.certificationCenter}>
@@ -198,7 +195,6 @@ export default function WhoWeArePage() {
             <div className={Style.ourFactoryTitle}>
               <h1>Our Factory</h1>
             </div>
-            <div className={Style.ourFactoryLine}></div>
           </div>
 
           <div className={Style.ourFactoryLeftCenter}>
@@ -283,8 +279,6 @@ export default function WhoWeArePage() {
               <div className={`${Style.dflex} ${Style.whyChooseUsTitle}`}>
                 <h1>Why choose Us?</h1>
               </div>
-
-              <div className={Style.whyChooseUsLine}></div>
             </div>
           </div>
 
@@ -349,6 +343,46 @@ export default function WhoWeArePage() {
                 </div>
               </Col>
             </Row>
+          </div>
+        </div>
+      </div>
+
+      <div className={Style.customerInformation}>
+        <div className={Style.customerInformationCover}>
+          <div className={Style.customerInformationTop}>
+            <div
+              className={`${Style.dflex} ${Style.customerInformationTopCover}`}
+            >
+              <div
+                className={`${Style.dflex} ${Style.customerInformationTitle}`}
+              >
+                <h1>Customer Information</h1>
+              </div>
+            </div>
+          </div>
+
+          <div className={Style.customerInformationCenter}>
+            <p>
+              Please provide the information below to receive our free
+              consultation service package
+            </p>
+          </div>
+
+          <div className={`${Style.dflex} ${Style.customerInformationBottom}`}>
+            <input type="text" placeholder="First and last name" />
+            <input type="tel" placeholder="Phone number" />
+            <input type="text" placeholder="Email" />
+            <textarea
+              cols={22}
+              placeholder="Information needed support"
+            ></textarea>
+
+            <div className={Style.btn_see_more}>
+              <button className={`${Style.dflex}`}>
+                <p>Send information</p>
+                <ArrowRightOutlined className={Style.iconBtn} />
+              </button>
+            </div>
           </div>
         </div>
       </div>
