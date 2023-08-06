@@ -243,7 +243,10 @@ export function AppLayout(props: Props) {
                   </ul>
                 </li>
                 <li className={LayoutStyle.navItem}>
-                  <Link href="#" className={LayoutStyle.navLink}>
+                  <Link
+                    href={ROUTERS.BEVERAGE_PRODUCT_DEVELOPMENT}
+                    className={LayoutStyle.navLink}
+                  >
                     Services
                   </Link>
                   <ul className={LayoutStyle.dropdownContent}>
@@ -271,7 +274,7 @@ export function AppLayout(props: Props) {
                   </ul>
                 </li>
                 <li className={LayoutStyle.navItem}>
-                  <Link href="#" className={LayoutStyle.navLink}>
+                  <Link href={ROUTERS.NEWS} className={LayoutStyle.navLink}>
                     News
                   </Link>
                 </li>
@@ -506,25 +509,25 @@ export function AppLayout(props: Props) {
                     >
                       <a href="">
                         <div className={LayoutStyle.imgMedia}>
-                          <img src="images/products/1.jpg" alt="" />
+                          <img src="./images/zalo.png" alt="" />
                         </div>
                       </a>
 
                       <a href="">
                         <div className={LayoutStyle.imgMedia}>
-                          <img src="images/products/1.jpg" alt="" />
+                          <img src="./images/fb.png" alt="" />
                         </div>
                       </a>
 
                       <a href="">
                         <div className={LayoutStyle.imgMedia}>
-                          <img src="images/products/1.jpg" alt="" />
+                          <img src="./images/call.png" alt="" />
                         </div>
                       </a>
 
                       <a href="">
                         <div className={LayoutStyle.imgMedia}>
-                          <img src="images/products/1.jpg" alt="" />
+                          <img src="./images/youtobe.png" alt="" />
                         </div>
                       </a>
                     </div>
@@ -536,7 +539,7 @@ export function AppLayout(props: Props) {
                         <div
                           className={`${LayoutStyle.imgMedia} ${LayoutStyle.imgMediaLast}`}
                         >
-                          <img src="images/products/1.jpg" alt="" />
+                          <img src="./images/alibaba.png" alt="" />
                         </div>
                       </a>
                     </div>
