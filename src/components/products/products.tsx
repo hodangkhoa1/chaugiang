@@ -3,6 +3,7 @@ import React from 'react';
 import Style from './products.module.scss';
 import { Col, Row } from 'antd';
 import { ArrowRightOutlined } from '@ant-design/icons';
+import { ROUTERS } from '@/constant/router';
 
 export default function ProductsPage() {
   // const { translate: translateHome } = useI18n('common');
@@ -46,7 +47,7 @@ export default function ProductsPage() {
             <Col lg={18} span={24}>
               <Row gutter={100}>
                 <Col lg={6} span={24} className={Style.listProductCol}>
-                  <a href="#">
+                  <a href={ROUTERS.PRODUCTS_DETAIL('1')}>
                     <div className={Style.listProductCard}>
                       <div className={Style.listProductCardImage}>
                         <img src="images/products/2.png" alt="" />
