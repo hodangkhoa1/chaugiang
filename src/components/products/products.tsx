@@ -1,8 +1,8 @@
 // import useI18n from '@/i18n/useI18N';
 import React from 'react';
 import Style from './products.module.scss';
-import { Col, Row } from 'antd';
-import { ArrowRightOutlined } from '@ant-design/icons';
+import { Col, Row, Image, Breadcrumb } from 'antd';
+import { ArrowRightOutlined, SearchOutlined } from '@ant-design/icons';
 import { ROUTERS } from '@/constant/router';
 
 export default function ProductsPage() {
@@ -13,18 +13,98 @@ export default function ProductsPage() {
       <div className={Style.headerBackground}></div>
 
       <div className={`${Style.product}`}>
-        <div className={`${Style.productCover}`}>
-          <div className={Style.productTop}>
-            <div className={`${Style.dflex} ${Style.productCover}`}>
-              <div className={`${Style.dflex} ${Style.productTitle}`}>
-                <h1>Product</h1>
-              </div>
-            </div>
+        <div className={`${Style.dflex} ${Style.productTopCover}`}>
+          <div className={Style.productTitle}>
+            <h1>Product</h1>
           </div>
         </div>
       </div>
 
-      <div className={Style.productHome}></div>
+      <div className={Style.productHome}>
+        <Row>
+          <Col md={6} lg={6} span={24}>
+            <div className={Style.productHomeLeft}>
+              <Breadcrumb
+                className={Style.productHomeBreadcrumb}
+                items={[
+                  {
+                    title: 'Home',
+                  },
+                  {
+                    title: 'Product',
+                  },
+                ]}
+              />
+              <div className={Style.productBodySearch}>
+                <div className={Style.searchBox}>
+                  <div className={Style.buttonSearch}>
+                    <SearchOutlined className={Style.btnSearch} />
+                  </div>
+                  <input
+                    className={Style.searchPlace}
+                    type="text"
+                    placeholder="Search..."
+                  />
+                </div>
+              </div>
+              <div className={Style.portfolio}>
+                <h1>Product Portfolio</h1>
+              </div>
+              <a href="#">
+                <div className={Style.productBodyDetail}>
+                  <p>Coconut water</p>
+                  <div className={Style.productBodyDetailLine}></div>
+                </div>
+              </a>
+              <a href="#">
+                <div className={Style.productBodyDetail}>
+                  <p>Fruit Juice Drink</p>
+                  <div className={Style.productBodyDetailLine}></div>
+                </div>
+              </a>
+              <a href="#">
+                <div className={Style.productBodyDetail}>
+                  <p>Milk Drink</p>
+                  <div className={Style.productBodyDetailLine}></div>
+                </div>
+              </a>
+              <a href="#">
+                <div className={Style.productBodyDetail}>
+                  <p>Sparkling Juice Drink</p>
+                  <div className={Style.productBodyDetailLine}></div>
+                </div>
+              </a>
+              <a href="#">
+                <div className={Style.productBodyDetail}>
+                  <p>Coffee</p>
+                  <div className={Style.productBodyDetailLine}></div>
+                </div>
+              </a>
+              <a href="#">
+                <div className={Style.productBodyDetail}>
+                  <p>Energy Drink</p>
+                  <div className={Style.productBodyDetailLine}></div>
+                </div>
+              </a>
+              <a href="#">
+                <div className={Style.productBodyDetail}>
+                  <p>PET Aloe Vera Drink</p>
+                  <div className={Style.productBodyDetailLine}></div>
+                </div>
+              </a>
+            </div>
+          </Col>
+          <Col md={18} lg={18} span={24}>
+            <Image
+              src="/images/products/productHome.png"
+              alt="logo"
+              width="100%"
+              height={500}
+              preview={false}
+            />
+          </Col>
+        </Row>
+      </div>
 
       <div className={Style.listProduct}>
         <div className={Style.listProductBottom}>
