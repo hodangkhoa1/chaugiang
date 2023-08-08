@@ -53,6 +53,42 @@
     }
 }
 
+.productElement{
+    margin: 30px;
+overflow: hidden;
+    .productElementCol{
+        
+        .productElementLeft{
+            flex-direction: column;
+            .productImg{
+                // width: 540px;
+                img{
+                    width: 100%;
+                }
+            }
+
+            .productView{
+                p{
+                    color: #000;
+                    span{}
+                }
+            }
+
+            .requestBtn{
+                button{
+                    p{}
+                }
+            }
+        }
+        .productElementRight{
+            background-color: #00894f;
+            height: 600px;
+        }
+
+    }
+
+}
+
 .productDescription {
     margin: 0 80px;
 }

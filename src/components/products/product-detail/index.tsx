@@ -37,6 +37,70 @@ export default function ProductDetailPage() {
         />
       </div>
 
+      <div className={Style.productElement}>
+        <Row gutter={100}>
+          <Col
+            lg={8}
+            span={24}
+            className={`${Style.dflex} ${Style.productElementCol}`}
+          >
+            <div className={`${Style.productElementLeft}`}>
+              <div className={Style.productImg}>
+                <img src="/images/products/22.png" alt="" />
+              </div>
+
+              <div className={`${Style.dflex} ${Style.productView}`}>
+                <p>
+                  <span>84</span> People watching this product now!
+                </p>
+              </div>
+
+              <div className={`${Style.dflex} ${Style.requestBtn}`}>
+                <button>
+                  <p>Request free samples now</p>
+                </button>
+              </div>
+            </div>
+          </Col>
+
+          <Col lg={16} span={24} className={`${Style.productElementCol}`}>
+            <div className={Style.productElementRight}>
+              <div className={Style.productElementTitle}>
+                <h3>Coffe capuchino drink</h3>
+              </div>
+
+              <div className={Style.productLinkImg}>
+                <div className="mediaLink">
+                  <img src="" alt="" />
+                </div>
+
+                <div className="mediaLink">
+                  <img src="" alt="" />
+                </div>
+
+                <div className="mediaLink">
+                  <img src="" alt="" />
+                </div>
+              </div>
+
+              <div className={Style.productStars}></div>
+
+              <div className={Style.productElementTable}></div>
+
+              <div className={`${Style.dflex} ${Style.requestBtn}`}>
+                <button>
+                  <p>Request free samples now</p>
+                </button>
+              </div>
+
+              <div className={Style.productElementNote}></div>
+
+              <div className={Style.productElementContent}></div>
+            </div>
+          </Col>
+        </Row>
+      </div>
+
       <div className={Style.productDescription}>
         <CollapseCard title="Description" style={{ marginTop: '20px' }}>
           <p>Test</p>
