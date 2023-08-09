@@ -1,0 +1,80 @@
+{
+    "coconutWater": [
+        {
+            "id": 1,
+            "title": "Pure Coconut Water",
+            "subTitle": "325ml",
+            "image": "/images/products/2.png"
+        },
+        {
+            "id": 2,
+            "title": "Coconut Water 100% Pure",
+            "subTitle": "330ml",
+            "image": "/images/products/3.png"
+        },
+        {
+            "id": 3,
+            "title": "Coconut Water With Mango",
+            "subTitle": "330ml",
+            "image": "/images/products/productList/coconut mango 1.png"
+        },
+        {
+            "id": 4,
+            "title": "Sparkling Coconut Water",
+            "subTitle": "330ml",
+            "image": "/images/products/productList/Sparkling coconut pure.png"
+        }
+    ],
+    "milk": [
+        {
+            "id": 1,
+            "title": "Brown Rice Milk",
+            "subTitle": "500ml",
+            "image": "/images/products/7.png"
+        },
+        {
+            "id": 2,
+            "title": "Green Bean Milk",
+            "subTitle": "500ml",
+            "image": "/images/products/productList/16.png"
+        },
+        {
+            "id": 3,
+            "title": "Soya Milk",
+            "subTitle": "500ml",
+            "image": "/images/products/productList/17.png"
+        },
+        {
+            "id": 4,
+            "title": "Corn Milk",
+            "subTitle": "500ml",
+            "image": "/images/products/productList/18.png"
+        }
+    ],
+    "juice": [
+        {
+            "id": 1,
+            "title": "Mango Juice",
+            "subTitle": "330ml",
+            "image": "/images/products/12.png"
+        },
+        {
+            "id": 2,
+            "title": "Tamarind Juice",
+            "subTitle": "330ml",
+            "image": "/images/products/productList/1.png"
+        },
+        {
+            "id": 3,
+            "title": "Soursop Juice",
+            "subTitle": "330ml",
+            "image": "/images/products/productList/soursop 330 short can.png"
+        },
+        {
+            "id": 4,
+            "title": "Orange Fruit",
+            "subTitle": "330ml",
+            "image": "/images/products/productList/2.png"
+        }
+    ]
+}
