@@ -3,7 +3,10 @@ import React from 'react';
 import Style from './products-detail.module.scss';
 import { Breadcrumb, Carousel, Col, Row } from 'antd';
 import CollapseCard from '@/components/commons/collapse-card';
-import { ArrowRightOutlined } from '@ant-design/icons';
+import {
+  ArrowRightOutlined,
+  DeliveredProcedureOutlined,
+} from '@ant-design/icons';
 
 export default function ProductDetailPage() {
   // const { translate: translateHome } = useI18n('common');
@@ -39,11 +42,7 @@ export default function ProductDetailPage() {
 
       <div className={Style.productElement}>
         <Row gutter={100}>
-          <Col
-            lg={8}
-            span={24}
-            className={`${Style.dflex} ${Style.productElementCol}`}
-          >
+          <Col lg={8} span={24}>
             <div className={`${Style.productElementLeft}`}>
               <div className={Style.productImg}>
                 <img src="/images/products/22.png" alt="" />
@@ -57,29 +56,34 @@ export default function ProductDetailPage() {
 
               <div className={`${Style.dflex} ${Style.requestBtn}`}>
                 <button>
+                  <DeliveredProcedureOutlined />
                   <p>Request free samples now</p>
                 </button>
               </div>
             </div>
           </Col>
 
-          <Col lg={16} span={24} className={`${Style.productElementCol}`}>
-            <div className={Style.productElementRight}>
+          <Col lg={16} span={24}>
+            <div className={`${Style.productElementRight} ${Style.dflex}`}>
               <div className={Style.productElementTitle}>
                 <h3>Coffe capuchino drink</h3>
               </div>
 
               <div className={Style.productLinkImg}>
                 <div className="mediaLink">
-                  <img src="" alt="" />
+                  <img src="/images/zalo.png" alt="Zalo" />
                 </div>
 
                 <div className="mediaLink">
-                  <img src="" alt="" />
+                  <img src="/images/fb.png" alt="Facebook" />
                 </div>
 
                 <div className="mediaLink">
-                  <img src="" alt="" />
+                  <img src="/images/call.png" alt="Call" />
+                </div>
+
+                <div className="mediaLink">
+                  <img src="/images/youtobe.png" alt="Youtube" />
                 </div>
               </div>
 

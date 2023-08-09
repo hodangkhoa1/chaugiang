@@ -53,38 +53,45 @@
     }
 }
 
-.productElement{
-    margin: 30px;
-overflow: hidden;
-    .productElementCol{
-        
-        .productElementLeft{
-            flex-direction: column;
-            .productImg{
-                // width: 540px;
-                img{
-                    width: 100%;
-                }
-            }
+.productElement {
+    margin: 50px 80px;
 
-            .productView{
-                p{
-                    color: #000;
-                    span{}
-                }
-            }
+    .productElementLeft {
+        flex-direction: column;
 
-            .requestBtn{
-                button{
-                    p{}
-                }
+        .productImg {
+            img {
+                width: 100%;
             }
         }
-        .productElementRight{
-            background-color: #00894f;
-            height: 600px;
+
+        .productView {
+            p {
+                color: #000;
+            }
         }
 
+        .requestBtn {
+            button {
+                background: #8dc63f;
+            }
+        }
+    }
+
+    .productElementRight {
+        background-color: #00894f;
+        height: 600px;
+        border-radius: 20px;
+        flex-direction: column;
+        justify-content: flex-start;
+
+        .productElementTitle {
+            h3 {
+                color: #fff;
+                font-size: 18px;
+                text-transform: uppercase;
+            }
+        }
     }
 
 }
