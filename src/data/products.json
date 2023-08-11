@@ -27,25 +27,25 @@
     ],
     "milk": [
         {
-            "id": 1,
+            "id": 5,
             "title": "Brown Rice Milk",
             "subTitle": "500ml",
             "image": "/images/products/7.png"
         },
         {
-            "id": 2,
+            "id": 6,
             "title": "Green Bean Milk",
             "subTitle": "500ml",
             "image": "/images/products/productList/16.png"
         },
         {
-            "id": 3,
+            "id": 7,
             "title": "Soya Milk",
             "subTitle": "500ml",
             "image": "/images/products/productList/17.png"
         },
         {
-            "id": 4,
+            "id": 8,
             "title": "Corn Milk",
             "subTitle": "500ml",
             "image": "/images/products/productList/18.png"
@@ -53,28 +53,106 @@
     ],
     "juice": [
         {
-            "id": 1,
+            "id": 9,
             "title": "Mango Juice",
             "subTitle": "330ml",
             "image": "/images/products/12.png"
         },
         {
-            "id": 2,
+            "id": 10,
             "title": "Tamarind Juice",
             "subTitle": "330ml",
             "image": "/images/products/productList/1.png"
         },
         {
-            "id": 3,
+            "id": 11,
             "title": "Soursop Juice",
             "subTitle": "330ml",
             "image": "/images/products/productList/soursop 330 short can.png"
         },
         {
-            "id": 4,
+            "id": 12,
             "title": "Orange Fruit",
             "subTitle": "330ml",
             "image": "/images/products/productList/2.png"
+        }
+    ],
+    "aloeVera": [
+        {
+            "id": 13,
+            "title": "Aloe Vera 100% Pure",
+            "subTitle": "500ml",
+            "image": "/images/products/17.png"
+        },
+        {
+            "id": 14,
+            "title": "Aloe Vera With Pulp Flavor Strawberry",
+            "subTitle": "500ml",
+            "image": "/images/products/18.png"
+        },
+        {
+            "id": 15,
+            "title": "Aloe Vera With Pulp Flavor Passion Fruit",
+            "subTitle": "500ml",
+            "image": "/images/products/19.png"
+        },
+        {
+            "id": 16,
+            "title": "Aloe Vera With Pulp Flavor Watermelon",
+            "subTitle": "500ml",
+            "image": "/images/products/productList/dua hau Pet bottle 500ml.png"
+        }
+    ],
+    "coffee": [
+        {
+            "id": 17,
+            "title": "Coffee Capuchino",
+            "subTitle": "250ml",
+            "image": "/images/products/22.png"
+        },
+        {
+            "id": 18,
+            "title": "Coffee Latte",
+            "subTitle": "250ml",
+            "image": "/images/products/productList/cafe latte.png"
+        },
+        {
+            "id": 19,
+            "title": "Bubble Tea With Lemon",
+            "subTitle": "330ml",
+            "image": "/images/products/24.png"
+        },
+        {
+            "id": 20,
+            "title": "Lotus Heart Tea",
+            "subTitle": "250ml",
+            "image": "/images/products/25.png"
+        }
+    ],
+    "energyDrink": [
+        {
+            "id": 21,
+            "title": "Strawberry Flavor 109 Energy Drink",
+            "subTitle": "250ml",
+            "image": "/images/products/27.png"
+        },
+        {
+            "id": 22,
+            "title": "Energy Drink CG 109",
+            "subTitle": "330ml",
+            "image": "/images/products/productList/19-removebg-preview.png"
+        },
+        {
+            "id": 23,
+            "title": "Energy Drink",
+            "subTitle": "250ml",
+            "image": "/images/products/productList/250 short can.png"
+        },
+        {
+            "id": 24,
+            "title": "Energy Drink",
+            "subTitle": "250ml",
+            "image": "/images/products/productList/energy_250 slin can.png"
         }
     ]
 }
