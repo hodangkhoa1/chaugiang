@@ -267,7 +267,10 @@ export function AppLayout(props: Props) {
                       </Link>
                     </li>
                     <li className={LayoutStyle.dropdownContentItem}>
-                      <Link href="#" className={LayoutStyle.linkDropdown}>
+                      <Link
+                        href={ROUTERS.PRIVATE_LABEL_SERVICES}
+                        className={LayoutStyle.linkDropdown}
+                      >
                         Private Label Services (OEM/ODM)
                       </Link>
                     </li>
