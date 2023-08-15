@@ -1,12 +1,13 @@
 // import useI18n from '@/i18n/useI18N';
 import React from 'react';
 import Style from './products-detail.module.scss';
-import { Breadcrumb, Carousel, Col, Row } from 'antd';
-import CollapseCard from '@/components/commons/collapse-card';
+import { Breadcrumb, Carousel, Col, Row, Image } from 'antd';
 import {
   ArrowRightOutlined,
   DeliveredProcedureOutlined,
+  StarFilled,
 } from '@ant-design/icons';
+import Link from 'next/link';
 
 export default function ProductDetailPage() {
   // const { translate: translateHome } = useI18n('common');
@@ -55,8 +56,8 @@ export default function ProductDetailPage() {
               </div>
 
               <div className={`${Style.dflex} ${Style.requestBtn}`}>
-                <button>
-                  <DeliveredProcedureOutlined />
+                <button className={Style.dflex}>
+                  <DeliveredProcedureOutlined className={Style.iconButton} />
                   <p>Request free samples now</p>
                 </button>
               </div>
@@ -69,64 +70,270 @@ export default function ProductDetailPage() {
                 <h3>Coffe capuchino drink</h3>
               </div>
 
-              <div className={Style.productLinkImg}>
-                <div className="mediaLink">
+              <div className={`${Style.dflex} ${Style.productLinkImg}`}>
+                <Link href="#" className={Style.mediaLink}>
                   <img src="/images/zalo.png" alt="Zalo" />
-                </div>
+                </Link>
 
-                <div className="mediaLink">
+                <Link href="#" className={Style.mediaLink}>
                   <img src="/images/fb.png" alt="Facebook" />
-                </div>
+                </Link>
 
-                <div className="mediaLink">
+                <Link href="#" className={Style.mediaLink}>
                   <img src="/images/call.png" alt="Call" />
-                </div>
+                </Link>
 
-                <div className="mediaLink">
+                <Link href="#" className={Style.mediaLink}>
                   <img src="/images/youtobe.png" alt="Youtube" />
+                </Link>
+              </div>
+
+              <div className={`${Style.dflex} ${Style.productStars}`}>
+                <StarFilled className={Style.productStarsIcon} />
+                <StarFilled className={Style.productStarsIcon} />
+                <StarFilled className={Style.productStarsIcon} />
+                <StarFilled className={Style.productStarsIcon} />
+                <StarFilled className={Style.productStarsIcon} />
+              </div>
+
+              <div className={Style.productElementTable}>
+                <div
+                  className={`${Style.productElementContent} ${Style.dflex}`}
+                >
+                  <p>Manfactured by:</p>
+                  <p>Chau Giang Food Processing Trade Co., LTD</p>
+                </div>
+                <div
+                  className={`${Style.productElementContent} ${Style.dflex}`}
+                >
+                  <p>Packing Specification:</p>
+                  <p>24 cans/ carton, 6 cans/ wrap, 4 wraps/ carton</p>
+                </div>
+                <div
+                  className={`${Style.productElementContent} ${Style.dflex}`}
+                >
+                  <p>Certificate:</p>
+                  <p>FDA, ISO, FCSS, GMP, HACCAP</p>
+                </div>
+                <div
+                  className={`${Style.productElementContent} ${Style.dflex}`}
+                >
+                  <p>MOQ:</p>
+                  <p>500 cartons</p>
+                </div>
+                <div
+                  className={`${Style.productElementContent} ${Style.dflex}`}
+                >
+                  <p>Shelflife:</p>
+                  <p>24 months</p>
+                </div>
+                <div
+                  className={`${Style.productElementContent} ${Style.dflex}`}
+                >
+                  <p>Volume:</p>
+                  <p>245ml</p>
+                </div>
+                <div
+                  className={`${Style.productElementContent} ${Style.dflex}`}
+                >
+                  <p>Payment:</p>
+                  <p>Options:L/C, T/T, Western Union, MoneyGram, Paypal</p>
+                </div>
+                <div
+                  className={`${Style.productElementContent} ${Style.dflex}`}
+                >
+                  <p>Selling Points:</p>
+                  <p>OEM, ODM, Free sample, Free label design</p>
+                </div>
+                <div
+                  className={`${Style.productElementContent} ${Style.dflex}`}
+                >
+                  <p>Place of Origin:</p>
+                  <p>Vietnam</p>
                 </div>
               </div>
 
-              <div className={Style.productStars}></div>
-
-              <div className={Style.productElementTable}></div>
-
               <div className={`${Style.dflex} ${Style.requestBtn}`}>
-                <button>
+                <button className={Style.dflex}>
+                  <DeliveredProcedureOutlined className={Style.iconButton} />
                   <p>Request free samples now</p>
                 </button>
               </div>
 
-              <div className={Style.productElementNote}></div>
+              <div className={`${Style.dflex} ${Style.productElementNote}`}>
+                <p>OEM/ODM Services</p>
+                <p>Free Product Customization</p>
+                <p>Min. Order: 500 Cartons</p>
+              </div>
 
-              <div className={Style.productElementContent}></div>
+              <div
+                className={`${Style.dflex} ${Style.productElementBottomContent}`}
+              >
+                <p>Customized logo</p>
+                <p>Customized packaging</p>
+                <p>Graphic customization</p>
+                <p>Formula customization</p>
+                <p>Mixed container: Max 8 flavors</p>
+              </div>
             </div>
           </Col>
         </Row>
       </div>
 
       <div className={Style.productDescription}>
-        <CollapseCard title="Description" style={{ marginTop: '20px' }}>
-          <p>Test</p>
-        </CollapseCard>
-        <CollapseCard
-          title="Additional Information"
-          style={{ marginTop: '20px' }}
-        >
-          <p>Test</p>
-        </CollapseCard>
-        <CollapseCard title="Reviews (1)" style={{ marginTop: '20px' }}>
-          <p>Test</p>
-        </CollapseCard>
-        <CollapseCard
-          title="Production & Services"
-          style={{ marginTop: '20px' }}
-        >
-          <p>Test</p>
-        </CollapseCard>
-        <CollapseCard title="FAQs" style={{ marginTop: '20px' }}>
-          <p>Test</p>
-        </CollapseCard>
+        <Row>
+          <Col lg={24} span={24}>
+            <h1>Introduction</h1>
+          </Col>
+          <Col lg={24} span={24}>
+            <p>
+              Chan Giang Food Processing Trade Co., Ltd is a 100% capital
+              private enterprise in Vietnam with more than 33 years of
+              experience in the field of production and processing of beverages
+              with domestic and export brands, has achieved many acknowledge and
+              awards in Vietnam and worldwide also.
+            </p>
+          </Col>
+          <Col lg={6} span={24}>
+            <Image
+              src="/images/bin_products/bin_products_3.png"
+              alt="logo"
+              width="100%"
+              height={195}
+              preview={true}
+            />
+          </Col>
+          <Col lg={6} span={24}>
+            <Image
+              src="/images/bin_products/bin_products_14.png"
+              alt="logo"
+              width="100%"
+              height={195}
+              preview={true}
+            />
+          </Col>
+          <Col lg={6} span={24}>
+            <Image
+              src="/images/bin_products/bin_products_11.png"
+              alt="logo"
+              width="100%"
+              height={195}
+              preview={true}
+            />
+          </Col>
+          <Col lg={6} span={24}>
+            <Image
+              src="/images/bin_products/bin_products_4.png"
+              alt="logo"
+              width="100%"
+              height={195}
+              preview={true}
+            />
+          </Col>
+        </Row>
+
+        <Row style={{ marginTop: '40px' }}>
+          <Col lg={24} span={24}>
+            <h1>Category</h1>
+          </Col>
+          <Col lg={24} span={24}>
+            <p>
+              CG Food specializes in processing Coconut water, Sparkling Fruit
+              Juice Drink, Planted Milk Drink, Aloe Vera, Coffee and Energy
+              Drink
+            </p>
+          </Col>
+          <Col lg={6} span={24}>
+            <Image
+              src="/images/products/2.png"
+              alt="logo"
+              width="100%"
+              height={270}
+              preview={true}
+            />
+          </Col>
+          <Col lg={6} span={24}>
+            <Image
+              src="/images/products/28.png"
+              alt="logo"
+              width="100%"
+              height={270}
+              preview={true}
+            />
+          </Col>
+          <Col lg={6} span={24}>
+            <Image
+              src="/images/products/tamarind_330_short_can.png"
+              alt="logo"
+              width="100%"
+              height={270}
+              preview={true}
+            />
+          </Col>
+          <Col lg={6} span={24}>
+            <Image
+              src="/images/products/17.png"
+              alt="logo"
+              width="100%"
+              height={270}
+              preview={true}
+            />
+          </Col>
+        </Row>
+
+        <Row style={{ marginTop: '40px' }}>
+          <Col lg={24} span={24}>
+            <h1>Our Factory</h1>
+          </Col>
+          <Col lg={24} span={24}>
+            <p>
+              Since 2017, Chau Giang Food Processing Trade Co., Ltd has expanded
+              production lines, improve production processes, enhance product
+              quality towards promoting exports to markets worldwide, and
+              develop domestic demand also. Chau Giang’s products have a modern
+              design, high quality, and reasonable prices in accordance with the
+              tastes of consumers. In addition, Chau Giang has been processing
+              beverage products for supermarkets, retail, and big brands
+              worldwide.
+            </p>
+          </Col>
+          <Col lg={6} span={24}>
+            <Image
+              src="/images/introduce/our_factory_3.jpg"
+              alt="logo"
+              width={300}
+              height={250}
+              preview={true}
+            />
+          </Col>
+          <Col lg={6} span={24}>
+            <Image
+              src="/images/introduce/our_factory_4.jpg"
+              alt="logo"
+              width={300}
+              height={250}
+              preview={true}
+            />
+          </Col>
+          <Col lg={6} span={24}>
+            <Image
+              src="/images/introduce/our_factory_5.jpg"
+              alt="logo"
+              width={300}
+              height={250}
+              preview={true}
+            />
+          </Col>
+          <Col lg={6} span={24}>
+            <Image
+              src="/images/introduce/our_factory_2.jpg"
+              alt="logo"
+              width={300}
+              height={250}
+              preview={true}
+            />
+          </Col>
+        </Row>
       </div>
 
       <div className={Style.affiliateProduct}>
