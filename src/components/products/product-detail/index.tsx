@@ -8,9 +8,18 @@ import {
   StarFilled,
 } from '@ant-design/icons';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
+import productDetails from '../../../data/productDetail.json';
 
-export default function ProductDetailPage() {
+const ProductDetailPage = () => {
   // const { translate: translateHome } = useI18n('common');
+  const router = useRouter();
+  const { id } = router.query;
+  const productDetailData = getItemById(id as string);
+
+  function getItemById(id: string) {
+    return productDetails.find((item: { id: string }) => item.id === id);
+  }
 
   return (
     <div style={{ background: '#fff' }}>
@@ -35,7 +44,7 @@ export default function ProductDetailPage() {
               title: 'Product',
             },
             {
-              title: 'Coffee Capuchino Drink',
+              title: productDetailData?.name,
             },
           ]}
         />
@@ -46,7 +55,7 @@ export default function ProductDetailPage() {
           <Col lg={8} span={24}>
             <div className={`${Style.productElementLeft}`}>
               <div className={Style.productImg}>
-                <img src="/images/products/22.png" alt="" />
+                <img src={productDetailData?.image} alt="" />
               </div>
 
               <div className={`${Style.dflex} ${Style.productView}`}>
@@ -67,7 +76,7 @@ export default function ProductDetailPage() {
           <Col lg={16} span={24}>
             <div className={`${Style.productElementRight} ${Style.dflex}`}>
               <div className={Style.productElementTitle}>
-                <h3>Coffe capuchino drink</h3>
+                <h3>{productDetailData?.name}</h3>
               </div>
 
               <div className={`${Style.dflex} ${Style.productLinkImg}`}>
@@ -101,55 +110,55 @@ export default function ProductDetailPage() {
                   className={`${Style.productElementContent} ${Style.dflex}`}
                 >
                   <p>Manfactured by:</p>
-                  <p>Chau Giang Food Processing Trade Co., LTD</p>
+                  <p>{productDetailData?.manufacturedBy}</p>
                 </div>
                 <div
                   className={`${Style.productElementContent} ${Style.dflex}`}
                 >
                   <p>Packing Specification:</p>
-                  <p>24 cans/ carton, 6 cans/ wrap, 4 wraps/ carton</p>
+                  <p>{productDetailData?.packingSpecification}</p>
                 </div>
                 <div
                   className={`${Style.productElementContent} ${Style.dflex}`}
                 >
                   <p>Certificate:</p>
-                  <p>FDA, ISO, FCSS, GMP, HACCAP</p>
+                  <p>{productDetailData?.certificate}</p>
                 </div>
                 <div
                   className={`${Style.productElementContent} ${Style.dflex}`}
                 >
                   <p>MOQ:</p>
-                  <p>500 cartons</p>
+                  <p>{productDetailData?.mOQ}</p>
                 </div>
                 <div
                   className={`${Style.productElementContent} ${Style.dflex}`}
                 >
                   <p>Shelflife:</p>
-                  <p>24 months</p>
+                  <p>{productDetailData?.shelflife}</p>
                 </div>
                 <div
                   className={`${Style.productElementContent} ${Style.dflex}`}
                 >
                   <p>Volume:</p>
-                  <p>245ml</p>
+                  <p>{productDetailData?.volume}</p>
                 </div>
                 <div
                   className={`${Style.productElementContent} ${Style.dflex}`}
                 >
                   <p>Payment:</p>
-                  <p>Options:L/C, T/T, Western Union, MoneyGram, Paypal</p>
+                  <p>{productDetailData?.payment}</p>
                 </div>
                 <div
                   className={`${Style.productElementContent} ${Style.dflex}`}
                 >
                   <p>Selling Points:</p>
-                  <p>OEM, ODM, Free sample, Free label design</p>
+                  <p>{productDetailData?.sellingPoints}</p>
                 </div>
                 <div
                   className={`${Style.productElementContent} ${Style.dflex}`}
                 >
                   <p>Place of Origin:</p>
-                  <p>Vietnam</p>
+                  <p>{productDetailData?.placeOfOrigin}</p>
                 </div>
               </div>
 
@@ -161,19 +170,19 @@ export default function ProductDetailPage() {
               </div>
 
               <div className={`${Style.dflex} ${Style.productElementNote}`}>
-                <p>OEM/ODM Services</p>
-                <p>Free Product Customization</p>
-                <p>Min. Order: 500 Cartons</p>
+                <p>{productDetailData?.note1}</p>
+                <p>{productDetailData?.note2}</p>
+                <p>{productDetailData?.note3}</p>
               </div>
 
               <div
                 className={`${Style.dflex} ${Style.productElementBottomContent}`}
               >
-                <p>Customized logo</p>
-                <p>Customized packaging</p>
-                <p>Graphic customization</p>
-                <p>Formula customization</p>
-                <p>Mixed container: Max 8 flavors</p>
+                <p>{productDetailData?.bottomContent1}</p>
+                <p>{productDetailData?.bottomContent2}</p>
+                <p>{productDetailData?.bottomContent3}</p>
+                <p>{productDetailData?.bottomContent4}</p>
+                <p>{productDetailData?.bottomContent5}</p>
               </div>
             </div>
           </Col>
@@ -521,4 +530,6 @@ export default function ProductDetailPage() {
       </div>
     </div>
   );
-}
+};
+
+export default ProductDetailPage;

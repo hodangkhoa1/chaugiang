@@ -16,13 +16,13 @@
             "id": 3,
             "title": "Coconut Water With Mango",
             "subTitle": "330ml",
-            "image": "/images/products/productList/coconut mango 1.png"
+            "image": "/images/products/4.png"
         },
         {
             "id": 4,
             "title": "Sparkling Coconut Water",
             "subTitle": "330ml",
-            "image": "/images/products/productList/Sparkling coconut pure.png"
+            "image": "/images/products/5.png"
         }
     ],
     "milk": [
@@ -36,19 +36,19 @@
             "id": 6,
             "title": "Green Bean Milk",
             "subTitle": "500ml",
-            "image": "/images/products/productList/16.png"
+            "image": "/images/products/8.png"
         },
         {
             "id": 7,
             "title": "Soya Milk",
             "subTitle": "500ml",
-            "image": "/images/products/productList/17.png"
+            "image": "/images/products/9.png"
         },
         {
             "id": 8,
             "title": "Corn Milk",
             "subTitle": "500ml",
-            "image": "/images/products/productList/18.png"
+            "image": "/images/products/10.png"
         }
     ],
     "juice": [
@@ -62,19 +62,19 @@
             "id": 10,
             "title": "Tamarind Juice",
             "subTitle": "330ml",
-            "image": "/images/products/productList/1.png"
+            "image": "/images/products/13.png"
         },
         {
             "id": 11,
             "title": "Soursop Juice",
             "subTitle": "330ml",
-            "image": "/images/products/productList/soursop 330 short can.png"
+            "image": "/images/products/14.png"
         },
         {
             "id": 12,
             "title": "Orange Fruit",
             "subTitle": "330ml",
-            "image": "/images/products/productList/2.png"
+            "image": "/images/products/15.png"
         }
     ],
     "aloeVera": [
@@ -100,7 +100,7 @@
             "id": 16,
             "title": "Aloe Vera With Pulp Flavor Watermelon",
             "subTitle": "500ml",
-            "image": "/images/products/productList/dua hau Pet bottle 500ml.png"
+            "image": "/images/products/20.png"
         }
     ],
     "coffee": [
@@ -114,7 +114,7 @@
             "id": 18,
             "title": "Coffee Latte",
             "subTitle": "250ml",
-            "image": "/images/products/productList/cafe latte.png"
+            "image": "/images/products/23.png"
         },
         {
             "id": 19,
@@ -140,19 +140,19 @@
             "id": 22,
             "title": "Energy Drink CG 109",
             "subTitle": "330ml",
-            "image": "/images/products/productList/19-removebg-preview.png"
+            "image": "/images/products/28.png"
         },
         {
             "id": 23,
             "title": "Energy Drink",
             "subTitle": "250ml",
-            "image": "/images/products/productList/250 short can.png"
+            "image": "/images/products/29.png"
         },
         {
             "id": 24,
             "title": "Energy Drink",
             "subTitle": "250ml",
-            "image": "/images/products/productList/energy_250 slin can.png"
+            "image": "/images/products/30.png"
         }
     ]
 }
