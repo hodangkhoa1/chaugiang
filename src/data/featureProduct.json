@@ -1,0 +1,37 @@
+[
+    {
+        "id": "1",
+        "name": "CG Soya Milk Drink",
+        "image": "images/products/9.png",
+        "volume": "245ml",
+        "productDetail": "7"
+    },
+    {
+        "id": "2",
+        "name": "CG Corn Milk Drink",
+        "image": "images/products/10.png",
+        "volume": "325ml",
+        "productDetail": "8"
+    },
+    {
+        "id": "3",
+        "name": "CG Green bean Milk Drink",
+        "image": "images/products/8.png",
+        "volume": "325ml",
+        "productDetail": "6"
+    },
+    {
+        "id": "4",
+        "name": "Energy Drink CG 109",
+        "image": "images/products/28.png",
+        "volume": "500ml",
+        "productDetail": "22"
+    },
+    {
+        "id": "5",
+        "name": "Energy Drink",
+        "image": "images/products/30.png",
+        "volume": "500ml",
+        "productDetail": "24"
+    }
+]

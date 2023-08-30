@@ -5,6 +5,7 @@ import { Col, Row, Image, Breadcrumb } from 'antd';
 import { ArrowRightOutlined, SearchOutlined } from '@ant-design/icons';
 import { ROUTERS } from '@/constant/router';
 import { ProductsData } from './interface';
+import Link from 'next/link';
 
 export default function ProductsPage() {
   // const { translate: translateHome } = useI18n('common');
@@ -146,7 +147,7 @@ export default function ProductsPage() {
                     className={Style.listProductCol}
                     key={index}
                   >
-                    <a href={ROUTERS.PRODUCTS_DETAIL(product.id.toString())}>
+                    <Link href={ROUTERS.PRODUCTS_DETAIL(product.id.toString())}>
                       <div className={Style.listProductCard}>
                         <div className={Style.listProductCardImage}>
                           <img src={product.image} alt={product.title} />
@@ -154,7 +155,7 @@ export default function ProductsPage() {
                         <h1>{product.title}</h1>
                         <h1>{product.subTitle}</h1>
                       </div>
-                    </a>
+                    </Link>
                   </Col>
                 ))}
               </Row>
@@ -190,7 +191,7 @@ export default function ProductsPage() {
                     className={Style.listProductCol}
                     key={index}
                   >
-                    <a href={ROUTERS.PRODUCTS_DETAIL(product.id.toString())}>
+                    <Link href={ROUTERS.PRODUCTS_DETAIL(product.id.toString())}>
                       <div className={Style.listProductCard}>
                         <div className={Style.listProductCardImage}>
                           <img src={product.image} alt={product.title} />
@@ -198,7 +199,7 @@ export default function ProductsPage() {
                         <h1>{product.title}</h1>
                         <h1>{product.subTitle}</h1>
                       </div>
-                    </a>
+                    </Link>
                   </Col>
                 ))}
               </Row>
@@ -234,7 +235,7 @@ export default function ProductsPage() {
                     className={Style.listProductCol}
                     key={index}
                   >
-                    <a href={ROUTERS.PRODUCTS_DETAIL(product.id.toString())}>
+                    <Link href={ROUTERS.PRODUCTS_DETAIL(product.id.toString())}>
                       <div className={Style.listProductCard}>
                         <div className={Style.listProductCardImage}>
                           <img src={product.image} alt={product.title} />
@@ -242,7 +243,7 @@ export default function ProductsPage() {
                         <h1>{product.title}</h1>
                         <h1>{product.subTitle}</h1>
                       </div>
-                    </a>
+                    </Link>
                   </Col>
                 ))}
               </Row>
@@ -278,7 +279,7 @@ export default function ProductsPage() {
                     className={Style.listProductCol}
                     key={index}
                   >
-                    <a href={ROUTERS.PRODUCTS_DETAIL(product.id.toString())}>
+                    <Link href={ROUTERS.PRODUCTS_DETAIL(product.id.toString())}>
                       <div className={Style.listProductCard}>
                         <div className={Style.listProductCardImage}>
                           <img src={product.image} alt={product.title} />
@@ -286,7 +287,7 @@ export default function ProductsPage() {
                         <h1>{product.title}</h1>
                         <h1>{product.subTitle}</h1>
                       </div>
-                    </a>
+                    </Link>
                   </Col>
                 ))}
               </Row>
@@ -322,7 +323,7 @@ export default function ProductsPage() {
                     className={Style.listProductCol}
                     key={index}
                   >
-                    <a href={ROUTERS.PRODUCTS_DETAIL(product.id.toString())}>
+                    <Link href={ROUTERS.PRODUCTS_DETAIL(product.id.toString())}>
                       <div className={Style.listProductCard}>
                         <div className={Style.listProductCardImage}>
                           <img src={product.image} alt={product.title} />
@@ -330,7 +331,7 @@ export default function ProductsPage() {
                         <h1>{product.title}</h1>
                         <h1>{product.subTitle}</h1>
                       </div>
-                    </a>
+                    </Link>
                   </Col>
                 ))}
               </Row>
@@ -366,7 +367,7 @@ export default function ProductsPage() {
                     className={Style.listProductCol}
                     key={index}
                   >
-                    <a href={ROUTERS.PRODUCTS_DETAIL(product.id.toString())}>
+                    <Link href={ROUTERS.PRODUCTS_DETAIL(product.id.toString())}>
                       <div className={Style.listProductCard}>
                         <div className={Style.listProductCardImage}>
                           <img src={product.image} alt={product.title} />
@@ -374,7 +375,7 @@ export default function ProductsPage() {
                         <h1>{product.title}</h1>
                         <h1>{product.subTitle}</h1>
                       </div>
-                    </a>
+                    </Link>
                   </Col>
                 ))}
               </Row>

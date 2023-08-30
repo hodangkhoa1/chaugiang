@@ -1,15 +1,159 @@
 // import useI18n from '@/i18n/useI18N';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import Style from './home.module.scss';
 import { Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
-import { ArrowRightOutlined } from '@ant-design/icons';
+import {
+  ArrowRightOutlined,
+  LeftOutlined,
+  RightOutlined,
+} from '@ant-design/icons';
 import { Carousel, Col, Row, Image } from 'antd';
+import Link from 'next/link';
+import { ROUTERS } from '@/constant/router';
+import { HomeProductData } from './interface';
 
 export default function HomePage() {
   // const { translate: translateHome } = useI18n('common');
+
+  const carouselResponsiveSettings = [
+    {
+      breakpoint: 1258,
+      settings: {
+        slidesToShow: 4,
+        slidesToScroll: 3,
+        infinite: true,
+        dots: true,
+      },
+    },
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        infinite: true,
+        dots: true,
+      },
+    },
+    {
+      breakpoint: 876,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 3,
+        infinite: true,
+        dots: true,
+      },
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 2,
+        initialSlide: 2,
+      },
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+      },
+    },
+  ];
+
+  const SampleNextArrow = (props: any) => {
+    const { className, style, onClick } = props;
+    return (
+      <div
+        className={className}
+        style={{
+          ...style,
+          color: '#00894f',
+          fontSize: '16px',
+          background: '#8dc63f',
+          width: '30px',
+          height: '30px',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          borderRadius: '50%',
+          marginRight: '10px',
+          marginTop: '-60px',
+        }}
+        onClick={onClick}
+      >
+        <RightOutlined />
+      </div>
+    );
+  };
+
+  const SamplePrevArrow = (props: any) => {
+    const { className, style, onClick } = props;
+
+    return (
+      <div
+        className={className}
+        style={{
+          ...style,
+          color: '#00894f',
+          fontSize: '16px',
+          background: '#8dc63f',
+          width: '30px',
+          height: '30px',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          borderRadius: '50%',
+          marginLeft: '10px',
+          marginTop: '-60px',
+        }}
+        onClick={onClick}
+      >
+        <LeftOutlined />
+      </div>
+    );
+  };
+
+  const settings = {
+    nextArrow: <SampleNextArrow />,
+    prevArrow: <SamplePrevArrow />,
+  };
+
+  const [bestSellingData, setBestSellingData] = useState<HomeProductData[]>();
+  const [newProductData, setNewProductData] = useState<HomeProductData[]>();
+  const [featureProductData, setFeatureProductData] =
+    useState<HomeProductData[]>();
+
+  useEffect(() => {
+    import('../../data/bestSelling.json')
+      .then((response) => {
+        const data: HomeProductData[] = response.default;
+        setBestSellingData(data);
+      })
+      .catch((error) => {
+        console.error('Error fetching data:', error);
+      });
+
+    import('../../data/newProduct.json')
+      .then((response) => {
+        const data: HomeProductData[] = response.default;
+        setNewProductData(data);
+      })
+      .catch((error) => {
+        console.error('Error fetching data:', error);
+      });
+
+    import('../../data/featureProduct.json')
+      .then((response) => {
+        const data: HomeProductData[] = response.default;
+        setFeatureProductData(data);
+      })
+      .catch((error) => {
+        console.error('Error fetching data:', error);
+      });
+  }, []);
 
   return (
     <div>
@@ -26,13 +170,13 @@ export default function HomePage() {
         }}
       >
         <SwiperSlide className={Style.swiperSlide}>
-          <img src="images/slider_header/slider_background.png" alt="" />
+          <img src="images/slider_header/slider_background_1.png" alt="" />
         </SwiperSlide>
         <SwiperSlide className={Style.swiperSlide}>
-          <img src="images/slider_header/slider_background.png" alt="" />
+          <img src="images/slider_header/slider_background_2.png" alt="" />
         </SwiperSlide>
         <SwiperSlide className={Style.swiperSlide}>
-          <img src="images/slider_header/slider_background.png" alt="" />
+          <img src="images/slider_header/slider_background_1.png" alt="" />
         </SwiperSlide>
       </Swiper>
 
@@ -41,13 +185,15 @@ export default function HomePage() {
           <div className={Style.certificationTitle}>
             <h1>Our Certifications</h1>
           </div>
-          <div className={Style.certificationLine}></div>
         </div>
 
         <Carousel
           slidesToShow={4}
           className={Style.certificationCarousel}
           autoplay
+          arrows
+          {...settings}
+          responsive={carouselResponsiveSettings}
         >
           <div className={Style.certificationCard}>
             <div className={Style.certificationCardImage}>
@@ -165,8 +311,6 @@ export default function HomePage() {
               <div className={`${Style.dflex} ${Style.aboutUsPicture}`}>
                 <img src="images/about_us/thom.png" alt="" />
               </div>
-
-              <div className={Style.line}></div>
             </div>
           </div>
 
@@ -221,66 +365,90 @@ export default function HomePage() {
           <div className={Style.productTitle}>
             <h1>Product</h1>
           </div>
-          <div className={Style.productLine}></div>
         </div>
 
-        <Carousel slidesToShow={4} className={Style.productCarousel} autoplay>
-          <div className={Style.productCard}>
+        <Carousel
+          arrows
+          {...settings}
+          slidesToShow={4}
+          className={Style.productCarousel}
+          autoplay
+          responsive={carouselResponsiveSettings}
+        >
+          <Link
+            href={ROUTERS.PRODUCTS_DETAIL('1')}
+            className={Style.productCard}
+          >
             <div className={Style.productCardImage}>
-              <img src="images/products/tamarind_330_short_can.png" alt="" />
+              <img src="images/products/2.png" alt="" />
             </div>
-            <h1>Tamarind Juice</h1>
-            <h4>330ml</h4>
-          </div>
-          <div className={Style.productCard}>
+            <h1>Pure Coconut Water</h1>
+            <h4>325ml</h4>
+          </Link>
+          <Link
+            href={ROUTERS.PRODUCTS_DETAIL('2')}
+            className={Style.productCard}
+          >
             <div className={Style.productCardImage}>
-              <img src="images/products/mixed_330_short_can.png" alt="" />
+              <img src="images/products/3.png" alt="" />
             </div>
-            <h1>Mixed Juice Drink</h1>
+            <h1>Coconut Water 100% Pure</h1>
             <h4>330ml</h4>
-          </div>
-          <div className={Style.productCard}>
+          </Link>
+          <Link href="" className={Style.productCard}>
             <div className={Style.productCardImage}>
-              <img src="images/products/rown_rice_milk.png" alt="" />
+              <img src="images/products/31.png" alt="" />
             </div>
             <h1>Brown Rice Milk</h1>
             <h4>250ml</h4>
-          </div>
-          <div className={Style.productCard}>
+          </Link>
+          <Link
+            href={ROUTERS.PRODUCTS_DETAIL('7')}
+            className={Style.productCard}
+          >
             <div className={Style.productCardImage}>
-              <img src="images/products/coconut_mango.png" alt="" />
+              <img src="images/products/9.png" alt="" />
             </div>
-            <h1>Coconut Water With Mango</h1>
-            <h4>330ml</h4>
-          </div>
-          <div className={Style.productCard}>
+            <h1>Soya Milk</h1>
+            <h4>500ml</h4>
+          </Link>
+          <Link href="" className={Style.productCard}>
             <div className={Style.productCardImage}>
-              <img src="images/products/tamarind_330_short_can.png" alt="" />
+              <img src="images/products/32.png" alt="" />
             </div>
             <h1>Tamarind Juice</h1>
             <h4>330ml</h4>
-          </div>
-          <div className={Style.productCard}>
+          </Link>
+          <Link
+            href={ROUTERS.PRODUCTS_DETAIL('22')}
+            className={Style.productCard}
+          >
             <div className={Style.productCardImage}>
-              <img src="images/products/mixed_330_short_can.png" alt="" />
+              <img src="images/products/28.png" alt="" />
             </div>
-            <h1>Mixed Juice Drink</h1>
+            <h1>Energy Drink CG 109</h1>
             <h4>330ml</h4>
-          </div>
-          <div className={Style.productCard}>
+          </Link>
+          <Link
+            href={ROUTERS.PRODUCTS_DETAIL('18')}
+            className={Style.productCard}
+          >
             <div className={Style.productCardImage}>
-              <img src="images/products/rown_rice_milk.png" alt="" />
+              <img src="images/products/23.png" alt="" />
             </div>
-            <h1>Brown Rice Milk</h1>
+            <h1>Coffee Latte</h1>
             <h4>250ml</h4>
-          </div>
-          <div className={Style.productCard}>
+          </Link>
+          <Link
+            href={ROUTERS.PRODUCTS_DETAIL('13')}
+            className={Style.productCard}
+          >
             <div className={Style.productCardImage}>
-              <img src="images/products/coconut_mango.png" alt="" />
+              <img src="images/products/17.png" alt="" />
             </div>
-            <h1>Coconut Water With Mango</h1>
-            <h4>330ml</h4>
-          </div>
+            <h1>Aloe Vera 100% Pure</h1>
+            <h4>500ml</h4>
+          </Link>
         </Carousel>
       </div>
 
@@ -291,13 +459,12 @@ export default function HomePage() {
           <div className={Style.bestSellingTop__left}>
             <div className={Style.left__cover}>
               <div className={Style.images}>
-                <img src="images/best_selling/nho-xanh.png" alt="" />
+                <img src="images/products/nho-xanh.png" alt="" />
               </div>
               <div className={Style.coverTitle}>
                 <div className={Style.title}>
                   <h2>best selling</h2>
                 </div>
-                <div className={Style.line}></div>
               </div>
             </div>
           </div>
@@ -306,33 +473,25 @@ export default function HomePage() {
             <div className={Style.right__cover}>
               <div className={Style.menuTop}>
                 <div className={Style.itemLink}>
-                  <a href="">brown rice</a>
+                  <a href="">Brown Rice Milk Drink</a>
                 </div>
 
                 <div className={Style.itemLink}>
-                  <a href="">oats</a>
+                  <a href="">Oat Cereal</a>
                 </div>
 
                 <div className={Style.itemLink}>
-                  <a href="">cononut</a>
-                </div>
-
-                <div className={Style.itemLink}>
-                  <a href="">sparkling coconut</a>
+                  <a href="">Milk Drink Coconut Water</a>
                 </div>
               </div>
 
               <div className={Style.menuBottom}>
                 <div className={Style.itemLink}>
-                  <a href="">tamarind</a>
+                  <a href="">Sparkling Coconut Water</a>
                 </div>
 
                 <div className={Style.itemLink}>
-                  <a href="">mango</a>
-                </div>
-
-                <div className={Style.itemLink}>
-                  <a href="">bottle of aloe vera</a>
+                  <a href="">Fruit Juice Drink</a>
                 </div>
               </div>
             </div>
@@ -351,7 +510,7 @@ export default function HomePage() {
             <Col lg={6} span={24}>
               <div className={Style.bestSellingBottom__left}>
                 <div className={Style.images}>
-                  <img src="images/best_selling/nuoc-dua.jpg" alt="" />
+                  <img src="images/products/1.jpg" alt="" />
                 </div>
               </div>
             </Col>
@@ -363,76 +522,23 @@ export default function HomePage() {
                     slidesToShow={4}
                     className={Style.bestSellingCarousel}
                     autoplay
+                    responsive={carouselResponsiveSettings}
                   >
-                    <div className={Style.bestSellingCard}>
-                      <div className={Style.bestSellingCardImage}>
-                        <img src="images/best_selling/13.png" alt="" />
-                      </div>
-                      <h1>Bird&apos;s Nest Water</h1>
-                      <h4>330ml</h4>
-                    </div>
-
-                    <div className={Style.bestSellingCard}>
-                      <div className={Style.bestSellingCardImage}>
-                        <img src="images/best_selling/15.png" alt="" />
-                      </div>
-                      <h1>Brown Rice Milk</h1>
-                      <h4>250ml</h4>
-                    </div>
-
-                    <div className={Style.bestSellingCard}>
-                      <div className={Style.bestSellingCardImage}>
-                        <img
-                          src="images/best_selling/coconut pine.png"
-                          alt=""
-                        />
-                      </div>
-                      <h1>Coconut Water With Mango</h1>
-                      <h4>330ml</h4>
-                    </div>
-
-                    <div className={Style.bestSellingCard}>
-                      <div className={Style.bestSellingCardImage}>
-                        <img src="images/best_selling/tamSenTra.png" alt="" />
-                      </div>
-                      <h1>Lotus Hert Tea</h1>
-                      <h4>250ml</h4>
-                    </div>
-
-                    <div className={Style.bestSellingCard}>
-                      <div className={Style.bestSellingCardImage}>
-                        <img src="images/best_selling/13.png" alt="" />
-                      </div>
-                      <h1>Bird&apos;s Nest Water</h1>
-                      <h4>330ml</h4>
-                    </div>
-
-                    <div className={Style.bestSellingCard}>
-                      <div className={Style.bestSellingCardImage}>
-                        <img src="images/best_selling/15.png" alt="" />
-                      </div>
-                      <h1>Brown Rice Milk</h1>
-                      <h4>250ml</h4>
-                    </div>
-
-                    <div className={Style.bestSellingCard}>
-                      <div className={Style.bestSellingCardImage}>
-                        <img
-                          src="images/best_selling/coconut pine.png"
-                          alt=""
-                        />
-                      </div>
-                      <h1>Coconut Water With Mango</h1>
-                      <h4>330ml</h4>
-                    </div>
-
-                    <div className={Style.bestSellingCard}>
-                      <div className={Style.bestSellingCardImage}>
-                        <img src="images/best_selling/tamSenTra.png" alt="" />
-                      </div>
-                      <h1>Lotus Hert Tea</h1>
-                      <h4>250ml</h4>
-                    </div>
+                    {bestSellingData?.map((bestSelling, index) => (
+                      <Link
+                        href={ROUTERS.PRODUCTS_DETAIL(
+                          bestSelling.productDetail
+                        )}
+                        className={Style.bestSellingCard}
+                        key={index}
+                      >
+                        <div className={Style.bestSellingCardImage}>
+                          <img src={bestSelling.image} alt="" />
+                        </div>
+                        <h1>{bestSelling.name}</h1>
+                        <h4>{bestSelling.volume}</h4>
+                      </Link>
+                    ))}
                   </Carousel>
                 </div>
               </div>
@@ -448,13 +554,12 @@ export default function HomePage() {
           <div className={Style.bestSellingTop__left}>
             <div className={Style.left__cover}>
               <div className={Style.images}>
-                <img src="images/new_product/nho-xanh.png" alt="" />
+                <img src="images/products/nho-xanh.png" alt="" />
               </div>
               <div className={Style.coverTitle}>
                 <div className={Style.title}>
-                  <h2>new product</h2>
+                  <h2 className={Style.newProductTitle}>new product</h2>
                 </div>
-                <div className={Style.line}></div>
               </div>
             </div>
           </div>
@@ -463,33 +568,19 @@ export default function HomePage() {
             <div className={Style.right__cover}>
               <div className={Style.menuTop}>
                 <div className={Style.itemLink}>
-                  <a href="">sparkling watermelon</a>
+                  <a href="">Pet Aloe Vera Drink</a>
                 </div>
 
                 <div className={Style.itemLink}>
-                  <a href="">sparkling fragrant coconut</a>
+                  <a href="">Sparkling Fruit Juice</a>
                 </div>
 
                 <div className={Style.itemLink}>
-                  <a href="">black coffee</a>
-                </div>
-              </div>
-
-              <div className={Style.menuBottom}>
-                <div className={Style.itemLink}>
-                  <a href="">cappuccino</a>
+                  <a href="">Coffee</a>
                 </div>
 
                 <div className={Style.itemLink}>
-                  <a href="">custard apple</a>
-                </div>
-
-                <div className={Style.itemLink}>
-                  <a href="">peach tea</a>
-                </div>
-
-                <div className={Style.itemLink}>
-                  <a href="">lemon tea</a>
+                  <a href="">Tea</a>
                 </div>
               </div>
             </div>
@@ -521,75 +612,19 @@ export default function HomePage() {
                     className={Style.bestSellingCarousel}
                     autoplay
                   >
-                    <div className={Style.bestSellingCard}>
-                      <div className={Style.bestSellingCardImage}>
-                        <img
-                          src="images/new_product/cafe ORIGINAL.png"
-                          alt=""
-                        />
-                      </div>
-                      <h1>coffee original</h1>
-                      <h4>330ml</h4>
-                    </div>
-
-                    <div className={Style.bestSellingCard}>
-                      <div className={Style.bestSellingCardImage}>
-                        <img src="images/new_product/cafeMocha.png" alt="" />
-                      </div>
-                      <h1>coffee mocha</h1>
-                      <h4>250ml</h4>
-                    </div>
-
-                    <div className={Style.bestSellingCard}>
-                      <div className={Style.bestSellingCardImage}>
-                        <img src="images/new_product/19.png" alt="" />
-                      </div>
-                      <h1>energy drink 109</h1>
-                      <h4>250ml</h4>
-                    </div>
-
-                    <div className={Style.bestSellingCard}>
-                      <div className={Style.bestSellingCardImage}>
-                        <img src="images/new_product/20.png" alt="" />
-                      </div>
-                      <h1>strawberry flavor 109</h1>
-                      <h4>250ml</h4>
-                    </div>
-
-                    <div className={Style.bestSellingCard}>
-                      <div className={Style.bestSellingCardImage}>
-                        <img
-                          src="images/new_product/cafe ORIGINAL.png"
-                          alt=""
-                        />
-                      </div>
-                      <h1>coffee original</h1>
-                      <h4>330ml</h4>
-                    </div>
-
-                    <div className={Style.bestSellingCard}>
-                      <div className={Style.bestSellingCardImage}>
-                        <img src="images/new_product/cafeMocha.png" alt="" />
-                      </div>
-                      <h1>coffee mocha</h1>
-                      <h4>250ml</h4>
-                    </div>
-
-                    <div className={Style.bestSellingCard}>
-                      <div className={Style.bestSellingCardImage}>
-                        <img src="images/new_product/19.png" alt="" />
-                      </div>
-                      <h1>energy drink 109</h1>
-                      <h4>250ml</h4>
-                    </div>
-
-                    <div className={Style.bestSellingCard}>
-                      <div className={Style.bestSellingCardImage}>
-                        <img src="images/new_product/20.png" alt="" />
-                      </div>
-                      <h1>strawberry flavor 109</h1>
-                      <h4>250ml</h4>
-                    </div>
+                    {newProductData?.map((newProduct, index) => (
+                      <Link
+                        href={ROUTERS.PRODUCTS_DETAIL(newProduct.productDetail)}
+                        className={Style.bestSellingCard}
+                        key={index}
+                      >
+                        <div className={Style.bestSellingCardImage}>
+                          <img src={newProduct.image} alt="" />
+                        </div>
+                        <h1>{newProduct.name}</h1>
+                        <h4>{newProduct.volume}</h4>
+                      </Link>
+                    ))}
                   </Carousel>
                 </div>
               </div>
@@ -605,13 +640,14 @@ export default function HomePage() {
           <div className={Style.bestSellingTop__left}>
             <div className={Style.left__cover}>
               <div className={Style.images}>
-                <img src="images/featured_product/nho-xanh.png" alt="" />
+                <img src="images/products/nho-xanh.png" alt="" />
               </div>
               <div className={Style.coverTitle}>
                 <div className={Style.title}>
-                  <h2>featured product</h2>
+                  <h2 className={Style.featuredProductTitle}>
+                    featured product
+                  </h2>
                 </div>
-                <div className={Style.line}></div>
               </div>
             </div>
           </div>
@@ -620,33 +656,29 @@ export default function HomePage() {
             <div className={Style.right__cover}>
               <div className={Style.menuTop}>
                 <div className={Style.itemLink}>
-                  <a href="">brown rice milk</a>
+                  <a href="">Soy Bean Milk</a>
                 </div>
 
                 <div className={Style.itemLink}>
-                  <a href="">soy milk</a>
+                  <a href="">Green Bean Milk</a>
                 </div>
 
                 <div className={Style.itemLink}>
-                  <a href="">mung bean milk</a>
+                  <a href="">Corn Milk</a>
                 </div>
 
                 <div className={Style.itemLink}>
-                  <a href="">corn milk</a>
+                  <a href="">Bird&apos;s Nest Drink</a>
                 </div>
               </div>
 
               <div className={Style.menuBottom}>
                 <div className={Style.itemLink}>
-                  <a href="">Bird&apos;s Nest</a>
+                  <a href="">Aloe Vera Bird&apos;s Nest Drink</a>
                 </div>
 
                 <div className={Style.itemLink}>
-                  <a href="">stir-fried Bird&apos;s Nest</a>
-                </div>
-
-                <div className={Style.itemLink}>
-                  <a href="">aloe vera Bird&apos;s Nest</a>
+                  <a href="">Energy Drink</a>
                 </div>
               </div>
             </div>
@@ -665,10 +697,7 @@ export default function HomePage() {
             <Col lg={6} span={24}>
               <div className={Style.bestSellingBottom__left}>
                 <div className={Style.images}>
-                  <img
-                    src="images/featured_product/featureProduct.jpg"
-                    alt=""
-                  />
+                  <img src="images/products/6.jpg" alt="" />
                 </div>
               </div>
             </Col>
@@ -681,87 +710,21 @@ export default function HomePage() {
                     className={Style.bestSellingCarousel}
                     autoplay
                   >
-                    <div className={Style.bestSellingCard}>
-                      <div className={Style.bestSellingCardImage}>
-                        <img
-                          src="images/featured_product/mixed 330 short can.png"
-                          alt=""
-                        />
-                      </div>
-                      <h1>mixed juice drink</h1>
-                      <h4>330ml</h4>
-                    </div>
-
-                    <div className={Style.bestSellingCard}>
-                      <div className={Style.bestSellingCardImage}>
-                        <img src="images/featured_product/15.png" alt="" />
-                      </div>
-                      <h1>brown rice milk</h1>
-                      <h4>250ml</h4>
-                    </div>
-
-                    <div className={Style.bestSellingCard}>
-                      <div className={Style.bestSellingCardImage}>
-                        <img
-                          src="images/featured_product/coconut mango 1.png"
-                          alt=""
-                        />
-                      </div>
-                      <h1>Coconut Water With Mango</h1>
-                      <h4>330ml</h4>
-                    </div>
-
-                    <div className={Style.bestSellingCard}>
-                      <div className={Style.bestSellingCardImage}>
-                        <img
-                          src="images/featured_product/energy_250 slin can.png"
-                          alt=""
-                        />
-                      </div>
-                      <h1>energy drink</h1>
-                      <h4>250ml</h4>
-                    </div>
-
-                    <div className={Style.bestSellingCard}>
-                      <div className={Style.bestSellingCardImage}>
-                        <img
-                          src="images/featured_product/mixed 330 short can.png"
-                          alt=""
-                        />
-                      </div>
-                      <h1>mixed juice drink</h1>
-                      <h4>330ml</h4>
-                    </div>
-
-                    <div className={Style.bestSellingCard}>
-                      <div className={Style.bestSellingCardImage}>
-                        <img src="images/featured_product/15.png" alt="" />
-                      </div>
-                      <h1>brown rice milk</h1>
-                      <h4>250ml</h4>
-                    </div>
-
-                    <div className={Style.bestSellingCard}>
-                      <div className={Style.bestSellingCardImage}>
-                        <img
-                          src="images/featured_product/coconut mango 1.png"
-                          alt=""
-                        />
-                      </div>
-                      <h1>Coconut Water With Mango</h1>
-                      <h4>330ml</h4>
-                    </div>
-
-                    <div className={Style.bestSellingCard}>
-                      <div className={Style.bestSellingCardImage}>
-                        <img
-                          src="images/featured_product/energy_250 slin can.png"
-                          alt=""
-                        />
-                      </div>
-                      <h1>energy drink</h1>
-                      <h4>250ml</h4>
-                    </div>
+                    {featureProductData?.map((featureProduct, index) => (
+                      <Link
+                        href={ROUTERS.PRODUCTS_DETAIL(
+                          featureProduct.productDetail
+                        )}
+                        className={Style.bestSellingCard}
+                        key={index}
+                      >
+                        <div className={Style.bestSellingCardImage}>
+                          <img src={featureProduct.image} alt="" />
+                        </div>
+                        <h1>{featureProduct.name}</h1>
+                        <h4>{featureProduct.volume}</h4>
+                      </Link>
+                    ))}
                   </Carousel>
                 </div>
               </div>
@@ -811,7 +774,6 @@ export default function HomePage() {
               <div className={`${Style.dflex} ${Style.newsTitle}`}>
                 <h1>News and event</h1>
               </div>
-              <div className={Style.newsLine}></div>
             </div>
           </div>
 
@@ -951,10 +913,6 @@ export default function HomePage() {
               <div className={`${Style.dflex} ${Style.whyChooseUsTitle}`}>
                 <h1>Why choose Us?</h1>
               </div>
-
-              <div
-                className={`${Style.lineWhyChooseUs} ${Style.whyChooseUsLine}`}
-              ></div>
             </div>
           </div>
 
@@ -1038,8 +996,6 @@ export default function HomePage() {
               >
                 <h1>Customer Information</h1>
               </div>
-
-              <div className={Style.customerInformationLine}></div>
             </div>
           </div>
 

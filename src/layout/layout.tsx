@@ -345,7 +345,7 @@ export function AppLayout(props: Props) {
                   </div>
 
                   <div className={LayoutStyle.footerTitle}>
-                    <h1>ChauGiang food beverage</h1>
+                    <h1>We Would Be Happy To Assist You</h1>
                   </div>
 
                   <div
@@ -357,68 +357,54 @@ export function AppLayout(props: Props) {
                       <EnvironmentOutlined
                         className={LayoutStyle.iconFooterOut}
                       />
-                      <p className={LayoutStyle.contentFooterOut}>
-                        Factory Block 1, Lot C1-1/X6-X7, Road D4, Tan Phu Trung
-                        Industrial Park, Cu Chi District, HCMC, Vietnam.
-                      </p>
+                      <div>
+                        <p className={LayoutStyle.contentFooterOut}>
+                          Chau Giang Food Processing and Trading Co., Ltd
+                        </p>
+                        <p className={LayoutStyle.contentFooterOut}>
+                          Address: Warehouse No.1, Lot C1-1/X1, Road D4, Tan Phu
+                          Trung Industrial Park, Cu Chi District, Ho Chi Minh
+                          City, Vietnam.
+                        </p>
+                        <p className={LayoutStyle.contentFooterOut}>
+                          Tel: +84 903722771 (Mrs. Tứ)
+                        </p>
+                      </div>
                     </div>
 
                     <div
                       className={`${LayoutStyle.dflex} ${LayoutStyle.footerItem}`}
                     >
-                      <a
-                        className={LayoutStyle.dflex}
-                        href="mailto:chaugiangfood@gmail.com"
-                      >
-                        <MailOutlined className={LayoutStyle.iconFooter} />
-                        <p>chaugiangfood@gmail.com</p>
+                      <PhoneOutlined className={LayoutStyle.iconFooterOut} />
+                      <div className={LayoutStyle.content}>
+                        <p>Hotline: Viber/Line/WhatsApp:</p>
+
+                        <a href="tel:+084903722771">
+                          <p>+084903722771 (Mr. Luyen)</p>
+                        </a>
+
+                        <a href="tel:+84353960786">
+                          <p>+84 353960786 (Mr. Gray)</p>
+                        </a>
+                      </div>
+                    </div>
+
+                    <div
+                      className={`${LayoutStyle.dflex} ${LayoutStyle.footerItem}`}
+                    >
+                      <MailOutlined className={LayoutStyle.iconFooterOut} />
+                      <a href="mailto:info@chaugiangfood.com">
+                        <p>info@chaugiangfood.com</p>
                       </a>
                     </div>
 
                     <div
                       className={`${LayoutStyle.dflex} ${LayoutStyle.footerItem}`}
                     >
-                      <a
-                        className={LayoutStyle.dflex}
-                        href="https://chaugiangfood.com"
-                      >
-                        <GlobalOutlined className={LayoutStyle.iconFooter} />
+                      <GlobalOutlined className={LayoutStyle.iconFooterOut} />
+                      <a href="https://chaugiangfood.com">
                         <p>chaugiangfood.com</p>
                       </a>
-                    </div>
-
-                    <div
-                      className={`${LayoutStyle.dflex} ${LayoutStyle.footerItem}`}
-                    >
-                      <PhoneOutlined className={LayoutStyle.iconFooterOut} />
-                      <div className={LayoutStyle.content}>
-                        <p>Internal Markets:</p>
-
-                        <a href="tel:+84903772771">
-                          <p>+ (84)903.772.771 (Mrs.Tứ)</p>
-                        </a>
-
-                        <a href="tel:+84353960786">
-                          <p>+ (84)353.960.786 (Mr.Gray)</p>
-                        </a>
-                      </div>
-                    </div>
-
-                    <div
-                      className={`${LayoutStyle.dflex} ${LayoutStyle.footerItem}`}
-                    >
-                      <PhoneOutlined className={LayoutStyle.iconFooterOut} />
-                      <div className={LayoutStyle.content}>
-                        <p>Foreign Markets:</p>
-
-                        <a href="tel:+84903772771">
-                          <p>+ (84)903.772.771 (Mrs.Tứ)</p>
-                        </a>
-
-                        <a href="tel:+84353960786">
-                          <p>+ (84)353.960.786 (Mr.Gray)</p>
-                        </a>
-                      </div>
                     </div>
                   </div>
                 </Col>

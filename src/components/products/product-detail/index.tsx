@@ -1,15 +1,19 @@
 // import useI18n from '@/i18n/useI18N';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Style from './products-detail.module.scss';
 import { Breadcrumb, Carousel, Col, Row, Image } from 'antd';
 import {
   ArrowRightOutlined,
   DeliveredProcedureOutlined,
   StarFilled,
+  RightOutlined,
+  LeftOutlined,
 } from '@ant-design/icons';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import productDetails from '../../../data/productDetail.json';
+import { PrivateLabelServicesProductData } from './interfaceAlsoProduct';
+import { ROUTERS } from '@/constant/router';
 
 const ProductDetailPage = () => {
   // const { translate: translateHome } = useI18n('common');
@@ -20,6 +24,123 @@ const ProductDetailPage = () => {
   function getItemById(id: string) {
     return productDetails.find((item: { id: string }) => item.id === id);
   }
+
+  const [privateLabelServicesProductData, setPrivateLabelServicesProductData] =
+    useState<PrivateLabelServicesProductData[]>();
+
+  useEffect(() => {
+    import('../../../data/productInPrivateLabelService.json')
+      .then((response) => {
+        const data: PrivateLabelServicesProductData[] = response.default;
+        setPrivateLabelServicesProductData(data);
+      })
+      .catch((error) => {
+        console.error('Error fetching data:', error);
+      });
+  }, []);
+
+  const carouselResponsiveSettings = [
+    {
+      breakpoint: 1258,
+      settings: {
+        slidesToShow: 4,
+        slidesToScroll: 3,
+        infinite: true,
+        dots: true,
+      },
+    },
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        infinite: true,
+        dots: true,
+      },
+    },
+    {
+      breakpoint: 876,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 3,
+        infinite: true,
+        dots: true,
+      },
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 2,
+        initialSlide: 2,
+      },
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+      },
+    },
+  ];
+
+  const SampleNextArrow = (props: any) => {
+    const { className, style, onClick } = props;
+    return (
+      <div
+        className={className}
+        style={{
+          ...style,
+          color: '#00894f',
+          fontSize: '16px',
+          background: '#8dc63f',
+          width: '30px',
+          height: '30px',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          borderRadius: '50%',
+          marginRight: '10px',
+          marginTop: '-60px',
+        }}
+        onClick={onClick}
+      >
+        <RightOutlined />
+      </div>
+    );
+  };
+
+  const SamplePrevArrow = (props: any) => {
+    const { className, style, onClick } = props;
+
+    return (
+      <div
+        className={className}
+        style={{
+          ...style,
+          color: '#00894f',
+          fontSize: '16px',
+          background: '#8dc63f',
+          width: '30px',
+          height: '30px',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          borderRadius: '50%',
+          marginLeft: '10px',
+          marginTop: '-60px',
+        }}
+        onClick={onClick}
+      >
+        <LeftOutlined />
+      </div>
+    );
+  };
+
+  const settings = {
+    nextArrow: <SampleNextArrow />,
+    prevArrow: <SamplePrevArrow />,
+  };
 
   return (
     <div style={{ background: '#fff' }}>
@@ -203,42 +324,6 @@ const ProductDetailPage = () => {
               awards in Vietnam and worldwide also.
             </p>
           </Col>
-          <Col lg={6} span={24}>
-            <Image
-              src="/images/bin_products/bin_products_3.png"
-              alt="logo"
-              width="100%"
-              height={195}
-              preview={true}
-            />
-          </Col>
-          <Col lg={6} span={24}>
-            <Image
-              src="/images/bin_products/bin_products_14.png"
-              alt="logo"
-              width="100%"
-              height={195}
-              preview={true}
-            />
-          </Col>
-          <Col lg={6} span={24}>
-            <Image
-              src="/images/bin_products/bin_products_11.png"
-              alt="logo"
-              width="100%"
-              height={195}
-              preview={true}
-            />
-          </Col>
-          <Col lg={6} span={24}>
-            <Image
-              src="/images/bin_products/bin_products_4.png"
-              alt="logo"
-              width="100%"
-              height={195}
-              preview={true}
-            />
-          </Col>
         </Row>
 
         <Row style={{ marginTop: '40px' }}>
@@ -251,42 +336,6 @@ const ProductDetailPage = () => {
               Juice Drink, Planted Milk Drink, Aloe Vera, Coffee and Energy
               Drink
             </p>
-          </Col>
-          <Col lg={6} span={24}>
-            <Image
-              src="/images/products/2.png"
-              alt="logo"
-              width="100%"
-              height={270}
-              preview={true}
-            />
-          </Col>
-          <Col lg={6} span={24}>
-            <Image
-              src="/images/products/28.png"
-              alt="logo"
-              width="100%"
-              height={270}
-              preview={true}
-            />
-          </Col>
-          <Col lg={6} span={24}>
-            <Image
-              src="/images/products/tamarind_330_short_can.png"
-              alt="logo"
-              width="100%"
-              height={270}
-              preview={true}
-            />
-          </Col>
-          <Col lg={6} span={24}>
-            <Image
-              src="/images/products/17.png"
-              alt="logo"
-              width="100%"
-              height={270}
-              preview={true}
-            />
           </Col>
         </Row>
 
@@ -354,63 +403,27 @@ const ProductDetailPage = () => {
       </div>
 
       <div className={Style.carouselProductBackground}>
-        <Carousel slidesToShow={4} className={Style.productCarousel} autoplay>
-          <div className={Style.productCard}>
-            <div className={Style.productCardImage}>
-              <img src="/images/products/22.png" alt="" />
-            </div>
-            <h1>Coffee Mocha</h1>
-            <h4>250ml</h4>
-          </div>
-          <div className={Style.productCard}>
-            <div className={Style.productCardImage}>
-              <img src="/images/products/23.png" alt="" />
-            </div>
-            <h1>Coffee Latte</h1>
-            <h4>250ml</h4>
-          </div>
-          <div className={Style.productCard}>
-            <div className={Style.productCardImage}>
-              <img src="/images/products/24.png" alt="" />
-            </div>
-            <h1>Bubble Tea With Lemon</h1>
-            <h4>330ml</h4>
-          </div>
-          <div className={Style.productCard}>
-            <div className={Style.productCardImage}>
-              <img src="/images/products/25.png" alt="" />
-            </div>
-            <h1>Lotus Heart Tea</h1>
-            <h4>250ml</h4>
-          </div>
-          <div className={Style.productCard}>
-            <div className={Style.productCardImage}>
-              <img src="/images/products/22.png" alt="" />
-            </div>
-            <h1>Coffee Mocha</h1>
-            <h4>250ml</h4>
-          </div>
-          <div className={Style.productCard}>
-            <div className={Style.productCardImage}>
-              <img src="/images/products/23.png" alt="" />
-            </div>
-            <h1>Coffee Latte</h1>
-            <h4>250ml</h4>
-          </div>
-          <div className={Style.productCard}>
-            <div className={Style.productCardImage}>
-              <img src="/images/products/24.png" alt="" />
-            </div>
-            <h1>Bubble Tea With Lemon</h1>
-            <h4>330ml</h4>
-          </div>
-          <div className={Style.productCard}>
-            <div className={Style.productCardImage}>
-              <img src="/images/products/25.png" alt="" />
-            </div>
-            <h1>Lotus Heart Tea</h1>
-            <h4>250ml</h4>
-          </div>
+        <Carousel
+          slidesToShow={4}
+          className={Style.productCarousel}
+          autoplay
+          responsive={carouselResponsiveSettings}
+          arrows
+          {...settings}
+        >
+          {privateLabelServicesProductData?.map((bestSelling, index) => (
+            <Link
+              href={ROUTERS.PRODUCTS_DETAIL(bestSelling.productDetail)}
+              className={Style.productCard}
+              key={index}
+            >
+              <div className={Style.productCardImage}>
+                <img src={bestSelling.image} alt="" />
+              </div>
+              <h1>{bestSelling.name}</h1>
+              <h4>{bestSelling.volume}</h4>
+            </Link>
+          ))}
         </Carousel>
       </div>
 

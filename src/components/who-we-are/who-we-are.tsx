@@ -2,10 +2,117 @@
 import React from 'react';
 import Style from './who-we-are.module.scss';
 import { Breadcrumb, Carousel, Col, Image, Row } from 'antd';
-import { ArrowRightOutlined } from '@ant-design/icons';
+import {
+  ArrowRightOutlined,
+  RightOutlined,
+  LeftOutlined,
+} from '@ant-design/icons';
 
 export default function WhoWeArePage() {
   // const { translate: translateHome } = useI18n('common');
+
+  const SampleNextArrow = (props: any) => {
+    const { className, style, onClick } = props;
+    return (
+      <div
+        className={className}
+        style={{
+          ...style,
+          color: '#00894f',
+          fontSize: '16px',
+          background: '#8dc63f',
+          width: '30px',
+          height: '30px',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          borderRadius: '50%',
+          marginRight: '10px',
+          marginTop: '-60px',
+        }}
+        onClick={onClick}
+      >
+        <RightOutlined />
+      </div>
+    );
+  };
+
+  const SamplePrevArrow = (props: any) => {
+    const { className, style, onClick } = props;
+
+    return (
+      <div
+        className={className}
+        style={{
+          ...style,
+          color: '#00894f',
+          fontSize: '16px',
+          background: '#8dc63f',
+          width: '30px',
+          height: '30px',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          borderRadius: '50%',
+          marginLeft: '10px',
+          marginTop: '-60px',
+        }}
+        onClick={onClick}
+      >
+        <LeftOutlined />
+      </div>
+    );
+  };
+
+  const settings = {
+    nextArrow: <SampleNextArrow />,
+    prevArrow: <SamplePrevArrow />,
+  };
+
+  const carouselResponsiveSettings = [
+    {
+      breakpoint: 1258,
+      settings: {
+        slidesToShow: 4,
+        slidesToScroll: 3,
+        infinite: true,
+        dots: true,
+      },
+    },
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        infinite: true,
+        dots: true,
+      },
+    },
+    {
+      breakpoint: 876,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 3,
+        infinite: true,
+        dots: true,
+      },
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 2,
+        initialSlide: 2,
+      },
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+      },
+    },
+  ];
 
   return (
     <div>
@@ -55,8 +162,18 @@ export default function WhoWeArePage() {
         </div>
 
         <div className={`${Style.dflex} ${Style.introduceOurFamilyLogo}`}>
-          <Image src="/images/introduce/30years.png" alt="logo" width={380} />
-          <Image src="/images/introduce/CGFood.png" alt="logo" width={430} />
+          <Image
+            src="/images/introduce/30years.png"
+            alt="logo"
+            width={380}
+            preview={false}
+          />
+          <Image
+            src="/images/introduce/CGFood.png"
+            alt="logo"
+            width={430}
+            preview={false}
+          />
         </div>
       </div>
 
@@ -105,6 +222,9 @@ export default function WhoWeArePage() {
           slidesToShow={4}
           className={Style.certificationCarousel}
           autoplay
+          arrows
+          {...settings}
+          responsive={carouselResponsiveSettings}
         >
           <div className={Style.certificationCard}>
             <div className={Style.certificationCardImage}>

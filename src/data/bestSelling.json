@@ -1,0 +1,44 @@
+[
+    {
+        "id": "1",
+        "name": "Passion Juice Drink Fruit",
+        "image": "images/products/32.png",
+        "volume": "330ml",
+        "productDetail": "2"
+    },
+    {
+        "id": "2",
+        "name": "CG Guava Juice Drink",
+        "image": "images/products/33.png",
+        "volume": "330ml",
+        "productDetail": "2"
+    },
+    {
+        "id": "3",
+        "name": "CG Coconut water with pulp",
+        "image": "images/products/2.png",
+        "volume": "325ml",
+        "productDetail": "1"
+    },
+    {
+        "id": "4",
+        "name": "CG Brown Rice Milk Drink",
+        "image": "images/products/7.png",
+        "volume": "245ml",
+        "productDetail": "5"
+    },
+    {
+        "id": "5",
+        "name": "CG Oat Milk Drink",
+        "image": "images/products/34.png",
+        "volume": "325ml",
+        "productDetail": "2"
+    },
+    {
+        "id": "6",
+        "name": "CG Pure Coconut Water",
+        "image": "images/products/3.png",
+        "volume": "330ml",
+        "productDetail": "2"
+    }
+]

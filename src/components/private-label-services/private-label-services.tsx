@@ -1,11 +1,135 @@
 // import useI18n from '@/i18n/useI18N';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Style from './private-label-services.module.scss';
 import { Breadcrumb, Carousel, Col, Image, Row } from 'antd';
-import { ArrowRightOutlined } from '@ant-design/icons';
+import {
+  ArrowRightOutlined,
+  LeftOutlined,
+  RightOutlined,
+} from '@ant-design/icons';
+import { PrivateLabelServicesProductData } from './interface';
+import Link from 'next/link';
+import { ROUTERS } from '@/constant/router';
 
 export default function PrivateLabelServicesPage() {
   // const { translate: translateHome } = useI18n('common');
+
+  const [privateLabelServicesProductData, setPrivateLabelServicesProductData] =
+    useState<PrivateLabelServicesProductData[]>();
+
+  useEffect(() => {
+    import('../../data/productInPrivateLabelService.json')
+      .then((response) => {
+        const data: PrivateLabelServicesProductData[] = response.default;
+        setPrivateLabelServicesProductData(data);
+      })
+      .catch((error) => {
+        console.error('Error fetching data:', error);
+      });
+  }, []);
+
+  const carouselResponsiveSettings = [
+    {
+      breakpoint: 1258,
+      settings: {
+        slidesToShow: 4,
+        slidesToScroll: 3,
+        infinite: true,
+        dots: true,
+      },
+    },
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        infinite: true,
+        dots: true,
+      },
+    },
+    {
+      breakpoint: 876,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 3,
+        infinite: true,
+        dots: true,
+      },
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 2,
+        initialSlide: 2,
+      },
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+      },
+    },
+  ];
+
+  const SampleNextArrow = (props: any) => {
+    const { className, style, onClick } = props;
+    return (
+      <div
+        className={className}
+        style={{
+          ...style,
+          color: '#00894f',
+          fontSize: '16px',
+          background: '#8dc63f',
+          width: '30px',
+          height: '30px',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          borderRadius: '50%',
+          marginRight: '10px',
+          marginTop: '-60px',
+        }}
+        onClick={onClick}
+      >
+        <RightOutlined />
+      </div>
+    );
+  };
+
+  const SamplePrevArrow = (props: any) => {
+    const { className, style, onClick } = props;
+
+    return (
+      <div
+        className={className}
+        style={{
+          ...style,
+          color: '#00894f',
+          fontSize: '16px',
+          background: '#8dc63f',
+          width: '30px',
+          height: '30px',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          borderRadius: '50%',
+          marginLeft: '10px',
+          marginTop: '-60px',
+        }}
+        onClick={onClick}
+      >
+        <LeftOutlined />
+      </div>
+    );
+  };
+
+  const settings = {
+    nextArrow: <SampleNextArrow />,
+    prevArrow: <SamplePrevArrow />,
+  };
 
   return (
     <div>
@@ -65,6 +189,7 @@ export default function PrivateLabelServicesPage() {
             alt="logo"
             width="100%"
             height={500}
+            preview={false}
           />
         </div>
       </div>
@@ -168,63 +293,27 @@ export default function PrivateLabelServicesPage() {
       </div>
 
       <div className={Style.carouselProductBackground}>
-        <Carousel slidesToShow={4} className={Style.productCarousel} autoplay>
-          <div className={Style.productCard}>
-            <div className={Style.productCardImage}>
-              <img src="/images/products/22.png" alt="" />
-            </div>
-            <h1>Coffee Mocha</h1>
-            <h4>250ml</h4>
-          </div>
-          <div className={Style.productCard}>
-            <div className={Style.productCardImage}>
-              <img src="/images/products/23.png" alt="" />
-            </div>
-            <h1>Coffee Latte</h1>
-            <h4>250ml</h4>
-          </div>
-          <div className={Style.productCard}>
-            <div className={Style.productCardImage}>
-              <img src="/images/products/24.png" alt="" />
-            </div>
-            <h1>Bubble Tea With Lemon</h1>
-            <h4>330ml</h4>
-          </div>
-          <div className={Style.productCard}>
-            <div className={Style.productCardImage}>
-              <img src="/images/products/25.png" alt="" />
-            </div>
-            <h1>Lotus Heart Tea</h1>
-            <h4>250ml</h4>
-          </div>
-          <div className={Style.productCard}>
-            <div className={Style.productCardImage}>
-              <img src="/images/products/22.png" alt="" />
-            </div>
-            <h1>Coffee Mocha</h1>
-            <h4>250ml</h4>
-          </div>
-          <div className={Style.productCard}>
-            <div className={Style.productCardImage}>
-              <img src="/images/products/23.png" alt="" />
-            </div>
-            <h1>Coffee Latte</h1>
-            <h4>250ml</h4>
-          </div>
-          <div className={Style.productCard}>
-            <div className={Style.productCardImage}>
-              <img src="/images/products/24.png" alt="" />
-            </div>
-            <h1>Bubble Tea With Lemon</h1>
-            <h4>330ml</h4>
-          </div>
-          <div className={Style.productCard}>
-            <div className={Style.productCardImage}>
-              <img src="/images/products/25.png" alt="" />
-            </div>
-            <h1>Lotus Heart Tea</h1>
-            <h4>250ml</h4>
-          </div>
+        <Carousel
+          slidesToShow={4}
+          className={Style.productCarousel}
+          autoplay
+          responsive={carouselResponsiveSettings}
+          arrows
+          {...settings}
+        >
+          {privateLabelServicesProductData?.map((bestSelling, index) => (
+            <Link
+              href={ROUTERS.PRODUCTS_DETAIL(bestSelling.productDetail)}
+              className={Style.productCard}
+              key={index}
+            >
+              <div className={Style.productCardImage}>
+                <img src={bestSelling.image} alt="" />
+              </div>
+              <h1>{bestSelling.name}</h1>
+              <h4>{bestSelling.volume}</h4>
+            </Link>
+          ))}
         </Carousel>
       </div>
 
