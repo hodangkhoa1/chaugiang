@@ -13,6 +13,48 @@
     height: 285px;
 }
 
+.introducePackagingDesigner {
+    margin-top: 35px;
+
+    .introducePackagingDesignerTitle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        h1 {
+            color: #00894f;
+            font-size: 30px;
+            margin-bottom: unset;
+            font-weight: bold;
+            text-transform: uppercase;
+            position: relative;
+
+            &::after {
+                content: "";
+                width: 170px;
+                height: 6px;
+                background: linear-gradient(to right, #00894f 60%, #8dc63f 40%);
+                position: absolute;
+                transform: translate(-50%, -50%);
+                top: 110%;
+                left: 50%;
+            }
+        }
+    }
+
+    .introducePackagingDesignerCenter {
+        margin: 40px 0;
+        width: 1075px;
+
+        p {
+            color: #8dc63f;
+            text-align: center;
+            font-size: 16px;
+            margin-bottom: unset;
+        }
+    }
+}
+
 .introduce {
     padding-left: 80px;
 

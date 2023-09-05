@@ -102,13 +102,26 @@
 }
 
 .viewCompany {
-    background-image: url(/images/introduce/view_company.png);
+    background-image: url(/images/introduce/view_company.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     width: 100%;
     height: 995px;
     margin-top: 30px;
+}
+
+.brands {
+    background-color: #fff;
+    padding: 2rem 6rem;
+
+    .brandImage {
+        width: 400px;
+
+        img {
+            width: 100%;
+        }
+    }
 }
 
 .ourProducts {

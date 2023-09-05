@@ -1,15 +1,121 @@
 // import useI18n from '@/i18n/useI18N';
 import React from 'react';
 import Style from './news.module.scss';
-import { Breadcrumb, Col, Row, Image } from 'antd';
+import { Breadcrumb, Col, Row, Image, Carousel } from 'antd';
 import {
   ClockCircleOutlined,
   SearchOutlined,
   StarFilled,
+  LeftOutlined,
+  RightOutlined,
+  ArrowRightOutlined,
 } from '@ant-design/icons';
 
 export default function NewsPage() {
   // const { translate: translateHome } = useI18n('common');
+
+  const carouselResponsiveSettings = [
+    {
+      breakpoint: 1258,
+      settings: {
+        slidesToShow: 4,
+        slidesToScroll: 3,
+        infinite: true,
+        dots: true,
+      },
+    },
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        infinite: true,
+        dots: true,
+      },
+    },
+    {
+      breakpoint: 876,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 3,
+        infinite: true,
+        dots: true,
+      },
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 2,
+        initialSlide: 2,
+      },
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+      },
+    },
+  ];
+
+  const SampleNextArrow = (props: any) => {
+    const { className, style, onClick } = props;
+    return (
+      <div
+        className={className}
+        style={{
+          ...style,
+          color: '#00894f',
+          fontSize: '16px',
+          background: '#8dc63f',
+          width: '30px',
+          height: '30px',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          borderRadius: '50%',
+          marginRight: '10px',
+          marginTop: '-60px',
+        }}
+        onClick={onClick}
+      >
+        <RightOutlined />
+      </div>
+    );
+  };
+
+  const SamplePrevArrow = (props: any) => {
+    const { className, style, onClick } = props;
+
+    return (
+      <div
+        className={className}
+        style={{
+          ...style,
+          color: '#00894f',
+          fontSize: '16px',
+          background: '#8dc63f',
+          width: '30px',
+          height: '30px',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          borderRadius: '50%',
+          marginLeft: '10px',
+          marginTop: '-60px',
+        }}
+        onClick={onClick}
+      >
+        <LeftOutlined />
+      </div>
+    );
+  };
+
+  const settings = {
+    nextArrow: <SampleNextArrow />,
+    prevArrow: <SamplePrevArrow />,
+  };
 
   return (
     <div>
@@ -317,6 +423,122 @@ export default function NewsPage() {
         </div>
         <p className={Style.comment}>0 Conment</p>
         <div className={Style.commentLine}></div>
+      </div>
+
+      <div className={Style.affiliateProduct}>
+        <div className={`${Style.dflex} ${Style.affiliateProductTopCover}`}>
+          <div className={Style.affiliateProductTitle}>
+            <h1>You May Also Like...</h1>
+          </div>
+        </div>
+      </div>
+
+      <div className={Style.carouselProductBackground}>
+        <Carousel
+          slidesToShow={4}
+          className={Style.productCarousel}
+          autoplay
+          arrows
+          {...settings}
+          responsive={carouselResponsiveSettings}
+        >
+          <div className={Style.productCard}>
+            <div className={Style.productCardImage}>
+              <img src="/images/products/22.png" alt="" />
+            </div>
+            <h1>Coffee Mocha</h1>
+            <h4>250ml</h4>
+          </div>
+          <div className={Style.productCard}>
+            <div className={Style.productCardImage}>
+              <img src="/images/products/23.png" alt="" />
+            </div>
+            <h1>Coffee Latte</h1>
+            <h4>250ml</h4>
+          </div>
+          <div className={Style.productCard}>
+            <div className={Style.productCardImage}>
+              <img src="/images/products/24.png" alt="" />
+            </div>
+            <h1>Bubble Tea With Lemon</h1>
+            <h4>330ml</h4>
+          </div>
+          <div className={Style.productCard}>
+            <div className={Style.productCardImage}>
+              <img src="/images/products/25.png" alt="" />
+            </div>
+            <h1>Lotus Heart Tea</h1>
+            <h4>250ml</h4>
+          </div>
+          <div className={Style.productCard}>
+            <div className={Style.productCardImage}>
+              <img src="/images/products/22.png" alt="" />
+            </div>
+            <h1>Coffee Mocha</h1>
+            <h4>250ml</h4>
+          </div>
+          <div className={Style.productCard}>
+            <div className={Style.productCardImage}>
+              <img src="/images/products/23.png" alt="" />
+            </div>
+            <h1>Coffee Latte</h1>
+            <h4>250ml</h4>
+          </div>
+          <div className={Style.productCard}>
+            <div className={Style.productCardImage}>
+              <img src="/images/products/24.png" alt="" />
+            </div>
+            <h1>Bubble Tea With Lemon</h1>
+            <h4>330ml</h4>
+          </div>
+          <div className={Style.productCard}>
+            <div className={Style.productCardImage}>
+              <img src="/images/products/25.png" alt="" />
+            </div>
+            <h1>Lotus Heart Tea</h1>
+            <h4>250ml</h4>
+          </div>
+        </Carousel>
+      </div>
+
+      <div className={Style.customerInformation}>
+        <div className={Style.customerInformationCover}>
+          <div className={Style.customerInformationTop}>
+            <div
+              className={`${Style.dflex} ${Style.customerInformationTopCover}`}
+            >
+              <div
+                className={`${Style.dflex} ${Style.customerInformationTitle}`}
+              >
+                <h1>Customer Information</h1>
+              </div>
+            </div>
+          </div>
+
+          <div className={Style.customerInformationCenter}>
+            <p>
+              Please provide the information below to receive our free
+              consultation service package
+            </p>
+          </div>
+
+          <div className={`${Style.dflex} ${Style.customerInformationBottom}`}>
+            <input type="text" placeholder="First and last name" />
+            <input type="tel" placeholder="Phone number" />
+            <input type="text" placeholder="Email" />
+            <textarea
+              cols={22}
+              placeholder="Information needed support"
+            ></textarea>
+
+            <div className={Style.btn_see_more}>
+              <button className={`${Style.dflex}`}>
+                <p>Send information</p>
+                <ArrowRightOutlined className={Style.iconBtn} />
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

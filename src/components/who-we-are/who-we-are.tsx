@@ -179,6 +179,28 @@ export default function WhoWeArePage() {
 
       <div className={Style.viewCompany}></div>
 
+      <div className={Style.brands}>
+        <Row gutter={100}>
+          <Col lg={8} span={24} className={Style.dflex}>
+            <div className={Style.brandImage}>
+              <img src="/images/brand/12.png" alt="" />
+            </div>
+          </Col>
+
+          <Col lg={8} span={24} className={Style.dflex}>
+            <div className={Style.brandImage}>
+              <img src="/images/brand/13.png" alt="" />
+            </div>
+          </Col>
+
+          <Col lg={8} span={24} className={Style.dflex}>
+            <div className={Style.brandImage}>
+              <img src="/images/brand/14.png" alt="" />
+            </div>
+          </Col>
+        </Row>
+      </div>
+
       <div className={`${Style.dflex} ${Style.ourProducts}`}>
         <div className={`${Style.dflex} ${Style.ourProductsTopCover}`}>
           <div className={Style.ourProductsTitle}>

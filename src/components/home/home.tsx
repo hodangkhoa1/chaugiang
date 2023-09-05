@@ -170,13 +170,13 @@ export default function HomePage() {
         }}
       >
         <SwiperSlide className={Style.swiperSlide}>
-          <img src="images/slider_header/slider_background_1.png" alt="" />
+          <img src="./images/slider_header/slider_background_1.png" alt="" />
         </SwiperSlide>
         <SwiperSlide className={Style.swiperSlide}>
-          <img src="images/slider_header/slider_background_2.png" alt="" />
+          <img src="./images/slider_header/slider_background_2.png" alt="" />
         </SwiperSlide>
         <SwiperSlide className={Style.swiperSlide}>
-          <img src="images/slider_header/slider_background_1.png" alt="" />
+          <img src="./images/slider_header/slider_background_3.png" alt="" />
         </SwiperSlide>
       </Swiper>
 
@@ -749,19 +749,19 @@ export default function HomePage() {
         <Row gutter={100}>
           <Col lg={8} span={24} className={Style.dflex}>
             <div className={Style.brandImage}>
-              <img src="images/brand/12.png" alt="" />
+              <img src="/images/brand/12.png" alt="" />
             </div>
           </Col>
 
           <Col lg={8} span={24} className={Style.dflex}>
             <div className={Style.brandImage}>
-              <img src="images/brand/13.png" alt="" />
+              <img src="/images/brand/13.png" alt="" />
             </div>
           </Col>
 
           <Col lg={8} span={24} className={Style.dflex}>
             <div className={Style.brandImage}>
-              <img src="images/brand/14.png" alt="" />
+              <img src="/images/brand/14.png" alt="" />
             </div>
           </Col>
         </Row>

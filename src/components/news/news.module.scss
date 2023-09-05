@@ -126,24 +126,24 @@
                 background: #fff;
                 display: flex;
                 align-items: center;
-        
+
                 .buttonSearch {
                     font-size: 20px;
                     cursor: pointer;
                     padding: 0 15px 0 10px;
-        
+
                     .btnSearch {
                         color: #00894f;
                         transition: all .5s;
                     }
-        
+
                     &:hover {
                         .btnSearch {
                             color: #8dc63f;
                         }
                     }
                 }
-        
+
                 input {
                     font-size: 16px;
                     width: 100%;
@@ -154,7 +154,7 @@
                     color: #777777;
                     padding-right: 15px;
                 }
-        
+
                 .searchPlace {
                     &::placeholder {
                         color: #777777;
@@ -220,5 +220,166 @@
         width: 100%;
         height: 2px;
         background: #E4E4E4;
+    }
+}
+
+.affiliateProduct {
+    margin-left: 40px;
+
+    .affiliateProductTopCover {
+        padding-top: 35px;
+        justify-content: start;
+
+        .affiliateProductTitle {
+            h1 {
+                color: #00894f;
+                font-size: 20px;
+                margin-bottom: unset;
+                font-weight: bold;
+                text-transform: uppercase;
+            }
+        }
+    }
+}
+
+.carouselProductBackground {
+    margin-top: 30px;
+
+    .productCarousel {
+        margin: 0 25px 0 25px;
+
+        .productCard {
+            text-align: center;
+            margin-bottom: 4rem;
+            box-shadow: 4px 4px 10px -1px #1D4486;
+            width: 75% !important;
+
+            .productCardImage {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                img {
+                    width: 300px;
+                    height: 300px;
+                }
+            }
+
+            h1 {
+                font-size: 20px;
+                font-weight: bold;
+                color: #00894f;
+                margin-top: 10px;
+                margin-bottom: unset;
+            }
+
+            h4 {
+                color: #00894f;
+            }
+        }
+    }
+}
+
+.customerInformation {
+    background-image: url(/images/customer_information/customer_imformation.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 845px;
+
+    .customerInformationCover {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        padding-top: 40px;
+
+        .customerInformationTop {
+            .customerInformationTopCover {
+                position: relative;
+
+                .customerInformationTitle {
+                    width: 700px;
+                    text-align: center;
+
+                    h1 {
+                        color: #fff;
+                        font-size: 45px;
+                        margin-bottom: unset;
+                        font-weight: bold;
+                        text-transform: uppercase;
+                        position: relative;
+
+                        &::after {
+                            content: "";
+                            width: 280px;
+                            height: 6px;
+                            background: linear-gradient(to right, #00894f 50%, rgb(255, 255, 255) 50%);
+                            position: absolute;
+                            transform: translate(-50%, -50%);
+                            top: 120%;
+                            left: 50%;
+                        }
+                    }
+                }
+            }
+        }
+
+        .customerInformationCenter {
+            margin-top: 40px;
+
+            p {
+                margin-bottom: unset;
+                font-size: 18px;
+            }
+        }
+
+        .customerInformationBottom {
+            margin: 30px 0;
+            flex-direction: column;
+            gap: 20px;
+
+            input {
+                width: 55rem;
+                height: 50px;
+                background-color: #fff;
+                padding: 10px 20px;
+                font-size: 18px;
+                color: #00894F;
+            }
+
+            textarea {
+                width: 55rem;
+                background-color: #fff;
+                padding: 10px 20px;
+                font-size: 18px;
+                color: #000;
+            }
+
+            .btn_see_more {
+                margin-top: 3rem;
+
+                button {
+                    background-color: #8dc63f;
+                    width: 220px;
+                    height: 35px;
+                    border-radius: 20px;
+                    justify-content: space-around;
+                    cursor: pointer;
+
+                    p {
+                        font-size: 16px;
+                        font-weight: bold;
+                        text-transform: uppercase;
+                        margin-bottom: unset !important;
+                    }
+
+                    .iconBtn {
+                        font-size: 18px;
+                    }
+                }
+            }
+        }
     }
 }

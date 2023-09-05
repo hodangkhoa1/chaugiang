@@ -2,28 +2,56 @@
     {
         "id": "1",
         "name": "CG PET Aloe Vera Juice Drink",
-        "image": "images/products/17.png",
+        "image": "/images/products/17.png",
         "volume": "500ml",
         "productDetail": "13"
     },
     {
         "id": "2",
         "name": "CG PET Aloe Vera with Strawberry Juice Drink",
-        "image": "images/products/18.png",
+        "image": "/images/products/18.png",
         "volume": "500ml",
         "productDetail": "14"
     },
     {
         "id": "3",
         "name": "Coffee Capuchino",
-        "image": "images/products/22.png",
+        "image": "/images/products/22.png",
         "volume": "250ml",
         "productDetail": "17"
     },
     {
         "id": "4",
         "name": "Bubble Tea With Lemon",
-        "image": "images/products/24.png",
+        "image": "/images/products/24.png",
+        "volume": "500ml",
+        "productDetail": "19"
+    },
+    {
+        "id": "5",
+        "name": "CG PET Aloe Vera Juice Drink",
+        "image": "/images/products/17.png",
+        "volume": "500ml",
+        "productDetail": "13"
+    },
+    {
+        "id": "6",
+        "name": "CG PET Aloe Vera with Strawberry Juice Drink",
+        "image": "/images/products/18.png",
+        "volume": "500ml",
+        "productDetail": "14"
+    },
+    {
+        "id": "7",
+        "name": "Coffee Capuchino",
+        "image": "/images/products/22.png",
+        "volume": "250ml",
+        "productDetail": "17"
+    },
+    {
+        "id": "8",
+        "name": "Bubble Tea With Lemon",
+        "image": "/images/products/24.png",
         "volume": "500ml",
         "productDetail": "19"
     }
