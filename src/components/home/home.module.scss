@@ -70,6 +70,10 @@
                 margin-top: 10px;
             }
         }
+
+        svg { 
+            display: none;
+        }
     }
 }
 
@@ -605,9 +609,9 @@
 
 .whyChooseUs {
     background-image: unset;
-    height: 520px;
     background-color: #EDEDED;
     padding-top: 50px;
+    height: 100%;
 
     .whyChooseUsCover {
         width: unset;
@@ -648,6 +652,7 @@
         .colWhyChooseUs {
             padding-bottom: 20px;
             min-width: 347px;
+            max-width: 350px;
         }
 
         p {

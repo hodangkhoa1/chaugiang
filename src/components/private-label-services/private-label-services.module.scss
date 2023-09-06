@@ -227,7 +227,7 @@
 
 .whyChooseUs {
     width: 100%;
-    height: 520px;
+    height: 100%;
     background-color: #EDEDED;
     padding-top: 50px;
     display: flex;
@@ -272,6 +272,7 @@
             .colWhyChooseUs {
                 padding-bottom: 20px;
                 min-width: 347px;
+                max-width: 350px;
 
                 .whyChooseUsItem {
                     width: 100%;

@@ -302,7 +302,7 @@
 
 .whyChooseUs {
     background-image: unset;
-    height: 520px;
+    height: 100%;
     background-color: #EDEDED;
     padding-top: 50px;
 
@@ -348,7 +348,8 @@
 
         .colWhyChooseUs {
             padding-bottom: 20px;
-            min-width: 3347px;
+            min-width: 347px;
+            max-width: 350px;
         }
 
         p {
