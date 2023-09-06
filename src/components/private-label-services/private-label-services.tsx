@@ -330,7 +330,11 @@ export default function PrivateLabelServicesPage() {
           <div className={Style.whyChooseUsBottom}>
             <Row
               gutter={100}
-              style={{ marginLeft: 'unset', marginRight: 'unset' }}
+              style={{
+                display: 'flex',
+                justifyContent: 'center',
+                flexWrap: 'wrap',
+              }}
             >
               <Col className={Style.colWhyChooseUs} md={12} lg={6} span={24}>
                 <div className={`${Style.dflex} ${Style.whyChooseUsItem}`}>

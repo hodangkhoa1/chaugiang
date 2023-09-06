@@ -440,9 +440,19 @@ const ProductDetailPage = () => {
           <div className={Style.whyChooseUsBottom}>
             <Row
               gutter={100}
-              style={{ marginLeft: 'unset', marginRight: 'unset' }}
+              style={{
+                display: 'flex',
+                justifyContent: 'center',
+                flexWrap: 'wrap',
+              }}
             >
-              <Col className={Style.colWhyChooseUs} md={12} lg={6} span={24}>
+              <Col
+                className={Style.colWhyChooseUs}
+                md={12}
+                lg={6}
+                span={24}
+                style={{ minWidth: '347px' }}
+              >
                 <div className={`${Style.dflex} ${Style.whyChooseUsItem}`}>
                   <div className={Style.whyChooseUsBottomImage}>
                     <img src="/images/why_choose_us/Untitled-28.png" alt="" />
@@ -456,7 +466,13 @@ const ProductDetailPage = () => {
                 </div>
               </Col>
 
-              <Col className={Style.colWhyChooseUs} md={12} lg={6} span={24}>
+              <Col
+                className={Style.colWhyChooseUs}
+                md={12}
+                lg={6}
+                span={24}
+                style={{ minWidth: '347px' }}
+              >
                 <div className={`${Style.dflex} ${Style.whyChooseUsItem}`}>
                   <div className={Style.whyChooseUsBottomImage}>
                     <img src="/images/why_choose_us/Untitled-29.png" alt="" />
@@ -470,7 +486,13 @@ const ProductDetailPage = () => {
                 </div>
               </Col>
 
-              <Col className={Style.colWhyChooseUs} md={12} lg={6} span={24}>
+              <Col
+                className={Style.colWhyChooseUs}
+                md={12}
+                lg={6}
+                span={24}
+                style={{ minWidth: '347px' }}
+              >
                 <div className={`${Style.dflex} ${Style.whyChooseUsItem}`}>
                   <div className={Style.whyChooseUsBottomImage}>
                     <img src="/images/why_choose_us/Untitled-30.png" alt="" />
@@ -484,7 +506,13 @@ const ProductDetailPage = () => {
                 </div>
               </Col>
 
-              <Col className={Style.colWhyChooseUs} md={12} lg={6} span={24}>
+              <Col
+                className={Style.colWhyChooseUs}
+                md={12}
+                lg={6}
+                span={24}
+                style={{ minWidth: '347px' }}
+              >
                 <div className={`${Style.dflex} ${Style.whyChooseUsItem}`}>
                   <div className={Style.whyChooseUsBottomImage}>
                     <img src="/images/why_choose_us/Untitled-31.png" alt="" />

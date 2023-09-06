@@ -2,7 +2,18 @@ import React, { useEffect, useState } from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import LayoutStyle from './layout.module.scss';
-import { Layout, Space, Typography, Image, Select, Col, Row } from 'antd';
+import {
+  Layout,
+  Space,
+  Typography,
+  Image,
+  Select,
+  Col,
+  Row,
+  Menu,
+  MenuProps,
+  Drawer,
+} from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
 import { appLocalStorage } from '@/utils/localstorage';
 import { LOCAL_STORAGE_KEYS } from '@/constant/localstorage';
@@ -14,8 +25,10 @@ import {
   MailOutlined,
   GlobalOutlined,
   CaretRightOutlined,
+  MenuOutlined,
 } from '@ant-design/icons';
 import Link from 'next/link';
+import { MenuInfo } from 'rc-menu/lib/interface';
 
 const { Text } = Typography;
 const { Header, Content, Footer } = Layout;
@@ -25,13 +38,91 @@ export const FOOTER_HEIGHT = 50;
 interface Props {
   children: React.ReactNode;
 }
+type MenuItem = Required<MenuProps>['items'][number];
+
+function getItem(
+  label: React.ReactNode,
+  key: React.Key,
+  icon?: React.ReactNode,
+  children?: MenuItem[]
+): MenuItem {
+  return {
+    key,
+    icon,
+    children,
+    label,
+  } as MenuItem;
+}
 
 export function AppLayout(props: Props) {
   // const { translate: translateCommon } = useI18n('common');
   const router = useRouter();
   const [languageSelected, setLanguage] = useState<string>(LANGUAGE.EN);
   const [languageSelectedName, setLanguageSelectedName] = useState('');
+  const [showMobileMenu, setShowMobileMenu] = useState(false);
+  const [selectedKey, setSelectedKey] = useState(ROUTERS.HOME);
 
+  const items: MenuItem[] = [
+    getItem('Home', ROUTERS.HOME),
+
+    getItem('Introduce', 'sub1', null, [
+      getItem('Who we are', ROUTERS.WHO_WE_ARE),
+      getItem('Company Profile', ROUTERS.COMPANY_PROFILE),
+      getItem('Catalogue', 'Catalogue'),
+    ]),
+
+    getItem('Products', 'sub2', null, [
+      getItem('Best selling', 'Best selling', null, [
+        getItem('Brown rice', 'Brown rice'),
+        getItem('Oats', 'Oats'),
+        getItem('Coconut meat', 'Coconut meat'),
+        getItem('Sparkling coconut', 'Sparkling coconut'),
+        getItem('Tamarind', 'Tamarind'),
+        getItem('Mango', 'Mango'),
+        getItem('Bottle of aloe vera', 'Bottle of aloe vera'),
+      ]),
+      getItem('New products', 'New products', null, [
+        getItem('Sparkling watermelon', 'Sparkling watermelon'),
+        getItem('Sparkling fragrant coconut', 'Sparkling fragrant coconut'),
+        getItem('Black coffee', 'Black coffee'),
+        getItem('Cappuccino', 'Cappuccino'),
+        getItem('Custard apple', 'Custard apple'),
+        getItem('Peach tea', 'Peach tea'),
+        getItem('Lemon tea', 'Lemon tea'),
+      ]),
+      getItem('Featured product', 'Featured product', null, [
+        getItem('Brown rice milk', 'Brown rice milk'),
+        getItem('Soy milk', 'Soy milk'),
+        getItem('mung bean milk', 'mung bean milk'),
+        getItem('Corn milk', 'Corn milk'),
+        getItem('Bird&apos;s nest', 'Bird&apos;s nest'),
+        getItem('Stir-fried bird&apos;s nest', 'Stir-fried bird&apos;s nest'),
+        getItem('Aloe vera bird&apos;s nest', 'Aloe vera bird&apos;s nest'),
+      ]),
+    ]),
+
+    getItem('Services', 'Services', null, [
+      getItem(
+        'Beverage Product Development',
+        ROUTERS.BEVERAGE_PRODUCT_DEVELOPMENT
+      ),
+      getItem('Beverage packaging design', ROUTERS.BEVERAGE_PACKAGING_DESIGN),
+      getItem(
+        'Private Label Services (OEM/ODM)',
+        ROUTERS.PRIVATE_LABEL_SERVICES
+      ),
+    ]),
+
+    getItem('News', ROUTERS.NEWS),
+    getItem('Contact', ROUTERS.CONTACT),
+    getItem('Recruitment', ROUTERS.RECRUITMENT),
+  ];
+
+  const handleClickMenuItem = (path: MenuInfo) => {
+    setSelectedKey(path.key);
+    setShowMobileMenu(false);
+    router.push(path.key);
+  };
   useEffect(() => {
     setLanguage(
       appLocalStorage.get(LOCAL_STORAGE_KEYS.LANGUAGE) || LANGUAGE.EN
@@ -48,8 +139,10 @@ export function AppLayout(props: Props) {
         <link rel="favicon" href="/images/logo.png" />
         <link rel="shortcut icon" href="/images/logo.png" />
       </Head>
+
       <Layout>
         <Header
+          className={LayoutStyle.appHeader}
           style={{
             position: 'sticky',
             top: 0,
@@ -74,254 +167,311 @@ export function AppLayout(props: Props) {
                 alt="logo"
               />
             </Space>
-            <Space>
-              <ul className={LayoutStyle.navbarNav}>
-                <li className={LayoutStyle.navItem}>
-                  <Link href={ROUTERS.HOME} className={LayoutStyle.navLink}>
-                    Home
-                  </Link>
-                </li>
-                <li className={LayoutStyle.navItem}>
-                  <Link href="#" className={LayoutStyle.navLink}>
-                    Introduce
-                  </Link>
-                  <ul className={LayoutStyle.dropdownContent}>
-                    <li className={LayoutStyle.dropdownContentItem}>
-                      <Link
-                        href={ROUTERS.WHO_WE_ARE}
-                        className={LayoutStyle.linkDropdown}
-                      >
-                        Who we are
-                      </Link>
-                    </li>
-                    <li className={LayoutStyle.dropdownContentItem}>
-                      <Link
-                        href={ROUTERS.COMPANY_PROFILE}
-                        className={LayoutStyle.linkDropdown}
-                      >
-                        Company Profile
-                      </Link>
-                    </li>
-                    <li className={LayoutStyle.dropdownContentItem}>
-                      <Link href="#" className={LayoutStyle.linkDropdown}>
-                        Catalogue
-                      </Link>
-                    </li>
-                  </ul>
-                </li>
-                <li className={LayoutStyle.navItem}>
-                  <Link href={ROUTERS.PRODUCTS} className={LayoutStyle.navLink}>
-                    Products
-                  </Link>
-                  <ul className={LayoutStyle.dropdownContent}>
-                    <li className={LayoutStyle.dropdownContentItem}>
-                      <Link href="#" className={LayoutStyle.linkDropdown}>
-                        Best selling
-                      </Link>
-                      <ul className={LayoutStyle.subMenu}>
-                        <li className={LayoutStyle.subMenuItem}>
-                          <Link href="#" className={LayoutStyle.linkSubMenu}>
-                            Brown rice
-                          </Link>
-                        </li>
-                        <li className={LayoutStyle.subMenuItem}>
-                          <Link href="#" className={LayoutStyle.linkSubMenu}>
-                            Oats
-                          </Link>
-                        </li>
-                        <li className={LayoutStyle.subMenuItem}>
-                          <Link href="#" className={LayoutStyle.linkSubMenu}>
-                            Coconut meat
-                          </Link>
-                        </li>
-                        <li className={LayoutStyle.subMenuItem}>
-                          <Link href="#" className={LayoutStyle.linkSubMenu}>
-                            Sparkling coconut
-                          </Link>
-                        </li>
-                        <li className={LayoutStyle.subMenuItem}>
-                          <Link href="#" className={LayoutStyle.linkSubMenu}>
-                            Tamarind
-                          </Link>
-                        </li>
-                        <li className={LayoutStyle.subMenuItem}>
-                          <Link href="#" className={LayoutStyle.linkSubMenu}>
-                            Mango
-                          </Link>
-                        </li>
-                        <li className={LayoutStyle.subMenuItem}>
-                          <Link href="#" className={LayoutStyle.linkSubMenu}>
-                            Bottle of aloe vera
-                          </Link>
-                        </li>
-                      </ul>
-                    </li>
-                    <li className={LayoutStyle.dropdownContentItem}>
-                      <Link href="#" className={LayoutStyle.linkDropdown}>
-                        New products
-                      </Link>
-                      <ul className={LayoutStyle.subMenu}>
-                        <li className={LayoutStyle.subMenuItem}>
-                          <Link href="#" className={LayoutStyle.linkSubMenu}>
-                            Sparkling watermelon
-                          </Link>
-                        </li>
-                        <li className={LayoutStyle.subMenuItem}>
-                          <Link href="#" className={LayoutStyle.linkSubMenu}>
-                            Sparkling fragrant coconut
-                          </Link>
-                        </li>
-                        <li className={LayoutStyle.subMenuItem}>
-                          <Link href="#" className={LayoutStyle.linkSubMenu}>
-                            Black coffee
-                          </Link>
-                        </li>
-                        <li className={LayoutStyle.subMenuItem}>
-                          <Link href="#" className={LayoutStyle.linkSubMenu}>
-                            Cappuccino
-                          </Link>
-                        </li>
-                        <li className={LayoutStyle.subMenuItem}>
-                          <Link href="#" className={LayoutStyle.linkSubMenu}>
-                            Custard apple
-                          </Link>
-                        </li>
-                        <li className={LayoutStyle.subMenuItem}>
-                          <Link href="#" className={LayoutStyle.linkSubMenu}>
-                            Peach tea
-                          </Link>
-                        </li>
-                        <li className={LayoutStyle.subMenuItem}>
-                          <Link href="#" className={LayoutStyle.linkSubMenu}>
-                            Lemon tea
-                          </Link>
-                        </li>
-                      </ul>
-                    </li>
-                    <li className={LayoutStyle.dropdownContentItem}>
-                      <Link href="#" className={LayoutStyle.linkDropdown}>
-                        Featured product
-                      </Link>
-                      <ul className={LayoutStyle.subMenu}>
-                        <li className={LayoutStyle.subMenuItem}>
-                          <Link href="#" className={LayoutStyle.linkSubMenu}>
-                            Brown rice milk
-                          </Link>
-                        </li>
-                        <li className={LayoutStyle.subMenuItem}>
-                          <Link href="#" className={LayoutStyle.linkSubMenu}>
-                            Soy milk
-                          </Link>
-                        </li>
-                        <li className={LayoutStyle.subMenuItem}>
-                          <Link href="#" className={LayoutStyle.linkSubMenu}>
-                            mung bean milk
-                          </Link>
-                        </li>
-                        <li className={LayoutStyle.subMenuItem}>
-                          <Link href="#" className={LayoutStyle.linkSubMenu}>
-                            Corn milk
-                          </Link>
-                        </li>
-                        <li className={LayoutStyle.subMenuItem}>
-                          <Link href="#" className={LayoutStyle.linkSubMenu}>
-                            Bird&apos;s nest
-                          </Link>
-                        </li>
-                        <li className={LayoutStyle.subMenuItem}>
-                          <Link href="#" className={LayoutStyle.linkSubMenu}>
-                            Stir-fried bird&apos;s nest
-                          </Link>
-                        </li>
-                        <li className={LayoutStyle.subMenuItem}>
-                          <Link href="#" className={LayoutStyle.linkSubMenu}>
-                            Aloe vera bird&apos;s nest
-                          </Link>
-                        </li>
-                      </ul>
-                    </li>
-                  </ul>
-                </li>
-                <li className={LayoutStyle.navItem}>
-                  <Link
-                    href={ROUTERS.BEVERAGE_PRODUCT_DEVELOPMENT}
-                    className={LayoutStyle.navLink}
-                  >
-                    Services
-                  </Link>
-                  <ul className={LayoutStyle.dropdownContent}>
-                    <li className={LayoutStyle.dropdownContentItem}>
-                      <Link
-                        href={ROUTERS.BEVERAGE_PRODUCT_DEVELOPMENT}
-                        className={LayoutStyle.linkDropdown}
-                      >
-                        Beverage Product Development
-                      </Link>
-                    </li>
-                    <li className={LayoutStyle.dropdownContentItem}>
-                      <Link
-                        href={ROUTERS.BEVERAGE_PACKAGING_DESIGN}
-                        className={LayoutStyle.linkDropdown}
-                      >
-                        Beverage packaging design
-                      </Link>
-                    </li>
-                    <li className={LayoutStyle.dropdownContentItem}>
-                      <Link
-                        href={ROUTERS.PRIVATE_LABEL_SERVICES}
-                        className={LayoutStyle.linkDropdown}
-                      >
-                        Private Label Services (OEM/ODM)
-                      </Link>
-                    </li>
-                  </ul>
-                </li>
-                <li className={LayoutStyle.navItem}>
-                  <Link href={ROUTERS.NEWS} className={LayoutStyle.navLink}>
-                    News
-                  </Link>
-                </li>
-                <li className={LayoutStyle.navItem}>
-                  <Link href={ROUTERS.CONTACT} className={LayoutStyle.navLink}>
-                    Contact
-                  </Link>
-                </li>
-                <li className={LayoutStyle.navItem}>
-                  <Link
-                    href={ROUTERS.RECRUITMENT}
-                    className={LayoutStyle.navLink}
-                  >
-                    Recruitment
-                  </Link>
-                </li>
-              </ul>
-            </Space>
-            <Space>
-              <div className={LayoutStyle.headerTool}>
-                <div id="searchBox" className={LayoutStyle.searchBox}>
-                  <input
-                    className={LayoutStyle.searchPlace}
-                    type="text"
-                    placeholder="Search..."
-                  />
-                  <div className={LayoutStyle.buttonSearch}>
-                    <SearchOutlined className={LayoutStyle.btnSearch} />
+            <div className={LayoutStyle.headerCenter}>
+              <Space style={{ marginRight: '8px' }}>
+                <ul className={LayoutStyle.navbarNav}>
+                  <li className={LayoutStyle.navItem}>
+                    <Link href={ROUTERS.HOME} className={LayoutStyle.navLink}>
+                      Home
+                    </Link>
+                  </li>
+                  <li className={LayoutStyle.navItem}>
+                    <Link href="#" className={LayoutStyle.navLink}>
+                      Introduce
+                    </Link>
+                    <ul className={LayoutStyle.dropdownContent}>
+                      <li className={LayoutStyle.dropdownContentItem}>
+                        <Link
+                          href={ROUTERS.WHO_WE_ARE}
+                          className={LayoutStyle.linkDropdown}
+                        >
+                          Who we are
+                        </Link>
+                      </li>
+                      <li className={LayoutStyle.dropdownContentItem}>
+                        <Link
+                          href={ROUTERS.COMPANY_PROFILE}
+                          className={LayoutStyle.linkDropdown}
+                        >
+                          Company Profile
+                        </Link>
+                      </li>
+                      <li className={LayoutStyle.dropdownContentItem}>
+                        <Link href="#" className={LayoutStyle.linkDropdown}>
+                          Catalogue
+                        </Link>
+                      </li>
+                    </ul>
+                  </li>
+                  <li className={LayoutStyle.navItem}>
+                    <Link
+                      href={ROUTERS.PRODUCTS}
+                      className={LayoutStyle.navLink}
+                    >
+                      Products
+                    </Link>
+                    <ul className={LayoutStyle.dropdownContent}>
+                      <li className={LayoutStyle.dropdownContentItem}>
+                        <Link href="#" className={LayoutStyle.linkDropdown}>
+                          Best selling
+                        </Link>
+                        <ul className={LayoutStyle.subMenu}>
+                          <li className={LayoutStyle.subMenuItem}>
+                            <Link href="#" className={LayoutStyle.linkSubMenu}>
+                              Brown rice
+                            </Link>
+                          </li>
+                          <li className={LayoutStyle.subMenuItem}>
+                            <Link href="#" className={LayoutStyle.linkSubMenu}>
+                              Oats
+                            </Link>
+                          </li>
+                          <li className={LayoutStyle.subMenuItem}>
+                            <Link href="#" className={LayoutStyle.linkSubMenu}>
+                              Coconut meat
+                            </Link>
+                          </li>
+                          <li className={LayoutStyle.subMenuItem}>
+                            <Link href="#" className={LayoutStyle.linkSubMenu}>
+                              Sparkling coconut
+                            </Link>
+                          </li>
+                          <li className={LayoutStyle.subMenuItem}>
+                            <Link href="#" className={LayoutStyle.linkSubMenu}>
+                              Tamarind
+                            </Link>
+                          </li>
+                          <li className={LayoutStyle.subMenuItem}>
+                            <Link href="#" className={LayoutStyle.linkSubMenu}>
+                              Mango
+                            </Link>
+                          </li>
+                          <li className={LayoutStyle.subMenuItem}>
+                            <Link href="#" className={LayoutStyle.linkSubMenu}>
+                              Bottle of aloe vera
+                            </Link>
+                          </li>
+                        </ul>
+                      </li>
+                      <li className={LayoutStyle.dropdownContentItem}>
+                        <Link href="#" className={LayoutStyle.linkDropdown}>
+                          New products
+                        </Link>
+                        <ul className={LayoutStyle.subMenu}>
+                          <li className={LayoutStyle.subMenuItem}>
+                            <Link href="#" className={LayoutStyle.linkSubMenu}>
+                              Sparkling watermelon
+                            </Link>
+                          </li>
+                          <li className={LayoutStyle.subMenuItem}>
+                            <Link href="#" className={LayoutStyle.linkSubMenu}>
+                              Sparkling fragrant coconut
+                            </Link>
+                          </li>
+                          <li className={LayoutStyle.subMenuItem}>
+                            <Link href="#" className={LayoutStyle.linkSubMenu}>
+                              Black coffee
+                            </Link>
+                          </li>
+                          <li className={LayoutStyle.subMenuItem}>
+                            <Link href="#" className={LayoutStyle.linkSubMenu}>
+                              Cappuccino
+                            </Link>
+                          </li>
+                          <li className={LayoutStyle.subMenuItem}>
+                            <Link href="#" className={LayoutStyle.linkSubMenu}>
+                              Custard apple
+                            </Link>
+                          </li>
+                          <li className={LayoutStyle.subMenuItem}>
+                            <Link href="#" className={LayoutStyle.linkSubMenu}>
+                              Peach tea
+                            </Link>
+                          </li>
+                          <li className={LayoutStyle.subMenuItem}>
+                            <Link href="#" className={LayoutStyle.linkSubMenu}>
+                              Lemon tea
+                            </Link>
+                          </li>
+                        </ul>
+                      </li>
+                      <li className={LayoutStyle.dropdownContentItem}>
+                        <Link href="#" className={LayoutStyle.linkDropdown}>
+                          Featured product
+                        </Link>
+                        <ul className={LayoutStyle.subMenu}>
+                          <li className={LayoutStyle.subMenuItem}>
+                            <Link href="#" className={LayoutStyle.linkSubMenu}>
+                              Brown rice milk
+                            </Link>
+                          </li>
+                          <li className={LayoutStyle.subMenuItem}>
+                            <Link href="#" className={LayoutStyle.linkSubMenu}>
+                              Soy milk
+                            </Link>
+                          </li>
+                          <li className={LayoutStyle.subMenuItem}>
+                            <Link href="#" className={LayoutStyle.linkSubMenu}>
+                              mung bean milk
+                            </Link>
+                          </li>
+                          <li className={LayoutStyle.subMenuItem}>
+                            <Link href="#" className={LayoutStyle.linkSubMenu}>
+                              Corn milk
+                            </Link>
+                          </li>
+                          <li className={LayoutStyle.subMenuItem}>
+                            <Link href="#" className={LayoutStyle.linkSubMenu}>
+                              Bird&apos;s nest
+                            </Link>
+                          </li>
+                          <li className={LayoutStyle.subMenuItem}>
+                            <Link href="#" className={LayoutStyle.linkSubMenu}>
+                              Stir-fried bird&apos;s nest
+                            </Link>
+                          </li>
+                          <li className={LayoutStyle.subMenuItem}>
+                            <Link href="#" className={LayoutStyle.linkSubMenu}>
+                              Aloe vera bird&apos;s nest
+                            </Link>
+                          </li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </li>
+                  <li className={LayoutStyle.navItem}>
+                    <Link
+                      href={ROUTERS.BEVERAGE_PRODUCT_DEVELOPMENT}
+                      className={LayoutStyle.navLink}
+                    >
+                      Services
+                    </Link>
+                    <ul className={LayoutStyle.dropdownContent}>
+                      <li className={LayoutStyle.dropdownContentItem}>
+                        <Link
+                          href={ROUTERS.BEVERAGE_PRODUCT_DEVELOPMENT}
+                          className={LayoutStyle.linkDropdown}
+                        >
+                          Beverage Product Development
+                        </Link>
+                      </li>
+                      <li className={LayoutStyle.dropdownContentItem}>
+                        <Link
+                          href={ROUTERS.BEVERAGE_PACKAGING_DESIGN}
+                          className={LayoutStyle.linkDropdown}
+                        >
+                          Beverage packaging design
+                        </Link>
+                      </li>
+                      <li className={LayoutStyle.dropdownContentItem}>
+                        <Link
+                          href={ROUTERS.PRIVATE_LABEL_SERVICES}
+                          className={LayoutStyle.linkDropdown}
+                        >
+                          Private Label Services (OEM/ODM)
+                        </Link>
+                      </li>
+                    </ul>
+                  </li>
+                  <li className={LayoutStyle.navItem}>
+                    <Link href={ROUTERS.NEWS} className={LayoutStyle.navLink}>
+                      News
+                    </Link>
+                  </li>
+                  <li className={LayoutStyle.navItem}>
+                    <Link
+                      href={ROUTERS.CONTACT}
+                      className={LayoutStyle.navLink}
+                    >
+                      Contact
+                    </Link>
+                  </li>
+                  <li className={LayoutStyle.navItem}>
+                    <Link
+                      href={ROUTERS.RECRUITMENT}
+                      className={LayoutStyle.navLink}
+                    >
+                      Recruitment
+                    </Link>
+                  </li>
+                </ul>
+              </Space>
+              <Space style={{ marginRight: '8px' }}>
+                <div className={LayoutStyle.headerTool}>
+                  <div id="searchBox" className={LayoutStyle.searchBox}>
+                    <input
+                      className={LayoutStyle.searchPlace}
+                      type="text"
+                      placeholder="Search..."
+                    />
+                    <div className={LayoutStyle.buttonSearch}>
+                      <SearchOutlined className={LayoutStyle.btnSearch} />
+                    </div>
                   </div>
                 </div>
-              </div>
-            </Space>
-            <Space>
-              <Select
-                defaultValue="en"
-                className={LayoutStyle.dropdownLanguage}
-                options={[
-                  { value: 'en', label: 'Tiếng Anh' },
-                  { value: 'vn', label: 'Tiếng Việt' },
-                  { value: 'cn', label: 'Tiếng Trung' },
-                ]}
-              />
-            </Space>
+              </Space>
+              <Space>
+                <Select
+                  defaultValue="en"
+                  className={LayoutStyle.dropdownLanguage}
+                  options={[
+                    { value: 'en', label: 'Tiếng Anh' },
+                    { value: 'vn', label: 'Tiếng Việt' },
+                    { value: 'cn', label: 'Tiếng Trung' },
+                  ]}
+                />
+              </Space>
+            </div>
+            <MenuOutlined
+              className={LayoutStyle.menuButton}
+              onClick={() => setShowMobileMenu(true)}
+            />
           </Space>
+          <Drawer
+            title={
+              <div
+                style={{
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                }}
+              >
+                <Image
+                  preview={false}
+                  style={{
+                    paddingRight: '22px',
+                    marginTop: '-10px',
+                    cursor: 'pointer',
+                    width: '222px',
+                  }}
+                  src="/images/logo.png"
+                  onClick={() => router.push(ROUTERS.HOME)}
+                  alt="logo"
+                />
+              </div>
+            }
+            closeIcon={null}
+            placement="right"
+            zIndex={99999}
+            onClose={() => setShowMobileMenu(false)}
+            open={showMobileMenu}
+          >
+            <Row
+              style={{
+                flexDirection: 'column',
+                height: '100%',
+              }}
+            >
+              <Col flex={1}>
+                <Menu
+                  mode="inline"
+                  items={items}
+                  selectedKeys={[selectedKey]}
+                  onClick={handleClickMenuItem}
+                />
+              </Col>
+            </Row>
+          </Drawer>
         </Header>
         <Content
           style={{
