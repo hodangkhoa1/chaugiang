@@ -1,0 +1,58 @@
+[
+    {
+        "id": "1",
+        "name": "Coffee Mocha",
+        "image": "/images/products/22.png",
+        "volume": "250ml",
+        "productDetail": "17"
+    },
+    {
+        "id": "2",
+        "name": "Coffee Latte",
+        "image": "/images/products/23.png",
+        "volume": "250ml",
+        "productDetail": "18"
+    },
+    {
+        "id": "3",
+        "name": "Bubble Tea With Lemon",
+        "image": "/images/products/24.png",
+        "volume": "330ml",
+        "productDetail": "19"
+    },
+    {
+        "id": "4",
+        "name": "Lotus Heart Tea",
+        "image": "/images/products/25.png",
+        "volume": "250ml",
+        "productDetail": "20"
+    },
+    {
+        "id": "5",
+        "name": "Coffee Mocha",
+        "image": "/images/products/22.png",
+        "volume": "250ml",
+        "productDetail": "17"
+    },
+    {
+        "id": "6",
+        "name": "Coffee Latte",
+        "image": "/images/products/23.png",
+        "volume": "250ml",
+        "productDetail": "18"
+    },
+    {
+        "id": "7",
+        "name": "Bubble Tea With Lemon",
+        "image": "/images/products/24.png",
+        "volume": "330ml",
+        "productDetail": "19"
+    },
+    {
+        "id": "8",
+        "name": "Lotus Heart Tea",
+        "image": "/images/products/25.png",
+        "volume": "250ml",
+        "productDetail": "20"
+    }
+]

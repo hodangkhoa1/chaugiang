@@ -6,7 +6,6 @@ import {
   EnvironmentOutlined,
   PhoneOutlined,
   MailOutlined,
-  ChromeOutlined,
 } from '@ant-design/icons';
 import Link from 'next/link';
 import { ArrowRightOutlined } from '@ant-design/icons';
@@ -55,44 +54,51 @@ export default function ContactPage() {
                   className={Style.contactUsBodyAddressIcon}
                 />
                 <div>
-                  <p>Chau Giang Food Processing and Trading Co., Ltd</p>
                   <p>
-                    Address: Warehouse No. 1, Lot C1-1/X1, Road D4, Tan Phu
-                    Trung Industrial Park, Cu Chi District, Ho Chi Minh City,
-                    Vietnam.
+                    Factory Block 1, Lot C1-1/X6-X7, Road D4, Tan Phu Trung
+                    Industrial Park, Cu Chi District, HCMC, Vietnam.
                   </p>
-                  <p>Tel: +84 903722771 ( Mrs. Tứ)</p>
                 </div>
               </div>
               <div className={`${Style.dflex} ${Style.contactUsBodyHotline}`}>
                 <PhoneOutlined className={Style.contactUsBodyHotlineIcon} />
                 <div>
-                  <p>Hotline: Viber/Line/WhatsApp:</p>
-                  <p>+084903722771 (Mr. Luyen)</p>
-                  <p>+84 353960786 (Mr. Gray)</p>
+                  <p>Internal Markets:</p>
+                  <p>+ (84) 903.722.771 (Mrs.Tứ)</p>
+                  <p>+ (84) 912.004.560 Luyện (MrLeon Trinh)</p>s
                 </div>
               </div>
               <div className={Style.contactUsBodyFaxNumber}>
-                <p>Fax number:</p>
                 <div className={`${Style.dflex} ${Style.contactUsBodyFaxBody}`}>
                   <MailOutlined className={Style.contactUsBodyHotlineIcon} />
-                  <p>Email:</p>
-                  <Link
-                    href={'mailto:info@chaugiangfood.com'}
-                    className={Style.contactUsBodyFaxLink}
-                  >
-                    info@chaugiangfood.com
-                  </Link>
+                  <div>
+                    <div style={{ display: 'flex' }}>
+                      <p>Email:</p>
+                      <Link
+                        href={'mailto:trinhxuanluyen.luyen@gmail.com'}
+                        className={Style.contactUsBodyFaxLink}
+                      >
+                        trinhxuanluyen.luyen@gmail.com
+                      </Link>
+                    </div>
+                    <div style={{ display: 'flex' }}>
+                      <p>Email:</p>
+                      <Link
+                        href={'mailto:Kgray@chaugiangfood.com'}
+                        className={Style.contactUsBodyFaxLink}
+                      >
+                        Kgray@chaugiangfood.com
+                      </Link>
+                    </div>
+                  </div>
                 </div>
-                <div className={`${Style.dflex} ${Style.contactUsBodyFaxBody}`}>
-                  <ChromeOutlined className={Style.contactUsBodyHotlineIcon} />
-                  <p>Website:</p>
-                  <Link
-                    href={'https://chaugiang.vercel.app'}
-                    className={Style.contactUsBodyFaxLink}
-                  >
-                    https://chaugiang.vercel.app
-                  </Link>
+              </div>
+              <div className={`${Style.dflex} ${Style.contactUsBodyHotline}`}>
+                <PhoneOutlined className={Style.contactUsBodyHotlineIcon} />
+                <div>
+                  <p>Foreign Markets:</p>
+                  <p>+ (84) 903.722.771 (Mrs.Tứ)</p>
+                  <p>+ (84) 353.960.786 (Mr.Gray)s</p>
                 </div>
               </div>
             </Col>

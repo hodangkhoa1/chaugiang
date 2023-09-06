@@ -1,11 +1,134 @@
 // import useI18n from '@/i18n/useI18N';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Style from './beverage-packaging-design.module.scss';
 import { Breadcrumb, Col, Row, Image, Carousel } from 'antd';
-import { ArrowRightOutlined } from '@ant-design/icons';
+import {
+  ArrowRightOutlined,
+  RightOutlined,
+  LeftOutlined,
+} from '@ant-design/icons';
+import { ProductData } from './interface';
+import Link from 'next/link';
+import { ROUTERS } from '@/constant/router';
 
 export default function BeveragePackagingDesignPage() {
   // const { translate: translateHome } = useI18n('common');
+
+  const carouselResponsiveSettings = [
+    {
+      breakpoint: 1258,
+      settings: {
+        slidesToShow: 4,
+        slidesToScroll: 3,
+        infinite: true,
+        dots: true,
+      },
+    },
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        infinite: true,
+        dots: true,
+      },
+    },
+    {
+      breakpoint: 876,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 3,
+        infinite: true,
+        dots: true,
+      },
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 2,
+        initialSlide: 2,
+      },
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+      },
+    },
+  ];
+
+  const SampleNextArrow = (props: any) => {
+    const { className, style, onClick } = props;
+    return (
+      <div
+        className={className}
+        style={{
+          ...style,
+          color: '#00894f',
+          fontSize: '16px',
+          background: '#8dc63f',
+          width: '30px',
+          height: '30px',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          borderRadius: '50%',
+          marginRight: '10px',
+          marginTop: '-60px',
+        }}
+        onClick={onClick}
+      >
+        <RightOutlined />
+      </div>
+    );
+  };
+
+  const SamplePrevArrow = (props: any) => {
+    const { className, style, onClick } = props;
+
+    return (
+      <div
+        className={className}
+        style={{
+          ...style,
+          color: '#00894f',
+          fontSize: '16px',
+          background: '#8dc63f',
+          width: '30px',
+          height: '30px',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          borderRadius: '50%',
+          marginLeft: '10px',
+          marginTop: '-60px',
+        }}
+        onClick={onClick}
+      >
+        <LeftOutlined />
+      </div>
+    );
+  };
+
+  const settings = {
+    nextArrow: <SampleNextArrow />,
+    prevArrow: <SamplePrevArrow />,
+  };
+
+  const [productData, setProductData] = useState<ProductData[]>();
+
+  useEffect(() => {
+    import('../../data/productInOtherPage.json')
+      .then((response) => {
+        const data: ProductData[] = response.default;
+        setProductData(data);
+      })
+      .catch((error) => {
+        console.error('Error fetching data:', error);
+      });
+  }, []);
 
   return (
     <div>
@@ -147,63 +270,27 @@ export default function BeveragePackagingDesignPage() {
       </div>
 
       <div className={Style.carouselProductBackground}>
-        <Carousel slidesToShow={4} className={Style.productCarousel} autoplay>
-          <div className={Style.productCard}>
-            <div className={Style.productCardImage}>
-              <img src="/images/products/tamarind_330_short_can.png" alt="" />
-            </div>
-            <h1>Tamarind Juice</h1>
-            <h4>330ml</h4>
-          </div>
-          <div className={Style.productCard}>
-            <div className={Style.productCardImage}>
-              <img src="/images/products/mixed_330_short_can.png" alt="" />
-            </div>
-            <h1>Mixed Juice Drink</h1>
-            <h4>330ml</h4>
-          </div>
-          <div className={Style.productCard}>
-            <div className={Style.productCardImage}>
-              <img src="/images/products/rown_rice_milk.png" alt="" />
-            </div>
-            <h1>Brown Rice Milk</h1>
-            <h4>250ml</h4>
-          </div>
-          <div className={Style.productCard}>
-            <div className={Style.productCardImage}>
-              <img src="/images/products/coconut_mango.png" alt="" />
-            </div>
-            <h1>Coconut Water With Mango</h1>
-            <h4>330ml</h4>
-          </div>
-          <div className={Style.productCard}>
-            <div className={Style.productCardImage}>
-              <img src="/images/products/tamarind_330_short_can.png" alt="" />
-            </div>
-            <h1>Tamarind Juice</h1>
-            <h4>330ml</h4>
-          </div>
-          <div className={Style.productCard}>
-            <div className={Style.productCardImage}>
-              <img src="/images/products/mixed_330_short_can.png" alt="" />
-            </div>
-            <h1>Mixed Juice Drink</h1>
-            <h4>330ml</h4>
-          </div>
-          <div className={Style.productCard}>
-            <div className={Style.productCardImage}>
-              <img src="/images/products/rown_rice_milk.png" alt="" />
-            </div>
-            <h1>Brown Rice Milk</h1>
-            <h4>250ml</h4>
-          </div>
-          <div className={Style.productCard}>
-            <div className={Style.productCardImage}>
-              <img src="/images/products/coconut_mango.png" alt="" />
-            </div>
-            <h1>Coconut Water With Mango</h1>
-            <h4>330ml</h4>
-          </div>
+        <Carousel
+          slidesToShow={4}
+          className={Style.productCarousel}
+          autoplay
+          responsive={carouselResponsiveSettings}
+          arrows
+          {...settings}
+        >
+          {productData?.map((product, index) => (
+            <Link
+              href={ROUTERS.PRODUCTS_DETAIL(product.productDetail)}
+              className={Style.productCard}
+              key={index}
+            >
+              <div className={Style.productCardImage}>
+                <img src={product.image} alt="" />
+              </div>
+              <h1>{product.name}</h1>
+              <h4>{product.volume}</h4>
+            </Link>
+          ))}
         </Carousel>
       </div>
 
@@ -229,9 +316,10 @@ export default function BeveragePackagingDesignPage() {
                   </div>
                   <h2>Hight Quality</h2>
                   <p>
-                    Nam Viet continuously develops new drinks which bring
-                    original natural tastes, high nutrition facts, catch the
-                    newest trends in the market.
+                    Product quality is always developed by CG Food to meet
+                    national and international requirements. We are certain that
+                    our products will have a natural flavor, be highly
+                    nutritious, and follow the latest trends in the market.
                   </p>
                 </div>
               </Col>
@@ -243,9 +331,10 @@ export default function BeveragePackagingDesignPage() {
                   </div>
                   <h2>Fast Delivery</h2>
                   <p>
-                    Production runs in accordance with world highest standards
-                    of Food Safety. Big variety of soft drinks, non-alcohol
-                    drinks, fruit juice drinks.
+                    In order to ensure the leading time in accordance with
+                    client requests, CG Food has a sizable packing and labeling
+                    area. We also have a skilled logistic crew on hand to assist
+                    you whenever you need it.
                   </p>
                 </div>
               </Col>
@@ -257,9 +346,10 @@ export default function BeveragePackagingDesignPage() {
                   </div>
                   <h2>Flexible Packaging</h2>
                   <p>
-                    Production runs in accordance with world highest standards
-                    of Food Safety. Big variety of soft drinks, non-alcohol
-                    drinks, fruit juice drinks.
+                    We consistently satisfy the demands for product packaging
+                    from clients across the global market by combining modernism
+                    and experience. Our employees are trained to catch up with
+                    recent trends of packing specification.
                   </p>
                 </div>
               </Col>
@@ -271,9 +361,10 @@ export default function BeveragePackagingDesignPage() {
                   </div>
                   <h2>Free Sample</h2>
                   <p>
-                    Production runs in accordance with world highest standards
-                    of Food Safety. Big variety of soft drinks, non-alcohol
-                    drinks, fruit juice drinks.
+                    Because their satisfaction makes us happy, we only deliver
+                    the best products to our consumers. In order for the model
+                    to rapidly reach clients, we always select the best shipping
+                    services.
                   </p>
                 </div>
               </Col>
