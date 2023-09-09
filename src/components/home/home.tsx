@@ -783,7 +783,7 @@ export default function HomePage() {
                 <div className={`${Style.dflex} ${Style.newsItem}`}>
                   <div className={Style.imageTop}>
                     <img
-                      src="images/news/introduce_leadership_group.png"
+                      src="images/news/introduce_leadership_group_2.png"
                       alt=""
                     />
                   </div>
@@ -791,12 +791,11 @@ export default function HomePage() {
                     <div className={Style.content}>
                       <div className={Style.contentTitle}>
                         <h2>
-                          a sweet meeting and a new energetic week with king
-                          coffee
+                          Some Private Label Healthy Drinks For Your Business
                         </h2>
                       </div>
 
-                      <div className={Style.contentBottom}>
+                      {/* <div className={Style.contentBottom}>
                         <p>Thanh Trang Ecom 22</p>
                         <p>Moday 22/05/2022</p>
                         <p className={Style.contentBottomUp}>
@@ -807,7 +806,7 @@ export default function HomePage() {
                           Thanks for visting Chau Giang Food Prcessing trade CO,
                           LTD
                         </p>
-                      </div>
+                      </div> */}
                     </div>
 
                     <div className={Style.btn_see_more}>
@@ -824,7 +823,7 @@ export default function HomePage() {
                 <div className={`${Style.dflex} ${Style.newsItem}`}>
                   <div className={Style.imageTop}>
                     <img
-                      src="images/news/introduce_leadership_group.png"
+                      src="images/news/introduce_leadership_group_1.png"
                       alt=""
                     />
                   </div>
@@ -837,7 +836,7 @@ export default function HomePage() {
                         </h2>
                       </div>
 
-                      <div className={Style.contentBottom}>
+                      {/* <div className={Style.contentBottom}>
                         <p>Thanh Trang Ecom 22</p>
                         <p>Moday 22/05/2022</p>
                         <p className={Style.contentBottomUp}>
@@ -848,7 +847,7 @@ export default function HomePage() {
                           Thanks for visting Chau Giang Food Prcessing trade CO,
                           LTD
                         </p>
-                      </div>
+                      </div> */}
                     </div>
 
                     <div className={Style.btn_see_more}>
@@ -865,7 +864,7 @@ export default function HomePage() {
                 <div className={`${Style.dflex} ${Style.newsItem}`}>
                   <div className={Style.imageTop}>
                     <img
-                      src="images/news/introduce_leadership_group.png"
+                      src="images/news/introduce_leadership_group_3.png"
                       alt=""
                     />
                   </div>
@@ -873,12 +872,11 @@ export default function HomePage() {
                     <div className={Style.content}>
                       <div className={Style.contentTitle}>
                         <h2>
-                          a sweet meeting and a new energetic week with king
-                          coffee
+                          Thank You For Visting Our Booth At ThaiFex In 2023!
                         </h2>
                       </div>
 
-                      <div className={Style.contentBottom}>
+                      {/* <div className={Style.contentBottom}>
                         <p>Thanh Trang Ecom 22</p>
                         <p>Moday 22/05/2022</p>
                         <p className={Style.contentBottomUp}>
@@ -889,7 +887,7 @@ export default function HomePage() {
                           Thanks for visting Chau Giang Food Prcessing trade CO,
                           LTD
                         </p>
-                      </div>
+                      </div> */}
                     </div>
 
                     <div className={Style.btn_see_more}>

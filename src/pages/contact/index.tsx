@@ -14,4 +14,4 @@ function Recruitment() {
 export default Recruitment;
 import { getStatic } from '@/lib/getStaticProps';
 import ContactPage from '@/components/contact/contact';
-export const getStaticProps = getStatic(['common', 'contact']);
+export const getStaticProps = getStatic(['common']);

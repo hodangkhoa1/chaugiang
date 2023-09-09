@@ -17,7 +17,7 @@ import {
 import { SearchOutlined } from '@ant-design/icons';
 import { appLocalStorage } from '@/utils/localstorage';
 import { LOCAL_STORAGE_KEYS } from '@/constant/localstorage';
-import { LANGUAGE } from '@/constant';
+import { LANGUAGE, useLocale } from '@/constant';
 import { ROUTERS } from '@/constant/router';
 import {
   EnvironmentOutlined,
@@ -29,6 +29,7 @@ import {
 } from '@ant-design/icons';
 import Link from 'next/link';
 import { MenuInfo } from 'rc-menu/lib/interface';
+import useI18n from '@/i18n/useI18N';
 
 const { Text } = Typography;
 const { Header, Content, Footer } = Layout;
@@ -38,6 +39,7 @@ export const FOOTER_HEIGHT = 50;
 interface Props {
   children: React.ReactNode;
 }
+
 type MenuItem = Required<MenuProps>['items'][number];
 
 function getItem(
@@ -55,12 +57,12 @@ function getItem(
 }
 
 export function AppLayout(props: Props) {
-  // const { translate: translateCommon } = useI18n('common');
+  const { translate: translateCommon } = useI18n('common');
   const router = useRouter();
-  const [languageSelected, setLanguage] = useState<string>(LANGUAGE.EN);
-  const [languageSelectedName, setLanguageSelectedName] = useState('');
+  const [languageSelected, setLanguage] = useState<string>(LANGUAGE.en);
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [selectedKey, setSelectedKey] = useState(ROUTERS.HOME);
+  const locale = useLocale();
 
   const items: MenuItem[] = [
     getItem('Home', ROUTERS.HOME),
@@ -123,15 +125,18 @@ export function AppLayout(props: Props) {
     setShowMobileMenu(false);
     router.push(path.key);
   };
-  useEffect(() => {
-    setLanguage(
-      appLocalStorage.get(LOCAL_STORAGE_KEYS.LANGUAGE) || LANGUAGE.EN
-    );
 
-    languageSelected === 'en'
-      ? setLanguageSelectedName('English')
-      : setLanguageSelectedName('Vietnamese');
-  }, [languageSelected, languageSelectedName]);
+  function onClickChangeLanguage(key: string) {
+    setLanguage(key as string);
+    const { pathname, asPath, query } = router;
+    router.replace({ pathname, query }, asPath, { locale: key });
+    appLocalStorage.set(LOCAL_STORAGE_KEYS.LANGUAGE, key);
+  }
+
+  useEffect(() => {
+    setLanguage(locale);
+    appLocalStorage.set(LOCAL_STORAGE_KEYS.LANGUAGE, locale);
+  }, [languageSelected, locale]);
 
   return (
     <Layout style={{ minHeight: '100vh' }}>
@@ -172,11 +177,14 @@ export function AppLayout(props: Props) {
                 <ul className={LayoutStyle.navbarNav}>
                   <li className={LayoutStyle.navItem}>
                     <Link href={ROUTERS.HOME} className={LayoutStyle.navLink}>
-                      Home
+                      {translateCommon('home')}
                     </Link>
                   </li>
                   <li className={LayoutStyle.navItem}>
-                    <Link href="#" className={LayoutStyle.navLink}>
+                    <Link
+                      href={ROUTERS.WHO_WE_ARE}
+                      className={LayoutStyle.navLink}
+                    >
                       Introduce
                     </Link>
                     <ul className={LayoutStyle.dropdownContent}>
@@ -217,37 +225,58 @@ export function AppLayout(props: Props) {
                         </Link>
                         <ul className={LayoutStyle.subMenu}>
                           <li className={LayoutStyle.subMenuItem}>
-                            <Link href="#" className={LayoutStyle.linkSubMenu}>
+                            <Link
+                              href={ROUTERS.PRODUCTS_DETAIL('5')}
+                              className={LayoutStyle.linkSubMenu}
+                            >
                               Brown rice
                             </Link>
                           </li>
                           <li className={LayoutStyle.subMenuItem}>
-                            <Link href="#" className={LayoutStyle.linkSubMenu}>
+                            <Link
+                              href={ROUTERS.PRODUCTS_DETAIL('25')}
+                              className={LayoutStyle.linkSubMenu}
+                            >
                               Oats
                             </Link>
                           </li>
                           <li className={LayoutStyle.subMenuItem}>
-                            <Link href="#" className={LayoutStyle.linkSubMenu}>
+                            <Link
+                              href={ROUTERS.PRODUCTS_DETAIL('1')}
+                              className={LayoutStyle.linkSubMenu}
+                            >
                               Coconut meat
                             </Link>
                           </li>
                           <li className={LayoutStyle.subMenuItem}>
-                            <Link href="#" className={LayoutStyle.linkSubMenu}>
+                            <Link
+                              href={ROUTERS.PRODUCTS_DETAIL('4')}
+                              className={LayoutStyle.linkSubMenu}
+                            >
                               Sparkling coconut
                             </Link>
                           </li>
                           <li className={LayoutStyle.subMenuItem}>
-                            <Link href="#" className={LayoutStyle.linkSubMenu}>
+                            <Link
+                              href={ROUTERS.PRODUCTS_DETAIL('10')}
+                              className={LayoutStyle.linkSubMenu}
+                            >
                               Tamarind
                             </Link>
                           </li>
                           <li className={LayoutStyle.subMenuItem}>
-                            <Link href="#" className={LayoutStyle.linkSubMenu}>
+                            <Link
+                              href={ROUTERS.PRODUCTS_DETAIL('3')}
+                              className={LayoutStyle.linkSubMenu}
+                            >
                               Mango
                             </Link>
                           </li>
                           <li className={LayoutStyle.subMenuItem}>
-                            <Link href="#" className={LayoutStyle.linkSubMenu}>
+                            <Link
+                              href={ROUTERS.PRODUCTS_DETAIL('13')}
+                              className={LayoutStyle.linkSubMenu}
+                            >
                               Bottle of aloe vera
                             </Link>
                           </li>
@@ -258,23 +287,32 @@ export function AppLayout(props: Props) {
                           New products
                         </Link>
                         <ul className={LayoutStyle.subMenu}>
-                          <li className={LayoutStyle.subMenuItem}>
-                            <Link href="#" className={LayoutStyle.linkSubMenu}>
+                          {/* <li className={LayoutStyle.subMenuItem}>
+                            <Link
+                              href={ROUTERS.PRODUCTS_DETAIL('16')}
+                              className={LayoutStyle.linkSubMenu}
+                            >
                               Sparkling watermelon
                             </Link>
-                          </li>
+                          </li> */}
                           <li className={LayoutStyle.subMenuItem}>
                             <Link href="#" className={LayoutStyle.linkSubMenu}>
                               Sparkling fragrant coconut
                             </Link>
                           </li>
                           <li className={LayoutStyle.subMenuItem}>
-                            <Link href="#" className={LayoutStyle.linkSubMenu}>
+                            <Link
+                              href={ROUTERS.PRODUCTS_DETAIL('18')}
+                              className={LayoutStyle.linkSubMenu}
+                            >
                               Black coffee
                             </Link>
                           </li>
                           <li className={LayoutStyle.subMenuItem}>
-                            <Link href="#" className={LayoutStyle.linkSubMenu}>
+                            <Link
+                              href={ROUTERS.PRODUCTS_DETAIL('17')}
+                              className={LayoutStyle.linkSubMenu}
+                            >
                               Cappuccino
                             </Link>
                           </li>
@@ -289,7 +327,10 @@ export function AppLayout(props: Props) {
                             </Link>
                           </li>
                           <li className={LayoutStyle.subMenuItem}>
-                            <Link href="#" className={LayoutStyle.linkSubMenu}>
+                            <Link
+                              href={ROUTERS.PRODUCTS_DETAIL('19')}
+                              className={LayoutStyle.linkSubMenu}
+                            >
                               Lemon tea
                             </Link>
                           </li>
@@ -301,22 +342,34 @@ export function AppLayout(props: Props) {
                         </Link>
                         <ul className={LayoutStyle.subMenu}>
                           <li className={LayoutStyle.subMenuItem}>
-                            <Link href="#" className={LayoutStyle.linkSubMenu}>
+                            <Link
+                              href={ROUTERS.PRODUCTS_DETAIL('5')}
+                              className={LayoutStyle.linkSubMenu}
+                            >
                               Brown rice milk
                             </Link>
                           </li>
                           <li className={LayoutStyle.subMenuItem}>
-                            <Link href="#" className={LayoutStyle.linkSubMenu}>
+                            <Link
+                              href={ROUTERS.PRODUCTS_DETAIL('7')}
+                              className={LayoutStyle.linkSubMenu}
+                            >
                               Soy milk
                             </Link>
                           </li>
                           <li className={LayoutStyle.subMenuItem}>
-                            <Link href="#" className={LayoutStyle.linkSubMenu}>
+                            <Link
+                              href={ROUTERS.PRODUCTS_DETAIL('6')}
+                              className={LayoutStyle.linkSubMenu}
+                            >
                               mung bean milk
                             </Link>
                           </li>
                           <li className={LayoutStyle.subMenuItem}>
-                            <Link href="#" className={LayoutStyle.linkSubMenu}>
+                            <Link
+                              href={ROUTERS.PRODUCTS_DETAIL('8')}
+                              className={LayoutStyle.linkSubMenu}
+                            >
                               Corn milk
                             </Link>
                           </li>
@@ -412,13 +465,16 @@ export function AppLayout(props: Props) {
               </Space>
               <Space>
                 <Select
-                  defaultValue="en"
+                  defaultValue={locale}
                   className={LayoutStyle.dropdownLanguage}
                   options={[
                     { value: 'en', label: 'Tiếng Anh' },
                     { value: 'vn', label: 'Tiếng Việt' },
                     { value: 'cn', label: 'Tiếng Trung' },
                   ]}
+                  onChange={(selectedValues) => {
+                    onClickChangeLanguage(selectedValues);
+                  }}
                 />
               </Space>
             </div>

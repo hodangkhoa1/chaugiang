@@ -7,6 +7,7 @@ import { Baloo_2 } from '@next/font/google';
 import Head from 'next/head';
 import { appWithTranslation } from 'next-i18next';
 import { AppLayout } from '@/layout/layout';
+import { useLocaleAnt } from '@/constant';
 
 const inter = Baloo_2({ subsets: ['latin'] });
 export type NextPageWithLayout<P = Record<string, unknown>, IP = P> = NextPage<
@@ -22,9 +23,11 @@ type AppPropsWithLayout = AppProps & {
 
 function App({ Component, pageProps }: AppPropsWithLayout) {
   const L = Component.Layout ? Component.Layout : AppLayout;
+  const localeApp = useLocaleAnt();
 
   return (
     <ConfigProvider
+      locale={localeApp}
       theme={{
         token: {},
         components: {

@@ -6,9 +6,9 @@ const appEnv = process.env.APP_ENV || 'dev';
 const version = process.env.VERSION || '0.1.0';
 
 const API_MAIN_GW = {
-  dev: '',
-  staging: '',
-  production: '',
+  dev: 'https://chaugiangfood.com',
+  staging: 'https://chaugiangfood.com',
+  production: 'https://chaugiangfood.com',
 };
 
 const env = {

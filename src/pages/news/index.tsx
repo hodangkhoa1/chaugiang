@@ -14,4 +14,4 @@ function News() {
 export default News;
 import { getStatic } from '@/lib/getStaticProps';
 import NewsPage from '@/components/news/news';
-export const getStaticProps = getStatic(['common', 'news']);
+export const getStaticProps = getStatic(['common']);

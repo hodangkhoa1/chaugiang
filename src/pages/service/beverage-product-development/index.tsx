@@ -14,7 +14,4 @@ function BeverageProductDevelopment() {
 export default BeverageProductDevelopment;
 import { getStatic } from '@/lib/getStaticProps';
 import BeverageProductDevelopmentPage from '@/components/beverage-product-development/beverage-product-development';
-export const getStaticProps = getStatic([
-  'common',
-  'beverageProductDevelopment',
-]);
+export const getStaticProps = getStatic(['common']);

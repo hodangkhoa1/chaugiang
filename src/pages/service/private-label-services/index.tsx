@@ -14,4 +14,4 @@ function PrivateLabelServices() {
 export default PrivateLabelServices;
 import { getStatic } from '@/lib/getStaticProps';
 import PrivateLabelServicesPage from '@/components/private-label-services/private-label-services';
-export const getStaticProps = getStatic(['common', 'privateLabelServices']);
+export const getStaticProps = getStatic(['common']);

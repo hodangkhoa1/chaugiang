@@ -14,7 +14,7 @@ function ProductDetail() {
 export default ProductDetail;
 import { getStatic } from '@/lib/getStaticProps';
 import ProductDetailPage from '@/components/products/product-detail';
-export const getStaticProps = getStatic(['common', 'productDetail']);
+export const getStaticProps = getStatic(['common']);
 export const getStaticPaths = async ({ locales }: { locales: [] }) => {
   const ids: string[] = [];
   const paths = ids.map(() =>

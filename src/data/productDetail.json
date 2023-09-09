@@ -550,5 +550,28 @@
         "bottomContent3": "Graphic customization",
         "bottomContent4": "Formula customization",
         "bottomContent5": "Mixed container: Max 8 flavors"
+    },
+    {
+        "id": "25",
+        "name": "CG Oat Milk Drink",
+        "image": "/images/products/36.png",
+        "star": 5,
+        "manufacturedBy": "Chau Giang Food Processing Trade Co., LTD",
+        "packingSpecification": "24 cans/ carton, 6 cans/ wrap, 4 wraps/ carton",
+        "certificate": "HALAL, FDA, ISO, FCSS, GMP, HACCAP",
+        "mOQ": "500 cartons",
+        "shelflife": "24 months",
+        "volume": "245ml, 325ml",
+        "payment": "L/C, T/T, Western Union, MoneyGram, Paypal",
+        "sellingPoints": "OEM, ODM, Free sample, Free label design",
+        "placeOfOrigin": "Vietnam",
+        "note1": "OEM/ODM Services",
+        "note2": "Free Product Customization",
+        "note3": "Min. Order: 500 Cartons",
+        "bottomContent1": "Customized logo",
+        "bottomContent2": "Customized packaging",
+        "bottomContent3": "Graphic customization",
+        "bottomContent4": "Formula customization",
+        "bottomContent5": "Mixed container: Max 8 flavors"
     }
 ]
