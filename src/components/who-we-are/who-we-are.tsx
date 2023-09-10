@@ -1,4 +1,3 @@
-// import useI18n from '@/i18n/useI18N';
 import React from 'react';
 import Style from './who-we-are.module.scss';
 import { Breadcrumb, Carousel, Col, Image, Row } from 'antd';
@@ -7,9 +6,11 @@ import {
   RightOutlined,
   LeftOutlined,
 } from '@ant-design/icons';
+import useI18n from '@/i18n/useI18N';
 
 export default function WhoWeArePage() {
-  // const { translate: translateHome } = useI18n('common');
+  const { translate: translateWhoWeAre } = useI18n('whoWeAre');
+  const { translate: translateCommon } = useI18n('common');
 
   const SampleNextArrow = (props: any) => {
     const { className, style, onClick } = props;
@@ -121,7 +122,7 @@ export default function WhoWeArePage() {
       <div className={Style.introduceWhoWeAre}>
         <div className={`${Style.dflex} ${Style.introduceWhoWeAreTopCover}`}>
           <div className={Style.introduceWhoWeAreTitle}>
-            <h1>Introduce</h1>
+            <h1>{translateCommon('introduce')}</h1>
           </div>
         </div>
 
@@ -129,13 +130,13 @@ export default function WhoWeArePage() {
           className={Style.introduceWhoWeAreBreadcrumb}
           items={[
             {
-              title: 'Home',
+              title: `${translateCommon('home')}`,
             },
             {
-              title: 'Introduce',
+              title: `${translateCommon('introduce')}`,
             },
             {
-              title: 'Who we are',
+              title: `${translateCommon('whoWeAre')}`,
             },
           ]}
         />
@@ -144,21 +145,12 @@ export default function WhoWeArePage() {
       <div className={`${Style.dflex} ${Style.introduceOurFamily}`}>
         <div className={`${Style.dflex} ${Style.introduceOurFamilyTopCover}`}>
           <div className={Style.introduceOurFamilyTitle}>
-            <h1>Our Family</h1>
+            <h1>{translateWhoWeAre('ourFamily')}</h1>
           </div>
         </div>
 
         <div className={Style.introduceOurFamilyCenter}>
-          <p>
-            Chau Giang Food Processing Trade Company was established in 1990, is
-            an enterprise with over 30 years of experience in the industry of
-            producing all kinds of domestic and international branded beverage
-            products. . Currently, Chau Giang has been expanding production
-            lines, continuing to improve production processes to meet
-            international standards to promote exports to markets around the
-            world, ensuring standards. in terms of design, product quality and
-            price.
-          </p>
+          <p>{translateWhoWeAre('ourFamilyChauGiangFood')}</p>
         </div>
 
         <div className={`${Style.dflex} ${Style.introduceOurFamilyLogo}`}>
@@ -204,18 +196,12 @@ export default function WhoWeArePage() {
       <div className={`${Style.dflex} ${Style.ourProducts}`}>
         <div className={`${Style.dflex} ${Style.ourProductsTopCover}`}>
           <div className={Style.ourProductsTitle}>
-            <h1>Our Products</h1>
+            <h1>{translateWhoWeAre('ourProducts')}</h1>
           </div>
         </div>
 
         <div className={Style.ourProductsCenter}>
-          <p>
-            With more than 30 years of leading in the Food and Beverage
-            industry, COCONUT WATER, BROWN RICE MILK, SOYA MILK, GREEN BEAN
-            MILK, OAT MILK, NATURAL FRUIT JUICE, ALOE VERA, and ENERGY Drink are
-            our best selling products in both do mestic and international
-            markets.
-          </p>
+          <p>{translateWhoWeAre('ourProductsWithMore')}</p>
         </div>
 
         <div className={Style.ourProductsLogo}>
@@ -230,7 +216,7 @@ export default function WhoWeArePage() {
       <div className={`${Style.dflex} ${Style.certification}`}>
         <div className={`${Style.dflex} ${Style.certificationTopCover}`}>
           <div className={Style.certificationTitle}>
-            <h1>Certifications</h1>
+            <h1>{translateWhoWeAre('certifications')}</h1>
           </div>
         </div>
 
@@ -335,35 +321,14 @@ export default function WhoWeArePage() {
         <div className={`${Style.dflex} ${Style.ourFactoryLeft}`}>
           <div className={`${Style.dflex} ${Style.ourFactoryLeftCover}`}>
             <div className={Style.ourFactoryTitle}>
-              <h1>Our Factory</h1>
+              <h1>{translateWhoWeAre('ourFactory')}</h1>
             </div>
           </div>
 
           <div className={Style.ourFactoryLeftCenter}>
-            <p>
-              In order to meet international standards and the needs of the
-              market, Chau Giang Co., always prioritizes improving modern
-              equipment and machines. Currently, Chau Giang&apos;s factory is
-              producing with full of automatically can filling lines and PET
-              plastic bottles, which can meet all types of products from hot to
-              cold filling.
-            </p>
-            <p>
-              Besides, Chau Giang also invests in a chain of labeling and
-              packaging systems for the purpose of committing to delivery and
-              output for customers on time. In addition, Chau Giang Company has
-              full departments from the R&D department, Accountant offices,
-              warehouse systems, and other departments.
-            </p>
-            <p>
-              In addition to expanding and developing production lines according
-              to international standards, Chau Giang Co., always focuses on the
-              enhancement and training of high-quality human resources through
-              careful selection, creating chances to experience the best
-              environment, being guided in working specifically and clearly to
-              maximize personal capacity, thereby optimizing collective
-              strength.
-            </p>
+            <p>{translateWhoWeAre('ourFactoryInOrder')}</p>
+            <p>{translateWhoWeAre('ourFactoryBesides')}</p>
+            <p>{translateWhoWeAre('ourFactoryInAddition')}</p>
           </div>
         </div>
         <div className={Style.ourFactoryRight}>
@@ -419,7 +384,7 @@ export default function WhoWeArePage() {
           <div className={Style.whyChooseUsTop}>
             <div className={`${Style.dflex} ${Style.whyChooseUsTopCover}`}>
               <div className={`${Style.dflex} ${Style.whyChooseUsTitle}`}>
-                <h1>Why choose Us?</h1>
+                <h1>{translateWhoWeAre('whyChooseUs')}</h1>
               </div>
             </div>
           </div>
@@ -438,13 +403,8 @@ export default function WhoWeArePage() {
                   <div className={Style.whyChooseUsBottomImage}>
                     <img src="/images/why_choose_us/Untitled-28.png" alt="" />
                   </div>
-                  <h2>Hight Quality</h2>
-                  <p>
-                    Product quality is always developed by CG Food to meet
-                    national and international requirements. We are certain that
-                    our products will have a natural flavor, be highly
-                    nutritious, and follow the latest trends in the market.
-                  </p>
+                  <h2>{translateWhoWeAre('hightQuality')}</h2>
+                  <p>{translateWhoWeAre('hightQualityProduct')}</p>
                 </div>
               </Col>
 
@@ -453,13 +413,8 @@ export default function WhoWeArePage() {
                   <div className={Style.whyChooseUsBottomImage}>
                     <img src="/images/why_choose_us/Untitled-29.png" alt="" />
                   </div>
-                  <h2>Fast Delivery</h2>
-                  <p>
-                    In order to ensure the leading time in accordance with
-                    client requests, CG Food has a sizable packing and labeling
-                    area. We also have a skilled logistic crew on hand to assist
-                    you whenever you need it.
-                  </p>
+                  <h2>{translateWhoWeAre('fastDelivery')}</h2>
+                  <p>{translateWhoWeAre('fastDeliveryInOrder')}</p>
                 </div>
               </Col>
 
@@ -468,13 +423,8 @@ export default function WhoWeArePage() {
                   <div className={Style.whyChooseUsBottomImage}>
                     <img src="/images/why_choose_us/Untitled-30.png" alt="" />
                   </div>
-                  <h2>Flexible Packaging</h2>
-                  <p>
-                    We consistently satisfy the demands for product packaging
-                    from clients across the global market by combining modernism
-                    and experience. Our employees are trained to catch up with
-                    recent trends of packing specification.
-                  </p>
+                  <h2>{translateWhoWeAre('flexiblePackaging')}</h2>
+                  <p>{translateWhoWeAre('flexiblePackagingWeConsistently')}</p>
                 </div>
               </Col>
 
@@ -483,13 +433,8 @@ export default function WhoWeArePage() {
                   <div className={Style.whyChooseUsBottomImage}>
                     <img src="/images/why_choose_us/Untitled-31.png" alt="" />
                   </div>
-                  <h2>Free Sample</h2>
-                  <p>
-                    Because their satisfaction makes us happy, we only deliver
-                    the best products to our consumers. In order for the model
-                    to rapidly reach clients, we always select the best shipping
-                    services.
-                  </p>
+                  <h2>{translateWhoWeAre('freeSample')}</h2>
+                  <p>{translateWhoWeAre('freeSampleBecause')}</p>
                 </div>
               </Col>
             </Row>
@@ -506,30 +451,30 @@ export default function WhoWeArePage() {
               <div
                 className={`${Style.dflex} ${Style.customerInformationTitle}`}
               >
-                <h1>Customer Information</h1>
+                <h1>{translateWhoWeAre('customerInformation')}</h1>
               </div>
             </div>
           </div>
 
           <div className={Style.customerInformationCenter}>
-            <p>
-              Please provide the information below to receive our free
-              consultation service package
-            </p>
+            <p>{translateWhoWeAre('customerInformationPleaseProvide')}</p>
           </div>
 
           <div className={`${Style.dflex} ${Style.customerInformationBottom}`}>
-            <input type="text" placeholder="First and last name" />
-            <input type="tel" placeholder="Phone number" />
-            <input type="text" placeholder="Email" />
+            <input
+              type="text"
+              placeholder={translateWhoWeAre('firstAndLastName')}
+            />
+            <input type="tel" placeholder={translateWhoWeAre('phoneNumber')} />
+            <input type="text" placeholder={translateWhoWeAre('email')} />
             <textarea
               cols={22}
-              placeholder="Information needed support"
+              placeholder={translateWhoWeAre('informationNeededSupport')}
             ></textarea>
 
             <div className={Style.btn_see_more}>
               <button className={`${Style.dflex}`}>
-                <p>Send information</p>
+                <p>{translateWhoWeAre('sendInformation')}</p>
                 <ArrowRightOutlined className={Style.iconBtn} />
               </button>
             </div>

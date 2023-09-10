@@ -14,4 +14,4 @@ function CompanyProfile() {
 export default CompanyProfile;
 import { getStatic } from '@/lib/getStaticProps';
 import CompanyProfilePage from '@/components/company-profile/company-profile';
-export const getStaticProps = getStatic(['common']);
+export const getStaticProps = getStatic(['common', 'companyProfile']);

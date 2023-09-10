@@ -1,3 +1,22 @@
 {
-    "home": "Trang chủ"
+    "home": "Trang chủ",
+    "introduce": "Giới thiệu",
+    "whoWeAre": "Chúng tôi là ai",
+    "companyProfile": "Thông tin doanh nghiệp",
+    "catalogue": "Mục lục",
+    "products": "Sản phẩm",
+    "bestSelling": "Sản phẩm bán chạy",
+    "newProducts": "Sản phẩm mới",
+    "featuredProduct": "Sản phẩm đặc trưng",
+    "services": "Dịch vụ",
+    "beverageProductDevelopment": "Phát triển sản phẩm đồ uống",
+    "beveragePackagingDesign": "Thiết kế bao bì đồ uống",
+    "privateLabelServices": "Dịch vụ nhãn hiệu riêng",
+    "news": "Tin tức",
+    "contact": "Liên hệ",
+    "recruitment": "Tuyển dụng",
+    "search": "Tìm kiếm...",
+    "english": "Tiếng Anh",
+    "vietnamese": "Tiếng Việt",
+    "chinese": "Tiếng Trung"
 }

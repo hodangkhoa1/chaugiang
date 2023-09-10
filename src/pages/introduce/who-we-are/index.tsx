@@ -14,4 +14,4 @@ function WhoWeAre() {
 export default WhoWeAre;
 import { getStatic } from '@/lib/getStaticProps';
 import WhoWeArePage from '@/components/who-we-are/who-we-are';
-export const getStaticProps = getStatic(['common']);
+export const getStaticProps = getStatic(['common', 'whoWeAre']);

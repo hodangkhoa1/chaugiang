@@ -19,4 +19,4 @@ function Home() {
 
 export default Home;
 import { getStatic } from '@/lib/getStaticProps';
-export const getStaticProps = getStatic(['common']);
+export const getStaticProps = getStatic(['common', 'home']);

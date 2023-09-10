@@ -1,3 +1,22 @@
 {
-    "home": "Home"
+    "home": "Home",
+    "introduce": "Introduce",
+    "whoWeAre": "Who we are",
+    "companyProfile": "Company Profile",
+    "catalogue": "Catalogue",
+    "products": "Products",
+    "bestSelling": "Best selling",
+    "newProducts": "New products",
+    "featuredProduct": "Featured product",
+    "services": "Services",
+    "beverageProductDevelopment": "Beverage Product Development",
+    "beveragePackagingDesign": "Beverage packaging design",
+    "privateLabelServices": "Private Label Services (OEM/ODM)",
+    "news": "News",
+    "contact": "Contact",
+    "recruitment": "Recruitment",
+    "search": "Search...",
+    "english": "English",
+    "vietnamese": "Vietnamese",
+    "chinese": "Chinese"
 }

@@ -1,4 +1,3 @@
-// import useI18n from '@/i18n/useI18N';
 import React, { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import Style from './home.module.scss';
@@ -14,9 +13,10 @@ import { Carousel, Col, Row, Image } from 'antd';
 import Link from 'next/link';
 import { ROUTERS } from '@/constant/router';
 import { HomeProductData } from './interface';
+import useI18n from '@/i18n/useI18N';
 
 export default function HomePage() {
-  // const { translate: translateHome } = useI18n('common');
+  const { translate: translateHome } = useI18n('home');
 
   const carouselResponsiveSettings = [
     {
@@ -183,7 +183,7 @@ export default function HomePage() {
       <div className={Style.carouselCertificationBackground}>
         <div className={`${Style.dflex} ${Style.certificationTopCover}`}>
           <div className={Style.certificationTitle}>
-            <h1>Our Certifications</h1>
+            <h1>{translateHome('ourCertifications')}</h1>
           </div>
         </div>
 
@@ -305,7 +305,7 @@ export default function HomePage() {
               </div>
 
               <div className={`${Style.dflex} ${Style.aboutUsTitle}`}>
-                <h1>About Us</h1>
+                <h1>{translateHome('aboutUs')}</h1>
               </div>
 
               <div className={`${Style.dflex} ${Style.aboutUsPicture}`}>
@@ -315,16 +315,8 @@ export default function HomePage() {
           </div>
 
           <div className={Style.aboutUsCenter}>
-            <h2>Suppliers, manufacturers top Beverages and Beverages</h2>
-            <p>
-              Established in 1990, Chau Giang Food Processing Trade Company,
-              with more than 33 years of experience, is currently an industry
-              leader in the beverage processing industry by extending its
-              cutting-edge production line system and fostering its expansion
-              into international markets, while continuously providing the
-              highest level of customer service to meet product quality and
-              demand.
-            </p>
+            <h2>{translateHome('aboutUsSuppliers')}</h2>
+            <p>{translateHome('aboutUsEstablished')}</p>
           </div>
 
           <div className={`${Style.aboutUsBottom}`}>
@@ -334,7 +326,7 @@ export default function HomePage() {
                   <div className={Style.aboutUsBottomImage}>
                     <img src="images/about_us/our_family.png" alt="" />
                   </div>
-                  <h2>Our family</h2>
+                  <h2>{translateHome('ourFamily')}</h2>
                 </div>
               </Col>
               <Col lg={8} span={24}>
@@ -342,7 +334,7 @@ export default function HomePage() {
                   <div className={Style.aboutUsBottomImage}>
                     <img src="images/about_us/our_products.png" alt="" />
                   </div>
-                  <h2>Our products</h2>
+                  <h2>{translateHome('ourProducts')}</h2>
                 </div>
               </Col>
               <Col lg={8} span={24}>
@@ -350,7 +342,7 @@ export default function HomePage() {
                   <div className={Style.aboutUsBottomImage}>
                     <img src="images/about_us/our_factory.png" alt="" />
                   </div>
-                  <h2>Our factory</h2>
+                  <h2>{translateHome('ourFactory')}</h2>
                 </div>
               </Col>
             </Row>
@@ -363,7 +355,7 @@ export default function HomePage() {
       <div className={Style.carouselProductBackground}>
         <div className={`${Style.dflex} ${Style.productTopCover}`}>
           <div className={Style.productTitle}>
-            <h1>Product</h1>
+            <h1>{translateHome('product')}</h1>
           </div>
         </div>
 
@@ -463,7 +455,7 @@ export default function HomePage() {
               </div>
               <div className={Style.coverTitle}>
                 <div className={Style.title}>
-                  <h2>best selling</h2>
+                  <h2>{translateHome('bestSelling')}</h2>
                 </div>
               </div>
             </div>
@@ -473,25 +465,31 @@ export default function HomePage() {
             <div className={Style.right__cover}>
               <div className={Style.menuTop}>
                 <div className={Style.itemLink}>
-                  <a href="">Brown Rice Milk Drink</a>
+                  <Link href={ROUTERS.PRODUCTS_DETAIL('5')}>
+                    Brown Rice Milk Drink
+                  </Link>
                 </div>
 
                 <div className={Style.itemLink}>
-                  <a href="">Oat Cereal</a>
+                  <Link href={ROUTERS.PRODUCTS_DETAIL('25')}>Oat Cereal</Link>
                 </div>
 
                 <div className={Style.itemLink}>
-                  <a href="">Milk Drink Coconut Water</a>
+                  <Link href={ROUTERS.PRODUCTS_DETAIL('1')}>
+                    Milk Drink Coconut Water
+                  </Link>
                 </div>
               </div>
 
               <div className={Style.menuBottom}>
                 <div className={Style.itemLink}>
-                  <a href="">Sparkling Coconut Water</a>
+                  <Link href={ROUTERS.PRODUCTS_DETAIL('4')}>
+                    Sparkling Coconut Water
+                  </Link>
                 </div>
 
                 <div className={Style.itemLink}>
-                  <a href="">Fruit Juice Drink</a>
+                  <Link href="">Fruit Juice Drink</Link>
                 </div>
               </div>
             </div>
@@ -558,7 +556,9 @@ export default function HomePage() {
               </div>
               <div className={Style.coverTitle}>
                 <div className={Style.title}>
-                  <h2 className={Style.newProductTitle}>new product</h2>
+                  <h2 className={Style.newProductTitle}>
+                    {translateHome('newProduct')}
+                  </h2>
                 </div>
               </div>
             </div>
@@ -568,19 +568,23 @@ export default function HomePage() {
             <div className={Style.right__cover}>
               <div className={Style.menuTop}>
                 <div className={Style.itemLink}>
-                  <a href="">Pet Aloe Vera Drink</a>
+                  <Link href={ROUTERS.PRODUCTS_DETAIL('13')}>
+                    Pet Aloe Vera Drink
+                  </Link>
                 </div>
 
                 <div className={Style.itemLink}>
-                  <a href="">Sparkling Fruit Juice</a>
+                  <Link href={ROUTERS.PRODUCTS_DETAIL('9')}>
+                    Sparkling Fruit Juice
+                  </Link>
                 </div>
 
                 <div className={Style.itemLink}>
-                  <a href="">Coffee</a>
+                  <Link href={ROUTERS.PRODUCTS_DETAIL('17')}>Coffee</Link>
                 </div>
 
                 <div className={Style.itemLink}>
-                  <a href="">Tea</a>
+                  <Link href={ROUTERS.PRODUCTS_DETAIL('19')}>Tea</Link>
                 </div>
               </div>
             </div>
@@ -645,7 +649,7 @@ export default function HomePage() {
               <div className={Style.coverTitle}>
                 <div className={Style.title}>
                   <h2 className={Style.featuredProductTitle}>
-                    featured product
+                    {translateHome('featuredProduct')}
                   </h2>
                 </div>
               </div>
@@ -656,29 +660,33 @@ export default function HomePage() {
             <div className={Style.right__cover}>
               <div className={Style.menuTop}>
                 <div className={Style.itemLink}>
-                  <a href="">Soy Bean Milk</a>
+                  <Link href={ROUTERS.PRODUCTS_DETAIL('7')}>Soy Bean Milk</Link>
                 </div>
 
                 <div className={Style.itemLink}>
-                  <a href="">Green Bean Milk</a>
+                  <Link href={ROUTERS.PRODUCTS_DETAIL('6')}>
+                    Green Bean Milk
+                  </Link>
                 </div>
 
                 <div className={Style.itemLink}>
-                  <a href="">Corn Milk</a>
+                  <Link href={ROUTERS.PRODUCTS_DETAIL('8')}>Corn Milk</Link>
                 </div>
 
                 <div className={Style.itemLink}>
-                  <a href="">Bird&apos;s Nest Drink</a>
+                  <Link href="">Bird&apos;s Nest Drink</Link>
                 </div>
               </div>
 
               <div className={Style.menuBottom}>
                 <div className={Style.itemLink}>
-                  <a href="">Aloe Vera Bird&apos;s Nest Drink</a>
+                  <Link href={ROUTERS.PRODUCTS_DETAIL('13')}>
+                    Aloe Vera Bird&apos;s Nest Drink
+                  </Link>
                 </div>
 
                 <div className={Style.itemLink}>
-                  <a href="">Energy Drink</a>
+                  <Link href={ROUTERS.PRODUCTS_DETAIL('23')}>Energy Drink</Link>
                 </div>
               </div>
             </div>
@@ -772,7 +780,7 @@ export default function HomePage() {
           <div className={Style.newsTop}>
             <div className={`${Style.dflex} ${Style.newsTopCover}`}>
               <div className={`${Style.dflex} ${Style.newsTitle}`}>
-                <h1>News and event</h1>
+                <h1>{translateHome('newsAndEvent')}</h1>
               </div>
             </div>
           </div>
@@ -790,9 +798,7 @@ export default function HomePage() {
                   <div className={Style.contentCover}>
                     <div className={Style.content}>
                       <div className={Style.contentTitle}>
-                        <h2>
-                          Some Private Label Healthy Drinks For Your Business
-                        </h2>
+                        <h2>{translateHome('newsAndEventPrivateLabel')}</h2>
                       </div>
 
                       {/* <div className={Style.contentBottom}>
@@ -811,7 +817,7 @@ export default function HomePage() {
 
                     <div className={Style.btn_see_more}>
                       <button className={`${Style.dflex}`}>
-                        <p>See More</p>
+                        <p>{translateHome('seeMore')}</p>
                         <ArrowRightOutlined className={Style.iconBtn} />
                       </button>
                     </div>
@@ -830,10 +836,7 @@ export default function HomePage() {
                   <div className={Style.contentCover}>
                     <div className={Style.content}>
                       <div className={Style.contentTitle}>
-                        <h2>
-                          a sweet meeting and a new energetic week with king
-                          coffee
-                        </h2>
+                        <h2>{translateHome('newsAndEventASweetMeeting')}</h2>
                       </div>
 
                       {/* <div className={Style.contentBottom}>
@@ -852,7 +855,7 @@ export default function HomePage() {
 
                     <div className={Style.btn_see_more}>
                       <button className={`${Style.dflex}`}>
-                        <p>See More</p>
+                        <p>{translateHome('seeMore')}</p>
                         <ArrowRightOutlined className={Style.iconBtn} />
                       </button>
                     </div>
@@ -872,7 +875,7 @@ export default function HomePage() {
                     <div className={Style.content}>
                       <div className={Style.contentTitle}>
                         <h2>
-                          Thank You For Visting Our Booth At ThaiFex In 2023!
+                          {translateHome('newsAndEventThankYouForVisting')}
                         </h2>
                       </div>
 
@@ -892,7 +895,7 @@ export default function HomePage() {
 
                     <div className={Style.btn_see_more}>
                       <button className={`${Style.dflex}`}>
-                        <p>See More</p>
+                        <p>{translateHome('seeMore')}</p>
                         <ArrowRightOutlined className={Style.iconBtn} />
                       </button>
                     </div>
@@ -909,7 +912,7 @@ export default function HomePage() {
           <div className={Style.aboutUsTop}>
             <div className={`${Style.dflex} ${Style.whyChooseUsTopCover}`}>
               <div className={`${Style.dflex} ${Style.whyChooseUsTitle}`}>
-                <h1>Why choose Us?</h1>
+                <h1>{translateHome('whyChooseUs')}</h1>
               </div>
             </div>
           </div>
@@ -928,13 +931,8 @@ export default function HomePage() {
                   <div className={Style.aboutUsBottomImage}>
                     <img src="images/why_choose_us/Untitled-28.png" alt="" />
                   </div>
-                  <h2>Hight Quality</h2>
-                  <p>
-                    Product quality is always developed by CG Food to meet
-                    national and international requirements. We are certain that
-                    our products will have a natural flavor, be highly
-                    nutritious, and follow the latest trends in the market.
-                  </p>
+                  <h2>{translateHome('hightQuality')}</h2>
+                  <p>{translateHome('hightQualityProduct')}</p>
                 </div>
               </Col>
 
@@ -943,13 +941,8 @@ export default function HomePage() {
                   <div className={Style.aboutUsBottomImage}>
                     <img src="images/why_choose_us/Untitled-29.png" alt="" />
                   </div>
-                  <h2>Fast Delivery</h2>
-                  <p>
-                    In order to ensure the leading time in accordance with
-                    client requests, CG Food has a sizable packing and labeling
-                    area. We also have a skilled logistic crew on hand to assist
-                    you whenever you need it.
-                  </p>
+                  <h2>{translateHome('fastDelivery')}</h2>
+                  <p>{translateHome('fastDeliveryInOrder')}</p>
                 </div>
               </Col>
 
@@ -958,13 +951,8 @@ export default function HomePage() {
                   <div className={Style.aboutUsBottomImage}>
                     <img src="images/why_choose_us/Untitled-30.png" alt="" />
                   </div>
-                  <h2>Flexible Packaging</h2>
-                  <p>
-                    We consistently satisfy the demands for product packaging
-                    from clients across the global market by combining modernism
-                    and experience. Our employees are trained to catch up with
-                    recent trends of packing specification.
-                  </p>
+                  <h2>{translateHome('flexiblePackaging')}</h2>
+                  <p>{translateHome('flexiblePackagingWeConsistently')}</p>
                 </div>
               </Col>
 
@@ -973,13 +961,8 @@ export default function HomePage() {
                   <div className={Style.aboutUsBottomImage}>
                     <img src="images/why_choose_us/Untitled-31.png" alt="" />
                   </div>
-                  <h2>Free Sample</h2>
-                  <p>
-                    Because their satisfaction makes us happy, we only deliver
-                    the best products to our consumers. In order for the model
-                    to rapidly reach clients, we always select the best shipping
-                    services.
-                  </p>
+                  <h2>{translateHome('freeSample')}</h2>
+                  <p>{translateHome('freeSampleBecause')}</p>
                 </div>
               </Col>
             </Row>
@@ -996,30 +979,30 @@ export default function HomePage() {
               <div
                 className={`${Style.dflex} ${Style.customerInformationTitle}`}
               >
-                <h1>Customer Information</h1>
+                <h1>{translateHome('customerInformation')}</h1>
               </div>
             </div>
           </div>
 
           <div className={Style.customerInformationCenter}>
-            <p>
-              Please provide the information below to receive our free
-              consultation service package
-            </p>
+            <p>{translateHome('customerInformationPleaseProvide')}</p>
           </div>
 
           <div className={`${Style.dflex} ${Style.customerInformationBottom}`}>
-            <input type="text" placeholder="First and last name" />
-            <input type="tel" placeholder="Phone number" />
-            <input type="text" placeholder="Email" />
+            <input
+              type="text"
+              placeholder={translateHome('firstAndLastName')}
+            />
+            <input type="tel" placeholder={translateHome('phoneNumber')} />
+            <input type="text" placeholder={translateHome('email')} />
             <textarea
               cols={22}
-              placeholder="Information needed support"
+              placeholder={translateHome('informationNeededSupport')}
             ></textarea>
 
             <div className={Style.btn_see_more}>
               <button className={`${Style.dflex}`}>
-                <p>Send information</p>
+                <p>{translateHome('sendInformation')}</p>
                 <ArrowRightOutlined className={Style.iconBtn} />
               </button>
             </div>

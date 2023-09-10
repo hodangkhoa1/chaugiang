@@ -185,7 +185,7 @@ export function AppLayout(props: Props) {
                       href={ROUTERS.WHO_WE_ARE}
                       className={LayoutStyle.navLink}
                     >
-                      Introduce
+                      {translateCommon('introduce')}
                     </Link>
                     <ul className={LayoutStyle.dropdownContent}>
                       <li className={LayoutStyle.dropdownContentItem}>
@@ -193,7 +193,7 @@ export function AppLayout(props: Props) {
                           href={ROUTERS.WHO_WE_ARE}
                           className={LayoutStyle.linkDropdown}
                         >
-                          Who we are
+                          {translateCommon('whoWeAre')}
                         </Link>
                       </li>
                       <li className={LayoutStyle.dropdownContentItem}>
@@ -201,12 +201,12 @@ export function AppLayout(props: Props) {
                           href={ROUTERS.COMPANY_PROFILE}
                           className={LayoutStyle.linkDropdown}
                         >
-                          Company Profile
+                          {translateCommon('companyProfile')}
                         </Link>
                       </li>
                       <li className={LayoutStyle.dropdownContentItem}>
                         <Link href="#" className={LayoutStyle.linkDropdown}>
-                          Catalogue
+                          {translateCommon('catalogue')}
                         </Link>
                       </li>
                     </ul>
@@ -216,12 +216,12 @@ export function AppLayout(props: Props) {
                       href={ROUTERS.PRODUCTS}
                       className={LayoutStyle.navLink}
                     >
-                      Products
+                      {translateCommon('products')}
                     </Link>
                     <ul className={LayoutStyle.dropdownContent}>
                       <li className={LayoutStyle.dropdownContentItem}>
                         <Link href="#" className={LayoutStyle.linkDropdown}>
-                          Best selling
+                          {translateCommon('bestSelling')}
                         </Link>
                         <ul className={LayoutStyle.subMenu}>
                           <li className={LayoutStyle.subMenuItem}>
@@ -284,7 +284,7 @@ export function AppLayout(props: Props) {
                       </li>
                       <li className={LayoutStyle.dropdownContentItem}>
                         <Link href="#" className={LayoutStyle.linkDropdown}>
-                          New products
+                          {translateCommon('newProducts')}
                         </Link>
                         <ul className={LayoutStyle.subMenu}>
                           {/* <li className={LayoutStyle.subMenuItem}>
@@ -338,7 +338,7 @@ export function AppLayout(props: Props) {
                       </li>
                       <li className={LayoutStyle.dropdownContentItem}>
                         <Link href="#" className={LayoutStyle.linkDropdown}>
-                          Featured product
+                          {translateCommon('featuredProduct')}
                         </Link>
                         <ul className={LayoutStyle.subMenu}>
                           <li className={LayoutStyle.subMenuItem}>
@@ -397,7 +397,7 @@ export function AppLayout(props: Props) {
                       href={ROUTERS.BEVERAGE_PRODUCT_DEVELOPMENT}
                       className={LayoutStyle.navLink}
                     >
-                      Services
+                      {translateCommon('services')}
                     </Link>
                     <ul className={LayoutStyle.dropdownContent}>
                       <li className={LayoutStyle.dropdownContentItem}>
@@ -405,7 +405,7 @@ export function AppLayout(props: Props) {
                           href={ROUTERS.BEVERAGE_PRODUCT_DEVELOPMENT}
                           className={LayoutStyle.linkDropdown}
                         >
-                          Beverage Product Development
+                          {translateCommon('beverageProductDevelopment')}
                         </Link>
                       </li>
                       <li className={LayoutStyle.dropdownContentItem}>
@@ -413,7 +413,7 @@ export function AppLayout(props: Props) {
                           href={ROUTERS.BEVERAGE_PACKAGING_DESIGN}
                           className={LayoutStyle.linkDropdown}
                         >
-                          Beverage packaging design
+                          {translateCommon('beveragePackagingDesign')}
                         </Link>
                       </li>
                       <li className={LayoutStyle.dropdownContentItem}>
@@ -421,14 +421,14 @@ export function AppLayout(props: Props) {
                           href={ROUTERS.PRIVATE_LABEL_SERVICES}
                           className={LayoutStyle.linkDropdown}
                         >
-                          Private Label Services (OEM/ODM)
+                          {translateCommon('privateLabelServices')}
                         </Link>
                       </li>
                     </ul>
                   </li>
                   <li className={LayoutStyle.navItem}>
                     <Link href={ROUTERS.NEWS} className={LayoutStyle.navLink}>
-                      News
+                      {translateCommon('news')}
                     </Link>
                   </li>
                   <li className={LayoutStyle.navItem}>
@@ -436,7 +436,7 @@ export function AppLayout(props: Props) {
                       href={ROUTERS.CONTACT}
                       className={LayoutStyle.navLink}
                     >
-                      Contact
+                      {translateCommon('contact')}
                     </Link>
                   </li>
                   <li className={LayoutStyle.navItem}>
@@ -444,7 +444,7 @@ export function AppLayout(props: Props) {
                       href={ROUTERS.RECRUITMENT}
                       className={LayoutStyle.navLink}
                     >
-                      Recruitment
+                      {translateCommon('recruitment')}
                     </Link>
                   </li>
                 </ul>
@@ -455,7 +455,7 @@ export function AppLayout(props: Props) {
                     <input
                       className={LayoutStyle.searchPlace}
                       type="text"
-                      placeholder="Search..."
+                      placeholder={translateCommon('search')}
                     />
                     <div className={LayoutStyle.buttonSearch}>
                       <SearchOutlined className={LayoutStyle.btnSearch} />
@@ -468,9 +468,9 @@ export function AppLayout(props: Props) {
                   defaultValue={locale}
                   className={LayoutStyle.dropdownLanguage}
                   options={[
-                    { value: 'en', label: 'Tiếng Anh' },
-                    { value: 'vn', label: 'Tiếng Việt' },
-                    { value: 'cn', label: 'Tiếng Trung' },
+                    { value: 'en', label: `${translateCommon('english')}` },
+                    { value: 'vn', label: `${translateCommon('vietnamese')}` },
+                    { value: 'cn', label: `${translateCommon('chinese')}` },
                   ]}
                   onChange={(selectedValues) => {
                     onClickChangeLanguage(selectedValues);

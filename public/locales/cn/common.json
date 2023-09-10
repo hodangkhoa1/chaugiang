@@ -1,3 +1,22 @@
 {
-    "home": "主页"
+    "home": "主页",
+    "introduce": "介绍",
+    "whoWeAre": "我们是谁",
+    "companyProfile": "公司简介",
+    "catalogue": "目录",
+    "products": "产品",
+    "bestSelling": "最畅销",
+    "newProducts": "新产品",
+    "featuredProduct": "特色产品",
+    "services": "服务",
+    "beverageProductDevelopment": "饮料产品开发",
+    "beveragePackagingDesign": "饮料包装设计",
+    "privateLabelServices": "自有品牌服务",
+    "news": "新闻",
+    "contact": "联络我们",
+    "recruitment": "人才招聘",
+    "search": "搜索...",
+    "english": "英語",
+    "vietnamese": "越南語",
+    "chinese": "中國人"
 }
