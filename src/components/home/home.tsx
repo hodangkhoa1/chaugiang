@@ -163,11 +163,12 @@ export default function HomePage() {
           clickable: true,
         }}
         modules={[Pagination, Autoplay]}
-        className="mySwiper"
+        className="animate__animated animate__slideInLeft animate__delay-2s mySwiper"
         autoplay={{
           delay: 3000,
           disableOnInteraction: false,
         }}
+        style={{ animationDelay: `1s` }}
       >
         <SwiperSlide className={Style.swiperSlide}>
           <img src="./images/slider_header/slider_background_1.png" alt="" />
@@ -180,7 +181,10 @@ export default function HomePage() {
         </SwiperSlide>
       </Swiper>
 
-      <div className={Style.carouselCertificationBackground}>
+      <div
+        className={`${Style.carouselCertificationBackground}`}
+        data-wow-offset="10"
+      >
         <div className={`${Style.dflex} ${Style.certificationTopCover}`}>
           <div className={Style.certificationTitle}>
             <h1>{translateHome('ourCertifications')}</h1>
@@ -298,30 +302,46 @@ export default function HomePage() {
 
       <div className={Style.aboutUs}>
         <div className={Style.aboutUsCover}>
-          <div className={Style.aboutUsTop}>
-            <div className={`${Style.dflex} ${Style.aboutUsTopCover}`}>
-              <div className={`${Style.aboutUsPicture} ${Style.dflex}`}>
+          <Row>
+            <Col lg={8} span={24} className={Style.hideAboutUsPicture}>
+              <div
+                className={`${Style.aboutUsPicture} ${Style.dflex}`}
+                style={{ justifyContent: 'end' }}
+              >
                 <img src="images/about_us/nho.png" alt="" />
               </div>
-
-              <div className={`${Style.dflex} ${Style.aboutUsTitle}`}>
+            </Col>
+            <Col lg={8} span={24} className={`${Style.dflex}`}>
+              <div className={`${Style.aboutUsTitle}`}>
                 <h1>{translateHome('aboutUs')}</h1>
               </div>
-
-              <div className={`${Style.dflex} ${Style.aboutUsPicture}`}>
+            </Col>
+            <Col lg={8} span={24} className={Style.hideAboutUsPicture}>
+              <div
+                className={`${Style.aboutUsPicture} ${Style.dflex}`}
+                style={{ justifyContent: 'start' }}
+              >
                 <img src="images/about_us/thom.png" alt="" />
               </div>
-            </div>
-          </div>
+            </Col>
+          </Row>
 
-          <div className={Style.aboutUsCenter}>
-            <h2>{translateHome('aboutUsSuppliers')}</h2>
-            <p>{translateHome('aboutUsEstablished')}</p>
-          </div>
+          <Row gutter={100}>
+            <Col
+              lg={24}
+              span={24}
+              style={{ paddingLeft: 'unset', paddingRight: 'unset' }}
+            >
+              <div className={Style.aboutUsCenter}>
+                <h2>{translateHome('aboutUsSuppliers')}</h2>
+                <p>{translateHome('aboutUsEstablished')}</p>
+              </div>
+            </Col>
+          </Row>
 
           <div className={`${Style.aboutUsBottom}`}>
             <Row gutter={100}>
-              <Col lg={8} span={24}>
+              <Col md={8} lg={8} span={24}>
                 <div className={`${Style.dflex} ${Style.aboutUsItem}`}>
                   <div className={Style.aboutUsBottomImage}>
                     <img src="images/about_us/our_family.png" alt="" />
@@ -329,7 +349,7 @@ export default function HomePage() {
                   <h2>{translateHome('ourFamily')}</h2>
                 </div>
               </Col>
-              <Col lg={8} span={24}>
+              <Col md={8} lg={8} span={24}>
                 <div className={`${Style.dflex} ${Style.aboutUsItem}`}>
                   <div className={Style.aboutUsBottomImage}>
                     <img src="images/about_us/our_products.png" alt="" />
@@ -337,7 +357,7 @@ export default function HomePage() {
                   <h2>{translateHome('ourProducts')}</h2>
                 </div>
               </Col>
-              <Col lg={8} span={24}>
+              <Col md={8} lg={8} span={24}>
                 <div className={`${Style.dflex} ${Style.aboutUsItem}`}>
                   <div className={Style.aboutUsBottomImage}>
                     <img src="images/about_us/our_factory.png" alt="" />
@@ -447,54 +467,57 @@ export default function HomePage() {
       <div className={Style.orderNowBackground}></div>
 
       <div className={Style.bestSelling}>
-        <div className={Style.bestSellingTop}>
-          <div className={Style.bestSellingTop__left}>
-            <div className={Style.left__cover}>
-              <div className={Style.images}>
-                <img src="images/products/nho-xanh.png" alt="" />
-              </div>
-              <div className={Style.coverTitle}>
-                <div className={Style.title}>
-                  <h2>{translateHome('bestSelling')}</h2>
+        <Row className={Style.bestSellingTop}>
+          <Col md={24} lg={8} span={24}>
+            <div className={Style.bestSellingTop__left}>
+              <div className={Style.left__cover}>
+                <div className={Style.images}>
+                  <img src="images/products/nho-xanh.png" alt="" />
+                </div>
+                <div className={Style.coverTitle}>
+                  <div className={Style.title}>
+                    <h2>{translateHome('bestSelling')}</h2>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
+          </Col>
+          <Col md={24} lg={16} span={24}>
+            <div className={Style.bestSellingTop__right}>
+              <div className={Style.right__cover}>
+                <div className={Style.menuTop}>
+                  <div className={Style.itemLink}>
+                    <Link href={ROUTERS.PRODUCTS_DETAIL('5')}>
+                      Brown Rice Milk Drink
+                    </Link>
+                  </div>
 
-          <div className={Style.bestSellingTop__right}>
-            <div className={Style.right__cover}>
-              <div className={Style.menuTop}>
-                <div className={Style.itemLink}>
-                  <Link href={ROUTERS.PRODUCTS_DETAIL('5')}>
-                    Brown Rice Milk Drink
-                  </Link>
+                  <div className={Style.itemLink}>
+                    <Link href={ROUTERS.PRODUCTS_DETAIL('25')}>Oat Cereal</Link>
+                  </div>
+
+                  <div className={Style.itemLink}>
+                    <Link href={ROUTERS.PRODUCTS_DETAIL('1')}>
+                      Milk Drink Coconut Water
+                    </Link>
+                  </div>
                 </div>
 
-                <div className={Style.itemLink}>
-                  <Link href={ROUTERS.PRODUCTS_DETAIL('25')}>Oat Cereal</Link>
-                </div>
+                <div className={Style.menuBottom}>
+                  <div className={Style.itemLink}>
+                    <Link href={ROUTERS.PRODUCTS_DETAIL('4')}>
+                      Sparkling Coconut Water
+                    </Link>
+                  </div>
 
-                <div className={Style.itemLink}>
-                  <Link href={ROUTERS.PRODUCTS_DETAIL('1')}>
-                    Milk Drink Coconut Water
-                  </Link>
-                </div>
-              </div>
-
-              <div className={Style.menuBottom}>
-                <div className={Style.itemLink}>
-                  <Link href={ROUTERS.PRODUCTS_DETAIL('4')}>
-                    Sparkling Coconut Water
-                  </Link>
-                </div>
-
-                <div className={Style.itemLink}>
-                  <Link href="">Fruit Juice Drink</Link>
+                  <div className={Style.itemLink}>
+                    <Link href="">Fruit Juice Drink</Link>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
+          </Col>
+        </Row>
 
         <div className={Style.bestSellingBottom}>
           <Row
@@ -505,7 +528,7 @@ export default function HomePage() {
               alignItems: 'center',
             }}
           >
-            <Col lg={6} span={24}>
+            <Col md={1} lg={6} span={24}>
               <div className={Style.bestSellingBottom__left}>
                 <div className={Style.images}>
                   <img src="images/products/1.jpg" alt="" />
@@ -513,7 +536,7 @@ export default function HomePage() {
               </div>
             </Col>
 
-            <Col lg={18} span={24}>
+            <Col md={1} lg={18} span={24}>
               <div className={Style.bestSellingBottom__right}>
                 <div className={Style.carousel}>
                   <Carousel
@@ -548,48 +571,51 @@ export default function HomePage() {
       <div className={Style.freshSummerDay}></div>
 
       <div className={`${Style.bestSelling} ${Style.newProduct}`}>
-        <div className={Style.bestSellingTop}>
-          <div className={Style.bestSellingTop__left}>
-            <div className={Style.left__cover}>
-              <div className={Style.images}>
-                <img src="images/products/nho-xanh.png" alt="" />
-              </div>
-              <div className={Style.coverTitle}>
-                <div className={Style.title}>
-                  <h2 className={Style.newProductTitle}>
-                    {translateHome('newProduct')}
-                  </h2>
+        <Row className={Style.bestSellingTop}>
+          <Col md={24} lg={8} span={24}>
+            <div className={Style.bestSellingTop__left}>
+              <div className={Style.left__cover}>
+                <div className={Style.images}>
+                  <img src="images/products/nho-xanh.png" alt="" />
+                </div>
+                <div className={Style.coverTitle}>
+                  <div className={Style.title}>
+                    <h2 className={Style.newProductTitle}>
+                      {translateHome('newProduct')}
+                    </h2>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
+          </Col>
+          <Col md={24} lg={16} span={24}>
+            <div className={Style.bestSellingTop__right}>
+              <div className={Style.right__cover}>
+                <div className={Style.menuTop}>
+                  <div className={Style.itemLink}>
+                    <Link href={ROUTERS.PRODUCTS_DETAIL('13')}>
+                      Pet Aloe Vera Drink
+                    </Link>
+                  </div>
 
-          <div className={Style.bestSellingTop__right}>
-            <div className={Style.right__cover}>
-              <div className={Style.menuTop}>
-                <div className={Style.itemLink}>
-                  <Link href={ROUTERS.PRODUCTS_DETAIL('13')}>
-                    Pet Aloe Vera Drink
-                  </Link>
-                </div>
+                  <div className={Style.itemLink}>
+                    <Link href={ROUTERS.PRODUCTS_DETAIL('9')}>
+                      Sparkling Fruit Juice
+                    </Link>
+                  </div>
 
-                <div className={Style.itemLink}>
-                  <Link href={ROUTERS.PRODUCTS_DETAIL('9')}>
-                    Sparkling Fruit Juice
-                  </Link>
-                </div>
+                  <div className={Style.itemLink}>
+                    <Link href={ROUTERS.PRODUCTS_DETAIL('17')}>Coffee</Link>
+                  </div>
 
-                <div className={Style.itemLink}>
-                  <Link href={ROUTERS.PRODUCTS_DETAIL('17')}>Coffee</Link>
-                </div>
-
-                <div className={Style.itemLink}>
-                  <Link href={ROUTERS.PRODUCTS_DETAIL('19')}>Tea</Link>
+                  <div className={Style.itemLink}>
+                    <Link href={ROUTERS.PRODUCTS_DETAIL('19')}>Tea</Link>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
+          </Col>
+        </Row>
 
         <div className={Style.bestSellingBottom}>
           <Row
@@ -600,7 +626,7 @@ export default function HomePage() {
               alignItems: 'center',
             }}
           >
-            <Col lg={6} span={24}>
+            <Col md={1} lg={6} span={24}>
               <div className={Style.bestSellingBottom__left}>
                 <div className={Style.images}>
                   <img src="images/new_product/newProduct.jpg" alt="" />
@@ -608,13 +634,14 @@ export default function HomePage() {
               </div>
             </Col>
 
-            <Col lg={18} span={24}>
+            <Col md={1} lg={18} span={24}>
               <div className={Style.bestSellingBottom__right}>
                 <div className={Style.carousel}>
                   <Carousel
                     slidesToShow={4}
                     className={Style.bestSellingCarousel}
                     autoplay
+                    responsive={carouselResponsiveSettings}
                   >
                     {newProductData?.map((newProduct, index) => (
                       <Link
@@ -640,58 +667,65 @@ export default function HomePage() {
       <div className={Style.juiceGuava}></div>
 
       <div className={`${Style.bestSelling} ${Style.featuredProduct}`}>
-        <div className={Style.bestSellingTop}>
-          <div className={Style.bestSellingTop__left}>
-            <div className={Style.left__cover}>
-              <div className={Style.images}>
-                <img src="images/products/nho-xanh.png" alt="" />
-              </div>
-              <div className={Style.coverTitle}>
-                <div className={Style.title}>
-                  <h2 className={Style.featuredProductTitle}>
-                    {translateHome('featuredProduct')}
-                  </h2>
+        <Row className={Style.bestSellingTop}>
+          <Col md={24} lg={9} span={24}>
+            <div className={Style.bestSellingTop__left}>
+              <div className={Style.left__cover}>
+                <div className={Style.images}>
+                  <img src="images/products/nho-xanh.png" alt="" />
+                </div>
+                <div className={Style.coverTitle}>
+                  <div className={Style.title}>
+                    <h2 className={Style.featuredProductTitle}>
+                      {translateHome('featuredProduct')}
+                    </h2>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
+          </Col>
+          <Col md={24} lg={15} span={24}>
+            <div className={Style.bestSellingTop__right}>
+              <div className={Style.right__cover}>
+                <div className={Style.menuTop}>
+                  <div className={Style.itemLink}>
+                    <Link href={ROUTERS.PRODUCTS_DETAIL('7')}>
+                      Soy Bean Milk
+                    </Link>
+                  </div>
 
-          <div className={Style.bestSellingTop__right}>
-            <div className={Style.right__cover}>
-              <div className={Style.menuTop}>
-                <div className={Style.itemLink}>
-                  <Link href={ROUTERS.PRODUCTS_DETAIL('7')}>Soy Bean Milk</Link>
+                  <div className={Style.itemLink}>
+                    <Link href={ROUTERS.PRODUCTS_DETAIL('6')}>
+                      Green Bean Milk
+                    </Link>
+                  </div>
+
+                  <div className={Style.itemLink}>
+                    <Link href={ROUTERS.PRODUCTS_DETAIL('8')}>Corn Milk</Link>
+                  </div>
+
+                  <div className={Style.itemLink}>
+                    <Link href="">Bird&apos;s Nest Drink</Link>
+                  </div>
                 </div>
 
-                <div className={Style.itemLink}>
-                  <Link href={ROUTERS.PRODUCTS_DETAIL('6')}>
-                    Green Bean Milk
-                  </Link>
-                </div>
+                <div className={Style.menuBottom}>
+                  <div className={Style.itemLink}>
+                    <Link href={ROUTERS.PRODUCTS_DETAIL('13')}>
+                      Aloe Vera Bird&apos;s Nest Drink
+                    </Link>
+                  </div>
 
-                <div className={Style.itemLink}>
-                  <Link href={ROUTERS.PRODUCTS_DETAIL('8')}>Corn Milk</Link>
-                </div>
-
-                <div className={Style.itemLink}>
-                  <Link href="">Bird&apos;s Nest Drink</Link>
-                </div>
-              </div>
-
-              <div className={Style.menuBottom}>
-                <div className={Style.itemLink}>
-                  <Link href={ROUTERS.PRODUCTS_DETAIL('13')}>
-                    Aloe Vera Bird&apos;s Nest Drink
-                  </Link>
-                </div>
-
-                <div className={Style.itemLink}>
-                  <Link href={ROUTERS.PRODUCTS_DETAIL('23')}>Energy Drink</Link>
+                  <div className={Style.itemLink}>
+                    <Link href={ROUTERS.PRODUCTS_DETAIL('23')}>
+                      Energy Drink
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
+          </Col>
+        </Row>
 
         <div className={Style.bestSellingBottom}>
           <Row
@@ -702,7 +736,7 @@ export default function HomePage() {
               alignItems: 'center',
             }}
           >
-            <Col lg={6} span={24}>
+            <Col md={1} lg={6} span={24}>
               <div className={Style.bestSellingBottom__left}>
                 <div className={Style.images}>
                   <img src="images/products/6.jpg" alt="" />
@@ -710,13 +744,14 @@ export default function HomePage() {
               </div>
             </Col>
 
-            <Col lg={18} span={24}>
+            <Col md={1} lg={18} span={24}>
               <div className={Style.bestSellingBottom__right}>
                 <div className={Style.carousel}>
                   <Carousel
                     slidesToShow={4}
                     className={Style.bestSellingCarousel}
                     autoplay
+                    responsive={carouselResponsiveSettings}
                   >
                     {featureProductData?.map((featureProduct, index) => (
                       <Link
@@ -800,19 +835,6 @@ export default function HomePage() {
                       <div className={Style.contentTitle}>
                         <h2>{translateHome('newsAndEventPrivateLabel')}</h2>
                       </div>
-
-                      {/* <div className={Style.contentBottom}>
-                        <p>Thanh Trang Ecom 22</p>
-                        <p>Moday 22/05/2022</p>
-                        <p className={Style.contentBottomUp}>
-                          Thanks for visting Chau Giang Food Prcessing trade CO,
-                          LTD
-                        </p>
-                        <p>
-                          Thanks for visting Chau Giang Food Prcessing trade CO,
-                          LTD
-                        </p>
-                      </div> */}
                     </div>
 
                     <div className={Style.btn_see_more}>
@@ -838,19 +860,6 @@ export default function HomePage() {
                       <div className={Style.contentTitle}>
                         <h2>{translateHome('newsAndEventASweetMeeting')}</h2>
                       </div>
-
-                      {/* <div className={Style.contentBottom}>
-                        <p>Thanh Trang Ecom 22</p>
-                        <p>Moday 22/05/2022</p>
-                        <p className={Style.contentBottomUp}>
-                          Thanks for visting Chau Giang Food Prcessing trade CO,
-                          LTD
-                        </p>
-                        <p>
-                          Thanks for visting Chau Giang Food Prcessing trade CO,
-                          LTD
-                        </p>
-                      </div> */}
                     </div>
 
                     <div className={Style.btn_see_more}>
@@ -878,19 +887,6 @@ export default function HomePage() {
                           {translateHome('newsAndEventThankYouForVisting')}
                         </h2>
                       </div>
-
-                      {/* <div className={Style.contentBottom}>
-                        <p>Thanh Trang Ecom 22</p>
-                        <p>Moday 22/05/2022</p>
-                        <p className={Style.contentBottomUp}>
-                          Thanks for visting Chau Giang Food Prcessing trade CO,
-                          LTD
-                        </p>
-                        <p>
-                          Thanks for visting Chau Giang Food Prcessing trade CO,
-                          LTD
-                        </p>
-                      </div> */}
                     </div>
 
                     <div className={Style.btn_see_more}>

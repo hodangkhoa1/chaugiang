@@ -4,25 +4,29 @@
             "id": 1,
             "title": "Pure Coconut Water",
             "subTitle": "325ml",
-            "image": "/images/products/2.png"
+            "image": "/images/products/2.png",
+            "hover": "/images/products/2.png"
         },
         {
             "id": 2,
             "title": "Coconut Water 100% Pure",
             "subTitle": "330ml",
-            "image": "/images/products/3.png"
+            "image": "/images/products/3.png",
+            "hover": "/images/products/3.png"
         },
         {
             "id": 3,
             "title": "Coconut Water With Mango",
             "subTitle": "330ml",
-            "image": "/images/products/4.png"
+            "image": "/images/products/4.png",
+            "hover": "/images/products/4.png"
         },
         {
             "id": 4,
             "title": "Sparkling Coconut Water",
             "subTitle": "330ml",
-            "image": "/images/products/5.png"
+            "image": "/images/products/5.png",
+            "hover": "/images/products/5.png"
         }
     ],
     "milk": [
@@ -30,25 +34,29 @@
             "id": 5,
             "title": "Brown Rice Milk",
             "subTitle": "500ml",
-            "image": "/images/products/7.png"
+            "image": "/images/products/7.png",
+            "hover": "/images/products/7.png"
         },
         {
             "id": 6,
             "title": "Green Bean Milk",
             "subTitle": "500ml",
-            "image": "/images/products/8.png"
+            "image": "/images/products/8.png",
+            "hover": "/images/products/8.png"
         },
         {
             "id": 7,
             "title": "Soya Milk",
             "subTitle": "500ml",
-            "image": "/images/products/9.png"
+            "image": "/images/products/9.png",
+            "hover": "/images/products/9.png"
         },
         {
             "id": 8,
             "title": "Corn Milk",
             "subTitle": "500ml",
-            "image": "/images/products/10.png"
+            "image": "/images/products/10.png",
+            "hover": "/images/products/10.png"
         }
     ],
     "juice": [
@@ -56,25 +64,29 @@
             "id": 9,
             "title": "Mango Juice",
             "subTitle": "330ml",
-            "image": "/images/products/12.png"
+            "image": "/images/products/12.png",
+            "hover": "/images/products/12.png"
         },
         {
             "id": 10,
             "title": "Tamarind Juice",
             "subTitle": "330ml",
-            "image": "/images/products/13.png"
+            "image": "/images/products/13.png",
+            "hover": "/images/bin_products/bin_products_3.png"
         },
         {
             "id": 11,
             "title": "Soursop Juice",
             "subTitle": "330ml",
-            "image": "/images/products/14.png"
+            "image": "/images/products/14.png",
+            "hover": "/images/products/14.png"
         },
         {
             "id": 12,
             "title": "Orange Fruit",
             "subTitle": "330ml",
-            "image": "/images/products/15.png"
+            "image": "/images/products/15.png",
+            "hover": "/images/bin_products/bin_products_9.png"
         }
     ],
     "aloeVera": [
@@ -82,25 +94,29 @@
             "id": 13,
             "title": "Aloe Vera 100% Pure",
             "subTitle": "500ml",
-            "image": "/images/products/17.png"
+            "image": "/images/products/17.png",
+            "hover": "/images/products/17.png"
         },
         {
             "id": 14,
             "title": "Aloe Vera With Pulp Flavor Strawberry",
             "subTitle": "500ml",
-            "image": "/images/products/18.png"
+            "image": "/images/products/18.png",
+            "hover": "/images/products/18.png"
         },
         {
             "id": 15,
             "title": "Aloe Vera With Pulp Flavor Passion Fruit",
             "subTitle": "500ml",
-            "image": "/images/products/19.png"
+            "image": "/images/products/19.png",
+            "hover": "/images/products/19.png"
         },
         {
             "id": 16,
             "title": "Aloe Vera With Pulp Flavor Watermelon",
             "subTitle": "500ml",
-            "image": "/images/products/20.png"
+            "image": "/images/products/20.png",
+            "hover": "/images/products/20.png"
         }
     ],
     "coffee": [
@@ -108,25 +124,29 @@
             "id": 17,
             "title": "Coffee Capuchino",
             "subTitle": "250ml",
-            "image": "/images/products/22.png"
+            "image": "/images/products/22.png",
+            "hover": "/images/products/22.png"
         },
         {
             "id": 18,
             "title": "Coffee Latte",
             "subTitle": "250ml",
-            "image": "/images/products/23.png"
+            "image": "/images/products/23.png",
+            "hover": "/images/products/23.png"
         },
         {
             "id": 19,
             "title": "Bubble Tea With Lemon",
             "subTitle": "330ml",
-            "image": "/images/products/24.png"
+            "image": "/images/products/24.png",
+            "hover": "/images/products/24.png"
         },
         {
             "id": 20,
             "title": "Lotus Heart Tea",
             "subTitle": "250ml",
-            "image": "/images/products/25.png"
+            "image": "/images/products/25.png",
+            "hover": "/images/products/25.png"
         }
     ],
     "energyDrink": [
@@ -134,25 +154,29 @@
             "id": 21,
             "title": "Strawberry Flavor 109 Energy Drink",
             "subTitle": "250ml",
-            "image": "/images/products/27.png"
+            "image": "/images/products/27.png",
+            "hover": "/images/products/27.png"
         },
         {
             "id": 22,
             "title": "Energy Drink CG 109",
             "subTitle": "330ml",
-            "image": "/images/products/28.png"
+            "image": "/images/products/28.png",
+            "hover": "/images/products/28.png"
         },
         {
             "id": 23,
             "title": "Energy Drink",
             "subTitle": "250ml",
-            "image": "/images/products/29.png"
+            "image": "/images/products/29.png",
+            "hover": "/images/products/29.png"
         },
         {
             "id": 24,
             "title": "Energy Drink",
             "subTitle": "250ml",
-            "image": "/images/products/30.png"
+            "image": "/images/products/30.png",
+            "hover": "/images/products/30.png"
         }
     ]
 }

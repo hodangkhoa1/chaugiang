@@ -8,6 +8,8 @@ import Head from 'next/head';
 import { appWithTranslation } from 'next-i18next';
 import { AppLayout } from '@/layout/layout';
 import { useLocaleAnt } from '@/constant';
+import 'wow.js/css/libs/animate.css';
+import 'animate.css';
 
 const inter = Baloo_2({ subsets: ['latin'] });
 export type NextPageWithLayout<P = Record<string, unknown>, IP = P> = NextPage<

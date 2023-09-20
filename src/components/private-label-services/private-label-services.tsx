@@ -1,4 +1,4 @@
-// import useI18n from '@/i18n/useI18N';
+import useI18n from '@/i18n/useI18N';
 import React, { useEffect, useState } from 'react';
 import Style from './private-label-services.module.scss';
 import { Breadcrumb, Carousel, Col, Image, Row } from 'antd';
@@ -12,7 +12,10 @@ import Link from 'next/link';
 import { ROUTERS } from '@/constant/router';
 
 export default function PrivateLabelServicesPage() {
-  // const { translate: translateHome } = useI18n('common');
+  const { translate: translateCommon } = useI18n('common');
+  const { translate: translatePrivateLabelServices } = useI18n(
+    'privateLabelServices'
+  );
 
   const [privateLabelServicesProductData, setPrivateLabelServicesProductData] =
     useState<PrivateLabelServicesProductData[]>();
@@ -138,7 +141,7 @@ export default function PrivateLabelServicesPage() {
       <div className={Style.introduce}>
         <div className={`${Style.dflex} ${Style.introduceTopCover}`}>
           <div className={Style.introduceTitle}>
-            <h1>Our Service</h1>
+            <h1>{translatePrivateLabelServices('ourServices')}</h1>
           </div>
         </div>
 
@@ -146,13 +149,13 @@ export default function PrivateLabelServicesPage() {
           className={Style.introduceBreadcrumb}
           items={[
             {
-              title: 'Home',
+              title: `${translateCommon('home')}`,
             },
             {
-              title: 'Our Services',
+              title: `${translatePrivateLabelServices('ourServices')}`,
             },
             {
-              title: 'Private Label Services (OEM/ODM)',
+              title: `${translateCommon('privateLabelServices')}`,
             },
           ]}
         />
@@ -163,22 +166,12 @@ export default function PrivateLabelServicesPage() {
           className={`${Style.dflex} ${Style.introducePackagingDesignerTopCover}`}
         >
           <div className={Style.introducePackagingDesignerTitle}>
-            <h1>Private Label Your</h1>
+            <h1>{translatePrivateLabelServices('privateLabelYour')}</h1>
           </div>
         </div>
 
         <div className={Style.introducePackagingDesignerCenter}>
-          <p>
-            Nam Viet F&B has been developing OEM/ODM products many years. Our
-            dedicated Research and Development team closely follows global
-            trends of the health food markets in Europe, America and Asia to
-            ensure we are able to introduce the latest products for customer
-            needs and requirements. Nam Viet F&B has also collaborated with
-            well-known international firms using our integrated one-stop OEM/ODM
-            services to produce and manufacture the best products with excellent
-            services. Further details to our OEM/ODM services are listed below:
-            OEM/ODM flow
-          </p>
+          <p>{translatePrivateLabelServices('privateLabelYour1')}</p>
         </div>
 
         <div
@@ -197,7 +190,7 @@ export default function PrivateLabelServicesPage() {
       <div className={`${Style.stepProduct}`}>
         <Row>
           <Col md={12} lg={4} span={24}>
-            <p>Brand development</p>
+            <p>{translatePrivateLabelServices('brandDevelopment')}</p>
           </Col>
           <Col md={12} lg={3} span={24}>
             <Image
@@ -209,7 +202,7 @@ export default function PrivateLabelServicesPage() {
             />
           </Col>
           <Col md={12} lg={3} span={24}>
-            <p>Production</p>
+            <p>{translatePrivateLabelServices('production')}</p>
           </Col>
           <Col md={12} lg={3} span={24}>
             <Image
@@ -221,7 +214,7 @@ export default function PrivateLabelServicesPage() {
             />
           </Col>
           <Col md={12} lg={3} span={24}>
-            <p>Labeling</p>
+            <p>{translatePrivateLabelServices('labeling')}</p>
           </Col>
           <Col md={12} lg={3} span={24}>
             <Image
@@ -233,7 +226,7 @@ export default function PrivateLabelServicesPage() {
             />
           </Col>
           <Col md={12} lg={3} span={24}>
-            <p>Packaging</p>
+            <p>{translatePrivateLabelServices('packaging')}</p>
           </Col>
           <Col md={12} lg={2} span={24}>
             <Image
@@ -251,13 +244,15 @@ export default function PrivateLabelServicesPage() {
         <Row style={{ height: '100%' }}>
           <Col md={12} lg={7} span={24}>
             <div className={`${Style.dflex} ${Style.capacityListLeft}`}>
-              <p>250 sleek can</p>
-              <p>330 sleek can</p>
-              <p>330 standard can</p>
-              <p>355 sleek can</p>
-              <p>355 standard</p>
-              <p>500ml sleek</p>
-              <button className={Style.capacityListButton}>Alumnium can</button>
+              <p>{translatePrivateLabelServices('250SleekCan')}</p>
+              <p>{translatePrivateLabelServices('330SleekCan')}</p>
+              <p>{translatePrivateLabelServices('330StandardCan')}</p>
+              <p>{translatePrivateLabelServices('355SleekCan')}</p>
+              <p>{translatePrivateLabelServices('355Standard')}</p>
+              <p>{translatePrivateLabelServices('500mlSleek')}</p>
+              <button className={Style.capacityListButton}>
+                {translatePrivateLabelServices('alumniumCan')}
+              </button>
             </div>
           </Col>
           <Col md={12} lg={7} span={24}>
@@ -266,7 +261,9 @@ export default function PrivateLabelServicesPage() {
               <p>330ml</p>
               <p>350ml</p>
               <p>500ml</p>
-              <button className={Style.capacityListButton}>Pet Bottle</button>
+              <button className={Style.capacityListButton}>
+                {translatePrivateLabelServices('petBottle')}
+              </button>
             </div>
           </Col>
           <Col md={12} lg={10} span={24}>
@@ -287,7 +284,7 @@ export default function PrivateLabelServicesPage() {
       <div className={Style.affiliateProduct}>
         <div className={`${Style.dflex} ${Style.affiliateProductTopCover}`}>
           <div className={Style.affiliateProductTitle}>
-            <h1>You May Also Like...</h1>
+            <h1>{translatePrivateLabelServices('youMayAlsoLike')}</h1>
           </div>
         </div>
       </div>
@@ -322,7 +319,7 @@ export default function PrivateLabelServicesPage() {
           <div className={Style.whyChooseUsTop}>
             <div className={`${Style.dflex} ${Style.whyChooseUsTopCover}`}>
               <div className={`${Style.dflex} ${Style.whyChooseUsTitle}`}>
-                <h1>Why choose Us?</h1>
+                <h1>{translatePrivateLabelServices('whyChooseUs')}</h1>
               </div>
             </div>
           </div>
@@ -341,12 +338,8 @@ export default function PrivateLabelServicesPage() {
                   <div className={Style.whyChooseUsBottomImage}>
                     <img src="/images/why_choose_us/Untitled-28.png" alt="" />
                   </div>
-                  <h2>Hight Quality</h2>
-                  <p>
-                    Nam Viet continuously develops new drinks which bring
-                    original natural tastes, high nutrition facts, catch the
-                    newest trends in the market.
-                  </p>
+                  <h2>{translatePrivateLabelServices('hightQuality')}</h2>
+                  <p>{translatePrivateLabelServices('hightQualityProduct')}</p>
                 </div>
               </Col>
 
@@ -355,12 +348,8 @@ export default function PrivateLabelServicesPage() {
                   <div className={Style.whyChooseUsBottomImage}>
                     <img src="/images/why_choose_us/Untitled-29.png" alt="" />
                   </div>
-                  <h2>Fast Delivery</h2>
-                  <p>
-                    Production runs in accordance with world highest standards
-                    of Food Safety. Big variety of soft drinks, non-alcohol
-                    drinks, fruit juice drinks.
-                  </p>
+                  <h2>{translatePrivateLabelServices('fastDelivery')}</h2>
+                  <p>{translatePrivateLabelServices('fastDeliveryInOrder')}</p>
                 </div>
               </Col>
 
@@ -369,11 +358,11 @@ export default function PrivateLabelServicesPage() {
                   <div className={Style.whyChooseUsBottomImage}>
                     <img src="/images/why_choose_us/Untitled-30.png" alt="" />
                   </div>
-                  <h2>Flexible Packaging</h2>
+                  <h2>{translatePrivateLabelServices('flexiblePackaging')}</h2>
                   <p>
-                    Production runs in accordance with world highest standards
-                    of Food Safety. Big variety of soft drinks, non-alcohol
-                    drinks, fruit juice drinks.
+                    {translatePrivateLabelServices(
+                      'flexiblePackagingWeConsistently'
+                    )}
                   </p>
                 </div>
               </Col>
@@ -383,12 +372,8 @@ export default function PrivateLabelServicesPage() {
                   <div className={Style.whyChooseUsBottomImage}>
                     <img src="/images/why_choose_us/Untitled-31.png" alt="" />
                   </div>
-                  <h2>Free Sample</h2>
-                  <p>
-                    Production runs in accordance with world highest standards
-                    of Food Safety. Big variety of soft drinks, non-alcohol
-                    drinks, fruit juice drinks.
-                  </p>
+                  <h2>{translatePrivateLabelServices('freeSample')}</h2>
+                  <p>{translatePrivateLabelServices('freeSampleBecause')}</p>
                 </div>
               </Col>
             </Row>
@@ -405,30 +390,42 @@ export default function PrivateLabelServicesPage() {
               <div
                 className={`${Style.dflex} ${Style.customerInformationTitle}`}
               >
-                <h1>Customer Information</h1>
+                <h1>{translatePrivateLabelServices('customerInformation')}</h1>
               </div>
             </div>
           </div>
 
           <div className={Style.customerInformationCenter}>
             <p>
-              Please provide the information below to receive our free
-              consultation service package
+              {translatePrivateLabelServices(
+                'customerInformationPleaseProvide'
+              )}
             </p>
           </div>
 
           <div className={`${Style.dflex} ${Style.customerInformationBottom}`}>
-            <input type="text" placeholder="First and last name" />
-            <input type="tel" placeholder="Phone number" />
-            <input type="text" placeholder="Email" />
+            <input
+              type="text"
+              placeholder={translatePrivateLabelServices('firstAndLastName')}
+            />
+            <input
+              type="tel"
+              placeholder={translatePrivateLabelServices('phoneNumber')}
+            />
+            <input
+              type="text"
+              placeholder={translatePrivateLabelServices('email')}
+            />
             <textarea
               cols={22}
-              placeholder="Information needed support"
+              placeholder={translatePrivateLabelServices(
+                'informationNeededSupport'
+              )}
             ></textarea>
 
             <div className={Style.btn_see_more}>
               <button className={`${Style.dflex}`}>
-                <p>Send information</p>
+                <p>{translatePrivateLabelServices('sendInformation')}</p>
                 <ArrowRightOutlined className={Style.iconBtn} />
               </button>
             </div>

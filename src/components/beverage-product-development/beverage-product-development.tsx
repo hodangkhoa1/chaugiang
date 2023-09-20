@@ -1,11 +1,14 @@
-// import useI18n from '@/i18n/useI18N';
+import useI18n from '@/i18n/useI18N';
 import React from 'react';
 import Style from './beverage-product-development.module.scss';
 import { Breadcrumb, Col, Row, Image } from 'antd';
 import { ArrowRightOutlined } from '@ant-design/icons';
 
 export default function BeverageProductDevelopmentPage() {
-  // const { translate: translateHome } = useI18n('common');
+  const { translate: translateBeverageProductDevelopment } = useI18n(
+    'beverageProductDevelopment'
+  );
+  const { translate: translateCommon } = useI18n('common');
 
   return (
     <div>
@@ -14,7 +17,7 @@ export default function BeverageProductDevelopmentPage() {
       <div className={Style.introduce}>
         <div className={`${Style.dflex} ${Style.introduceTopCover}`}>
           <div className={Style.introduceTitle}>
-            <h1>Our Services</h1>
+            <h1>{translateBeverageProductDevelopment('ourServices')}</h1>
           </div>
         </div>
 
@@ -22,13 +25,13 @@ export default function BeverageProductDevelopmentPage() {
           className={Style.introduceBreadcrumb}
           items={[
             {
-              title: 'Home',
+              title: `${translateCommon('home')}`,
             },
             {
-              title: 'Our Services',
+              title: `${translateBeverageProductDevelopment('ourServices')}`,
             },
             {
-              title: 'Beverage Product Development',
+              title: `${translateCommon('beverageProductDevelopment')}`,
             },
           ]}
         />
@@ -38,25 +41,24 @@ export default function BeverageProductDevelopmentPage() {
         <Row>
           <Col lg={24} span={24}>
             <div className={Style.introducePackagingDesignerTitle}>
-              <h1>We Develop Beverage Products</h1>
+              <h1>
+                {translateBeverageProductDevelopment(
+                  'weDevelopBeverageProducts'
+                )}
+              </h1>
             </div>
           </Col>
           <Col lg={24} span={24} className={Style.dflex}>
             <div className={Style.introducePackagingDesignerCenter}>
               <p>
-                Are you starting a new beverage business or are you already
-                running a beverage company? We are sure that you have a lot of
-                questions about creating and producing or selling and marketing
-                your new beverage brand? Contact us now for a free consultation
-                with our beverage industry experts.
+                {translateBeverageProductDevelopment(
+                  'weDevelopBeverageProducts1'
+                )}
               </p>
               <p style={{ marginTop: '20px' }}>
-                Our team is made up of beverage scientists, beverage packaging
-                design & development experts, beverage production & logistics
-                specialists, beverage marketing & sales teams that work directly
-                with major on-line and up and down the street retailers.
-                ChauGiang Beverage can help create, market & sell your new
-                beverages in the right places at the right prices.
+                {translateBeverageProductDevelopment(
+                  'weDevelopBeverageProducts2'
+                )}
               </p>
             </div>
           </Col>
@@ -72,34 +74,61 @@ export default function BeverageProductDevelopmentPage() {
           <Col lg={24} span={24} className={Style.dflex}>
             <div className={Style.introducePackagingDesignerCenter}>
               <p>
-                Are you beginning a new beverage company or are you already the
-                owner of one? We know you probably have a lot of inquiries about
-                developing, manufacturing or marketing your new beverage brand.
-                Make an appointment with our beverage industry experts right
-                away for a free consultation.
+                {translateBeverageProductDevelopment(
+                  'weDevelopBeverageProducts3'
+                )}
               </p>
               <p style={{ marginTop: '20px' }}>
-                Our team includes an experienced R&D team, professionals in the
-                design and development of beverage packaging, and experts in the
-                management of beverage production. Chau Giang Food Processing
-                Trade Co. is always the best choice for your long-term
-                development.
+                {translateBeverageProductDevelopment(
+                  'weDevelopBeverageProducts4'
+                )}
               </p>
               <p style={{ marginTop: '20px' }}>
-                For more details please contact
+                {translateBeverageProductDevelopment(
+                  'forMoreDetailsPleaseContact'
+                )}
               </p>
-              <p>Chau Giang Food Processing and Trading Co., Ltd</p>
               <p>
-                Address: Warehouse No. 1, Lot C1-1/X1, Road D4, Tan Phu Trung
-                Industrial Park, Cu Chi District, Ho Chi Minh City, Vietnam.
+                {translateBeverageProductDevelopment(
+                  'forMoreDetailsPleaseContactChauGiang'
+                )}
               </p>
-              <p>Tel: +84 903722771 ( Mrs. Tứ)</p>
-              <p>Hotline: Viber/Line/WhatsApp:</p>
-              <p>+084903722771 (Mr. Luyen)</p>
-              <p>+84 353960786 (Mr. Gray)</p>
-              <p>Fax number:</p>
-              <p>Email: info@chaugiangfood.com</p>
-              <p>Website: chaugiangfood.com</p>
+              <p>
+                {translateBeverageProductDevelopment(
+                  'forMoreDetailsPleaseContactAddress'
+                )}
+              </p>
+              <p>
+                {translateBeverageProductDevelopment(
+                  'forMoreDetailsPleaseContactTel'
+                )}
+              </p>
+              <p>
+                {translateBeverageProductDevelopment(
+                  'forMoreDetailsPleaseContactHotline'
+                )}
+              </p>
+              <p>
+                {translateBeverageProductDevelopment(
+                  'forMoreDetailsPleaseContactHotlineMrLuyen'
+                )}
+              </p>
+              <p>
+                {translateBeverageProductDevelopment(
+                  'forMoreDetailsPleaseContactHotlineMrGray'
+                )}
+              </p>
+              <p>{translateBeverageProductDevelopment('faxNumber')}</p>
+              <p>
+                {translateBeverageProductDevelopment(
+                  'forMoreDetailsPleaseContactEmail'
+                )}
+              </p>
+              <p>
+                {translateBeverageProductDevelopment(
+                  'forMoreDetailsPleaseContactWebsite'
+                )}
+              </p>
             </div>
           </Col>
         </Row>
@@ -110,7 +139,7 @@ export default function BeverageProductDevelopmentPage() {
           <div className={Style.whyChooseUsTop}>
             <div className={`${Style.dflex} ${Style.whyChooseUsTopCover}`}>
               <div className={`${Style.dflex} ${Style.whyChooseUsTitle}`}>
-                <h1>Why choose Us?</h1>
+                <h1>{translateBeverageProductDevelopment('whyChooseUs')}</h1>
               </div>
             </div>
           </div>
@@ -129,12 +158,9 @@ export default function BeverageProductDevelopmentPage() {
                   <div className={Style.whyChooseUsBottomImage}>
                     <img src="/images/why_choose_us/Untitled-28.png" alt="" />
                   </div>
-                  <h2>Hight Quality</h2>
+                  <h2>{translateBeverageProductDevelopment('hightQuality')}</h2>
                   <p>
-                    Product quality is always developed by CG Food to meet
-                    national and international requirements. We are certain that
-                    our products will have a natural flavor, be highly
-                    nutritious, and follow the latest trends in the market.
+                    {translateBeverageProductDevelopment('hightQualityProduct')}
                   </p>
                 </div>
               </Col>
@@ -144,12 +170,9 @@ export default function BeverageProductDevelopmentPage() {
                   <div className={Style.whyChooseUsBottomImage}>
                     <img src="/images/why_choose_us/Untitled-29.png" alt="" />
                   </div>
-                  <h2>Fast Delivery</h2>
+                  <h2>{translateBeverageProductDevelopment('fastDelivery')}</h2>
                   <p>
-                    In order to ensure the leading time in accordance with
-                    client requests, CG Food has a sizable packing and labeling
-                    area. We also have a skilled logistic crew on hand to assist
-                    you whenever you need it.
+                    {translateBeverageProductDevelopment('fastDeliveryInOrder')}
                   </p>
                 </div>
               </Col>
@@ -159,12 +182,13 @@ export default function BeverageProductDevelopmentPage() {
                   <div className={Style.whyChooseUsBottomImage}>
                     <img src="/images/why_choose_us/Untitled-30.png" alt="" />
                   </div>
-                  <h2>Flexible Packaging</h2>
+                  <h2>
+                    {translateBeverageProductDevelopment('flexiblePackaging')}
+                  </h2>
                   <p>
-                    We consistently satisfy the demands for product packaging
-                    from clients across the global market by combining modernism
-                    and experience. Our employees are trained to catch up with
-                    recent trends of packing specification.
+                    {translateBeverageProductDevelopment(
+                      'flexiblePackagingWeConsistently'
+                    )}
                   </p>
                 </div>
               </Col>
@@ -174,12 +198,9 @@ export default function BeverageProductDevelopmentPage() {
                   <div className={Style.whyChooseUsBottomImage}>
                     <img src="/images/why_choose_us/Untitled-31.png" alt="" />
                   </div>
-                  <h2>Free Sample</h2>
+                  <h2>{translateBeverageProductDevelopment('freeSample')}</h2>
                   <p>
-                    Because their satisfaction makes us happy, we only deliver
-                    the best products to our consumers. In order for the model
-                    to rapidly reach clients, we always select the best shipping
-                    services.
+                    {translateBeverageProductDevelopment('freeSampleBecause')}
                   </p>
                 </div>
               </Col>
@@ -197,30 +218,46 @@ export default function BeverageProductDevelopmentPage() {
               <div
                 className={`${Style.dflex} ${Style.customerInformationTitle}`}
               >
-                <h1>Customer Information</h1>
+                <h1>
+                  {translateBeverageProductDevelopment('customerInformation')}
+                </h1>
               </div>
             </div>
           </div>
 
           <div className={Style.customerInformationCenter}>
             <p>
-              Please provide the information below to receive our free
-              consultation service package
+              {translateBeverageProductDevelopment(
+                'customerInformationPleaseProvide'
+              )}
             </p>
           </div>
 
           <div className={`${Style.dflex} ${Style.customerInformationBottom}`}>
-            <input type="text" placeholder="First and last name" />
-            <input type="tel" placeholder="Phone number" />
-            <input type="text" placeholder="Email" />
+            <input
+              type="text"
+              placeholder={translateBeverageProductDevelopment(
+                'firstAndLastName'
+              )}
+            />
+            <input
+              type="tel"
+              placeholder={translateBeverageProductDevelopment('phoneNumber')}
+            />
+            <input
+              type="text"
+              placeholder={translateBeverageProductDevelopment('email')}
+            />
             <textarea
               cols={22}
-              placeholder="Information needed support"
+              placeholder={translateBeverageProductDevelopment(
+                'informationNeededSupport'
+              )}
             ></textarea>
 
             <div className={Style.btn_see_more}>
               <button className={`${Style.dflex}`}>
-                <p>Send information</p>
+                <p>{translateBeverageProductDevelopment('sendInformation')}</p>
                 <ArrowRightOutlined className={Style.iconBtn} />
               </button>
             </div>

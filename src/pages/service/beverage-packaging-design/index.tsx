@@ -14,4 +14,4 @@ function BeveragePackagingDesign() {
 export default BeveragePackagingDesign;
 import { getStatic } from '@/lib/getStaticProps';
 import BeveragePackagingDesignPage from '@/components/beverage-packaging-design/beverage-packaging-design';
-export const getStaticProps = getStatic(['common']);
+export const getStaticProps = getStatic(['common', 'beveragePackagingDesign']);

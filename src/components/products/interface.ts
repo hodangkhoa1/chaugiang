@@ -3,6 +3,7 @@ export interface ProductData {
   title: string;
   subTitle: string;
   image: string;
+  hover: string;
 }
 
 export interface ProductsData {

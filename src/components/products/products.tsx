@@ -1,4 +1,4 @@
-// import useI18n from '@/i18n/useI18N';
+import useI18n from '@/i18n/useI18N';
 import React, { useEffect, useState } from 'react';
 import Style from './products.module.scss';
 import { Col, Row, Image, Breadcrumb } from 'antd';
@@ -8,8 +8,10 @@ import { ProductsData } from './interface';
 import Link from 'next/link';
 
 export default function ProductsPage() {
-  // const { translate: translateHome } = useI18n('common');
+  const { translate: translateProducts } = useI18n('products');
+  const { translate: translateCommon } = useI18n('common');
   const [productsData, setProductsData] = useState<ProductsData>();
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   useEffect(() => {
     import('../../data/products.json')
@@ -29,7 +31,7 @@ export default function ProductsPage() {
       <div className={`${Style.product}`}>
         <div className={`${Style.dflex} ${Style.productTopCover}`}>
           <div className={Style.productTitle}>
-            <h1>Product</h1>
+            <h1>{translateCommon('products')}</h1>
           </div>
         </div>
       </div>
@@ -42,10 +44,10 @@ export default function ProductsPage() {
                 className={Style.productHomeBreadcrumb}
                 items={[
                   {
-                    title: 'Home',
+                    title: `${translateCommon('home')}`,
                   },
                   {
-                    title: 'Product',
+                    title: `${translateCommon('products')}`,
                   },
                 ]}
               />
@@ -57,55 +59,55 @@ export default function ProductsPage() {
                   <input
                     className={Style.searchPlace}
                     type="text"
-                    placeholder="Search..."
+                    placeholder={translateCommon('search')}
                   />
                 </div>
               </div>
               <div className={Style.portfolio}>
-                <h1>Product Portfolio</h1>
+                <h1>{translateProducts('productPortfolio')}</h1>
               </div>
-              <a href="#">
+              <Link href="#">
                 <div className={Style.productBodyDetail}>
                   <p>Coconut water</p>
                   <div className={Style.productBodyDetailLine}></div>
                 </div>
-              </a>
-              <a href="#">
+              </Link>
+              <Link href="#">
                 <div className={Style.productBodyDetail}>
                   <p>Fruit Juice Drink</p>
                   <div className={Style.productBodyDetailLine}></div>
                 </div>
-              </a>
-              <a href="#">
+              </Link>
+              <Link href="#">
                 <div className={Style.productBodyDetail}>
                   <p>Milk Drink</p>
                   <div className={Style.productBodyDetailLine}></div>
                 </div>
-              </a>
-              <a href="#">
+              </Link>
+              <Link href="#">
                 <div className={Style.productBodyDetail}>
                   <p>Sparkling Juice Drink</p>
                   <div className={Style.productBodyDetailLine}></div>
                 </div>
-              </a>
-              <a href="#">
+              </Link>
+              <Link href="#">
                 <div className={Style.productBodyDetail}>
                   <p>Coffee</p>
                   <div className={Style.productBodyDetailLine}></div>
                 </div>
-              </a>
-              <a href="#">
+              </Link>
+              <Link href="#">
                 <div className={Style.productBodyDetail}>
                   <p>Energy Drink</p>
                   <div className={Style.productBodyDetailLine}></div>
                 </div>
-              </a>
-              <a href="#">
+              </Link>
+              <Link href="#">
                 <div className={Style.productBodyDetail}>
                   <p>PET Aloe Vera Drink</p>
                   <div className={Style.productBodyDetailLine}></div>
                 </div>
-              </a>
+              </Link>
             </div>
           </Col>
           <Col md={18} lg={18} span={24}>
@@ -235,10 +237,21 @@ export default function ProductsPage() {
                     className={Style.listProductCol}
                     key={index}
                   >
-                    <Link href={ROUTERS.PRODUCTS_DETAIL(product.id.toString())}>
+                    <Link
+                      href={ROUTERS.PRODUCTS_DETAIL(product.id.toString())}
+                      onMouseEnter={() => setHoveredIndex(index)}
+                      onMouseLeave={() => setHoveredIndex(null)}
+                    >
                       <div className={Style.listProductCard}>
                         <div className={Style.listProductCardImage}>
-                          <img src={product.image} alt={product.title} />
+                          <img
+                            src={
+                              index === hoveredIndex
+                                ? product.hover
+                                : product.image
+                            }
+                            alt={product.title}
+                          />
                         </div>
                         <h1>{product.title}</h1>
                         <h1>{product.subTitle}</h1>
@@ -389,12 +402,8 @@ export default function ProductsPage() {
           <div className={Style.aboutUsTop}>
             <div className={`${Style.dflex} ${Style.whyChooseUsTopCover}`}>
               <div className={`${Style.dflex} ${Style.whyChooseUsTitle}`}>
-                <h1>Why choose Us?</h1>
+                <h1>{translateProducts('whyChooseUs')}</h1>
               </div>
-
-              <div
-                className={`${Style.lineWhyChooseUs} ${Style.whyChooseUsLine}`}
-              ></div>
             </div>
           </div>
 
@@ -412,13 +421,8 @@ export default function ProductsPage() {
                   <div className={Style.aboutUsBottomImage}>
                     <img src="images/why_choose_us/Untitled-28.png" alt="" />
                   </div>
-                  <h2>Hight Quality</h2>
-                  <p>
-                    Product quality is always developed by CG Food to meet
-                    national and international requirements. We are certain that
-                    our products will have a natural flavor, be highly
-                    nutritious, and follow the latest trends in the market.
-                  </p>
+                  <h2>{translateProducts('hightQuality')}</h2>
+                  <p>{translateProducts('hightQualityProduct')}</p>
                 </div>
               </Col>
 
@@ -427,13 +431,8 @@ export default function ProductsPage() {
                   <div className={Style.aboutUsBottomImage}>
                     <img src="images/why_choose_us/Untitled-29.png" alt="" />
                   </div>
-                  <h2>Fast Delivery</h2>
-                  <p>
-                    In order to ensure the leading time in accordance with
-                    client requests, CG Food has a sizable packing and labeling
-                    area. We also have a skilled logistic crew on hand to assist
-                    you whenever you need it.
-                  </p>
+                  <h2>{translateProducts('fastDelivery')}</h2>
+                  <p>{translateProducts('fastDeliveryInOrder')}</p>
                 </div>
               </Col>
 
@@ -442,13 +441,8 @@ export default function ProductsPage() {
                   <div className={Style.aboutUsBottomImage}>
                     <img src="images/why_choose_us/Untitled-30.png" alt="" />
                   </div>
-                  <h2>Flexible Packaging</h2>
-                  <p>
-                    We consistently satisfy the demands for product packaging
-                    from clients across the global market by combining modernism
-                    and experience. Our employees are trained to catch up with
-                    recent trends of packing specification.
-                  </p>
+                  <h2>{translateProducts('flexiblePackaging')}</h2>
+                  <p>{translateProducts('flexiblePackagingWeConsistently')}</p>
                 </div>
               </Col>
 
@@ -457,13 +451,8 @@ export default function ProductsPage() {
                   <div className={Style.aboutUsBottomImage}>
                     <img src="images/why_choose_us/Untitled-31.png" alt="" />
                   </div>
-                  <h2>Free Sample</h2>
-                  <p>
-                    Because their satisfaction makes us happy, we only deliver
-                    the best products to our consumers. In order for the model
-                    to rapidly reach clients, we always select the best shipping
-                    services.
-                  </p>
+                  <h2>{translateProducts('freeSample')}</h2>
+                  <p>{translateProducts('freeSampleBecause')}</p>
                 </div>
               </Col>
             </Row>
@@ -480,32 +469,30 @@ export default function ProductsPage() {
               <div
                 className={`${Style.dflex} ${Style.customerInformationTitle}`}
               >
-                <h1>Customer Information</h1>
+                <h1>{translateProducts('customerInformation')}</h1>
               </div>
-
-              <div className={Style.customerInformationLine}></div>
             </div>
           </div>
 
           <div className={Style.customerInformationCenter}>
-            <p>
-              Please provide the information below to receive our free
-              consultation service package
-            </p>
+            <p>{translateProducts('customerInformationPleaseProvide')}</p>
           </div>
 
           <div className={`${Style.dflex} ${Style.customerInformationBottom}`}>
-            <input type="text" placeholder="First and last name" />
-            <input type="tel" placeholder="Phone number" />
-            <input type="text" placeholder="Email" />
+            <input
+              type="text"
+              placeholder={translateProducts('firstAndLastName')}
+            />
+            <input type="tel" placeholder={translateProducts('phoneNumber')} />
+            <input type="text" placeholder={translateProducts('email')} />
             <textarea
               cols={22}
-              placeholder="Information needed support"
+              placeholder={translateProducts('informationNeededSupport')}
             ></textarea>
 
             <div className={Style.btn_see_more}>
               <button className={`${Style.dflex}`}>
-                <p>Send information</p>
+                <p>{translateProducts('sendInformation')}</p>
                 <ArrowRightOutlined className={Style.iconBtn} />
               </button>
             </div>

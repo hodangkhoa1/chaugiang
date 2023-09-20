@@ -59,7 +59,7 @@
 
         .productBodySearch {
             margin-top: 20px;
-            
+
             .searchBox {
                 border-radius: 55px;
                 height: 40px;
@@ -67,24 +67,24 @@
                 display: flex;
                 align-items: center;
                 border: 1px solid #EDEDED;
-        
+
                 .buttonSearch {
                     font-size: 20px;
                     cursor: pointer;
                     padding: 0 15px 0 10px;
-        
+
                     .btnSearch {
                         color: #00894f;
                         transition: all .5s;
                     }
-        
+
                     &:hover {
                         .btnSearch {
                             color: #8dc63f;
                         }
                     }
                 }
-        
+
                 input {
                     font-size: 16px;
                     width: 100%;
@@ -95,7 +95,7 @@
                     color: #777777;
                     padding-right: 15px;
                 }
-        
+
                 .searchPlace {
                     &::placeholder {
                         color: #777777;
@@ -167,6 +167,8 @@
                     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
                     width: 240px !important;
                     padding: 10px 0;
+                    height: 335px;
+                    border-radius: 5px;
 
                     .listProductCardImage {
                         display: flex;
@@ -175,6 +177,7 @@
 
                         img {
                             width: 100%;
+                            height: 220px;
                         }
                     }
 
@@ -316,21 +319,6 @@
         .whyChooseUsTopCover {
             position: relative;
 
-            .whyChooseUsLine {
-                content: "";
-                width: 280px;
-                height: 6px;
-                background: linear-gradient(to right, #00894f, rgb(255, 255, 255));
-                position: absolute;
-                transform: translate(-50%, 50%);
-                top: 105%;
-                left: 50%;
-            }
-
-            .lineWhyChooseUs {
-                background: linear-gradient(to right, #00894f 60%, #8dc63f 40%);
-            }
-
             .whyChooseUsTitle {
                 width: 700px;
                 text-align: center;
@@ -341,7 +329,18 @@
                     margin-bottom: unset;
                     font-weight: bold;
                     text-transform: uppercase;
+                    position: relative;
 
+                    &::after {
+                        content: "";
+                        width: 280px;
+                        height: 6px;
+                        background: linear-gradient(to right, #00894f 60%, #8dc63f 40%);
+                        position: absolute;
+                        transform: translate(-50%, 50%);
+                        top: 105%;
+                        left: 50%;
+                    }
                 }
             }
         }
@@ -389,19 +388,19 @@
                         margin-bottom: unset;
                         font-weight: bold;
                         text-transform: uppercase;
+                        position: relative;
 
+                        &::after {
+                            content: "";
+                            width: 280px;
+                            height: 6px;
+                            background: linear-gradient(to right, #00894f 50%, rgb(255, 255, 255) 50%);
+                            position: absolute;
+                            transform: translate(-50%, 50%);
+                            top: 110%;
+                            left: 50%;
+                        }
                     }
-                }
-
-                .customerInformationLine {
-                    content: "";
-                    width: 280px;
-                    height: 6px;
-                    background: linear-gradient(to right, #00894f 50%, rgb(255, 255, 255) 50%);
-                    position: absolute;
-                    transform: translate(-50%, 50%);
-                    top: 110%;
-                    left: 50%;
                 }
             }
         }

@@ -230,7 +230,7 @@
     margin-top: 30px;
 
     .productCarousel {
-        padding: 0 20px 0 20px;
+        margin: 0 25px 0 25px;
 
         .productCard {
             text-align: center;
@@ -260,6 +260,10 @@
             h4 {
                 color: #00894f;
             }
+        }
+
+        svg { 
+            display: none;
         }
     }
 }

@@ -30,6 +30,8 @@ import {
 import Link from 'next/link';
 import { MenuInfo } from 'rc-menu/lib/interface';
 import useI18n from '@/i18n/useI18N';
+const isServer = typeof window === 'undefined';
+const WOW = !isServer ? require('wow.js') : null;
 
 const { Text } = Typography;
 const { Header, Content, Footer } = Layout;
@@ -138,6 +140,15 @@ export function AppLayout(props: Props) {
     appLocalStorage.set(LOCAL_STORAGE_KEYS.LANGUAGE, locale);
   }, [languageSelected, locale]);
 
+  useEffect(() => {
+    new WOW({
+      boxClass: 'wow',
+      animateClass: 'animated',
+      mobile: false,
+      live: true,
+    }).init();
+  }, []);
+
   return (
     <Layout style={{ minHeight: '100vh' }}>
       <Head>
@@ -157,7 +168,14 @@ export function AppLayout(props: Props) {
             height: '80px',
           }}
         >
-          <Space style={{ width: '100%', justifyContent: 'space-between' }}>
+          <Space
+            className="animate__animated animate__slideInDown animate__delay-2s"
+            style={{
+              width: '100%',
+              justifyContent: 'space-between',
+              animationDelay: `1s`,
+            }}
+          >
             <Space>
               <Image
                 preview={false}
@@ -175,12 +193,12 @@ export function AppLayout(props: Props) {
             <div className={LayoutStyle.headerCenter}>
               <Space style={{ marginRight: '8px' }}>
                 <ul className={LayoutStyle.navbarNav}>
-                  <li className={LayoutStyle.navItem}>
+                  <li className={`${LayoutStyle.navItem}`}>
                     <Link href={ROUTERS.HOME} className={LayoutStyle.navLink}>
                       {translateCommon('home')}
                     </Link>
                   </li>
-                  <li className={LayoutStyle.navItem}>
+                  <li className={`${LayoutStyle.navItem}`}>
                     <Link
                       href={ROUTERS.WHO_WE_ARE}
                       className={LayoutStyle.navLink}
@@ -211,7 +229,7 @@ export function AppLayout(props: Props) {
                       </li>
                     </ul>
                   </li>
-                  <li className={LayoutStyle.navItem}>
+                  <li className={`${LayoutStyle.navItem}`}>
                     <Link
                       href={ROUTERS.PRODUCTS}
                       className={LayoutStyle.navLink}
@@ -392,7 +410,7 @@ export function AppLayout(props: Props) {
                       </li>
                     </ul>
                   </li>
-                  <li className={LayoutStyle.navItem}>
+                  <li className={`${LayoutStyle.navItem}`}>
                     <Link
                       href={ROUTERS.BEVERAGE_PRODUCT_DEVELOPMENT}
                       className={LayoutStyle.navLink}
@@ -426,12 +444,12 @@ export function AppLayout(props: Props) {
                       </li>
                     </ul>
                   </li>
-                  <li className={LayoutStyle.navItem}>
+                  <li className={`${LayoutStyle.navItem}`}>
                     <Link href={ROUTERS.NEWS} className={LayoutStyle.navLink}>
                       {translateCommon('news')}
                     </Link>
                   </li>
-                  <li className={LayoutStyle.navItem}>
+                  <li className={`${LayoutStyle.navItem}`}>
                     <Link
                       href={ROUTERS.CONTACT}
                       className={LayoutStyle.navLink}
@@ -439,7 +457,7 @@ export function AppLayout(props: Props) {
                       {translateCommon('contact')}
                     </Link>
                   </li>
-                  <li className={LayoutStyle.navItem}>
+                  <li className={`${LayoutStyle.navItem}`}>
                     <Link
                       href={ROUTERS.RECRUITMENT}
                       className={LayoutStyle.navLink}
@@ -506,7 +524,6 @@ export function AppLayout(props: Props) {
                 />
               </div>
             }
-            closeIcon={null}
             placement="right"
             zIndex={99999}
             onClose={() => setShowMobileMenu(false)}
@@ -529,12 +546,7 @@ export function AppLayout(props: Props) {
             </Row>
           </Drawer>
         </Header>
-        <Content
-          style={{
-            maxHeight: `calc(100vh - ${HEADER_HEIGHT}px)`,
-            overflowY: 'auto',
-          }}
-        >
+        <Content>
           <main>{props.children}</main>
 
           <Footer className={LayoutStyle.footerCG}>

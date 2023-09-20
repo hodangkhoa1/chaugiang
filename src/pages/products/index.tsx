@@ -14,4 +14,4 @@ function Products() {
 export default Products;
 import { getStatic } from '@/lib/getStaticProps';
 import ProductsPage from '@/components/products/products';
-export const getStaticProps = getStatic(['common']);
+export const getStaticProps = getStatic(['common', 'products']);

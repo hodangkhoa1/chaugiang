@@ -1,11 +1,120 @@
-// import useI18n from '@/i18n/useI18N';
+import useI18n from '@/i18n/useI18N';
 import React from 'react';
 import Style from './recruitment.module.scss';
 import { Breadcrumb, Col, Row, Image, Carousel } from 'antd';
-import { ArrowRightOutlined, SearchOutlined } from '@ant-design/icons';
+import {
+  ArrowRightOutlined,
+  SearchOutlined,
+  LeftOutlined,
+  RightOutlined,
+} from '@ant-design/icons';
 
 export default function RecruitmentPage() {
-  // const { translate: translateHome } = useI18n('common');
+  const { translate: translateCommon } = useI18n('common');
+  const { translate: translateRecruitment } = useI18n('recruitment');
+
+  const carouselResponsiveSettings = [
+    {
+      breakpoint: 1258,
+      settings: {
+        slidesToShow: 4,
+        slidesToScroll: 3,
+        infinite: true,
+        dots: true,
+      },
+    },
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        infinite: true,
+        dots: true,
+      },
+    },
+    {
+      breakpoint: 876,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 3,
+        infinite: true,
+        dots: true,
+      },
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 2,
+        initialSlide: 2,
+      },
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+      },
+    },
+  ];
+
+  const SampleNextArrow = (props: any) => {
+    const { className, style, onClick } = props;
+    return (
+      <div
+        className={className}
+        style={{
+          ...style,
+          color: '#00894f',
+          fontSize: '16px',
+          background: '#8dc63f',
+          width: '30px',
+          height: '30px',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          borderRadius: '50%',
+          marginRight: '10px',
+          marginTop: '-60px',
+        }}
+        onClick={onClick}
+      >
+        <RightOutlined />
+      </div>
+    );
+  };
+
+  const SamplePrevArrow = (props: any) => {
+    const { className, style, onClick } = props;
+
+    return (
+      <div
+        className={className}
+        style={{
+          ...style,
+          color: '#00894f',
+          fontSize: '16px',
+          background: '#8dc63f',
+          width: '30px',
+          height: '30px',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          borderRadius: '50%',
+          marginLeft: '10px',
+          marginTop: '-60px',
+        }}
+        onClick={onClick}
+      >
+        <LeftOutlined />
+      </div>
+    );
+  };
+
+  const settings = {
+    nextArrow: <SampleNextArrow />,
+    prevArrow: <SamplePrevArrow />,
+  };
 
   return (
     <div style={{ background: '#fff' }}>
@@ -14,7 +123,7 @@ export default function RecruitmentPage() {
       <div className={Style.introduce}>
         <div className={`${Style.dflex} ${Style.introduceTopCover}`}>
           <div className={Style.introduceTitle}>
-            <h1>Recruitment</h1>
+            <h1>{translateCommon('recruitment')}</h1>
           </div>
           <div className={Style.introduceLine}></div>
         </div>
@@ -23,18 +132,18 @@ export default function RecruitmentPage() {
           className={Style.introduceBreadcrumb}
           items={[
             {
-              title: 'Home',
+              title: `${translateCommon('home')}`,
             },
             {
-              title: 'Recruitment',
+              title: `${translateCommon('recruitment')}`,
             },
           ]}
         />
       </div>
 
       <div className={Style.recruimentAnouncement}>
-        <h1>Thông báo tuyển dụng:</h1>
-        <h2>Công ty TNHH CBLT-TP Châu Giang tuyển các vị trí sau:</h2>
+        <h1>{translateRecruitment('recruimentAnouncement')}</h1>
+        <h2>{translateRecruitment('recruimentAnouncementChauGiang')}</h2>
       </div>
 
       <div className={Style.recruimentBody}>
@@ -49,78 +158,65 @@ export default function RecruitmentPage() {
                 preview={false}
               />
               <div className={Style.recruimentBodyContent}>
-                <h1>Nhân viên Marketing: 5 người</h1>
-                <h1>Nhân viên kinh doanh: 5 người</h1>
-                <h1>
-                  Nhân viên thiết kế hình ảnh & quản lý trang website: 3 người
-                </h1>
-                <h1>Kế toán & Văn phòng: 2 người</h1>
-                <h1>Nhân viên phòng Xuất Nhập Khẩu: 5 người</h1>
+                <h1>{translateRecruitment('marketingStaff')}</h1>
+                <h1>{translateRecruitment('salesStaff')}</h1>
+                <h1>{translateRecruitment('imageDesign')}</h1>
+                <h1>{translateRecruitment('accountingOffice')}</h1>
+                <h1>{translateRecruitment('importExport')}</h1>
               </div>
               <div className={Style.recruimentJob}>
-                <p>Yêu cầu:</p>
-                <h2>– Tốt nghiệp cao đẳng hoặc đại học trở lên.</h2>
-                <h2>
-                  – Ưu tiên có kinh nghiệm làm việc trong các lĩnh vực tuyển
-                  dụng.
-                </h2>
-                <h2>– Sử dụng thành thạo Tiếng Anh & Tiếng Trung.</h2>
-                <h2>– Độ tuổi: từ 23-35 tuổi.</h2>
+                <p>{translateRecruitment('request')}</p>
+                <h2>{translateRecruitment('requestGraduated')}</h2>
+                <h2>{translateRecruitment('requestPriority')}</h2>
+                <h2>{translateRecruitment('requestFluent')}</h2>
+                <h2>{translateRecruitment('requestAge')}</h2>
               </div>
               <div className={Style.recruimentJob}>
-                <p>Chế độ:</p>
-                <h2>– Lương theo thỏa thuận.</h2>
-                <h2>– Có hợp đồng lao động.</h2>
-                <h2>– Được đóng Bảo hiểm xã hội & Bảo hiểm y tế.</h2>
-                <h2>– Du lịch hằng năm.</h2>
+                <p>{translateRecruitment('regime')}</p>
+                <h2>{translateRecruitment('regimeWageAgreement')}</h2>
+                <h2>{translateRecruitment('regimeHaveLabor')}</h2>
+                <h2>{translateRecruitment('regimePaidSocialInsurance')}</h2>
+                <h2>{translateRecruitment('regimeAnnualTravel')}</h2>
               </div>
               <div className={Style.recruimentJob}>
-                <p>Liên hệ:</p>
-                <h2>– Các ứng viên nộp hồ sơ xin việc (CV) về địa chỉ:</h2>
-                <h3>+ Email: kgray@chaugiangfood.com</h3>
-                <h3>+ SDT: 0353960786 (Mr. Hoàng)</h3>
-                <h3>+ Thời gian nhận hồ sơ: Từ 01/06/2023 đến 30/06/2023.</h3>
-                <h2>
-                  – Thời gian phỏng vấn: 8:30 ngày 03 tháng 07 năm 2023, tại văn
-                  phòng công ty.
-                </h2>
-                <h2>
-                  – Địa chỉ: Đường N6, KCN Tân Phú Trung, Củ Chi, TP. HCM, Việt
-                  Nam.
-                </h2>
-                <h2>– Các hồ sơ cần chuẩn bị khi tham gia phỏng vấn:</h2>
-                <h3>+ Hồ sơ xin việc.</h3>
-                <h3>
-                  + Bản sao công chứng các văn bằng chứng chỉ có liên quan.
-                </h3>
-                <h3>+ Bản sao căn cước công dân có công chứng.</h3>
+                <p>{translateRecruitment('contact')}</p>
+                <h2>{translateRecruitment('contactCandidates')}</h2>
+                <h3>{translateRecruitment('contactEmail')}</h3>
+                <h3>{translateRecruitment('contactPhoneNumber')}</h3>
+                <h3>{translateRecruitment('contactTimeReceive')}</h3>
+                <h2>{translateRecruitment('contactInterviewTime')}</h2>
+                <h2>{translateRecruitment('contactAddress')}</h2>
+                <h2>{translateRecruitment('contactDocuments')}</h2>
+                <h3>{translateRecruitment('contactJobApplication')}</h3>
+                <h3>{translateRecruitment('contactNotarized')}</h3>
+                <h3>{translateRecruitment('contactIdentificationCard')}</h3>
               </div>
               <div className={Style.recruimentJob}>
-                <h1>Kế Toán</h1>
+                <h1>{translateRecruitment('accountant')}</h1>
                 <div className={Style.recruimentJobLine}></div>
               </div>
               <div className={Style.recruimentJob}>
-                <h1>Logistic</h1>
+                <h1>{translateRecruitment('logistic')}</h1>
                 <div className={Style.recruimentJobLine}></div>
               </div>
               <div className={Style.recruimentJob}>
-                <h1>Marketing</h1>
+                <h1>{translateRecruitment('marketing')}</h1>
                 <div className={Style.recruimentJobLine}></div>
               </div>
               <div className={Style.recruimentJob}>
-                <h1>Nhân Viên Kinh Doanh</h1>
+                <h1>{translateRecruitment('businessMan')}</h1>
                 <div className={Style.recruimentJobLine}></div>
               </div>
               <div className={Style.recruimentJob}>
-                <h1>Thiết Kế</h1>
+                <h1>{translateRecruitment('design')}</h1>
                 <div className={Style.recruimentJobLine}></div>
               </div>
               <div className={Style.recruimentJob}>
-                <h1>Tuyển Dụng</h1>
+                <h1>{translateRecruitment('recruitment')}</h1>
                 <div className={Style.recruimentJobLine}></div>
               </div>
               <div className={Style.recruimentJob}>
-                <h1>Văn Phòng</h1>
+                <h1>{translateRecruitment('office')}</h1>
                 <div className={Style.recruimentJobLine}></div>
               </div>
             </div>
@@ -128,7 +224,7 @@ export default function RecruitmentPage() {
           <Col md={6} lg={6} span={24}>
             <div className={Style.recruimentBodyRight}>
               <div className={Style.recruimentBodySearch}>
-                <h1>Search</h1>
+                <h1>{translateRecruitment('search')}</h1>
                 <div className={Style.searchBox}>
                   <div className={Style.buttonSearch}>
                     <SearchOutlined className={Style.btnSearch} />
@@ -136,35 +232,35 @@ export default function RecruitmentPage() {
                   <input
                     className={Style.searchPlace}
                     type="text"
-                    placeholder="Search..."
+                    placeholder={translateCommon('search')}
                   />
                 </div>
               </div>
               <div className={Style.recruimentBodyLastestPost}>
-                <h1>Lastest Posts</h1>
+                <h1>{translateRecruitment('lastestPosts')}</h1>
                 <div className={Style.lastestPostContent}>
-                  <p>Milk Tea – Top Concern Of Vietnam Beverage Company</p>
+                  <p>{translateRecruitment('lastestPostsMilkTea')}</p>
                   <div className={Style.lastestPostContent}></div>
                 </div>
                 <div className={Style.lastestPostContent}>
-                  <p>Ready for Summer with Private Label Seltzer!</p>
+                  <p>{translateRecruitment('lastestPostsReadyForSummer')}</p>
                   <div className={Style.lastestPostContent}></div>
                 </div>
                 <div className={Style.lastestPostContent}>
-                  <p>New Variants Of Private Label Energy Drink</p>
+                  <p>{translateRecruitment('lastestPostsNewVariants')}</p>
                   <div className={Style.lastestPostContent}></div>
                 </div>
                 <div className={Style.lastestPostContent}>
-                  <p>Some Private Label Healthy Drinks For Your Business</p>
+                  <p>{translateRecruitment('lastestPostsSomePrivateLabel')}</p>
                   <div className={Style.lastestPostContent}></div>
                 </div>
                 <div className={Style.lastestPostContent}>
-                  <p>OEM Energy Drinks: Energize Your Day</p>
+                  <p>{translateRecruitment('lastestPostsOEMEnergy')}</p>
                   <div className={Style.lastestPostContent}></div>
                 </div>
               </div>
               <div className={Style.recruimentBodyLastestPost}>
-                <h1>Product Cagories</h1>
+                <h1>{translateRecruitment('productCagories')}</h1>
                 <div className={Style.lastestPostContent}>
                   <p>Coconut water</p>
                   <div className={Style.lastestPostContent}></div>
@@ -195,18 +291,20 @@ export default function RecruitmentPage() {
                 </div>
               </div>
               <div className={Style.recruimentBodyLastestPost}>
-                <h1>Categories</h1>
+                <h1>{translateRecruitment('categories')}</h1>
                 <div className={Style.lastestPostContent}>
-                  <p>News</p>
+                  <p>{translateRecruitment('news')}</p>
                   <div className={Style.lastestPostContent}></div>
                 </div>
                 <div className={Style.lastestPostContent}>
-                  <p>Event</p>
+                  <p>{translateRecruitment('event')}</p>
                   <div className={Style.lastestPostContent}></div>
                 </div>
               </div>
               <div className={Style.recruimentBodyLastestPost}>
-                <h1>Chau Giang Beverage Introduction Video</h1>
+                <h1>
+                  {translateRecruitment('chauGiangBeverageIntroductionVideo')}
+                </h1>
                 <div>
                   <iframe
                     width="100%"
@@ -227,13 +325,20 @@ export default function RecruitmentPage() {
       <div className={Style.affiliateProduct}>
         <div className={`${Style.dflex} ${Style.affiliateProductTopCover}`}>
           <div className={Style.affiliateProductTitle}>
-            <h1>You May Also Like...</h1>
+            <h1>{translateRecruitment('youMayAlsoLike')}</h1>
           </div>
         </div>
       </div>
 
       <div className={Style.carouselProductBackground}>
-        <Carousel slidesToShow={4} className={Style.productCarousel} autoplay>
+        <Carousel
+          slidesToShow={4}
+          className={Style.productCarousel}
+          autoplay
+          arrows
+          {...settings}
+          responsive={carouselResponsiveSettings}
+        >
           <div className={Style.productCard}>
             <div className={Style.productCardImage}>
               <img src="/images/products/22.png" alt="" />
@@ -302,30 +407,33 @@ export default function RecruitmentPage() {
               <div
                 className={`${Style.dflex} ${Style.customerInformationTitle}`}
               >
-                <h1>Customer Information</h1>
+                <h1>{translateRecruitment('customerInformation')}</h1>
               </div>
             </div>
           </div>
 
           <div className={Style.customerInformationCenter}>
-            <p>
-              Please provide the information below to receive our free
-              consultation service package
-            </p>
+            <p>{translateRecruitment('customerInformationPleaseProvide')}</p>
           </div>
 
           <div className={`${Style.dflex} ${Style.customerInformationBottom}`}>
-            <input type="text" placeholder="First and last name" />
-            <input type="tel" placeholder="Phone number" />
-            <input type="text" placeholder="Email" />
+            <input
+              type="text"
+              placeholder={translateRecruitment('firstAndLastName')}
+            />
+            <input
+              type="tel"
+              placeholder={translateRecruitment('phoneNumber')}
+            />
+            <input type="text" placeholder={translateRecruitment('email')} />
             <textarea
               cols={22}
-              placeholder="Information needed support"
+              placeholder={translateRecruitment('informationNeededSupport')}
             ></textarea>
 
             <div className={Style.btn_see_more}>
               <button className={`${Style.dflex}`}>
-                <p>Send information</p>
+                <p>{translateRecruitment('sendInformation')}</p>
                 <ArrowRightOutlined className={Style.iconBtn} />
               </button>
             </div>
