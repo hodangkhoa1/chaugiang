@@ -33,28 +33,28 @@
         {
             "id": 5,
             "title": "Brown Rice Milk",
-            "subTitle": "500ml",
+            "subTitle": "250ml",
             "image": "/images/products/7.png",
             "hover": "/images/products/7.png"
         },
         {
             "id": 6,
             "title": "Green Bean Milk",
-            "subTitle": "500ml",
+            "subTitle": "250ml",
             "image": "/images/products/8.png",
             "hover": "/images/products/8.png"
         },
         {
             "id": 7,
             "title": "Soya Milk",
-            "subTitle": "500ml",
+            "subTitle": "250ml",
             "image": "/images/products/9.png",
             "hover": "/images/products/9.png"
         },
         {
             "id": 8,
             "title": "Corn Milk",
-            "subTitle": "500ml",
+            "subTitle": "250ml",
             "image": "/images/products/10.png",
             "hover": "/images/products/10.png"
         }
@@ -160,7 +160,7 @@
         {
             "id": 22,
             "title": "Energy Drink CG 109",
-            "subTitle": "330ml",
+            "subTitle": "250ml",
             "image": "/images/products/28.png",
             "hover": "/images/products/28.png"
         },

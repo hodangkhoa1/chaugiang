@@ -412,7 +412,7 @@ export default function HomePage() {
               <img src="images/products/31.png" alt="" />
             </div>
             <h1>Brown Rice Milk</h1>
-            <h4>250ml</h4>
+            <h4>330ml</h4>
           </Link>
           <Link
             href={ROUTERS.PRODUCTS_DETAIL('7')}
@@ -422,7 +422,7 @@ export default function HomePage() {
               <img src="images/products/9.png" alt="" />
             </div>
             <h1>Soya Milk</h1>
-            <h4>500ml</h4>
+            <h4>330ml</h4>
           </Link>
           <Link href="" className={Style.productCard}>
             <div className={Style.productCardImage}>
@@ -439,7 +439,7 @@ export default function HomePage() {
               <img src="images/products/28.png" alt="" />
             </div>
             <h1>Energy Drink CG 109</h1>
-            <h4>330ml</h4>
+            <h4>250ml</h4>
           </Link>
           <Link
             href={ROUTERS.PRODUCTS_DETAIL('18')}
@@ -493,12 +493,14 @@ export default function HomePage() {
                   </div>
 
                   <div className={Style.itemLink}>
-                    <Link href={ROUTERS.PRODUCTS_DETAIL('25')}>Oat Cereal</Link>
+                    <Link href={ROUTERS.PRODUCTS_DETAIL('25')}>
+                      Oat Milk Drink
+                    </Link>
                   </div>
 
                   <div className={Style.itemLink}>
                     <Link href={ROUTERS.PRODUCTS_DETAIL('1')}>
-                      Milk Drink Coconut Water
+                      Coconut Water
                     </Link>
                   </div>
                 </div>

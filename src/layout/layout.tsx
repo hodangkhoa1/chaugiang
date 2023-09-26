@@ -305,17 +305,12 @@ export function AppLayout(props: Props) {
                           {translateCommon('newProducts')}
                         </Link>
                         <ul className={LayoutStyle.subMenu}>
-                          {/* <li className={LayoutStyle.subMenuItem}>
+                          <li className={LayoutStyle.subMenuItem}>
                             <Link
-                              href={ROUTERS.PRODUCTS_DETAIL('16')}
+                              href={ROUTERS.PRODUCTS_DETAIL('4')}
                               className={LayoutStyle.linkSubMenu}
                             >
-                              Sparkling watermelon
-                            </Link>
-                          </li> */}
-                          <li className={LayoutStyle.subMenuItem}>
-                            <Link href="#" className={LayoutStyle.linkSubMenu}>
-                              Sparkling fragrant coconut
+                              Sparkling Coconut water
                             </Link>
                           </li>
                           <li className={LayoutStyle.subMenuItem}>

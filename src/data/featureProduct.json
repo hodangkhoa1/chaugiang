@@ -24,14 +24,14 @@
         "id": "4",
         "name": "Energy Drink CG 109",
         "image": "/images/products/28.png",
-        "volume": "500ml",
+        "volume": "250ml",
         "productDetail": "22"
     },
     {
         "id": "5",
         "name": "Energy Drink",
         "image": "/images/products/30.png",
-        "volume": "500ml",
+        "volume": "250ml",
         "productDetail": "24"
     }
 ]
