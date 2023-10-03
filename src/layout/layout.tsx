@@ -223,7 +223,10 @@ export function AppLayout(props: Props) {
                         </Link>
                       </li>
                       <li className={LayoutStyle.dropdownContentItem}>
-                        <Link href="#" className={LayoutStyle.linkDropdown}>
+                        <Link
+                          href={ROUTERS.CATALOGUE}
+                          className={LayoutStyle.linkDropdown}
+                        >
                           {translateCommon('catalogue')}
                         </Link>
                       </li>
