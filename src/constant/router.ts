@@ -9,5 +9,5 @@ export const ROUTERS = {
   PRIVATE_LABEL_SERVICES: '/service/private-label-services',
   RECRUITMENT: '/recruitment',
   CONTACT: '/contact',
-  NEWS: '/news',
+  NEWS: (newsId: string) => `/news/${newsId}`,
 };

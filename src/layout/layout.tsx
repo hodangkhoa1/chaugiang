@@ -117,7 +117,7 @@ export function AppLayout(props: Props) {
       ),
     ]),
 
-    getItem('News', ROUTERS.NEWS),
+    getItem('News', ROUTERS.NEWS('1')),
     getItem('Contact', ROUTERS.CONTACT),
     getItem('Recruitment', ROUTERS.RECRUITMENT),
   ];
@@ -440,7 +440,10 @@ export function AppLayout(props: Props) {
                     </ul>
                   </li>
                   <li className={`${LayoutStyle.navItem}`}>
-                    <Link href={ROUTERS.NEWS} className={LayoutStyle.navLink}>
+                    <Link
+                      href={ROUTERS.NEWS('1')}
+                      className={LayoutStyle.navLink}
+                    >
                       {translateCommon('news')}
                     </Link>
                   </li>
