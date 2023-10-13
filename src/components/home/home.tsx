@@ -214,15 +214,16 @@ export default function HomePage() {
             <div className={Style.certificationCard}>
               <div className={Style.certificationCardImage}>
                 <Image
-                  src="/images/certifications/HALAL.png"
+                  src="/images/certifications/BRC.png"
                   alt="logo"
                   width={300}
                   height={430}
                   className={Style.certificationCardImg}
                 />
               </div>
-              <h1>HALAL</h1>
+              <h1>BRC</h1>
             </div>
+
             <div className={Style.certificationCard}>
               <div className={Style.certificationCardImage}>
                 <Image
@@ -235,6 +236,7 @@ export default function HomePage() {
               </div>
               <h1>BSCI</h1>
             </div>
+
             <div className={Style.certificationCard}>
               <div className={Style.certificationCardImage}>
                 <Image
@@ -247,6 +249,7 @@ export default function HomePage() {
               </div>
               <h1>FDA</h1>
             </div>
+
             <div className={Style.certificationCard}>
               <div className={Style.certificationCardImage}>
                 <Image
@@ -259,6 +262,33 @@ export default function HomePage() {
               </div>
               <h1>FSSC22000</h1>
             </div>
+
+            <div className={Style.certificationCard}>
+              <div className={Style.certificationCardImage}>
+                <Image
+                  src="/images/certifications/HACCP.png"
+                  alt="logo"
+                  width={300}
+                  height={430}
+                  className={Style.certificationCardImg}
+                />
+              </div>
+              <h1>HACCP</h1>
+            </div>
+
+            <div className={Style.certificationCard}>
+              <div className={Style.certificationCardImage}>
+                <Image
+                  src="/images/certifications/HALAL.png"
+                  alt="logo"
+                  width={300}
+                  height={430}
+                  className={Style.certificationCardImg}
+                />
+              </div>
+              <h1>HALAL</h1>
+            </div>
+
             <div className={Style.certificationCard}>
               <div className={Style.certificationCardImage}>
                 <Image
@@ -271,41 +301,18 @@ export default function HomePage() {
               </div>
               <h1>SMETA</h1>
             </div>
+
             <div className={Style.certificationCard}>
               <div className={Style.certificationCardImage}>
                 <Image
-                  src="/images/certifications/BSCI.png"
+                  src="/images/certifications/ISO 22000.jpg"
                   alt="logo"
                   width={300}
                   height={430}
                   className={Style.certificationCardImg}
                 />
               </div>
-              <h1>BSCI</h1>
-            </div>
-            <div className={Style.certificationCard}>
-              <div className={Style.certificationCardImage}>
-                <Image
-                  src="/images/certifications/FDA.png"
-                  alt="logo"
-                  width={300}
-                  height={430}
-                  className={Style.certificationCardImg}
-                />
-              </div>
-              <h1>FDA</h1>
-            </div>
-            <div className={Style.certificationCard}>
-              <div className={Style.certificationCardImage}>
-                <Image
-                  src="/images/certifications/FSSC.png"
-                  alt="logo"
-                  width={300}
-                  height={430}
-                  className={Style.certificationCardImg}
-                />
-              </div>
-              <h1>FSSC22000</h1>
+              <h1>ISO 22000</h1>
             </div>
           </Carousel>
         </div>
