@@ -53,7 +53,6 @@ export default function CompanyProfilePage() {
             src="/images/introduce/introduce_leadership_group.png"
             alt="logo"
             width="100%"
-            height={500}
           />
         </div>
       </div>

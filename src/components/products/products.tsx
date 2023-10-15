@@ -193,10 +193,21 @@ export default function ProductsPage() {
                     className={Style.listProductCol}
                     key={index}
                   >
-                    <Link href={ROUTERS.PRODUCTS_DETAIL(product.id.toString())}>
+                    <Link
+                      href={ROUTERS.PRODUCTS_DETAIL(product.id.toString())}
+                      onMouseEnter={() => setHoveredIndex(index)}
+                      onMouseLeave={() => setHoveredIndex(null)}
+                    >
                       <div className={Style.listProductCard}>
                         <div className={Style.listProductCardImage}>
-                          <img src={product.image} alt={product.title} />
+                          <img
+                            src={
+                              index === hoveredIndex
+                                ? product.hover
+                                : product.image
+                            }
+                            alt={product.title}
+                          />
                         </div>
                         <h1>{product.title}</h1>
                         <h1>{product.subTitle}</h1>
