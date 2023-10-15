@@ -35,28 +35,28 @@
             "title": "Brown Rice Milk",
             "subTitle": "250ml",
             "image": "/images/products/7.png",
-            "hover": "/images/products/7.png"
+            "hover": "/images/bin_products/bin_products_4.png"
         },
         {
             "id": 6,
             "title": "Green Bean Milk",
             "subTitle": "250ml",
             "image": "/images/products/8.png",
-            "hover": "/images/products/8.png"
+            "hover": "/images/bin_products/bin_products_14.png"
         },
         {
             "id": 7,
             "title": "Soya Milk",
             "subTitle": "250ml",
             "image": "/images/products/9.png",
-            "hover": "/images/products/9.png"
+            "hover": "/images/bin_products/bin_products_16.png"
         },
         {
             "id": 8,
             "title": "Corn Milk",
             "subTitle": "250ml",
             "image": "/images/products/10.png",
-            "hover": "/images/products/10.png"
+            "hover": "/images/bin_products/bin_products_15.png"
         }
     ],
     "juice": [
@@ -65,7 +65,7 @@
             "title": "Mango Juice",
             "subTitle": "330ml",
             "image": "/images/products/12.png",
-            "hover": "/images/products/12.png"
+            "hover": "/images/bin_products/bin_products_8.png"
         },
         {
             "id": 10,
@@ -79,7 +79,7 @@
             "title": "Soursop Juice",
             "subTitle": "330ml",
             "image": "/images/products/14.png",
-            "hover": "/images/products/14.png"
+            "hover": "/images/bin_products/bin_products_2.png"
         },
         {
             "id": 12,
