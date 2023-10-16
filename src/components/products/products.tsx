@@ -176,265 +176,9 @@ export default function ProductsPage() {
         </div>
       </Reveal>
 
-<<<<<<< HEAD
-      <div className={Style.listProduct}>
-        <div className={Style.listProductBottom}>
-          <Row
-            gutter={100}
-            style={{
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}
-          >
-            <Col lg={6} span={24}>
-              <div className={Style.listProductBottom__left}>
-                <div className={Style.images}>
-                  <img src="images/products/6.jpg" alt="" />
-                </div>
-              </div>
-            </Col>
-
-            <Col lg={18} span={24}>
-              <Row gutter={100}>
-                {productsData?.milk.map((product, index) => (
-                  <Col
-                    lg={6}
-                    span={24}
-                    className={Style.listProductCol}
-                    key={index}
-                  >
-                    <Link
-                      href={ROUTERS.PRODUCTS_DETAIL(product.id.toString())}
-                      onMouseEnter={() => setHoveredIndex(index)}
-                      onMouseLeave={() => setHoveredIndex(null)}
-                    >
-                      <div className={Style.listProductCard}>
-                        <div className={Style.listProductCardImage}>
-                          <img
-                            src={
-                              index === hoveredIndex
-                                ? product.hover
-                                : product.image
-                            }
-                            alt={product.title}
-                          />
-                        </div>
-                        <h1>{product.title}</h1>
-                        <h1>{product.subTitle}</h1>
-                      </div>
-                    </Link>
-                  </Col>
-                ))}
-              </Row>
-            </Col>
-          </Row>
-        </div>
-      </div>
-
-      <div className={Style.listProduct}>
-        <div className={Style.listProductBottom}>
-          <Row
-            gutter={100}
-            style={{
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}
-          >
-            <Col lg={6} span={24}>
-              <div className={Style.listProductBottom__left}>
-                <div className={Style.images}>
-                  <img src="images/products/11.png" alt="" />
-                </div>
-              </div>
-            </Col>
-
-            <Col lg={18} span={24}>
-              <Row gutter={100}>
-                {productsData?.juice.map((product, index) => (
-                  <Col
-                    lg={6}
-                    span={24}
-                    className={Style.listProductCol}
-                    key={index}
-                  >
-                    <Link
-                      href={ROUTERS.PRODUCTS_DETAIL(product.id.toString())}
-                      onMouseEnter={() => setHoveredIndex(index)}
-                      onMouseLeave={() => setHoveredIndex(null)}
-                    >
-                      <div className={Style.listProductCard}>
-                        <div className={Style.listProductCardImage}>
-                          <img
-                            src={
-                              index === hoveredIndex
-                                ? product.hover
-                                : product.image
-                            }
-                            alt={product.title}
-                          />
-                        </div>
-                        <h1>{product.title}</h1>
-                        <h1>{product.subTitle}</h1>
-                      </div>
-                    </Link>
-                  </Col>
-                ))}
-              </Row>
-            </Col>
-          </Row>
-        </div>
-      </div>
-
-      <div className={Style.listProduct}>
-        <div className={Style.listProductBottom}>
-          <Row
-            gutter={100}
-            style={{
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}
-          >
-            <Col lg={6} span={24}>
-              <div className={Style.listProductBottom__left}>
-                <div className={Style.images}>
-                  <img src="images/products/16.jpg" alt="" />
-                </div>
-              </div>
-            </Col>
-
-            <Col lg={18} span={24}>
-              <Row gutter={100}>
-                {productsData?.aloeVera.map((product, index) => (
-                  <Col
-                    lg={6}
-                    span={24}
-                    className={Style.listProductCol}
-                    key={index}
-                  >
-                    <Link href={ROUTERS.PRODUCTS_DETAIL(product.id.toString())}>
-                      <div className={Style.listProductCard}>
-                        <div className={Style.listProductCardImage}>
-                          <img src={product.image} alt={product.title} />
-                        </div>
-                        <h1>{product.title}</h1>
-                        <h1>{product.subTitle}</h1>
-                      </div>
-                    </Link>
-                  </Col>
-                ))}
-              </Row>
-            </Col>
-          </Row>
-        </div>
-      </div>
-
-      <div className={Style.listProduct}>
-        <div className={Style.listProductBottom}>
-          <Row
-            gutter={100}
-            style={{
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}
-          >
-            <Col lg={6} span={24}>
-              <div className={Style.listProductBottom__left}>
-                <div className={Style.images}>
-                  <img src="images/products/21.jpg" alt="" />
-                </div>
-              </div>
-            </Col>
-
-            <Col lg={18} span={24}>
-              <Row gutter={100}>
-                {productsData?.coffee.map((product, index) => (
-                  <Col
-                    lg={6}
-                    span={24}
-                    className={Style.listProductCol}
-                    key={index}
-                  >
-                    <Link href={ROUTERS.PRODUCTS_DETAIL(product.id.toString())}>
-                      <div className={Style.listProductCard}>
-                        <div className={Style.listProductCardImage}>
-                          <img src={product.image} alt={product.title} />
-                        </div>
-                        <h1>{product.title}</h1>
-                        <h1>{product.subTitle}</h1>
-                      </div>
-                    </Link>
-                  </Col>
-                ))}
-              </Row>
-            </Col>
-          </Row>
-        </div>
-      </div>
-
-      <div className={`${Style.listProduct} ${Style.listProductLast}`}>
-        <div className={Style.listProductBottom}>
-          <Row
-            gutter={100}
-            style={{
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}
-          >
-            <Col lg={6} span={24}>
-              <div className={Style.listProductBottom__left}>
-                <div className={Style.images}>
-                  <img src="images/products/energy.jpg" alt="" />
-                </div>
-              </div>
-            </Col>
-
-            <Col lg={18} span={24}>
-              <Row gutter={100}>
-                {productsData?.energyDrink.map((product, index) => (
-                  <Col
-                    lg={6}
-                    span={24}
-                    className={Style.listProductCol}
-                    key={index}
-                  >
-                    <Link href={ROUTERS.PRODUCTS_DETAIL(product.id.toString())}>
-                      <div className={Style.listProductCard}>
-                        <div className={Style.listProductCardImage}>
-                          <img src={product.image} alt={product.title} />
-                        </div>
-                        <h1>{product.title}</h1>
-                        <h1>{product.subTitle}</h1>
-                      </div>
-                    </Link>
-                  </Col>
-                ))}
-              </Row>
-            </Col>
-          </Row>
-        </div>
-      </div>
-
-      <div className={`${Style.whyChooseUs} ${Style.aboutUs}`}>
-        <div className={`${Style.aboutUsCover} ${Style.whyChooseUsCover}`}>
-          <div className={Style.aboutUsTop}>
-            <div className={`${Style.dflex} ${Style.whyChooseUsTopCover}`}>
-              <div className={`${Style.dflex} ${Style.whyChooseUsTitle}`}>
-                <h1>{translateProducts('whyChooseUs')}</h1>
-              </div>
-            </div>
-          </div>
-
-          <div className={`${Style.aboutUsBottom}`}>
-=======
       <Reveal>
         <div className={Style.listProduct}>
           <div className={Style.listProductBottom}>
->>>>>>> 5adead0 (Update code)
             <Row
               gutter={100}
               style={{
@@ -446,14 +190,128 @@ export default function ProductsPage() {
               <Col lg={6} span={24}>
                 <div className={Style.listProductBottom__left}>
                   <div className={Style.images}>
-                    <img src="images/products/1.jpg" alt="" />
+                    <img src="images/products/6.jpg" alt="" />
                   </div>
                 </div>
               </Col>
 
               <Col lg={18} span={24}>
                 <Row gutter={100}>
-                  {productsData?.coconutWater.map((product, index) => (
+                  {productsData?.milk.map((product, index) => (
+                    <Col
+                      lg={6}
+                      span={24}
+                      className={Style.listProductCol}
+                      key={index}
+                    >
+                      <Link
+                        href={ROUTERS.PRODUCTS_DETAIL(product.id.toString())}
+                        onMouseEnter={() => setHoveredIndex(index)}
+                        onMouseLeave={() => setHoveredIndex(null)}
+                      >
+                        <div className={Style.listProductCard}>
+                          <div className={Style.listProductCardImage}>
+                            <img
+                              src={
+                                index === hoveredIndex
+                                  ? product.hover
+                                  : product.image
+                              }
+                              alt={product.title}
+                            />
+                          </div>
+                          <h1>{product.title}</h1>
+                          <h1>{product.subTitle}</h1>
+                        </div>
+                      </Link>
+                    </Col>
+                  ))}
+                </Row>
+              </Col>
+            </Row>
+          </div>
+        </div>
+      </Reveal>
+
+      <Reveal>
+        <div className={Style.listProduct}>
+          <div className={Style.listProductBottom}>
+            <Row
+              gutter={100}
+              style={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}
+            >
+              <Col lg={6} span={24}>
+                <div className={Style.listProductBottom__left}>
+                  <div className={Style.images}>
+                    <img src="images/products/11.png" alt="" />
+                  </div>
+                </div>
+              </Col>
+
+              <Col lg={18} span={24}>
+                <Row gutter={100}>
+                  {productsData?.juice.map((product, index) => (
+                    <Col
+                      lg={6}
+                      span={24}
+                      className={Style.listProductCol}
+                      key={index}
+                    >
+                      <Link
+                        href={ROUTERS.PRODUCTS_DETAIL(product.id.toString())}
+                        onMouseEnter={() => setHoveredIndex(index)}
+                        onMouseLeave={() => setHoveredIndex(null)}
+                      >
+                        <div className={Style.listProductCard}>
+                          <div className={Style.listProductCardImage}>
+                            <img
+                              src={
+                                index === hoveredIndex
+                                  ? product.hover
+                                  : product.image
+                              }
+                              alt={product.title}
+                            />
+                          </div>
+                          <h1>{product.title}</h1>
+                          <h1>{product.subTitle}</h1>
+                        </div>
+                      </Link>
+                    </Col>
+                  ))}
+                </Row>
+              </Col>
+            </Row>
+          </div>
+        </div>
+      </Reveal>
+
+      <Reveal>
+        <div className={Style.listProduct}>
+          <div className={Style.listProductBottom}>
+            <Row
+              gutter={100}
+              style={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}
+            >
+              <Col lg={6} span={24}>
+                <div className={Style.listProductBottom__left}>
+                  <div className={Style.images}>
+                    <img src="images/products/16.jpg" alt="" />
+                  </div>
+                </div>
+              </Col>
+
+              <Col lg={18} span={24}>
+                <Row gutter={100}>
+                  {productsData?.aloeVera.map((product, index) => (
                     <Col
                       lg={6}
                       span={24}
@@ -476,6 +334,160 @@ export default function ProductsPage() {
                 </Row>
               </Col>
             </Row>
+          </div>
+        </div>
+      </Reveal>
+
+      <Reveal>
+        <div className={Style.listProduct}>
+          <div className={Style.listProductBottom}>
+            <Row
+              gutter={100}
+              style={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}
+            >
+              <Col lg={6} span={24}>
+                <div className={Style.listProductBottom__left}>
+                  <div className={Style.images}>
+                    <img src="images/products/21.jpg" alt="" />
+                  </div>
+                </div>
+              </Col>
+
+              <Col lg={18} span={24}>
+                <Row gutter={100}>
+                  {productsData?.coffee.map((product, index) => (
+                    <Col
+                      lg={6}
+                      span={24}
+                      className={Style.listProductCol}
+                      key={index}
+                    >
+                      <Link
+                        href={ROUTERS.PRODUCTS_DETAIL(product.id.toString())}
+                      >
+                        <div className={Style.listProductCard}>
+                          <div className={Style.listProductCardImage}>
+                            <img src={product.image} alt={product.title} />
+                          </div>
+                          <h1>{product.title}</h1>
+                          <h1>{product.subTitle}</h1>
+                        </div>
+                      </Link>
+                    </Col>
+                  ))}
+                </Row>
+              </Col>
+            </Row>
+          </div>
+        </div>
+      </Reveal>
+
+      <Reveal>
+        <div className={`${Style.listProduct} ${Style.listProductLast}`}>
+          <div className={Style.listProductBottom}>
+            <Row
+              gutter={100}
+              style={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}
+            >
+              <Col lg={6} span={24}>
+                <div className={Style.listProductBottom__left}>
+                  <div className={Style.images}>
+                    <img src="images/products/energy.jpg" alt="" />
+                  </div>
+                </div>
+              </Col>
+
+              <Col lg={18} span={24}>
+                <Row gutter={100}>
+                  {productsData?.energyDrink.map((product, index) => (
+                    <Col
+                      lg={6}
+                      span={24}
+                      className={Style.listProductCol}
+                      key={index}
+                    >
+                      <Link
+                        href={ROUTERS.PRODUCTS_DETAIL(product.id.toString())}
+                      >
+                        <div className={Style.listProductCard}>
+                          <div className={Style.listProductCardImage}>
+                            <img src={product.image} alt={product.title} />
+                          </div>
+                          <h1>{product.title}</h1>
+                          <h1>{product.subTitle}</h1>
+                        </div>
+                      </Link>
+                    </Col>
+                  ))}
+                </Row>
+              </Col>
+            </Row>
+          </div>
+        </div>
+      </Reveal>
+
+      <Reveal>
+        <div className={`${Style.whyChooseUs} ${Style.aboutUs}`}>
+          <div className={`${Style.aboutUsCover} ${Style.whyChooseUsCover}`}>
+            <div className={Style.aboutUsTop}>
+              <div className={`${Style.dflex} ${Style.whyChooseUsTopCover}`}>
+                <div className={`${Style.dflex} ${Style.whyChooseUsTitle}`}>
+                  <h1>{translateProducts('whyChooseUs')}</h1>
+                </div>
+              </div>
+            </div>
+
+            <div className={`${Style.aboutUsBottom}`}>
+              <Row
+                gutter={100}
+                style={{
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                }}
+              >
+                <Col lg={6} span={24}>
+                  <div className={Style.listProductBottom__left}>
+                    <div className={Style.images}>
+                      <img src="images/products/1.jpg" alt="" />
+                    </div>
+                  </div>
+                </Col>
+
+                <Col lg={18} span={24}>
+                  <Row gutter={100}>
+                    {productsData?.coconutWater.map((product, index) => (
+                      <Col
+                        lg={6}
+                        span={24}
+                        className={Style.listProductCol}
+                        key={index}
+                      >
+                        <Link
+                          href={ROUTERS.PRODUCTS_DETAIL(product.id.toString())}
+                        >
+                          <div className={Style.listProductCard}>
+                            <div className={Style.listProductCardImage}>
+                              <img src={product.image} alt={product.title} />
+                            </div>
+                            <h1>{product.title}</h1>
+                            <h1>{product.subTitle}</h1>
+                          </div>
+                        </Link>
+                      </Col>
+                    ))}
+                  </Row>
+                </Col>
+              </Row>
+            </div>
           </div>
         </div>
       </Reveal>
