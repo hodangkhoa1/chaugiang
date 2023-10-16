@@ -11,9 +11,9 @@ export default async function handler(
     try {
       await transporter.sendMail({
         ...mailOptions,
-        to: data.email,
+        to: 'chaugiangfood@gmail.com',
         subject: 'Information Needed Support',
-        html: `<h1>First And Last Name: ${data.firstAndLastName}</h1><br/><h1>Phone Number: ${data.phoneNumber}</h1><br/><h1>Email: ${data.email}</h1><br/><h1>Information Needed Support: ${data.informationNeededSupport}</h1>`,
+        html: `<h1>Name: ${data.firstAndLastName}</h1><br/><h1>TEL: ${data.phoneNumber}</h1><br/><h1>Email: ${data.email}</h1><br/><h1>Import content request support: ${data.informationNeededSupport}</h1>`,
       });
 
       res.status(200).json({ message: 'Email sent successfully' });

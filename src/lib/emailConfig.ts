@@ -1,7 +1,7 @@
 import nodemailer from 'nodemailer';
 
-const email = process.env.EMAIL;
-const pass = process.env.EMAIL_PASS;
+const email = 'noreplychaugiang@gmail.com';
+const pass = 'qhzbeswaimvicmgz';
 
 export const mailOptions = {
   from: email,
