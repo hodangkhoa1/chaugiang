@@ -224,6 +224,7 @@
             margin-bottom: 4rem;
             box-shadow: 4px 4px 10px -1px #1D4486;
             width: 75% !important;
+            border-radius: 10px;
 
             .productCardImage {
                 display: flex;
@@ -406,12 +407,13 @@
                 color: #00894F;
             }
 
-            textarea {
+            .styleTextArea {
                 width: 55rem;
                 background-color: #fff;
                 padding: 10px 20px;
                 font-size: 18px;
                 color: #000;
+                max-width: unset;
             }
 
             .btn_see_more {
@@ -430,10 +432,12 @@
                         font-weight: bold;
                         text-transform: uppercase;
                         margin-bottom: unset !important;
+                        color: #fff;
                     }
 
                     .iconBtn {
                         font-size: 18px;
+                        color: #fff;
                     }
                 }
             }

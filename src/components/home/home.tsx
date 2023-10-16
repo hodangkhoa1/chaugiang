@@ -9,12 +9,59 @@ import {
   LeftOutlined,
   RightOutlined,
 } from '@ant-design/icons';
-import { Carousel, Col, Row, Image } from 'antd';
+import { Carousel, Col, Row, Image, Form, Input } from 'antd';
 import Link from 'next/link';
 import { ROUTERS } from '@/constant/router';
 import { HomeNewsData, HomeProductData } from './interface';
 import useI18n from '@/i18n/useI18N';
 import { Reveal } from '../commons/reveal';
+import Swal from 'sweetalert2';
+import 'sweetalert2/src/sweetalert2.scss';
+const { TextArea } = Input;
+
+const onFinish = async (values: any) => {
+  try {
+    await fetch('/api/sendEmail', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(values),
+    });
+    Swal.fire({
+      position: 'center',
+      icon: 'success',
+      title: 'Email sent successfully!',
+      showConfirmButton: false,
+      timer: 1500,
+    });
+  } catch (error) {
+    Swal.fire({
+      position: 'center',
+      icon: 'error',
+      title: 'Error sending email!',
+      showConfirmButton: false,
+      timer: 1500,
+    });
+  }
+};
+
+const onFinishFailed = (errorInfo: any) => {
+  Swal.fire({
+    position: 'center',
+    icon: 'error',
+    title: `Failed: ${errorInfo}`,
+    showConfirmButton: false,
+    timer: 1500,
+  });
+};
+
+type FieldType = {
+  firstAndLastName?: string;
+  phoneNumber?: string;
+  email?: string;
+  informationNeededSupport?: string;
+};
 
 export default function HomePage() {
   const { translate: translateHome } = useI18n('home');
@@ -993,23 +1040,76 @@ export default function HomePage() {
             <div
               className={`${Style.dflex} ${Style.customerInformationBottom}`}
             >
-              <input
-                type="text"
-                placeholder={translateHome('firstAndLastName')}
-              />
-              <input type="tel" placeholder={translateHome('phoneNumber')} />
-              <input type="text" placeholder={translateHome('email')} />
-              <textarea
-                cols={22}
-                placeholder={translateHome('informationNeededSupport')}
-              ></textarea>
+              <Form
+                name="basic"
+                labelCol={{ span: 8 }}
+                wrapperCol={{ span: 16 }}
+                initialValues={{ remember: true }}
+                onFinish={onFinish}
+                onFinishFailed={onFinishFailed}
+                autoComplete="off"
+              >
+                <Form.Item<FieldType>
+                  name="firstAndLastName"
+                  rules={[
+                    {
+                      required: true,
+                      message: 'Please input first and last name!',
+                    },
+                  ]}
+                >
+                  <Input placeholder={translateHome('firstAndLastName')} />
+                </Form.Item>
 
-              <div className={Style.btn_see_more}>
-                <button className={`${Style.dflex}`}>
-                  <p>{translateHome('sendInformation')}</p>
-                  <ArrowRightOutlined className={Style.iconBtn} />
-                </button>
-              </div>
+                <Form.Item<FieldType>
+                  name="phoneNumber"
+                  rules={[
+                    {
+                      required: true,
+                      message: 'Please input phone number!',
+                    },
+                  ]}
+                >
+                  <Input placeholder={translateHome('phoneNumber')} />
+                </Form.Item>
+
+                <Form.Item<FieldType>
+                  name="email"
+                  rules={[
+                    {
+                      required: true,
+                      message: 'Please input email!',
+                    },
+                  ]}
+                >
+                  <Input placeholder={translateHome('email')} />
+                </Form.Item>
+
+                <Form.Item<FieldType>
+                  name="informationNeededSupport"
+                  rules={[
+                    {
+                      required: true,
+                      message: 'Please input information needed support!',
+                    },
+                  ]}
+                >
+                  <TextArea
+                    className={Style.styleTextArea}
+                    cols={22}
+                    placeholder={translateHome('informationNeededSupport')}
+                  />
+                </Form.Item>
+
+                <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
+                  <div className={Style.btn_see_more}>
+                    <button className={`${Style.dflex}`}>
+                      <p>{translateHome('sendInformation')}</p>
+                      <ArrowRightOutlined className={Style.iconBtn} />
+                    </button>
+                  </div>
+                </Form.Item>
+              </Form>
             </div>
           </div>
         </div>

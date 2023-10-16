@@ -428,33 +428,37 @@
                 color: #00894F;
             }
 
-            textarea {
+            .styleTextArea {
                 width: 55rem;
                 background-color: #fff;
                 padding: 10px 20px;
                 font-size: 18px;
                 color: #000;
+                max-width: unset;
             }
 
             .btn_see_more {
                 margin-top: 3rem;
 
                 button {
-                    background-color: #8dc63f;
+                    background: linear-gradient(to right, #8dc63f, #00894f);
                     width: 220px;
                     height: 35px;
                     border-radius: 20px;
                     justify-content: space-around;
+                    cursor: pointer;
 
                     p {
                         font-size: 16px;
                         font-weight: bold;
                         text-transform: uppercase;
                         margin-bottom: unset !important;
+                        color: #fff;
                     }
 
                     .iconBtn {
                         font-size: 18px;
+                        color: #fff;
                     }
                 }
             }

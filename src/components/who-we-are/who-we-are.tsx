@@ -1,12 +1,60 @@
 import React from 'react';
 import Style from './who-we-are.module.scss';
-import { Breadcrumb, Carousel, Col, Image, Row } from 'antd';
+import { Breadcrumb, Carousel, Col, Form, Image, Input, Row } from 'antd';
 import {
   ArrowRightOutlined,
   RightOutlined,
   LeftOutlined,
 } from '@ant-design/icons';
 import useI18n from '@/i18n/useI18N';
+import { Reveal } from '../commons/reveal';
+import Swal from 'sweetalert2';
+import 'sweetalert2/src/sweetalert2.scss';
+const { TextArea } = Input;
+
+const onFinish = async (values: any) => {
+  try {
+    await fetch('/api/sendEmail', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(values),
+    });
+    Swal.fire({
+      position: 'center',
+      icon: 'success',
+      title: 'Email sent successfully!',
+      showConfirmButton: false,
+      timer: 1500,
+    });
+  } catch (error) {
+    Swal.fire({
+      position: 'center',
+      icon: 'error',
+      title: 'Error sending email!',
+      showConfirmButton: false,
+      timer: 1500,
+    });
+  }
+};
+
+const onFinishFailed = (errorInfo: any) => {
+  Swal.fire({
+    position: 'center',
+    icon: 'error',
+    title: `Failed: ${errorInfo}`,
+    showConfirmButton: false,
+    timer: 1500,
+  });
+};
+
+type FieldType = {
+  firstAndLastName?: string;
+  phoneNumber?: string;
+  email?: string;
+  informationNeededSupport?: string;
+};
 
 export default function WhoWeArePage() {
   const { translate: translateWhoWeAre } = useI18n('whoWeAre');
@@ -117,370 +165,449 @@ export default function WhoWeArePage() {
 
   return (
     <div>
-      <div className={Style.headerBackground}></div>
+      <Reveal>
+        <div className={Style.headerBackground}></div>
+      </Reveal>
 
-      <div className={Style.introduceWhoWeAre}>
-        <div className={`${Style.dflex} ${Style.introduceWhoWeAreTopCover}`}>
-          <div className={Style.introduceWhoWeAreTitle}>
-            <h1>{translateCommon('introduce')}</h1>
+      <Reveal>
+        <div className={Style.introduceWhoWeAre}>
+          <div className={`${Style.dflex} ${Style.introduceWhoWeAreTopCover}`}>
+            <div className={Style.introduceWhoWeAreTitle}>
+              <h1>{translateCommon('introduce')}</h1>
+            </div>
           </div>
-        </div>
 
-        <Breadcrumb
-          className={Style.introduceWhoWeAreBreadcrumb}
-          items={[
-            {
-              title: `${translateCommon('home')}`,
-            },
-            {
-              title: `${translateCommon('introduce')}`,
-            },
-            {
-              title: `${translateCommon('whoWeAre')}`,
-            },
-          ]}
-        />
-      </div>
-
-      <div className={`${Style.dflex} ${Style.introduceOurFamily}`}>
-        <div className={`${Style.dflex} ${Style.introduceOurFamilyTopCover}`}>
-          <div className={Style.introduceOurFamilyTitle}>
-            <h1>{translateWhoWeAre('ourFamily')}</h1>
-          </div>
-        </div>
-
-        <div className={Style.introduceOurFamilyCenter}>
-          <p>{translateWhoWeAre('ourFamilyChauGiangFood')}</p>
-        </div>
-
-        <div className={`${Style.dflex} ${Style.introduceOurFamilyLogo}`}>
-          <Image
-            src="/images/introduce/30years.png"
-            alt="logo"
-            width={380}
-            preview={false}
-          />
-          <Image
-            src="/images/introduce/CGFood.png"
-            alt="logo"
-            width={430}
-            preview={false}
+          <Breadcrumb
+            className={Style.introduceWhoWeAreBreadcrumb}
+            items={[
+              {
+                title: `${translateCommon('home')}`,
+              },
+              {
+                title: `${translateCommon('introduce')}`,
+              },
+              {
+                title: `${translateCommon('whoWeAre')}`,
+              },
+            ]}
           />
         </div>
-      </div>
+      </Reveal>
 
-      <div className={Style.viewCompany}></div>
-
-      <div className={Style.brands}>
-        <Row gutter={100}>
-          <Col lg={8} span={24} className={Style.dflex}>
-            <div className={Style.brandImage}>
-              <img src="/images/brand/12.png" alt="" />
-            </div>
-          </Col>
-
-          <Col lg={8} span={24} className={Style.dflex}>
-            <div className={Style.brandImage}>
-              <img src="/images/brand/13.png" alt="" />
-            </div>
-          </Col>
-
-          <Col lg={8} span={24} className={Style.dflex}>
-            <div className={Style.brandImage}>
-              <img src="/images/brand/14.png" alt="" />
-            </div>
-          </Col>
-        </Row>
-      </div>
-
-      <div className={`${Style.dflex} ${Style.ourProducts}`}>
-        <div className={`${Style.dflex} ${Style.ourProductsTopCover}`}>
-          <div className={Style.ourProductsTitle}>
-            <h1>{translateWhoWeAre('ourProducts')}</h1>
-          </div>
-        </div>
-
-        <div className={Style.ourProductsCenter}>
-          <p>{translateWhoWeAre('ourProductsWithMore')}</p>
-        </div>
-
-        <div className={Style.ourProductsLogo}>
-          <img
-            src="/images/introduce/our_products.png"
-            alt="logo"
-            className={Style.imageOurProduct}
-          />
-        </div>
-      </div>
-
-      <div className={`${Style.dflex} ${Style.certification}`}>
-        <div className={`${Style.dflex} ${Style.certificationTopCover}`}>
-          <div className={Style.certificationTitle}>
-            <h1>{translateWhoWeAre('certifications')}</h1>
-          </div>
-        </div>
-
-        <div className={Style.certificationCenter}>
-          <p>
-            F.D.A, HALAL, BRC, BSCI, SMETA, FCSS 22000, HACCP, GMP, ISO 22000
-          </p>
-        </div>
-
-        <Carousel
-          slidesToShow={4}
-          className={Style.certificationCarousel}
-          autoplay
-          arrows
-          {...settings}
-          responsive={carouselResponsiveSettings}
-        >
-          <div className={Style.certificationCard}>
-            <div className={Style.certificationCardImage}>
-              <Image
-                src="/images/certifications/HALAL.png"
-                alt="logo"
-                className={Style.certificationImg}
-              />
-            </div>
-            <h1>HALAL</h1>
-          </div>
-          <div className={Style.certificationCard}>
-            <div className={Style.certificationCardImage}>
-              <Image
-                src="/images/certifications/BSCI.png"
-                alt="logo"
-                className={Style.certificationImg}
-              />
-            </div>
-            <h1>BSCI</h1>
-          </div>
-          <div className={Style.certificationCard}>
-            <div className={Style.certificationCardImage}>
-              <Image
-                src="/images/certifications/FDA.png"
-                alt="logo"
-                className={Style.certificationImg}
-              />
-            </div>
-            <h1>FDA</h1>
-          </div>
-          <div className={Style.certificationCard}>
-            <div className={Style.certificationCardImage}>
-              <Image
-                src="/images/certifications/FSSC.png"
-                alt="logo"
-                className={Style.certificationImg}
-              />
-            </div>
-            <h1>FSSC22000</h1>
-          </div>
-          <div className={Style.certificationCard}>
-            <div className={Style.certificationCardImage}>
-              <Image
-                src="/images/certifications/HALAL.png"
-                alt="logo"
-                className={Style.certificationImg}
-              />
-            </div>
-            <h1>HALAL</h1>
-          </div>
-          <div className={Style.certificationCard}>
-            <div className={Style.certificationCardImage}>
-              <Image
-                src="/images/certifications/BSCI.png"
-                alt="logo"
-                className={Style.certificationImg}
-              />
-            </div>
-            <h1>BSCI</h1>
-          </div>
-          <div className={Style.certificationCard}>
-            <div className={Style.certificationCardImage}>
-              <Image
-                src="/images/certifications/FDA.png"
-                alt="logo"
-                className={Style.certificationImg}
-              />
-            </div>
-            <h1>FDA</h1>
-          </div>
-          <div className={Style.certificationCard}>
-            <div className={Style.certificationCardImage}>
-              <Image
-                src="/images/certifications/FSSC.png"
-                alt="logo"
-                className={Style.certificationImg}
-              />
-            </div>
-            <h1>FSSC22000</h1>
-          </div>
-        </Carousel>
-      </div>
-
-      <div className={`${Style.dflex} ${Style.ourFactory}`}>
-        <div className={`${Style.dflex} ${Style.ourFactoryLeft}`}>
-          <div className={`${Style.dflex} ${Style.ourFactoryLeftCover}`}>
-            <div className={Style.ourFactoryTitle}>
-              <h1>{translateWhoWeAre('ourFactory')}</h1>
+      <Reveal>
+        <div className={`${Style.dflex} ${Style.introduceOurFamily}`}>
+          <div className={`${Style.dflex} ${Style.introduceOurFamilyTopCover}`}>
+            <div className={Style.introduceOurFamilyTitle}>
+              <h1>{translateWhoWeAre('ourFamily')}</h1>
             </div>
           </div>
 
-          <div className={Style.ourFactoryLeftCenter}>
-            <p>{translateWhoWeAre('ourFactoryInOrder')}</p>
-            <p>{translateWhoWeAre('ourFactoryBesides')}</p>
-            <p>{translateWhoWeAre('ourFactoryInAddition')}</p>
+          <div className={Style.introduceOurFamilyCenter}>
+            <p>{translateWhoWeAre('ourFamilyChauGiangFood')}</p>
           </div>
-        </div>
-        <div className={Style.ourFactoryRight}>
-          <Carousel slidesToShow={1} autoplay>
+
+          <div className={`${Style.dflex} ${Style.introduceOurFamilyLogo}`}>
             <Image
-              src="/images/introduce/our_factory_2.jpg"
+              src="/images/introduce/30years.png"
               alt="logo"
-              width={610}
-              height={650}
+              width={380}
+              preview={false}
             />
             <Image
-              src="/images/introduce/our_factory_3.jpg"
+              src="/images/introduce/CGFood.png"
               alt="logo"
-              width={610}
-              height={650}
+              width={430}
+              preview={false}
             />
-            <Image
-              src="/images/introduce/our_factory_4.jpg"
+          </div>
+        </div>
+      </Reveal>
+
+      <Reveal>
+        <div className={Style.viewCompany}></div>
+      </Reveal>
+
+      <Reveal>
+        <div className={Style.brands}>
+          <Row gutter={100}>
+            <Col lg={8} span={24} className={Style.dflex}>
+              <div className={Style.brandImage}>
+                <img src="/images/brand/12.png" alt="" />
+              </div>
+            </Col>
+
+            <Col lg={8} span={24} className={Style.dflex}>
+              <div className={Style.brandImage}>
+                <img src="/images/brand/13.png" alt="" />
+              </div>
+            </Col>
+
+            <Col lg={8} span={24} className={Style.dflex}>
+              <div className={Style.brandImage}>
+                <img src="/images/brand/14.png" alt="" />
+              </div>
+            </Col>
+          </Row>
+        </div>
+      </Reveal>
+
+      <Reveal>
+        <div className={`${Style.dflex} ${Style.ourProducts}`}>
+          <div className={`${Style.dflex} ${Style.ourProductsTopCover}`}>
+            <div className={Style.ourProductsTitle}>
+              <h1>{translateWhoWeAre('ourProducts')}</h1>
+            </div>
+          </div>
+
+          <div className={Style.ourProductsCenter}>
+            <p>{translateWhoWeAre('ourProductsWithMore')}</p>
+          </div>
+
+          <div className={Style.ourProductsLogo}>
+            <img
+              src="/images/introduce/our_products.png"
               alt="logo"
-              width={610}
-              height={650}
+              className={Style.imageOurProduct}
             />
-            <Image
-              src="/images/introduce/our_factory_5.jpg"
-              alt="logo"
-              width={610}
-              height={650}
-            />
-            <Image
-              src="/images/introduce/our_factory_6.jpg"
-              alt="logo"
-              width={610}
-              height={650}
-            />
+          </div>
+        </div>
+      </Reveal>
+
+      <Reveal>
+        <div className={`${Style.dflex} ${Style.certification}`}>
+          <div className={`${Style.dflex} ${Style.certificationTopCover}`}>
+            <div className={Style.certificationTitle}>
+              <h1>{translateWhoWeAre('certifications')}</h1>
+            </div>
+          </div>
+
+          <div className={Style.certificationCenter}>
+            <p>
+              F.D.A, HALAL, BRC, BSCI, SMETA, FCSS 22000, HACCP, GMP, ISO 22000
+            </p>
+          </div>
+
+          <Carousel
+            slidesToShow={4}
+            className={Style.certificationCarousel}
+            autoplay
+            arrows
+            {...settings}
+            responsive={carouselResponsiveSettings}
+          >
+            <div className={Style.certificationCard}>
+              <div className={Style.certificationCardImage}>
+                <Image
+                  src="/images/certifications/HALAL.png"
+                  alt="logo"
+                  className={Style.certificationImg}
+                />
+              </div>
+              <h1>HALAL</h1>
+            </div>
+            <div className={Style.certificationCard}>
+              <div className={Style.certificationCardImage}>
+                <Image
+                  src="/images/certifications/BSCI.png"
+                  alt="logo"
+                  className={Style.certificationImg}
+                />
+              </div>
+              <h1>BSCI</h1>
+            </div>
+            <div className={Style.certificationCard}>
+              <div className={Style.certificationCardImage}>
+                <Image
+                  src="/images/certifications/FDA.png"
+                  alt="logo"
+                  className={Style.certificationImg}
+                />
+              </div>
+              <h1>FDA</h1>
+            </div>
+            <div className={Style.certificationCard}>
+              <div className={Style.certificationCardImage}>
+                <Image
+                  src="/images/certifications/FSSC.png"
+                  alt="logo"
+                  className={Style.certificationImg}
+                />
+              </div>
+              <h1>FSSC22000</h1>
+            </div>
+            <div className={Style.certificationCard}>
+              <div className={Style.certificationCardImage}>
+                <Image
+                  src="/images/certifications/HALAL.png"
+                  alt="logo"
+                  className={Style.certificationImg}
+                />
+              </div>
+              <h1>HALAL</h1>
+            </div>
+            <div className={Style.certificationCard}>
+              <div className={Style.certificationCardImage}>
+                <Image
+                  src="/images/certifications/BSCI.png"
+                  alt="logo"
+                  className={Style.certificationImg}
+                />
+              </div>
+              <h1>BSCI</h1>
+            </div>
+            <div className={Style.certificationCard}>
+              <div className={Style.certificationCardImage}>
+                <Image
+                  src="/images/certifications/FDA.png"
+                  alt="logo"
+                  className={Style.certificationImg}
+                />
+              </div>
+              <h1>FDA</h1>
+            </div>
+            <div className={Style.certificationCard}>
+              <div className={Style.certificationCardImage}>
+                <Image
+                  src="/images/certifications/FSSC.png"
+                  alt="logo"
+                  className={Style.certificationImg}
+                />
+              </div>
+              <h1>FSSC22000</h1>
+            </div>
           </Carousel>
         </div>
-      </div>
+      </Reveal>
 
-      <div>
-        <iframe
-          width="100%"
-          height="768px"
-          src="https://www.youtube.com/embed/vyqrV-t0sPc?autoplay=1&controls=0&rel=0&mute=0"
-          title="YouTube video player"
-          frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowFullScreen
-        ></iframe>
-      </div>
-
-      <div className={Style.whyChooseUs}>
-        <div className={Style.whyChooseUsCover}>
-          <div className={Style.whyChooseUsTop}>
-            <div className={`${Style.dflex} ${Style.whyChooseUsTopCover}`}>
-              <div className={`${Style.dflex} ${Style.whyChooseUsTitle}`}>
-                <h1>{translateWhoWeAre('whyChooseUs')}</h1>
+      <Reveal>
+        <div className={`${Style.dflex} ${Style.ourFactory}`}>
+          <div className={`${Style.dflex} ${Style.ourFactoryLeft}`}>
+            <div className={`${Style.dflex} ${Style.ourFactoryLeftCover}`}>
+              <div className={Style.ourFactoryTitle}>
+                <h1>{translateWhoWeAre('ourFactory')}</h1>
               </div>
             </div>
+
+            <div className={Style.ourFactoryLeftCenter}>
+              <p>{translateWhoWeAre('ourFactoryInOrder')}</p>
+              <p>{translateWhoWeAre('ourFactoryBesides')}</p>
+              <p>{translateWhoWeAre('ourFactoryInAddition')}</p>
+            </div>
           </div>
-
-          <div className={Style.whyChooseUsBottom}>
-            <Row
-              gutter={100}
-              style={{
-                display: 'flex',
-                justifyContent: 'center',
-                flexWrap: 'wrap',
-              }}
-            >
-              <Col className={Style.colWhyChooseUs} md={12} lg={6} span={24}>
-                <div className={`${Style.dflex} ${Style.whyChooseUsItem}`}>
-                  <div className={Style.whyChooseUsBottomImage}>
-                    <img src="/images/why_choose_us/Untitled-28.png" alt="" />
-                  </div>
-                  <h2>{translateWhoWeAre('hightQuality')}</h2>
-                  <p>{translateWhoWeAre('hightQualityProduct')}</p>
-                </div>
-              </Col>
-
-              <Col className={Style.colWhyChooseUs} md={12} lg={6} span={24}>
-                <div className={`${Style.dflex} ${Style.whyChooseUsItem}`}>
-                  <div className={Style.whyChooseUsBottomImage}>
-                    <img src="/images/why_choose_us/Untitled-29.png" alt="" />
-                  </div>
-                  <h2>{translateWhoWeAre('fastDelivery')}</h2>
-                  <p>{translateWhoWeAre('fastDeliveryInOrder')}</p>
-                </div>
-              </Col>
-
-              <Col className={Style.colWhyChooseUs} md={12} lg={6} span={24}>
-                <div className={`${Style.dflex} ${Style.whyChooseUsItem}`}>
-                  <div className={Style.whyChooseUsBottomImage}>
-                    <img src="/images/why_choose_us/Untitled-30.png" alt="" />
-                  </div>
-                  <h2>{translateWhoWeAre('flexiblePackaging')}</h2>
-                  <p>{translateWhoWeAre('flexiblePackagingWeConsistently')}</p>
-                </div>
-              </Col>
-
-              <Col className={Style.colWhyChooseUs} md={12} lg={6} span={24}>
-                <div className={`${Style.dflex} ${Style.whyChooseUsItem}`}>
-                  <div className={Style.whyChooseUsBottomImage}>
-                    <img src="/images/why_choose_us/Untitled-31.png" alt="" />
-                  </div>
-                  <h2>{translateWhoWeAre('freeSample')}</h2>
-                  <p>{translateWhoWeAre('freeSampleBecause')}</p>
-                </div>
-              </Col>
-            </Row>
+          <div className={Style.ourFactoryRight}>
+            <Carousel slidesToShow={1} autoplay>
+              <Image
+                src="/images/introduce/our_factory_2.jpg"
+                alt="logo"
+                width={610}
+                height={650}
+              />
+              <Image
+                src="/images/introduce/our_factory_3.jpg"
+                alt="logo"
+                width={610}
+                height={650}
+              />
+              <Image
+                src="/images/introduce/our_factory_4.jpg"
+                alt="logo"
+                width={610}
+                height={650}
+              />
+              <Image
+                src="/images/introduce/our_factory_5.jpg"
+                alt="logo"
+                width={610}
+                height={650}
+              />
+              <Image
+                src="/images/introduce/our_factory_6.jpg"
+                alt="logo"
+                width={610}
+                height={650}
+              />
+            </Carousel>
           </div>
         </div>
-      </div>
+      </Reveal>
 
-      <div className={Style.customerInformation}>
-        <div className={Style.customerInformationCover}>
-          <div className={Style.customerInformationTop}>
-            <div
-              className={`${Style.dflex} ${Style.customerInformationTopCover}`}
-            >
-              <div
-                className={`${Style.dflex} ${Style.customerInformationTitle}`}
+      <Reveal>
+        <div>
+          <iframe
+            width="100%"
+            height="768px"
+            src="https://www.youtube.com/embed/vyqrV-t0sPc?autoplay=1&controls=0&rel=0&mute=0"
+            title="YouTube video player"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+          ></iframe>
+        </div>
+      </Reveal>
+
+      <Reveal>
+        <div className={Style.whyChooseUs}>
+          <div className={Style.whyChooseUsCover}>
+            <div className={Style.whyChooseUsTop}>
+              <div className={`${Style.dflex} ${Style.whyChooseUsTopCover}`}>
+                <div className={`${Style.dflex} ${Style.whyChooseUsTitle}`}>
+                  <h1>{translateWhoWeAre('whyChooseUs')}</h1>
+                </div>
+              </div>
+            </div>
+
+            <div className={Style.whyChooseUsBottom}>
+              <Row
+                gutter={100}
+                style={{
+                  display: 'flex',
+                  justifyContent: 'center',
+                  flexWrap: 'wrap',
+                }}
               >
-                <h1>{translateWhoWeAre('customerInformation')}</h1>
-              </div>
-            </div>
-          </div>
+                <Col className={Style.colWhyChooseUs} md={12} lg={6} span={24}>
+                  <div className={`${Style.dflex} ${Style.whyChooseUsItem}`}>
+                    <div className={Style.whyChooseUsBottomImage}>
+                      <img src="/images/why_choose_us/Untitled-28.png" alt="" />
+                    </div>
+                    <h2>{translateWhoWeAre('hightQuality')}</h2>
+                    <p>{translateWhoWeAre('hightQualityProduct')}</p>
+                  </div>
+                </Col>
 
-          <div className={Style.customerInformationCenter}>
-            <p>{translateWhoWeAre('customerInformationPleaseProvide')}</p>
-          </div>
+                <Col className={Style.colWhyChooseUs} md={12} lg={6} span={24}>
+                  <div className={`${Style.dflex} ${Style.whyChooseUsItem}`}>
+                    <div className={Style.whyChooseUsBottomImage}>
+                      <img src="/images/why_choose_us/Untitled-29.png" alt="" />
+                    </div>
+                    <h2>{translateWhoWeAre('fastDelivery')}</h2>
+                    <p>{translateWhoWeAre('fastDeliveryInOrder')}</p>
+                  </div>
+                </Col>
 
-          <div className={`${Style.dflex} ${Style.customerInformationBottom}`}>
-            <input
-              type="text"
-              placeholder={translateWhoWeAre('firstAndLastName')}
-            />
-            <input type="tel" placeholder={translateWhoWeAre('phoneNumber')} />
-            <input type="text" placeholder={translateWhoWeAre('email')} />
-            <textarea
-              cols={22}
-              placeholder={translateWhoWeAre('informationNeededSupport')}
-            ></textarea>
+                <Col className={Style.colWhyChooseUs} md={12} lg={6} span={24}>
+                  <div className={`${Style.dflex} ${Style.whyChooseUsItem}`}>
+                    <div className={Style.whyChooseUsBottomImage}>
+                      <img src="/images/why_choose_us/Untitled-30.png" alt="" />
+                    </div>
+                    <h2>{translateWhoWeAre('flexiblePackaging')}</h2>
+                    <p>
+                      {translateWhoWeAre('flexiblePackagingWeConsistently')}
+                    </p>
+                  </div>
+                </Col>
 
-            <div className={Style.btn_see_more}>
-              <button className={`${Style.dflex}`}>
-                <p>{translateWhoWeAre('sendInformation')}</p>
-                <ArrowRightOutlined className={Style.iconBtn} />
-              </button>
+                <Col className={Style.colWhyChooseUs} md={12} lg={6} span={24}>
+                  <div className={`${Style.dflex} ${Style.whyChooseUsItem}`}>
+                    <div className={Style.whyChooseUsBottomImage}>
+                      <img src="/images/why_choose_us/Untitled-31.png" alt="" />
+                    </div>
+                    <h2>{translateWhoWeAre('freeSample')}</h2>
+                    <p>{translateWhoWeAre('freeSampleBecause')}</p>
+                  </div>
+                </Col>
+              </Row>
             </div>
           </div>
         </div>
-      </div>
+      </Reveal>
+
+      <Reveal>
+        <div className={Style.customerInformation}>
+          <div className={Style.customerInformationCover}>
+            <div className={Style.customerInformationTop}>
+              <div
+                className={`${Style.dflex} ${Style.customerInformationTopCover}`}
+              >
+                <div
+                  className={`${Style.dflex} ${Style.customerInformationTitle}`}
+                >
+                  <h1>{translateWhoWeAre('customerInformation')}</h1>
+                </div>
+              </div>
+            </div>
+
+            <div className={Style.customerInformationCenter}>
+              <p>{translateWhoWeAre('customerInformationPleaseProvide')}</p>
+            </div>
+
+            <div
+              className={`${Style.dflex} ${Style.customerInformationBottom}`}
+            >
+              <Form
+                name="basic"
+                labelCol={{ span: 8 }}
+                wrapperCol={{ span: 16 }}
+                initialValues={{ remember: true }}
+                onFinish={onFinish}
+                onFinishFailed={onFinishFailed}
+                autoComplete="off"
+              >
+                <Form.Item<FieldType>
+                  name="firstAndLastName"
+                  rules={[
+                    {
+                      required: true,
+                      message: 'Please input first and last name!',
+                    },
+                  ]}
+                >
+                  <Input placeholder={translateWhoWeAre('firstAndLastName')} />
+                </Form.Item>
+
+                <Form.Item<FieldType>
+                  name="phoneNumber"
+                  rules={[
+                    {
+                      required: true,
+                      message: 'Please input phone number!',
+                    },
+                  ]}
+                >
+                  <Input placeholder={translateWhoWeAre('phoneNumber')} />
+                </Form.Item>
+
+                <Form.Item<FieldType>
+                  name="email"
+                  rules={[
+                    {
+                      required: true,
+                      message: 'Please input email!',
+                    },
+                  ]}
+                >
+                  <Input placeholder={translateWhoWeAre('email')} />
+                </Form.Item>
+
+                <Form.Item<FieldType>
+                  name="informationNeededSupport"
+                  rules={[
+                    {
+                      required: true,
+                      message: 'Please input information needed support!',
+                    },
+                  ]}
+                >
+                  <TextArea
+                    className={Style.styleTextArea}
+                    cols={22}
+                    placeholder={translateWhoWeAre('informationNeededSupport')}
+                  />
+                </Form.Item>
+
+                <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
+                  <div className={Style.btn_see_more}>
+                    <button className={`${Style.dflex}`}>
+                      <p>{translateWhoWeAre('sendInformation')}</p>
+                      <ArrowRightOutlined className={Style.iconBtn} />
+                    </button>
+                  </div>
+                </Form.Item>
+              </Form>
+            </div>
+          </div>
+        </div>
+      </Reveal>
     </div>
   );
 }

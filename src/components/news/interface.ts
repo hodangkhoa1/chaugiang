@@ -18,3 +18,11 @@ export interface LastestPostsData {
   image: string;
   detailID: string;
 }
+
+export interface NewsProductData {
+  id: string;
+  name: string;
+  image: string;
+  volume: string;
+  productDetail: string;
+}
