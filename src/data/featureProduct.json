@@ -1,21 +1,21 @@
 [
     {
         "id": "1",
-        "name": "CG Soya Milk Drink",
+        "name": "Soya Milk Drink",
         "image": "/images/products/9.png",
         "volume": "245ml",
         "productDetail": "7"
     },
     {
         "id": "2",
-        "name": "CG Corn Milk Drink",
+        "name": "Corn Milk Drink",
         "image": "/images/products/10.png",
         "volume": "325ml",
         "productDetail": "8"
     },
     {
         "id": "3",
-        "name": "CG Green bean Milk Drink",
+        "name": "Green bean Milk Drink",
         "image": "/images/products/8.png",
         "volume": "325ml",
         "productDetail": "6"
