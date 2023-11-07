@@ -481,7 +481,7 @@ export default function HomePage() {
               <div className={Style.productCardImage}>
                 <img src="images/products/31.png" alt="" />
               </div>
-              <h1>Brown Rice Milk</h1>
+              <h1>Sparkling Watermelon</h1>
               <h4>330ml</h4>
             </Link>
             <Link
@@ -498,7 +498,7 @@ export default function HomePage() {
               <div className={Style.productCardImage}>
                 <img src="images/products/32.png" alt="" />
               </div>
-              <h1>Tamarind Juice</h1>
+              <h1>Passion Fruit</h1>
               <h4>330ml</h4>
             </Link>
             <Link
