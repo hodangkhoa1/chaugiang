@@ -609,8 +609,8 @@ export function AppLayout(props: Props) {
                       <div className={LayoutStyle.content}>
                         <p>Internal Markets:</p>
 
-                        <a href="tel:+84903772771">
-                          <p>+ (84)903.772.771 (Mrs.Tứ)</p>
+                        <a href="tel:+84903722771">
+                          <p>+ (84)903.722.771 (Mrs.Tứ)</p>
                         </a>
 
                         <a href="tel:+84353960786">
@@ -626,8 +626,8 @@ export function AppLayout(props: Props) {
                       <div className={LayoutStyle.content}>
                         <p>Foreign Markets:</p>
 
-                        <a href="tel:+84903772771">
-                          <p>+ (84)903.772.771 (Mrs.Tứ)</p>
+                        <a href="tel:+84903722771">
+                          <p>+ (84)903.722.771 (Mrs.Tứ)</p>
                         </a>
 
                         <a href="tel:+84353960786">
@@ -834,7 +834,7 @@ export function AppLayout(props: Props) {
                   span={24}
                   className={LayoutStyle.listFooter}
                 >
-                  <div className={LayoutStyle.rectangle}></div>
+                  {/* <div className={LayoutStyle.rectangle}></div> */}
 
                   <div className={LayoutStyle.map}>
                     <iframe
