@@ -108,7 +108,6 @@ export default function CompanyProfilePage() {
               src="/images/introduce/introduce_leadership_group.png"
               alt="logo"
               width="100%"
-              height={500}
             />
           </div>
         </div>
@@ -119,7 +118,13 @@ export default function CompanyProfilePage() {
           <Row>
             <Col md={12} lg={12} span={24}>
               <div className={`${Style.dflex} ${Style.aboutTheDirectorLeft}`}>
-                <div className={Style.aboutTheDirectorLeftBackground}></div>
+                <div className={Style.aboutTheDirectorLeftBackground}>
+                  <Image
+                    src="/images/introduce/MrsTu.jpg"
+                    alt="logo"
+                    width="100%"
+                  />
+                </div>
               </div>
             </Col>
             <Col md={12} lg={12} span={24}>
@@ -162,7 +167,13 @@ export default function CompanyProfilePage() {
             </Col>
             <Col md={12} lg={12} span={24}>
               <div className={`${Style.dflex} ${Style.employeeSystemRight}`}>
-                <div className={Style.employeeSystemRightBackground}></div>
+                <div className={Style.employeeSystemRightBackground}>
+                  <Image
+                    src="/images/introduce/CG.jpg"
+                    alt="logo"
+                    width="100%"
+                  />
+                </div>
               </div>
             </Col>
           </Row>
