@@ -731,7 +731,7 @@ export function AppLayout(props: Props) {
                         </div>
                       </a>
 
-                      <a href="">
+                      <a href="https://www.facebook.com/chaugiangfood.com.vn">
                         <div className={LayoutStyle.imgMedia}>
                           <img src="/images/fb.png" alt="" />
                         </div>
@@ -743,7 +743,7 @@ export function AppLayout(props: Props) {
                         </div>
                       </a>
 
-                      <a href="">
+                      <a href="https://www.youtube.com/@chaugiang3672">
                         <div className={LayoutStyle.imgMedia}>
                           <img src="/images/youtobe.png" alt="" />
                         </div>

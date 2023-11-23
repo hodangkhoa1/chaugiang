@@ -190,7 +190,7 @@ export default function ProductsPage() {
               <Col lg={6} span={24}>
                 <div className={Style.listProductBottom__left}>
                   <div className={Style.images}>
-                    <img src="images/products/6.jpg" alt="" />
+                    <img src="/images/products/6.jpg" alt="" />
                   </div>
                 </div>
               </Col>
@@ -238,7 +238,7 @@ export default function ProductsPage() {
               <Col lg={6} span={24}>
                 <div className={Style.listProductBottom__left}>
                   <div className={Style.images}>
-                    <img src="images/products/11.png" alt="" />
+                    <img src="/images/products/11.png" alt="" />
                   </div>
                 </div>
               </Col>
@@ -295,7 +295,7 @@ export default function ProductsPage() {
               <Col lg={6} span={24}>
                 <div className={Style.listProductBottom__left}>
                   <div className={Style.images}>
-                    <img src="images/products/16.jpg" alt="" />
+                    <img src="/images/products/16.jpg" alt="" />
                   </div>
                 </div>
               </Col>
@@ -343,7 +343,7 @@ export default function ProductsPage() {
               <Col lg={6} span={24}>
                 <div className={Style.listProductBottom__left}>
                   <div className={Style.images}>
-                    <img src="images/products/21.jpg" alt="" />
+                    <img src="/images/products/21.jpg" alt="" />
                   </div>
                 </div>
               </Col>
@@ -391,7 +391,7 @@ export default function ProductsPage() {
               <Col lg={6} span={24}>
                 <div className={Style.listProductBottom__left}>
                   <div className={Style.images}>
-                    <img src="images/products/energy.jpg" alt="" />
+                    <img src="/images/products/energy.jpg" alt="" />
                   </div>
                 </div>
               </Col>
@@ -448,7 +448,7 @@ export default function ProductsPage() {
                 <Col className={Style.colWhyChooseUs} md={12} lg={6} span={24}>
                   <div className={`${Style.dflex} ${Style.aboutUsItem}`}>
                     <div className={Style.aboutUsBottomImage}>
-                      <img src="images/why_choose_us/Untitled-28.png" alt="" />
+                      <img src="/images/why_choose_us/Untitled-28.png" alt="" />
                     </div>
                     <h2>{translateProducts('hightQuality')}</h2>
                     <p>{translateProducts('hightQualityProduct')}</p>
@@ -458,7 +458,7 @@ export default function ProductsPage() {
                 <Col className={Style.colWhyChooseUs} md={12} lg={6} span={24}>
                   <div className={`${Style.dflex} ${Style.aboutUsItem}`}>
                     <div className={Style.aboutUsBottomImage}>
-                      <img src="images/why_choose_us/Untitled-29.png" alt="" />
+                      <img src="/images/why_choose_us/Untitled-29.png" alt="" />
                     </div>
                     <h2>{translateProducts('fastDelivery')}</h2>
                     <p>{translateProducts('fastDeliveryInOrder')}</p>
@@ -468,7 +468,7 @@ export default function ProductsPage() {
                 <Col className={Style.colWhyChooseUs} md={12} lg={6} span={24}>
                   <div className={`${Style.dflex} ${Style.aboutUsItem}`}>
                     <div className={Style.aboutUsBottomImage}>
-                      <img src="images/why_choose_us/Untitled-30.png" alt="" />
+                      <img src="/images/why_choose_us/Untitled-30.png" alt="" />
                     </div>
                     <h2>{translateProducts('flexiblePackaging')}</h2>
                     <p>
@@ -480,7 +480,7 @@ export default function ProductsPage() {
                 <Col className={Style.colWhyChooseUs} md={12} lg={6} span={24}>
                   <div className={`${Style.dflex} ${Style.aboutUsItem}`}>
                     <div className={Style.aboutUsBottomImage}>
-                      <img src="images/why_choose_us/Untitled-31.png" alt="" />
+                      <img src="/images/why_choose_us/Untitled-31.png" alt="" />
                     </div>
                     <h2>{translateProducts('freeSample')}</h2>
                     <p>{translateProducts('freeSampleBecause')}</p>

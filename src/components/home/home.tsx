@@ -612,13 +612,15 @@ export default function HomePage() {
                 </div>
               </Col>
 
-              <Col md={1} lg={18} span={24}>
+              <Col md={1} lg={18} span={24} style={{ paddingRight: '70px' }}>
                 <div className={Style.bestSellingBottom__right}>
                   <div className={Style.carousel}>
                     <Carousel
                       slidesToShow={4}
                       className={Style.bestSellingCarousel}
                       autoplay
+                      arrows
+                      {...settings}
                       responsive={carouselResponsiveSettings}
                     >
                       {bestSellingData?.map((bestSelling, index) => (
@@ -714,13 +716,15 @@ export default function HomePage() {
                 </div>
               </Col>
 
-              <Col md={1} lg={18} span={24}>
+              <Col md={1} lg={18} span={24} style={{ paddingRight: '70px' }}>
                 <div className={Style.bestSellingBottom__right}>
                   <div className={Style.carousel}>
                     <Carousel
                       slidesToShow={4}
                       className={Style.bestSellingCarousel}
                       autoplay
+                      arrows
+                      {...settings}
                       responsive={carouselResponsiveSettings}
                     >
                       {newProductData?.map((newProduct, index) => (
@@ -830,13 +834,15 @@ export default function HomePage() {
                 </div>
               </Col>
 
-              <Col md={1} lg={18} span={24}>
+              <Col md={1} lg={18} span={24} style={{ paddingRight: '70px' }}>
                 <div className={Style.bestSellingBottom__right}>
                   <div className={Style.carousel}>
                     <Carousel
                       slidesToShow={4}
                       className={Style.bestSellingCarousel}
                       autoplay
+                      arrows
+                      {...settings}
                       responsive={carouselResponsiveSettings}
                     >
                       {featureProductData?.map((featureProduct, index) => (
