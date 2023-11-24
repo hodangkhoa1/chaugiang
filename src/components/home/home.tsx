@@ -612,7 +612,12 @@ export default function HomePage() {
                 </div>
               </Col>
 
-              <Col md={1} lg={18} span={24} style={{ paddingRight: '70px' }}>
+              <Col
+                md={1}
+                lg={18}
+                span={24}
+                style={{ paddingRight: '70px', paddingLeft: '85px' }}
+              >
                 <div className={Style.bestSellingBottom__right}>
                   <div className={Style.carousel}>
                     <Carousel
@@ -676,7 +681,7 @@ export default function HomePage() {
                   <div className={Style.menuTop}>
                     <div className={Style.itemLink}>
                       <Link href={ROUTERS.PRODUCTS_DETAIL('13')}>
-                        Pet Aloe Vera Drink
+                        Aloe Vera Drink
                       </Link>
                     </div>
 
@@ -716,7 +721,12 @@ export default function HomePage() {
                 </div>
               </Col>
 
-              <Col md={1} lg={18} span={24} style={{ paddingRight: '70px' }}>
+              <Col
+                md={1}
+                lg={18}
+                span={24}
+                style={{ paddingRight: '70px', paddingLeft: '85px' }}
+              >
                 <div className={Style.bestSellingBottom__right}>
                   <div className={Style.carousel}>
                     <Carousel
@@ -834,7 +844,12 @@ export default function HomePage() {
                 </div>
               </Col>
 
-              <Col md={1} lg={18} span={24} style={{ paddingRight: '70px' }}>
+              <Col
+                md={1}
+                lg={18}
+                span={24}
+                style={{ paddingRight: '70px', paddingLeft: '85px' }}
+              >
                 <div className={Style.bestSellingBottom__right}>
                   <div className={Style.carousel}>
                     <Carousel

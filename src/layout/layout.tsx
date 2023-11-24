@@ -616,6 +616,10 @@ export function AppLayout(props: Props) {
                         <a href="tel:+84353960786">
                           <p>+ (84)353.960.786 (Mr.Gray)</p>
                         </a>
+
+                        <a href="tel:+84903722771">
+                          <p>+ (84)912004560 (Mr.Leon Trinh)</p>
+                        </a>
                       </div>
                     </div>
 
@@ -632,6 +636,10 @@ export function AppLayout(props: Props) {
 
                         <a href="tel:+84353960786">
                           <p>+ (84)353.960.786 (Mr.Gray)</p>
+                        </a>
+
+                        <a href="tel:+84903722771">
+                          <p>+ (84)912004560 (Mr.Leon Trinh)</p>
                         </a>
                       </div>
                     </div>

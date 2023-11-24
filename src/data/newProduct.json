@@ -1,14 +1,14 @@
 [
     {
         "id": "1",
-        "name": "PET Aloe Vera Juice Drink",
+        "name": "Aloe Vera Juice Drink",
         "image": "/images/products/17.png",
         "volume": "500ml",
         "productDetail": "13"
     },
     {
         "id": "2",
-        "name": "PET Aloe Vera with Strawberry Juice Drink",
+        "name": "Aloe Vera with Strawberry Juice Drink",
         "image": "/images/products/18.png",
         "volume": "500ml",
         "productDetail": "14"
@@ -29,14 +29,14 @@
     },
     {
         "id": "5",
-        "name": "PET Aloe Vera Juice Drink",
+        "name": "Aloe Vera Juice Drink",
         "image": "/images/products/17.png",
         "volume": "500ml",
         "productDetail": "13"
     },
     {
         "id": "6",
-        "name": "PET Aloe Vera with Strawberry Juice Drink",
+        "name": "Aloe Vera With Strawberry Juice Drink",
         "image": "/images/products/18.png",
         "volume": "500ml",
         "productDetail": "14"
