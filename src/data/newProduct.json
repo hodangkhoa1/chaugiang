@@ -8,9 +8,9 @@
     },
     {
         "id": "2",
-        "name": "Aloe Vera with Strawberry Juice Drink",
+        "name": "Aloe Vera with Strawberry",
         "image": "/images/products/18.png",
-        "volume": "500ml",
+        "volume": "Juice Drink 500ml",
         "productDetail": "14"
     },
     {
@@ -36,9 +36,9 @@
     },
     {
         "id": "6",
-        "name": "Aloe Vera With Strawberry Juice Drink",
+        "name": "Aloe Vera With Strawberry",
         "image": "/images/products/18.png",
-        "volume": "500ml",
+        "volume": "Juice Drink 500ml",
         "productDetail": "14"
     },
     {

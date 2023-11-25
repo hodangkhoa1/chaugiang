@@ -423,7 +423,8 @@
                 .bestSellingCarousel {
                     .bestSellingCard {
                         text-align: center;
-                        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+                        box-shadow: 4px 4px 10px -1px #1D4486;
+                        border-radius: 10px;
                         width: 240px !important;
 
                         .bestSellingCardImage {

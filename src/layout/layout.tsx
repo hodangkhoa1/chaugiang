@@ -250,7 +250,7 @@ export function AppLayout(props: Props) {
                               href={ROUTERS.PRODUCTS_DETAIL('5')}
                               className={LayoutStyle.linkSubMenu}
                             >
-                              Brown rice
+                              BROWN RICE MILK DRINK
                             </Link>
                           </li>
                           <li className={LayoutStyle.subMenuItem}>
@@ -258,7 +258,7 @@ export function AppLayout(props: Props) {
                               href={ROUTERS.PRODUCTS_DETAIL('25')}
                               className={LayoutStyle.linkSubMenu}
                             >
-                              Oats
+                              OAT MILK DRINK
                             </Link>
                           </li>
                           <li className={LayoutStyle.subMenuItem}>
@@ -266,7 +266,7 @@ export function AppLayout(props: Props) {
                               href={ROUTERS.PRODUCTS_DETAIL('1')}
                               className={LayoutStyle.linkSubMenu}
                             >
-                              Coconut meat
+                              COCONUT WATER
                             </Link>
                           </li>
                           <li className={LayoutStyle.subMenuItem}>
@@ -274,7 +274,7 @@ export function AppLayout(props: Props) {
                               href={ROUTERS.PRODUCTS_DETAIL('4')}
                               className={LayoutStyle.linkSubMenu}
                             >
-                              Sparkling coconut
+                              SPARKLING COCONUT
                             </Link>
                           </li>
                           <li className={LayoutStyle.subMenuItem}>
@@ -282,23 +282,7 @@ export function AppLayout(props: Props) {
                               href={ROUTERS.PRODUCTS_DETAIL('10')}
                               className={LayoutStyle.linkSubMenu}
                             >
-                              Tamarind
-                            </Link>
-                          </li>
-                          <li className={LayoutStyle.subMenuItem}>
-                            <Link
-                              href={ROUTERS.PRODUCTS_DETAIL('3')}
-                              className={LayoutStyle.linkSubMenu}
-                            >
-                              Mango
-                            </Link>
-                          </li>
-                          <li className={LayoutStyle.subMenuItem}>
-                            <Link
-                              href={ROUTERS.PRODUCTS_DETAIL('13')}
-                              className={LayoutStyle.linkSubMenu}
-                            >
-                              Bottle of aloe vera
+                              FRUIT JUICE DRINK
                             </Link>
                           </li>
                         </ul>
@@ -313,7 +297,7 @@ export function AppLayout(props: Props) {
                               href={ROUTERS.PRODUCTS_DETAIL('4')}
                               className={LayoutStyle.linkSubMenu}
                             >
-                              Sparkling Coconut water
+                              ALOE VERA DRINK
                             </Link>
                           </li>
                           <li className={LayoutStyle.subMenuItem}>
@@ -321,7 +305,7 @@ export function AppLayout(props: Props) {
                               href={ROUTERS.PRODUCTS_DETAIL('18')}
                               className={LayoutStyle.linkSubMenu}
                             >
-                              Black coffee
+                              SPARKLING FRUIT JUICE
                             </Link>
                           </li>
                           <li className={LayoutStyle.subMenuItem}>
@@ -329,25 +313,12 @@ export function AppLayout(props: Props) {
                               href={ROUTERS.PRODUCTS_DETAIL('17')}
                               className={LayoutStyle.linkSubMenu}
                             >
-                              Cappuccino
+                              COFFEE
                             </Link>
                           </li>
                           <li className={LayoutStyle.subMenuItem}>
                             <Link href="#" className={LayoutStyle.linkSubMenu}>
-                              Custard apple
-                            </Link>
-                          </li>
-                          <li className={LayoutStyle.subMenuItem}>
-                            <Link href="#" className={LayoutStyle.linkSubMenu}>
-                              Peach tea
-                            </Link>
-                          </li>
-                          <li className={LayoutStyle.subMenuItem}>
-                            <Link
-                              href={ROUTERS.PRODUCTS_DETAIL('19')}
-                              className={LayoutStyle.linkSubMenu}
-                            >
-                              Lemon tea
+                              TEA
                             </Link>
                           </li>
                         </ul>
@@ -362,7 +333,7 @@ export function AppLayout(props: Props) {
                               href={ROUTERS.PRODUCTS_DETAIL('5')}
                               className={LayoutStyle.linkSubMenu}
                             >
-                              Brown rice milk
+                              SOY BEAN MILK
                             </Link>
                           </li>
                           <li className={LayoutStyle.subMenuItem}>
@@ -370,7 +341,7 @@ export function AppLayout(props: Props) {
                               href={ROUTERS.PRODUCTS_DETAIL('7')}
                               className={LayoutStyle.linkSubMenu}
                             >
-                              Soy milk
+                              GREEN BEAN MILK
                             </Link>
                           </li>
                           <li className={LayoutStyle.subMenuItem}>
@@ -378,7 +349,7 @@ export function AppLayout(props: Props) {
                               href={ROUTERS.PRODUCTS_DETAIL('6')}
                               className={LayoutStyle.linkSubMenu}
                             >
-                              mung bean milk
+                              CORN MILK
                             </Link>
                           </li>
                           <li className={LayoutStyle.subMenuItem}>
@@ -386,22 +357,17 @@ export function AppLayout(props: Props) {
                               href={ROUTERS.PRODUCTS_DETAIL('8')}
                               className={LayoutStyle.linkSubMenu}
                             >
-                              Corn milk
+                              BIRD&apos;S NEST DRINK
                             </Link>
                           </li>
                           <li className={LayoutStyle.subMenuItem}>
                             <Link href="#" className={LayoutStyle.linkSubMenu}>
-                              Bird&apos;s nest
+                              ALOE VERA
                             </Link>
                           </li>
                           <li className={LayoutStyle.subMenuItem}>
                             <Link href="#" className={LayoutStyle.linkSubMenu}>
-                              Stir-fried bird&apos;s nest
-                            </Link>
-                          </li>
-                          <li className={LayoutStyle.subMenuItem}>
-                            <Link href="#" className={LayoutStyle.linkSubMenu}>
-                              Aloe vera bird&apos;s nest
+                              ENERGY DRINK
                             </Link>
                           </li>
                         </ul>
@@ -610,15 +576,13 @@ export function AppLayout(props: Props) {
                         <p>Internal Markets:</p>
 
                         <a href="tel:+84903722771">
-                          <p>+ (84)903.722.771 (Mrs.Tứ)</p>
+                          <p>+ (84) 903 722 771 (Mrs. Tứ)</p>
                         </a>
-
-                        <a href="tel:+84353960786">
-                          <p>+ (84)353.960.786 (Mr.Gray)</p>
-                        </a>
-
                         <a href="tel:+84903722771">
-                          <p>+ (84)912004560 (Mr.Leon Trinh)</p>
+                          <p>+ (84) 9 1200 4560 (Mr. Leon Trinh)</p>
+                        </a>
+                        <a href="tel:+84353960786">
+                          <p>+ (84) 353 960 786 (Mr. Gray)</p>
                         </a>
                       </div>
                     </div>
@@ -631,15 +595,13 @@ export function AppLayout(props: Props) {
                         <p>Foreign Markets:</p>
 
                         <a href="tel:+84903722771">
-                          <p>+ (84)903.722.771 (Mrs.Tứ)</p>
+                          <p>+ (84) 903 722 771 (Mrs. Tứ)</p>
                         </a>
-
-                        <a href="tel:+84353960786">
-                          <p>+ (84)353.960.786 (Mr.Gray)</p>
-                        </a>
-
                         <a href="tel:+84903722771">
-                          <p>+ (84)912004560 (Mr.Leon Trinh)</p>
+                          <p>+ (84) 9 1200 4560 (Mr. Leon Trinh)</p>
+                        </a>
+                        <a href="tel:+84353960786">
+                          <p>+ (84) 353 960 786 (Mr. Gray)</p>
                         </a>
                       </div>
                     </div>

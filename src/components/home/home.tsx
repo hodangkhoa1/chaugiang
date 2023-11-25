@@ -640,7 +640,7 @@ export default function HomePage() {
                             <img src={bestSelling.image} alt="" />
                           </div>
                           <h1>{bestSelling.name}</h1>
-                          <h4>{bestSelling.volume}</h4>
+                          <h1>{bestSelling.volume}</h1>
                         </Link>
                       ))}
                     </Carousel>
@@ -749,7 +749,7 @@ export default function HomePage() {
                             <img src={newProduct.image} alt="" />
                           </div>
                           <h1>{newProduct.name}</h1>
-                          <h4>{newProduct.volume}</h4>
+                          <h1>{newProduct.volume}</h1>
                         </Link>
                       ))}
                     </Carousel>
@@ -812,7 +812,7 @@ export default function HomePage() {
                   <div className={Style.menuBottom}>
                     <div className={Style.itemLink}>
                       <Link href={ROUTERS.PRODUCTS_DETAIL('13')}>
-                        Aloe Vera Bird&apos;s Nest Drink
+                        Aloe Vera
                       </Link>
                     </div>
 
@@ -872,7 +872,7 @@ export default function HomePage() {
                             <img src={featureProduct.image} alt="" />
                           </div>
                           <h1>{featureProduct.name}</h1>
-                          <h4>{featureProduct.volume}</h4>
+                          <h1>{featureProduct.volume}</h1>
                         </Link>
                       ))}
                     </Carousel>

@@ -99,22 +99,22 @@
         },
         {
             "id": 14,
-            "title": "Aloe Vera With Pulp Flavor Strawberry",
-            "subTitle": "500ml",
+            "title": "Aloe Vera With Pulp ",
+            "subTitle": "Flavor Strawberry 500ml",
             "image": "/images/products/18.png",
             "hover": "/images/products/18.png"
         },
         {
             "id": 15,
-            "title": "Aloe Vera With Pulp Flavor Passion Fruit",
-            "subTitle": "500ml",
+            "title": "Aloe Vera With Pulp",
+            "subTitle": "Flavor Passion Fruit 500ml",
             "image": "/images/products/19.png",
             "hover": "/images/products/19.png"
         },
         {
             "id": 16,
-            "title": "Aloe Vera With Pulp Flavor Watermelon",
-            "subTitle": "500ml",
+            "title": "Aloe Vera With Pulp",
+            "subTitle": "Flavor Watermelon 500ml",
             "image": "/images/products/20.png",
             "hover": "/images/products/20.png"
         }
@@ -152,8 +152,8 @@
     "energyDrink": [
         {
             "id": 21,
-            "title": "Strawberry Flavor 109 Energy Drink",
-            "subTitle": "250ml",
+            "title": "Strawberry Flavor 109",
+            "subTitle": "Energy Drink 250ml",
             "image": "/images/products/27.png",
             "hover": "/images/products/27.png"
         },
