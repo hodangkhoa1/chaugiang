@@ -206,20 +206,27 @@ export default function WhoWeArePage() {
             <p>{translateWhoWeAre('ourFamilyChauGiangFood')}</p>
           </div>
 
-          <div className={`${Style.dflex} ${Style.introduceOurFamilyLogo}`}>
-            <Image
-              src="/images/introduce/30years.png"
-              alt="logo"
-              width={380}
-              preview={false}
-            />
-            <Image
-              src="/images/introduce/CGFood.png"
-              alt="logo"
-              width={430}
-              preview={false}
-            />
-          </div>
+          <Row className={`${Style.dflex}`}>
+            <Col md={12} lg={6} span={24}>
+              <Image
+                src="/images/introduce/30years.png"
+                alt="logo"
+                width={380}
+                preview={false}
+              />
+            </Col>
+            <Col md={12} lg={6} span={24}>
+              <Image
+                src="/images/introduce/CGFood.png"
+                alt="logo"
+                preview={false}
+              />
+            </Col>
+          </Row>
+
+          {/* <div className={`${Style.dflex} ${Style.introduceOurFamilyLogo}`}>
+            
+          </div> */}
         </div>
       </Reveal>
 
@@ -446,9 +453,9 @@ export default function WhoWeArePage() {
       </Reveal>
 
       <Reveal>
-        <div className={Style.whyChooseUs}>
-          <div className={Style.whyChooseUsCover}>
-            <div className={Style.whyChooseUsTop}>
+        <div className={`${Style.whyChooseUs} ${Style.aboutUs}`}>
+          <div className={`${Style.aboutUsCover} ${Style.whyChooseUsCover}`}>
+            <div className={Style.aboutUsTop}>
               <div className={`${Style.dflex} ${Style.whyChooseUsTopCover}`}>
                 <div className={`${Style.dflex} ${Style.whyChooseUsTitle}`}>
                   <h1>{translateWhoWeAre('whyChooseUs')}</h1>
@@ -456,7 +463,7 @@ export default function WhoWeArePage() {
               </div>
             </div>
 
-            <div className={Style.whyChooseUsBottom}>
+            <div className={`${Style.aboutUsBottom}`}>
               <Row
                 gutter={100}
                 style={{
@@ -466,8 +473,8 @@ export default function WhoWeArePage() {
                 }}
               >
                 <Col className={Style.colWhyChooseUs} md={12} lg={6} span={24}>
-                  <div className={`${Style.dflex} ${Style.whyChooseUsItem}`}>
-                    <div className={Style.whyChooseUsBottomImage}>
+                  <div className={`${Style.dflex} ${Style.aboutUsItem}`}>
+                    <div className={Style.aboutUsBottomImage}>
                       <img src="/images/why_choose_us/Untitled-28.png" alt="" />
                     </div>
                     <h2>{translateWhoWeAre('hightQuality')}</h2>
@@ -476,8 +483,8 @@ export default function WhoWeArePage() {
                 </Col>
 
                 <Col className={Style.colWhyChooseUs} md={12} lg={6} span={24}>
-                  <div className={`${Style.dflex} ${Style.whyChooseUsItem}`}>
-                    <div className={Style.whyChooseUsBottomImage}>
+                  <div className={`${Style.dflex} ${Style.aboutUsItem}`}>
+                    <div className={Style.aboutUsBottomImage}>
                       <img src="/images/why_choose_us/Untitled-29.png" alt="" />
                     </div>
                     <h2>{translateWhoWeAre('fastDelivery')}</h2>
@@ -486,8 +493,8 @@ export default function WhoWeArePage() {
                 </Col>
 
                 <Col className={Style.colWhyChooseUs} md={12} lg={6} span={24}>
-                  <div className={`${Style.dflex} ${Style.whyChooseUsItem}`}>
-                    <div className={Style.whyChooseUsBottomImage}>
+                  <div className={`${Style.dflex} ${Style.aboutUsItem}`}>
+                    <div className={Style.aboutUsBottomImage}>
                       <img src="/images/why_choose_us/Untitled-30.png" alt="" />
                     </div>
                     <h2>{translateWhoWeAre('flexiblePackaging')}</h2>
@@ -498,8 +505,8 @@ export default function WhoWeArePage() {
                 </Col>
 
                 <Col className={Style.colWhyChooseUs} md={12} lg={6} span={24}>
-                  <div className={`${Style.dflex} ${Style.whyChooseUsItem}`}>
-                    <div className={Style.whyChooseUsBottomImage}>
+                  <div className={`${Style.dflex} ${Style.aboutUsItem}`}>
+                    <div className={Style.aboutUsBottomImage}>
                       <img src="/images/why_choose_us/Untitled-31.png" alt="" />
                     </div>
                     <h2>{translateWhoWeAre('freeSample')}</h2>

@@ -412,3 +412,68 @@
         }
     }
 }
+
+@media only screen and (max-width: 768px) {
+    .introduceCompanyProfile {
+        padding-left: 15px;
+    }
+
+    .aboutUs {
+        height: 990px;
+
+        .aboutUsCover {
+            width: 365px;
+            height: 955px;
+
+            .hideAboutUsPicture {
+                display: none;
+            }
+
+            .aboutUsTitle {
+                h1 {
+                    font-size: 38px;
+
+                    &::after {
+                        width: 205px;
+                    }
+                }
+            }
+        }
+    }
+
+    .whyChooseUs {
+        height: 1240px;
+
+        .whyChooseUsCover {
+            .whyChooseUsTopCover {
+                .whyChooseUsTitle {
+                    h1 {
+                        font-size: 40px;
+                    }
+                }
+            }
+        }
+    }
+
+    .customerInformation {
+        .customerInformationCover {
+            .customerInformationTop {
+                .customerInformationTopCover {
+                    .customerInformationTitle {
+                        h1 {
+                            font-size: 31px;
+                        }
+                    }
+                }
+            }
+
+            .customerInformationBottom {
+
+                input,
+                .styleTextArea {
+                    width: 28rem;
+                }
+            }
+        }
+    }
+}
