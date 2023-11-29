@@ -53,86 +53,148 @@
     }
 }
 
-.whyChooseUs {
+.aboutUs {
+    background-image: url(/images/about_us/backfround_orange.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     width: 100%;
-    height: 100%;
-    background-color: #EDEDED;
-    padding-top: 50px;
+    height: 768px;
     display: flex;
     justify-content: center;
 
+    .aboutUsCover {
+        width: 1180px;
+        height: 575px;
+        background-color: #8ec63fd8;
+        border-bottom-left-radius: 70px;
+        border-bottom-right-radius: 70px;
+        padding: 35px 88px;
+
+        .aboutUsPicture {
+            width: 100%;
+
+            img {
+                width: 150px;
+            }
+        }
+
+        .aboutUsTitle {
+            width: 700px;
+            text-align: center;
+
+            h1 {
+                color: #00894f;
+                font-size: 45px;
+                margin-bottom: unset;
+                font-weight: bold;
+                text-transform: uppercase;
+                position: relative;
+
+                &::after {
+                    content: "";
+                    width: 220px;
+                    height: 6px;
+                    background: linear-gradient(to right, #00894f 60%, rgb(255, 255, 255) 40%);
+                    position: absolute;
+                    transform: translate(-50%, 50%);
+                    top: 95%;
+                    left: 50%;
+                }
+            }
+        }
+
+        h2 {
+            text-align: center;
+            color: #00894f;
+            font-size: 20px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .aboutUsCenter {
+            margin-top: 25px;
+            margin-bottom: 20px;
+
+            p {
+                text-align: center;
+            }
+        }
+
+        .aboutUsBottom {
+            padding-top: 50px;
+
+            .aboutUsItem {
+                width: 100%;
+                flex-direction: column;
+                gap: 15px;
+                margin-bottom: 20px;
+
+                .aboutUsBottomImage {
+                    width: 90px;
+                    height: 88px;
+
+                    img {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.whyChooseUs {
+    background-image: unset;
+    background-color: #EDEDED;
+    padding-top: 50px;
+    height: 100%;
+
     .whyChooseUsCover {
+        width: unset;
+        height: unset;
+        background-color: unset;
+        padding: unset;
         padding: 0 20px;
 
-        .whyChooseUsTop {
+        .whyChooseUsTopCover {
+            position: relative;
 
-            .whyChooseUsTopCover {
-                .whyChooseUsTitle {
-                    width: 700px;
-                    text-align: center;
+            .whyChooseUsTitle {
+                width: 700px;
+                text-align: center;
 
-                    h1 {
-                        color: #00894f;
-                        font-size: 45px;
-                        margin-bottom: unset;
-                        font-weight: bold;
-                        text-transform: uppercase;
-                        position: relative;
+                h1 {
+                    color: #00894f;
+                    font-size: 45px;
+                    margin-bottom: unset;
+                    font-weight: bold;
+                    text-transform: uppercase;
+                    position: relative;
 
-                        &::after {
-                            content: "";
-                            width: 280px;
-                            height: 6px;
-                            background: linear-gradient(to right, #00894f 50%, #8dc63f 50%);
-                            position: absolute;
-                            transform: translate(-50%, -50%);
-                            top: 110%;
-                            left: 50%;
-                        }
+                    &::after {
+                        content: "";
+                        width: 280px;
+                        height: 6px;
+                        background: linear-gradient(to right, #00894f 60%, #8dc63f 40%);
+                        position: absolute;
+                        transform: translate(-50%, -50%);
+                        top: 120%;
+                        left: 50%;
                     }
                 }
             }
         }
 
-        .whyChooseUsBottom {
-            padding-top: 50px;
+        .colWhyChooseUs {
+            padding-bottom: 20px;
+            min-width: 347px;
+            max-width: 350px;
+        }
 
-            .colWhyChooseUs {
-                padding-bottom: 20px;
-                min-width: 347px;
-                max-width: 350px;
-
-                .whyChooseUsItem {
-                    width: 100%;
-                    flex-direction: column;
-                    gap: 15px;
-                    margin-bottom: 20px;
-
-                    .whyChooseUsBottomImage {
-                        width: 90px;
-                        height: 88px;
-
-                        img {
-                            width: 100%;
-                        }
-                    }
-
-                    h2 {
-                        text-align: center;
-                        color: #00894f;
-                        font-size: 23px;
-                        font-weight: bold;
-                        text-transform: uppercase;
-
-                    }
-
-                    p {
-                        color: #8dc63f;
-                        text-align: center;
-                        width: 310px;
-                    }
-                }
-            }
+        p {
+            color: #8dc63f;
+            text-align: center;
+            width: 310px;
         }
     }
 }
@@ -236,6 +298,71 @@
                         font-size: 18px;
                         color: #fff;
                     }
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .introduceCompanyProfile {
+        padding-left: 15px;
+    }
+
+    .aboutUs {
+        height: 990px;
+
+        .aboutUsCover {
+            width: 365px;
+            height: 955px;
+
+            .hideAboutUsPicture {
+                display: none;
+            }
+
+            .aboutUsTitle {
+                h1 {
+                    font-size: 38px;
+
+                    &::after {
+                        width: 205px;
+                    }
+                }
+            }
+        }
+    }
+
+    .whyChooseUs {
+        height: 1240px;
+
+        .whyChooseUsCover {
+            .whyChooseUsTopCover {
+                .whyChooseUsTitle {
+                    h1 {
+                        font-size: 40px;
+                    }
+                }
+            }
+        }
+    }
+
+    .customerInformation {
+        .customerInformationCover {
+            .customerInformationTop {
+                .customerInformationTopCover {
+                    .customerInformationTitle {
+                        h1 {
+                            font-size: 31px;
+                        }
+                    }
+                }
+            }
+
+            .customerInformationBottom {
+
+                input,
+                .styleTextArea {
+                    width: 28rem;
                 }
             }
         }

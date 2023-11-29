@@ -185,9 +185,9 @@ export default function CompanyProfilePage() {
       </Reveal>
 
       <Reveal>
-        <div className={Style.whyChooseUs}>
-          <div className={Style.whyChooseUsCover}>
-            <div className={Style.whyChooseUsTop}>
+        <div className={`${Style.whyChooseUs} ${Style.aboutUs}`}>
+          <div className={`${Style.aboutUsCover} ${Style.whyChooseUsCover}`}>
+            <div className={Style.aboutUsTop}>
               <div className={`${Style.dflex} ${Style.whyChooseUsTopCover}`}>
                 <div className={`${Style.dflex} ${Style.whyChooseUsTitle}`}>
                   <h1>{translateCompanyProfile('whyChooseUs')}</h1>
@@ -195,7 +195,7 @@ export default function CompanyProfilePage() {
               </div>
             </div>
 
-            <div className={Style.whyChooseUsBottom}>
+            <div className={`${Style.aboutUsBottom}`}>
               <Row
                 gutter={100}
                 style={{
@@ -205,8 +205,8 @@ export default function CompanyProfilePage() {
                 }}
               >
                 <Col className={Style.colWhyChooseUs} md={12} lg={6} span={24}>
-                  <div className={`${Style.dflex} ${Style.whyChooseUsItem}`}>
-                    <div className={Style.whyChooseUsBottomImage}>
+                  <div className={`${Style.dflex} ${Style.aboutUsItem}`}>
+                    <div className={Style.aboutUsBottomImage}>
                       <img src="/images/why_choose_us/Untitled-28.png" alt="" />
                     </div>
                     <h2>{translateCompanyProfile('hightQuality')}</h2>
@@ -215,8 +215,8 @@ export default function CompanyProfilePage() {
                 </Col>
 
                 <Col className={Style.colWhyChooseUs} md={12} lg={6} span={24}>
-                  <div className={`${Style.dflex} ${Style.whyChooseUsItem}`}>
-                    <div className={Style.whyChooseUsBottomImage}>
+                  <div className={`${Style.dflex} ${Style.aboutUsItem}`}>
+                    <div className={Style.aboutUsBottomImage}>
                       <img src="/images/why_choose_us/Untitled-29.png" alt="" />
                     </div>
                     <h2>{translateCompanyProfile('fastDelivery')}</h2>
@@ -225,8 +225,8 @@ export default function CompanyProfilePage() {
                 </Col>
 
                 <Col className={Style.colWhyChooseUs} md={12} lg={6} span={24}>
-                  <div className={`${Style.dflex} ${Style.whyChooseUsItem}`}>
-                    <div className={Style.whyChooseUsBottomImage}>
+                  <div className={`${Style.dflex} ${Style.aboutUsItem}`}>
+                    <div className={Style.aboutUsBottomImage}>
                       <img src="/images/why_choose_us/Untitled-30.png" alt="" />
                     </div>
                     <h2>{translateCompanyProfile('flexiblePackaging')}</h2>
@@ -239,8 +239,8 @@ export default function CompanyProfilePage() {
                 </Col>
 
                 <Col className={Style.colWhyChooseUs} md={12} lg={6} span={24}>
-                  <div className={`${Style.dflex} ${Style.whyChooseUsItem}`}>
-                    <div className={Style.whyChooseUsBottomImage}>
+                  <div className={`${Style.dflex} ${Style.aboutUsItem}`}>
+                    <div className={Style.aboutUsBottomImage}>
                       <img src="/images/why_choose_us/Untitled-31.png" alt="" />
                     </div>
                     <h2>{translateCompanyProfile('freeSample')}</h2>
