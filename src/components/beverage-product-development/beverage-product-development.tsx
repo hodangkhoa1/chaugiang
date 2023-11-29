@@ -189,9 +189,9 @@ export default function BeverageProductDevelopmentPage() {
       </Reveal>
 
       <Reveal>
-        <div className={Style.whyChooseUs}>
-          <div className={Style.whyChooseUsCover}>
-            <div className={Style.whyChooseUsTop}>
+        <div className={`${Style.whyChooseUs} ${Style.aboutUs}`}>
+          <div className={`${Style.aboutUsCover} ${Style.whyChooseUsCover}`}>
+            <div className={Style.aboutUsTop}>
               <div className={`${Style.dflex} ${Style.whyChooseUsTopCover}`}>
                 <div className={`${Style.dflex} ${Style.whyChooseUsTitle}`}>
                   <h1>{translateBeverageProductDevelopment('whyChooseUs')}</h1>
@@ -199,7 +199,7 @@ export default function BeverageProductDevelopmentPage() {
               </div>
             </div>
 
-            <div className={Style.whyChooseUsBottom}>
+            <div className={`${Style.aboutUsBottom}`}>
               <Row
                 gutter={100}
                 style={{
@@ -209,8 +209,8 @@ export default function BeverageProductDevelopmentPage() {
                 }}
               >
                 <Col className={Style.colWhyChooseUs} md={12} lg={6} span={24}>
-                  <div className={`${Style.dflex} ${Style.whyChooseUsItem}`}>
-                    <div className={Style.whyChooseUsBottomImage}>
+                  <div className={`${Style.dflex} ${Style.aboutUsItem}`}>
+                    <div className={Style.aboutUsBottomImage}>
                       <img src="/images/why_choose_us/Untitled-28.png" alt="" />
                     </div>
                     <h2>
@@ -225,8 +225,8 @@ export default function BeverageProductDevelopmentPage() {
                 </Col>
 
                 <Col className={Style.colWhyChooseUs} md={12} lg={6} span={24}>
-                  <div className={`${Style.dflex} ${Style.whyChooseUsItem}`}>
-                    <div className={Style.whyChooseUsBottomImage}>
+                  <div className={`${Style.dflex} ${Style.aboutUsItem}`}>
+                    <div className={Style.aboutUsBottomImage}>
                       <img src="/images/why_choose_us/Untitled-29.png" alt="" />
                     </div>
                     <h2>
@@ -241,8 +241,8 @@ export default function BeverageProductDevelopmentPage() {
                 </Col>
 
                 <Col className={Style.colWhyChooseUs} md={12} lg={6} span={24}>
-                  <div className={`${Style.dflex} ${Style.whyChooseUsItem}`}>
-                    <div className={Style.whyChooseUsBottomImage}>
+                  <div className={`${Style.dflex} ${Style.aboutUsItem}`}>
+                    <div className={Style.aboutUsBottomImage}>
                       <img src="/images/why_choose_us/Untitled-30.png" alt="" />
                     </div>
                     <h2>
@@ -257,8 +257,8 @@ export default function BeverageProductDevelopmentPage() {
                 </Col>
 
                 <Col className={Style.colWhyChooseUs} md={12} lg={6} span={24}>
-                  <div className={`${Style.dflex} ${Style.whyChooseUsItem}`}>
-                    <div className={Style.whyChooseUsBottomImage}>
+                  <div className={`${Style.dflex} ${Style.aboutUsItem}`}>
+                    <div className={Style.aboutUsBottomImage}>
                       <img src="/images/why_choose_us/Untitled-31.png" alt="" />
                     </div>
                     <h2>{translateBeverageProductDevelopment('freeSample')}</h2>
