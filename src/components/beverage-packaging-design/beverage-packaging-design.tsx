@@ -245,78 +245,82 @@ export default function BeveragePackagingDesignPage() {
 
       <Reveal>
         <div className={`${Style.dflex} ${Style.usefulTips}`}>
-          <div className={`${Style.dflex} ${Style.usefulTipsLeft}`}>
-            <div className={Style.aboutTheDirectorLeftCenter}>
-              <h2>
-                {translateBeveragePackagingDesign('usefulTipsForGreatBeverage')}
-              </h2>
-              <p>
-                {translateBeveragePackagingDesign(
-                  'usefulTipsForGreatBeverage1'
-                )}
-              </p>
-              <p style={{ marginBottom: '20px' }}>
-                {translateBeveragePackagingDesign(
-                  'usefulTipsForGreatBeverage2'
-                )}
-              </p>
-              <p>
-                {translateBeveragePackagingDesign(
-                  'usefulTipsForGreatBeverage3'
-                )}
-              </p>
-              <p style={{ marginBottom: '20px' }}>
-                {translateBeveragePackagingDesign(
-                  'usefulTipsForGreatBeverage4'
-                )}
-              </p>
-              <p>
-                {translateBeveragePackagingDesign(
-                  'usefulTipsForGreatBeverage5'
-                )}
-              </p>
-              <p style={{ marginBottom: '20px' }}>
-                {translateBeveragePackagingDesign(
-                  'usefulTipsForGreatBeverage6'
-                )}
-              </p>
-              <p>
-                {translateBeveragePackagingDesign(
-                  'usefulTipsForGreatBeverage7'
-                )}
-              </p>
-              <p style={{ marginBottom: '20px' }}>
-                {translateBeveragePackagingDesign(
-                  'usefulTipsForGreatBeverage8'
-                )}
-              </p>
-              <p>
-                {translateBeveragePackagingDesign(
-                  'usefulTipsForGreatBeverage9'
-                )}
-              </p>
-              <p style={{ marginBottom: '20px' }}>
-                {translateBeveragePackagingDesign(
-                  'usefulTipsForGreatBeverage10'
-                )}
-              </p>
-              <p>
-                {translateBeveragePackagingDesign(
-                  'usefulTipsForGreatBeverage11'
-                )}
-              </p>
-            </div>
-          </div>
-          <div className={`${Style.dflex} ${Style.usefulTipsRight}`}>
-            <div className={Style.usefulTipsRightBackground}>
-              <Image
-                src="/images/services/service2.png"
-                alt="logo"
-                width="100%"
-                height="100%"
-              />
-            </div>
-          </div>
+          <Row gutter={100}>
+            <Col md={24} lg={12} span={24}>
+              <div className={Style.aboutTheDirectorLeftCenter}>
+                <h2>
+                  {translateBeveragePackagingDesign(
+                    'usefulTipsForGreatBeverage'
+                  )}
+                </h2>
+                <p>
+                  {translateBeveragePackagingDesign(
+                    'usefulTipsForGreatBeverage1'
+                  )}
+                </p>
+                <p style={{ marginBottom: '20px' }}>
+                  {translateBeveragePackagingDesign(
+                    'usefulTipsForGreatBeverage2'
+                  )}
+                </p>
+                <p>
+                  {translateBeveragePackagingDesign(
+                    'usefulTipsForGreatBeverage3'
+                  )}
+                </p>
+                <p style={{ marginBottom: '20px' }}>
+                  {translateBeveragePackagingDesign(
+                    'usefulTipsForGreatBeverage4'
+                  )}
+                </p>
+                <p>
+                  {translateBeveragePackagingDesign(
+                    'usefulTipsForGreatBeverage5'
+                  )}
+                </p>
+                <p style={{ marginBottom: '20px' }}>
+                  {translateBeveragePackagingDesign(
+                    'usefulTipsForGreatBeverage6'
+                  )}
+                </p>
+                <p>
+                  {translateBeveragePackagingDesign(
+                    'usefulTipsForGreatBeverage7'
+                  )}
+                </p>
+                <p style={{ marginBottom: '20px' }}>
+                  {translateBeveragePackagingDesign(
+                    'usefulTipsForGreatBeverage8'
+                  )}
+                </p>
+                <p>
+                  {translateBeveragePackagingDesign(
+                    'usefulTipsForGreatBeverage9'
+                  )}
+                </p>
+                <p style={{ marginBottom: '20px' }}>
+                  {translateBeveragePackagingDesign(
+                    'usefulTipsForGreatBeverage10'
+                  )}
+                </p>
+                <p>
+                  {translateBeveragePackagingDesign(
+                    'usefulTipsForGreatBeverage11'
+                  )}
+                </p>
+              </div>
+            </Col>
+            <Col md={24} lg={12} span={24}>
+              <div className={Style.usefulTipsRightBackground}>
+                <Image
+                  src="/images/services/service2.png"
+                  alt="logo"
+                  width="100%"
+                  height="100%"
+                />
+              </div>
+            </Col>
+          </Row>
         </div>
       </Reveal>
 

@@ -115,36 +115,26 @@
 }
 
 .usefulTips {
-    justify-content: space-between;
     margin-top: 50px;
 
-    .usefulTipsLeft {
-        width: calc(100% - 50%);
-        flex-direction: column;
+    .aboutTheDirectorLeftCenter {
+        width: 616px;
 
-        .aboutTheDirectorLeftCenter {
-            width: 616px;
+        h2 {
+            color: #8dc63f;
+            margin-bottom: 25px;
+        }
 
-            h2 {
-                color: #8dc63f;
-                margin-bottom: 25px;
-            }
-
-            p {
-                color: #8dc63f;
-                font-size: 16px;
-                margin-bottom: unset;
-            }
+        p {
+            color: #8dc63f;
+            font-size: 16px;
+            margin-bottom: unset;
         }
     }
 
-    .usefulTipsRight {
-        width: calc(100% - 50%);
-
-        .usefulTipsRightBackground {
-            width: 588px;
-            height: 600px;
-        }
+    .usefulTipsRightBackground {
+        width: 588px;
+        height: 600px;
     }
 }
 
@@ -482,6 +472,18 @@
     .introducePackagingDesigner {
         .introducePackagingDesignerCenter {
             width: unset;
+        }
+    }
+
+    .usefulTips {
+        .aboutTheDirectorLeftCenter {
+            width: unset;
+        }
+
+        .usefulTipsRightBackground {
+            width: unset;
+            height: unset;
+            margin-top: 20px;
         }
     }
 

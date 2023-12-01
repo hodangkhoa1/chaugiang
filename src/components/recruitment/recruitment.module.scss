@@ -373,3 +373,47 @@
         }
     }
 }
+
+@media only screen and (max-width: 768px) {
+    .introduce {
+        padding-left: 15px;
+    }
+
+    .recruimentAnouncement {
+        padding-left: 15px;
+
+        h1 {
+            font-size: 29px;
+        }
+
+        h2 {
+            font-size: 20px;
+        }
+    }
+
+    .recruimentBody {
+        margin: 20px 20px 0 20px;
+    }
+
+    .customerInformation {
+        .customerInformationCover {
+            .customerInformationTop {
+                .customerInformationTopCover {
+                    .customerInformationTitle {
+                        h1 {
+                            font-size: 31px;
+                        }
+                    }
+                }
+            }
+
+            .customerInformationBottom {
+
+                input,
+                .styleTextArea {
+                    width: 28rem;
+                }
+            }
+        }
+    }
+}

@@ -348,3 +348,48 @@
         }
     }
 }
+
+@media only screen and (max-width: 768px) {
+    .contactUs {
+        padding-left: 15px;
+        height: 930px;
+
+        .background {
+            display: none;
+        }
+
+        .contactUsBody {
+            width: 100%;
+
+            .contactUsMeetYou {
+                .contactUsMeetYouTitle {
+                    h1 {
+                        font-size: 31px;
+                    }
+                }
+            }
+        }
+    }
+
+    .customerInformation {
+        .customerInformationCover {
+            .customerInformationTop {
+                .customerInformationTopCover {
+                    .customerInformationTitle {
+                        h1 {
+                            font-size: 31px;
+                        }
+                    }
+                }
+            }
+
+            .customerInformationBottom {
+
+                input,
+                .styleTextArea {
+                    width: 28rem;
+                }
+            }
+        }
+    }
+}

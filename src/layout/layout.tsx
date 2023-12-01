@@ -72,36 +72,32 @@ export function AppLayout(props: Props) {
     getItem('Introduce', 'sub1', null, [
       getItem('Who we are', ROUTERS.WHO_WE_ARE),
       getItem('Company Profile', ROUTERS.COMPANY_PROFILE),
-      getItem('Catalogue', 'Catalogue'),
+      getItem('Catalogue', ROUTERS.CATALOGUE),
     ]),
 
     getItem('Products', 'sub2', null, [
       getItem('Best selling', 'Best selling', null, [
-        getItem('Brown rice', 'Brown rice'),
-        getItem('Oats', 'Oats'),
-        getItem('Coconut meat', 'Coconut meat'),
-        getItem('Sparkling coconut', 'Sparkling coconut'),
-        getItem('Tamarind', 'Tamarind'),
-        getItem('Mango', 'Mango'),
-        getItem('Bottle of aloe vera', 'Bottle of aloe vera'),
+        getItem('BROWN RICE MILK DRINK', ROUTERS.PRODUCTS_DETAIL('5')),
+        getItem('OAT MILK DRINK', ROUTERS.PRODUCTS_DETAIL('25')),
+        getItem('COCONUT WATER', ROUTERS.PRODUCTS_DETAIL('1')),
+        getItem('SPARKLING COCONUT', ROUTERS.PRODUCTS_DETAIL('4')),
+        getItem('FRUIT JUICE DRINK', ROUTERS.PRODUCTS_DETAIL('10')),
       ]),
+
       getItem('New products', 'New products', null, [
-        getItem('Sparkling watermelon', 'Sparkling watermelon'),
-        getItem('Sparkling fragrant coconut', 'Sparkling fragrant coconut'),
-        getItem('Black coffee', 'Black coffee'),
-        getItem('Cappuccino', 'Cappuccino'),
-        getItem('Custard apple', 'Custard apple'),
-        getItem('Peach tea', 'Peach tea'),
-        getItem('Lemon tea', 'Lemon tea'),
+        getItem('ALOE VERA DRINK', ROUTERS.PRODUCTS_DETAIL('4')),
+        getItem('SPARKLING FRUIT JUICE', ROUTERS.PRODUCTS_DETAIL('18')),
+        getItem('COFFEE', ROUTERS.PRODUCTS_DETAIL('17')),
+        getItem('TEA', ROUTERS.PRODUCTS_DETAIL('17')),
       ]),
+
       getItem('Featured product', 'Featured product', null, [
-        getItem('Brown rice milk', 'Brown rice milk'),
-        getItem('Soy milk', 'Soy milk'),
-        getItem('mung bean milk', 'mung bean milk'),
-        getItem('Corn milk', 'Corn milk'),
-        getItem('Bird&apos;s nest', 'Bird&apos;s nest'),
-        getItem('Stir-fried bird&apos;s nest', 'Stir-fried bird&apos;s nest'),
-        getItem('Aloe vera bird&apos;s nest', 'Aloe vera bird&apos;s nest'),
+        getItem('SOY BEAN MILK', ROUTERS.PRODUCTS_DETAIL('5')),
+        getItem('GREEN BEAN MILK', ROUTERS.PRODUCTS_DETAIL('7')),
+        getItem('CORN MILK', ROUTERS.PRODUCTS_DETAIL('6')),
+        getItem("BIRD'S NEST DRINK", ROUTERS.PRODUCTS_DETAIL('8')),
+        getItem('ALOE VERA', ROUTERS.PRODUCTS_DETAIL('8')),
+        getItem('ENERGY DRINK', ROUTERS.PRODUCTS_DETAIL('8')),
       ]),
     ]),
 
@@ -361,12 +357,18 @@ export function AppLayout(props: Props) {
                             </Link>
                           </li>
                           <li className={LayoutStyle.subMenuItem}>
-                            <Link href="#" className={LayoutStyle.linkSubMenu}>
+                            <Link
+                              href={ROUTERS.PRODUCTS_DETAIL('8')}
+                              className={LayoutStyle.linkSubMenu}
+                            >
                               ALOE VERA
                             </Link>
                           </li>
                           <li className={LayoutStyle.subMenuItem}>
-                            <Link href="#" className={LayoutStyle.linkSubMenu}>
+                            <Link
+                              href={ROUTERS.PRODUCTS_DETAIL('8')}
+                              className={LayoutStyle.linkSubMenu}
+                            >
                               ENERGY DRINK
                             </Link>
                           </li>
