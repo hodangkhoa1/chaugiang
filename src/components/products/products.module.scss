@@ -220,48 +220,37 @@
         border-bottom-right-radius: 70px;
         padding: 35px 88px;
 
-        .aboutUsTop {
-            .aboutUsTopCover {
+        .aboutUsPicture {
+            width: 100%;
+
+            img {
+                width: 150px;
+            }
+        }
+
+        .aboutUsTitle {
+            width: 700px;
+            text-align: center;
+
+            h1 {
+                color: #00894f;
+                font-size: 45px;
+                margin-bottom: unset;
+                font-weight: bold;
+                text-transform: uppercase;
                 position: relative;
 
-                .aboutUsPicture {
-                    width: 100%;
-                    justify-content: end;
-
-                    img {
-                        width: 150px;
-                    }
-
-                    &:nth-child(3) {
-                        justify-content: start;
-                    }
-                }
-
-                .aboutUsTitle {
-                    width: 700px;
-                    text-align: center;
-
-                    h1 {
-                        color: #00894f;
-                        font-size: 45px;
-                        margin-bottom: unset;
-                        font-weight: bold;
-                        text-transform: uppercase;
-                    }
-                }
-
-                .line {
+                &::after {
                     content: "";
                     width: 220px;
                     height: 6px;
                     background: linear-gradient(to right, #00894f 60%, rgb(255, 255, 255) 40%);
                     position: absolute;
                     transform: translate(-50%, 50%);
-                    top: 80%;
+                    top: 95%;
                     left: 50%;
                 }
             }
-
         }
 
         h2 {
@@ -305,9 +294,9 @@
 
 .whyChooseUs {
     background-image: unset;
-    height: 100%;
     background-color: #EDEDED;
     padding-top: 50px;
+    height: 100%;
 
     .whyChooseUsCover {
         width: unset;
@@ -337,8 +326,8 @@
                         height: 6px;
                         background: linear-gradient(to right, #00894f 60%, #8dc63f 40%);
                         position: absolute;
-                        transform: translate(-50%, 50%);
-                        top: 105%;
+                        transform: translate(-50%, -50%);
+                        top: 120%;
                         left: 50%;
                     }
                 }
@@ -460,6 +449,95 @@
                         font-size: 18px;
                         color: #fff;
                     }
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .introduceCompanyProfile {
+        padding-left: 15px;
+    }
+
+    .listProduct {
+        .listProductBottom {
+            .listProductBottom__left {
+                .images {
+                    width: unset;
+                }
+            }
+
+            .listProductCol {
+                padding-right: unset !important;
+
+                a {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    .listProductCard {
+                        margin-top: 10px;
+                    }
+                }
+            }
+        }
+    }
+
+    .aboutUs {
+        height: 990px;
+
+        .aboutUsCover {
+            width: 365px;
+            height: 955px;
+
+            .hideAboutUsPicture {
+                display: none;
+            }
+
+            .aboutUsTitle {
+                h1 {
+                    font-size: 38px;
+
+                    &::after {
+                        width: 205px;
+                    }
+                }
+            }
+        }
+    }
+
+    .whyChooseUs {
+        height: 1240px;
+
+        .whyChooseUsCover {
+            .whyChooseUsTopCover {
+                .whyChooseUsTitle {
+                    h1 {
+                        font-size: 40px;
+                    }
+                }
+            }
+        }
+    }
+
+    .customerInformation {
+        .customerInformationCover {
+            .customerInformationTop {
+                .customerInformationTopCover {
+                    .customerInformationTitle {
+                        h1 {
+                            font-size: 31px;
+                        }
+                    }
+                }
+            }
+
+            .customerInformationBottom {
+
+                input,
+                .styleTextArea {
+                    width: 28rem;
                 }
             }
         }

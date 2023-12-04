@@ -199,6 +199,7 @@ export default function ProductsPage() {
                 <Row gutter={100}>
                   {productsData?.milk.map((product, index) => (
                     <Col
+                      md={24}
                       lg={6}
                       span={24}
                       className={Style.listProductCol}
@@ -247,6 +248,7 @@ export default function ProductsPage() {
                 <Row gutter={100}>
                   {productsData?.juice.map((product, index) => (
                     <Col
+                      md={24}
                       lg={6}
                       span={24}
                       className={Style.listProductCol}
