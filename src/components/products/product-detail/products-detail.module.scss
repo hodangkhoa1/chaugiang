@@ -512,6 +512,82 @@
         margin-left: 15px;
     }
 
+    .productElement {
+        .productElementCol {
+            padding-left: unset !important;
+            padding-right: unset !important;
+        }
+
+        .productElementRight {
+            height: unset;
+
+            .productElementTitle {
+                h3 {
+                    font-size: 25px;
+                    text-align: center;
+                }
+            }
+
+            .productElementTable {
+                padding: 0 10px;
+                margin-bottom: 30px;
+
+                .productElementContent {
+                    p {
+                        &:nth-child(2) {
+                            text-align: end;
+                        }
+                    }
+                }
+            }
+
+            .productElementBottomContent {
+                padding: 0 10px;
+            }
+        }
+
+        .requestBtn {
+            button {
+                height: 40px;
+                margin-bottom: 10px;
+            }
+        }
+    }
+
+    .productDescription {
+        margin: 0 10px;
+
+        .productDescriptionCol {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 10px 0;
+        }
+    }
+
+    .aboutUs {
+        height: 990px;
+
+        .aboutUsCover {
+            width: 365px;
+            height: 955px;
+
+            .hideAboutUsPicture {
+                display: none;
+            }
+
+            .aboutUsTitle {
+                h1 {
+                    font-size: 38px;
+
+                    &::after {
+                        width: 205px;
+                    }
+                }
+            }
+        }
+    }
+
     .whyChooseUs {
         height: 1240px;
 

@@ -229,7 +229,7 @@ const ProductDetailPage = () => {
       <Reveal>
         <div className={Style.productElement}>
           <Row gutter={100}>
-            <Col lg={8} span={24}>
+            <Col lg={8} span={24} className={Style.productElementCol}>
               <div className={`${Style.productElementLeft}`}>
                 <div className={Style.productImg}>
                   <img src={productDetailData?.image} alt="" />
@@ -250,7 +250,7 @@ const ProductDetailPage = () => {
               </div>
             </Col>
 
-            <Col lg={16} span={24}>
+            <Col lg={16} span={24} className={Style.productElementCol}>
               <div className={`${Style.productElementRight} ${Style.dflex}`}>
                 <div className={Style.productElementTitle}>
                   <h3>{productDetailData?.name}</h3>
@@ -419,7 +419,12 @@ const ProductDetailPage = () => {
                 brands worldwide.
               </p>
             </Col>
-            <Col lg={6} span={24}>
+            <Col
+              md={24}
+              lg={6}
+              span={24}
+              className={Style.productDescriptionCol}
+            >
               <Image
                 src="/images/introduce/our_factory_3.jpg"
                 alt="logo"
@@ -428,7 +433,12 @@ const ProductDetailPage = () => {
                 preview={true}
               />
             </Col>
-            <Col lg={6} span={24}>
+            <Col
+              md={24}
+              lg={6}
+              span={24}
+              className={Style.productDescriptionCol}
+            >
               <Image
                 src="/images/introduce/our_factory_4.jpg"
                 alt="logo"
@@ -437,7 +447,12 @@ const ProductDetailPage = () => {
                 preview={true}
               />
             </Col>
-            <Col lg={6} span={24}>
+            <Col
+              md={24}
+              lg={6}
+              span={24}
+              className={Style.productDescriptionCol}
+            >
               <Image
                 src="/images/introduce/our_factory_5.jpg"
                 alt="logo"
@@ -446,7 +461,12 @@ const ProductDetailPage = () => {
                 preview={true}
               />
             </Col>
-            <Col lg={6} span={24}>
+            <Col
+              md={24}
+              lg={6}
+              span={24}
+              className={Style.productDescriptionCol}
+            >
               <Image
                 src="/images/introduce/our_factory_2.jpg"
                 alt="logo"
