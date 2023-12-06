@@ -631,7 +631,10 @@ export function AppLayout(props: Props) {
                     <div
                       className={`${LayoutStyle.dflex} ${LayoutStyle.footerItem}`}
                     >
-                      <a className={LayoutStyle.dflex} href="">
+                      <a
+                        className={LayoutStyle.dflex}
+                        href={ROUTERS.WHO_WE_ARE}
+                      >
                         <CaretRightOutlined
                           className={LayoutStyle.iconFooter}
                         />
@@ -642,7 +645,10 @@ export function AppLayout(props: Props) {
                     <div
                       className={`${LayoutStyle.dflex} ${LayoutStyle.footerItem}`}
                     >
-                      <a className={LayoutStyle.dflex} href="">
+                      <a
+                        className={LayoutStyle.dflex}
+                        href={ROUTERS.BEVERAGE_PRODUCT_DEVELOPMENT}
+                      >
                         <CaretRightOutlined
                           className={LayoutStyle.iconFooter}
                         />
@@ -650,7 +656,7 @@ export function AppLayout(props: Props) {
                       </a>
                     </div>
 
-                    <div
+                    {/* <div
                       className={`${LayoutStyle.dflex} ${LayoutStyle.footerItem}`}
                     >
                       <a className={LayoutStyle.dflex} href="">
@@ -659,12 +665,12 @@ export function AppLayout(props: Props) {
                         />
                         <p>Story about us</p>
                       </a>
-                    </div>
+                    </div> */}
 
                     <div
                       className={`${LayoutStyle.dflex} ${LayoutStyle.footerItem}`}
                     >
-                      <a className={LayoutStyle.dflex} href="">
+                      <a className={LayoutStyle.dflex} href={ROUTERS.PRODUCTS}>
                         <CaretRightOutlined
                           className={LayoutStyle.iconFooter}
                         />
@@ -675,7 +681,7 @@ export function AppLayout(props: Props) {
                     <div
                       className={`${LayoutStyle.dflex} ${LayoutStyle.footerItem}`}
                     >
-                      <a className={LayoutStyle.dflex} href="">
+                      <a className={LayoutStyle.dflex} href={ROUTERS.NEWS('1')}>
                         <CaretRightOutlined
                           className={LayoutStyle.iconFooter}
                         />
@@ -686,7 +692,10 @@ export function AppLayout(props: Props) {
                     <div
                       className={`${LayoutStyle.dflex} ${LayoutStyle.footerItem}`}
                     >
-                      <a className={LayoutStyle.dflex} href="">
+                      <a
+                        className={LayoutStyle.dflex}
+                        href={ROUTERS.RECRUITMENT}
+                      >
                         <CaretRightOutlined
                           className={LayoutStyle.iconFooter}
                         />

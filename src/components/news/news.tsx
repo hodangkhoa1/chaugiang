@@ -326,45 +326,72 @@ export default function NewsPage() {
                 </div>
                 <div className={Style.recruimentBodyLastestPost}>
                   <h1>{translateNews('productCagories')}</h1>
-                  <div className={Style.lastestPostContent}>
+                  <Link
+                    href={ROUTERS.PRODUCTS_DETAIL('1')}
+                    className={Style.lastestPostContent}
+                  >
                     <p>Coconut water</p>
                     <div className={Style.lastestPostContent}></div>
-                  </div>
-                  <div className={Style.lastestPostContent}>
+                  </Link>
+                  <Link
+                    href={ROUTERS.PRODUCTS_DETAIL('10')}
+                    className={Style.lastestPostContent}
+                  >
                     <p>Fruit Juice Drink</p>
                     <div className={Style.lastestPostContent}></div>
-                  </div>
-                  <div className={Style.lastestPostContent}>
+                  </Link>
+                  <Link
+                    href={ROUTERS.PRODUCTS_DETAIL('25')}
+                    className={Style.lastestPostContent}
+                  >
                     <p>Milk Drink</p>
                     <div className={Style.lastestPostContent}></div>
-                  </div>
-                  <div className={Style.lastestPostContent}>
+                  </Link>
+                  <Link
+                    href={ROUTERS.PRODUCTS_DETAIL('18')}
+                    className={Style.lastestPostContent}
+                  >
                     <p>Sparkling Juice Drink</p>
                     <div className={Style.lastestPostContent}></div>
-                  </div>
-                  <div className={Style.lastestPostContent}>
+                  </Link>
+                  <Link
+                    href={ROUTERS.PRODUCTS_DETAIL('17')}
+                    className={Style.lastestPostContent}
+                  >
                     <p>Coffee</p>
                     <div className={Style.lastestPostContent}></div>
-                  </div>
-                  <div className={Style.lastestPostContent}>
+                  </Link>
+                  <Link
+                    href={ROUTERS.PRODUCTS_DETAIL('8')}
+                    className={Style.lastestPostContent}
+                  >
                     <p>Energy Drink</p>
                     <div className={Style.lastestPostContent}></div>
-                  </div>
-                  <div className={Style.lastestPostContent}>
-                    <p>PET Aloe Vera Drink</p>
+                  </Link>
+                  <Link
+                    href={ROUTERS.PRODUCTS_DETAIL('4')}
+                    className={Style.lastestPostContent}
+                  >
+                    <p>Aloe Vera Drink</p>
                     <div className={Style.lastestPostContent}></div>
-                  </div>
+                  </Link>
                 </div>
                 <div className={Style.recruimentBodyLastestPost}>
                   <h1>{translateNews('categories')}</h1>
-                  <div className={Style.lastestPostContent}>
+                  <Link
+                    href={ROUTERS.NEWS('1')}
+                    className={Style.lastestPostContent}
+                  >
                     <p>{translateCommon('news')}</p>
                     <div className={Style.lastestPostContent}></div>
-                  </div>
-                  <div className={Style.lastestPostContent}>
+                  </Link>
+                  <Link
+                    href={ROUTERS.RECRUITMENT}
+                    className={Style.lastestPostContent}
+                  >
                     <p>{translateNews('event')}</p>
                     <div className={Style.lastestPostContent}></div>
-                  </div>
+                  </Link>
                 </div>
                 <div className={Style.recruimentBodyLastestPost}>
                   <h1>{translateNews('introductionVideo')}</h1>
@@ -518,7 +545,7 @@ export default function NewsPage() {
                   />
                 </Form.Item>
 
-                <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
+                <Form.Item className={Style.dflex}>
                   <div className={Style.btn_see_more}>
                     <button className={`${Style.dflex}`}>
                       <p>{translateNews('sendInformation')}</p>

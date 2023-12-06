@@ -602,7 +602,7 @@ export default function WhoWeArePage() {
                   />
                 </Form.Item>
 
-                <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
+                <Form.Item className={Style.dflex}>
                   <div className={Style.btn_see_more}>
                     <button className={`${Style.dflex}`}>
                       <p>{translateWhoWeAre('sendInformation')}</p>
