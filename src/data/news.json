@@ -24,5 +24,31 @@
         "image3": "/images/news/news8.jpg",
         "image4": "/images/news/news9.jpg",
         "image5": "/images/news/news10.jpg"
+    },
+    {
+        "id": "3",
+        "title": "The leaves protect tattered ones",
+        "dateCreate": "Sep 26, 2024",
+        "image1": "/images/news/news11.jpg",
+        "title2": "The leaves protect tattered ones ",
+        "title2_content1": "Không ngừng chiến đấu là những gì mà bà con miền Bắc đang phải làm để chống lại cơn bão này. Tiếp sức điều đó, Châu Giang cũng không ngừng chung tay, đóng góp phần nhỏ cho nhân dân nơi đây. Sự hỗ trợ này hy vọng sẽ mang đến niềm hạnh phúc cho bà con cũng như cho chính gia đình Châu Giang ❤️",
+        "title2_content2": "",
+        "image2": "/images/news/news12.jpg",
+        "image3": "/images/news/news13.jpg",
+        "image4": "/images/news/news14.jpg",
+        "image5": "/images/news/news15.jpg"
+    },
+    {
+        "id": "4",
+        "title": "The leaves protect tattered ones",
+        "dateCreate": "Sep 26, 2024",
+        "image1": "/images/news/news16.jpg",
+        "title2": "The leaves protect tattered ones ",
+        "title2_content1": "Không ngừng chiến đấu là những gì mà bà con miền Bắc đang phải làm để chống lại cơn bão này. Tiếp sức điều đó, Châu Giang cũng không ngừng chung tay, đóng góp phần nhỏ cho nhân dân nơi đây. Sự hỗ trợ này hy vọng sẽ mang đến niềm hạnh phúc cho bà con cũng như cho chính gia đình Châu Giang ❤️",
+        "title2_content2": "",
+        "image2": "/images/news/news17.jpg",
+        "image3": "/images/news/news18.jpg",
+        "image4": "/images/news/news19.jpg",
+        "image5": "/images/news/news20.jpg"
     }
 ]
