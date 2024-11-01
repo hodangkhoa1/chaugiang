@@ -2,7 +2,7 @@
 
 .appHeader {
     position: sticky;
-    z-index: 9; //fixed_level 1
+    z-index: 9;
     top: 0;
     height: 80px;
     padding: 0 24px;
@@ -10,220 +10,221 @@
     align-items: center;
     justify-content: space-between;
     background: var(--secondary);
+
     .headerCenter {
-      display: none;
-      align-items: center;
-  
-      cursor: pointer;
-      .navbarNav {
-        display: flex;
+        display: none;
         align-items: center;
-        justify-content: center;
-        gap: 25px;
-        margin-bottom: unset;
-    
-        .navItem {
-            font-weight: bold;
-            list-style-type: none;
-    
-            .navLink {
-                color: #00894f;
-                transition: all 0.5s;
-                font-size: 17px;
-                text-transform: uppercase;
-                
-            }
-    
-            .dropdownContent {
-                display: none;
-                position: absolute;
-                min-width: 180px;
-                -webkit-box-shadow: 4px 4px 10px -1px #00894f;
-                -moz-box-shadow: 4px 4px 10px -1px #00894f;
-                box-shadow: 4px 4px 10px -1px #00894f;
-                z-index: 1;
-                border-radius: 5px;
-                animation: MoveDownSubMenu 0.4s linear 1;
-                animation-fill-mode: forwards;
-                visibility: hidden;
-                background: #fff;
+
+        cursor: pointer;
+
+        .navbarNav {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 25px;
+            margin-bottom: unset;
+
+            .navItem {
+                font-weight: bold;
                 list-style-type: none;
-    
-                .dropdownContentItem {
-                    color: black;
-                    padding: 0 16px;
-                    text-decoration: none;
-                    display: block;
-                    transition: all .2s;
+
+                .navLink {
+                    color: #00894f;
+                    transition: all 0.5s;
+                    font-size: 17px;
                     text-transform: uppercase;
-    
-                    .subMenu {
-                        display: none;
-                        position: absolute;
-                        -webkit-box-shadow: 4px 4px 10px -1px #00894f;
-                        -moz-box-shadow: 4px 4px 10px -1px #00894f;
-                        box-shadow: 4px 4px 10px -1px #00894f;
-                        z-index: 1;
-                        border-radius: 5px;
-                        animation: MoveLeftToRightSubMenu 0.4s linear 1;
-                        animation-fill-mode: forwards;
-                        visibility: hidden;
-                        background: #fff;
-                        list-style-type: none;
-                        top: 0;
-    
-                        .subMenuItem {
-                            color: black;
-                            padding: 0 16px;
-                            text-decoration: none;
-                            display: block;
-                            transition: all .2s;
-                            text-transform: uppercase;
-    
-                            .linkSubMenu {
-                                color: #00894f;
-                                transition: all .5s;
-                                font-size: 16px;
-                                
-                            }
-    
-                            &:hover {
-                                border-left: 4px solid #00894f;
-    
+
+                }
+
+                .dropdownContent {
+                    display: none;
+                    position: absolute;
+                    min-width: 180px;
+                    -webkit-box-shadow: 4px 4px 10px -1px #00894f;
+                    -moz-box-shadow: 4px 4px 10px -1px #00894f;
+                    box-shadow: 4px 4px 10px -1px #00894f;
+                    z-index: 1;
+                    border-radius: 5px;
+                    animation: MoveDownSubMenu 0.4s linear 1;
+                    animation-fill-mode: forwards;
+                    visibility: hidden;
+                    background: #fff;
+                    list-style-type: none;
+
+                    .dropdownContentItem {
+                        color: black;
+                        padding: 0 16px;
+                        text-decoration: none;
+                        display: block;
+                        transition: all .2s;
+                        text-transform: uppercase;
+
+                        .subMenu {
+                            display: none;
+                            position: absolute;
+                            -webkit-box-shadow: 4px 4px 10px -1px #00894f;
+                            -moz-box-shadow: 4px 4px 10px -1px #00894f;
+                            box-shadow: 4px 4px 10px -1px #00894f;
+                            z-index: 1;
+                            border-radius: 5px;
+                            animation: MoveLeftToRightSubMenu 0.4s linear 1;
+                            animation-fill-mode: forwards;
+                            visibility: hidden;
+                            background: #fff;
+                            list-style-type: none;
+                            top: 0;
+                            left: 17.2rem;
+
+                            .subMenuItem {
+                                color: black;
+                                padding: 0 16px;
+                                text-decoration: none;
+                                display: block;
+                                transition: all .2s;
+                                text-transform: uppercase;
+
                                 .linkSubMenu {
-                                    color: #8dc63f;
+                                    color: #00894f;
+                                    transition: all .5s;
+                                    font-size: 16px;
+
+                                }
+
+                                &:hover {
+                                    border-left: 4px solid #00894f;
+
+                                    .linkSubMenu {
+                                        color: #8dc63f;
+                                    }
+                                }
+                            }
+
+                            &::after {
+                                content: '';
+                                width: 25px;
+                                height: 65px;
+                                background: transparent;
+                                position: absolute;
+                                left: -15px;
+                            }
+                        }
+
+                        &:nth-child(1) {
+                            .subMenu {
+                                min-width: 250px;
+
+                                &::after {
+                                    top: 0;
                                 }
                             }
                         }
-    
-                        &::after {
-                            content: '';
-                            width: 25px;
-                            height: 65px;
-                            background: transparent;
-                            position: absolute;
-                            left: -15px;
-                        }
-                    }
-    
-                    &:nth-child(1) {
-                        .subMenu {
-                            min-width: 250px;
-                            left: 16rem;
-    
-                            &::after {
-                                top: 0;
+
+                        &:nth-child(2) {
+                            .subMenu {
+                                min-width: 300px;
+
+                                &::after {
+                                    top: 65px;
+                                }
                             }
                         }
-                    }
-    
-                    &:nth-child(2) {
-                        .subMenu {
-                            min-width: 300px;
-                            left: 16rem;
-    
-                            &::after {
-                                top: 65px;
+
+                        &:nth-child(3) {
+                            .subMenu {
+                                min-width: 250px;
+
+                                &::after {
+                                    top: 130px;
+                                }
                             }
                         }
-                    }
-    
-                    &:nth-child(3) {
-                        .subMenu {
-                            min-width: 250px;
-                            left: 16.4rem;
-    
-                            &::after {
-                                top: 130px;
-                            }
-                        }
-                    }
-    
-                    .linkDropdown {
-                        color: #00894f;
-                        transition: all .5s;
-                        font-size: 16px;
-                        
-                    }
-    
-                    &:hover {
-                        border-left: 4px solid #00894f;
-    
+
                         .linkDropdown {
-                            color: #8dc63f;
+                            color: #00894f;
+                            transition: all .5s;
+                            font-size: 16px;
+
                         }
-    
-                        .subMenu {
-                            display: block;
+
+                        &:hover {
+                            border-left: 4px solid #00894f;
+
+                            .linkDropdown {
+                                color: #8dc63f;
+                            }
+
+                            .subMenu {
+                                display: block;
+                            }
                         }
                     }
                 }
-            }
-    
-            &.active {
-                .navLink {
-                    color: #8dc63f;
+
+                &.active {
+                    .navLink {
+                        color: #8dc63f;
+                    }
+
+                    &::after {
+                        content: " ";
+                        width: 100%;
+                        height: 3px;
+                        background: linear-gradient(to right, #8dc63f, #00894f);
+                        display: block;
+                    }
                 }
-    
-                &::after {
-                    content: " ";
-                    width: 100%;
-                    height: 3px;
-                    background: linear-gradient(to right, #8dc63f, #00894f);
-                    display: block;
-                }
-            }
-    
-            &::after {
-                content: "";
-                width: 0;
-                height: 3px;
-                background: linear-gradient(to right, #8dc63f, #00894f);
-                display: block;
-                transition: all 0.5s;
-                transform: translateY(-12px);
-            }
-    
-            &:hover {
+
                 &::after {
                     content: "";
-                    width: 100%;
+                    width: 0;
                     height: 3px;
                     background: linear-gradient(to right, #8dc63f, #00894f);
                     display: block;
+                    transition: all 0.5s;
+                    transform: translateY(-12px);
                 }
-    
-                .dropdownContent {
-                    display: block;
-                    top: 70px;
+
+                &:hover {
+                    &::after {
+                        content: "";
+                        width: 100%;
+                        height: 3px;
+                        background: linear-gradient(to right, #8dc63f, #00894f);
+                        display: block;
+                    }
+
+                    .dropdownContent {
+                        display: block;
+                        top: 70px;
+                    }
                 }
-            }
-    
-            &:hover {
-                .navLink {
-                    color: #8dc63f;
+
+                &:hover {
+                    .navLink {
+                        color: #8dc63f;
+                    }
                 }
             }
         }
-    }
     }
 
     .dropdownLanguage {
         width: 120px;
         color: #00894f;
     }
-    
+
     .menuButton {
-      display: block;
-      margin-left: auto;
-      margin-right: 0;
-      cursor: pointer;
-      color: var(--on_secondary);
-      &:hover {
+        display: block;
+        margin-left: auto;
+        margin-right: 0;
+        cursor: pointer;
+        color: var(--on_secondary);
+
+        &:hover {
             color: #8dc63f;
+        }
     }
-    }
-  }
+}
 
 @keyframes MoveDownSubMenu {
     0% {
@@ -299,7 +300,7 @@
 }
 
 
-.dflex{
+.dflex {
     display: flex;
     align-items: center;
 }
@@ -308,35 +309,37 @@
     padding: unset;
     width: 100%;
 
-    p{
+    p {
         margin-bottom: unset !important;
         color: #8dc63f;
         font-size: 18px;
         font-weight: 500;
     }
-    .info{
+
+    .info {
         margin: 50px 60px 30px 60px;
 
-        .listFooter{
+        .listFooter {
             padding-left: 28px !important;
             padding-right: 12px !important;
             margin-bottom: 20px;
             overflow: hidden;
 
-            .footerLogo{
+            .footerLogo {
                 width: 300px;
                 margin-bottom: 30px;
-                img{
+
+                img {
                     width: 100%;
                 }
             }
 
-            .footerTitle{
+            .footerTitle {
                 margin: 10px 0;
                 gap: 35px;
 
-                .upper{
-                    height: 75px; 
+                .upper {
+                    height: 75px;
                     width: 75px;
                     background-color: #8dc63f;
                     border-radius: 50%;
@@ -344,7 +347,7 @@
                     justify-content: center;
                     align-items: center;
 
-                    p{
+                    p {
                         text-transform: uppercase;
                         color: #fff;
                         font-weight: bold;
@@ -352,7 +355,7 @@
                     }
                 }
 
-                h1{
+                h1 {
                     text-transform: uppercase;
                     font-weight: bold;
                     font-size: 22px;
@@ -360,27 +363,27 @@
                 }
             }
 
-            .footerTitleUpper{
+            .footerTitleUpper {
                 justify-content: start;
             }
 
-            .footerBottom{
+            .footerBottom {
                 flex-direction: column;
                 gap: 15px;
                 margin-top: 15px;
 
-                .footerItem{
+                .footerItem {
                     width: 100%;
                     align-items: start;
                     gap: 10px;
                     margin-bottom: 10px;
 
-                    .iconFooterOut{
+                    .iconFooterOut {
                         color: #00894f;
                         font-size: 24px;
                     }
 
-                    .content{
+                    .content {
                         a {
                             justify-content: start;
                         }
@@ -390,19 +393,19 @@
                         gap: 5px;
                         justify-content: start;
 
-                        .imgMedia{
+                        .imgMedia {
                             width: 55px;
                             height: 55px;
                             border-radius: 50%;
                             overflow: hidden;
-                            
-                            img{
+
+                            img {
                                 width: 100%;
                                 height: 100%;
                             }
                         }
 
-                        .imgMediaLast{
+                        .imgMediaLast {
                             border-radius: unset !important;
                             width: 170px !important;
                             height: 78px !important;
@@ -411,7 +414,7 @@
                 }
             }
 
-            .rectangle{
+            .rectangle {
                 width: 100%;
                 height: 130px;
                 background-color: #8dc63f;
@@ -420,15 +423,17 @@
         }
 
     }
-    .copyRight{
+
+    .copyRight {
         display: flex;
-        align-items:center;
+        align-items: center;
         justify-content: center;
         text-align: center;
         height: 50px;
         background-color: #00894f;
         width: 100%;
-        .content{
+
+        .content {
             color: #fff;
             font-size: 16px;
         }
@@ -437,15 +442,42 @@
 
 @include desktop-device {
     .appHeader {
-      .menu {
-        display: flex;
-      }
-      .headerCenter {
-        display: flex;
-      }
+        .menu {
+            display: flex;
+        }
 
-      .menuButton {
-        display: none;
-      }
+        .headerCenter {
+            display: flex;
+        }
+
+        .menuButton {
+            display: none;
+        }
     }
-  }
+}
+
+.scrollToTopBtn {
+    position: fixed;
+    width: 40px;
+    height: 40px;
+    bottom: 20px;
+    right: 20px;
+    background-color: #00894f;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .scrollToTopBtnIcon {
+        font-size: 20px;
+        color: #fff;
+    }
+
+    &:hover {
+        background-color: #00894f;
+    }
+}

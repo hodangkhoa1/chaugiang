@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import Style from './news.module.scss';
 import { Breadcrumb, Col, Row, Image, Carousel, Form, Input } from 'antd';
 import {
@@ -9,59 +9,27 @@ import {
   RightOutlined,
   ArrowRightOutlined,
 } from '@ant-design/icons';
-import news from '../../data/news.json';
+import newsJson from '../../data/news.json';
 import { useRouter } from 'next/router';
-import { LastestPostsData, NewsProductData } from './interface';
+import { ICreateCustomerCare, IFormValues } from './interface';
 import Link from 'next/link';
 import { ROUTERS } from '@/constant/router';
 import { Reveal } from '../commons/reveal';
 import useI18n from '@/i18n/useI18N';
-import Swal from 'sweetalert2';
 import 'sweetalert2/src/sweetalert2.scss';
 const { TextArea } = Input;
+import { UserOutlined, PhoneOutlined, MailOutlined } from '@ant-design/icons';
+import { useMutation, useQuery } from 'react-query';
+import { createCustomerCare, getListNews, getListProduct } from './fetcher';
+import { errorToast, successToast } from '@/hook/toast';
+import { API_MESSAGE } from '@/constant/message';
+import { API_NEWS, API_PRODUCT } from '@/fetcherAxios/endpoint';
 
-const onFinish = async (values: any) => {
-  try {
-    await fetch('/api/sendEmail', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(values),
-    });
-    Swal.fire({
-      position: 'center',
-      icon: 'success',
-      title: 'Email sent successfully!',
-      showConfirmButton: false,
-      timer: 1500,
-    });
-  } catch (error) {
-    Swal.fire({
-      position: 'center',
-      icon: 'error',
-      title: 'Error sending email!',
-      showConfirmButton: false,
-      timer: 1500,
-    });
-  }
-};
-
-const onFinishFailed = (errorInfo: any) => {
-  Swal.fire({
-    position: 'center',
-    icon: 'error',
-    title: `Failed: ${errorInfo}`,
-    showConfirmButton: false,
-    timer: 1500,
-  });
-};
-
-type FieldType = {
-  firstAndLastName?: string;
-  phoneNumber?: string;
-  email?: string;
-  informationNeededSupport?: string;
+const initialValue = {
+  fullName: '',
+  phoneNumber: '',
+  email: '',
+  customerCareContent: '',
 };
 
 export default function NewsPage() {
@@ -70,13 +38,24 @@ export default function NewsPage() {
   const router = useRouter();
   const { id } = router.query;
   const newsData = getItemById(id as string);
-  const [lastestPostsData, setLastestPostsData] =
-    useState<LastestPostsData[]>();
-  const [newsProductData, setNewsProductData] = useState<NewsProductData[]>();
+  const [form] = Form.useForm();
+  const product = useQuery({
+    queryKey: [API_PRODUCT.GET_ALL_PRODUCT],
+    queryFn: () => getListProduct(),
+  });
+  const news = useQuery({
+    queryKey: [API_NEWS.GET_ALL_NEWS],
+    queryFn: () => getListNews(),
+  });
 
   function getItemById(id: string) {
-    return news.find((item: { id: string }) => item.id === id);
+    return newsJson.find((item: { id: string }) => item.id === id);
   }
+
+  useEffect(() => {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }, []);
 
   const carouselResponsiveSettings = [
     {
@@ -181,25 +160,30 @@ export default function NewsPage() {
     prevArrow: <SamplePrevArrow />,
   };
 
-  useEffect(() => {
-    import('../../data/newsHome.json')
-      .then((response) => {
-        const data: LastestPostsData[] = response.default;
-        setLastestPostsData(data);
-      })
-      .catch((error) => {
-        console.error('Error fetching data:', error);
-      });
+  const createMutation = useMutation({
+    mutationFn: (body: ICreateCustomerCare) => {
+      return createCustomerCare(body);
+    },
+  });
 
-    import('../../data/productInPrivateLabelService.json')
-      .then((response) => {
-        const data: NewsProductData[] = response.default;
-        setNewsProductData(data);
-      })
-      .catch((error) => {
-        console.error('Error fetching data:', error);
-      });
-  }, []);
+  const onFinish = (formValues: IFormValues) => {
+    const _requestData: ICreateCustomerCare = {
+      fullName: formValues.fullName || '',
+      phoneNumber: formValues.phoneNumber || '',
+      email: formValues.email || '',
+      customerCareContent: formValues.customerCareContent || '',
+    };
+    createMutation.mutate(_requestData, {
+      onSuccess: (data) => {
+        data.status
+          ? (successToast(data.message), form.resetFields())
+          : errorToast(data.message);
+      },
+      onError() {
+        errorToast(API_MESSAGE.ERROR);
+      },
+    });
+  };
 
   return (
     <div>
@@ -313,68 +297,29 @@ export default function NewsPage() {
                 </div>
                 <div className={Style.recruimentBodyLastestPost}>
                   <h1>{translateNews('lastestPosts')}</h1>
-                  {lastestPostsData?.map((lastestPosts, index) => (
+                  {news.data?.data.map((newsData, index) => (
                     <Link
-                      href={ROUTERS.NEWS(lastestPosts.detailID)}
-                      key={index}
+                      href={ROUTERS.NEWS(newsData.newsID)}
                       className={Style.lastestPostContent}
+                      key={index}
                     >
-                      <p>{lastestPosts.title}</p>
+                      <p>{newsData.newsTitle}</p>
                       <div className={Style.lastestPostContent}></div>
                     </Link>
-                  ))}
+                  )) || []}
                 </div>
                 <div className={Style.recruimentBodyLastestPost}>
                   <h1>{translateNews('productCagories')}</h1>
-                  <Link
-                    href={ROUTERS.PRODUCTS_DETAIL('1')}
-                    className={Style.lastestPostContent}
-                  >
-                    <p>Coconut water</p>
-                    <div className={Style.lastestPostContent}></div>
-                  </Link>
-                  <Link
-                    href={ROUTERS.PRODUCTS_DETAIL('10')}
-                    className={Style.lastestPostContent}
-                  >
-                    <p>Fruit Juice Drink</p>
-                    <div className={Style.lastestPostContent}></div>
-                  </Link>
-                  <Link
-                    href={ROUTERS.PRODUCTS_DETAIL('25')}
-                    className={Style.lastestPostContent}
-                  >
-                    <p>Milk Drink</p>
-                    <div className={Style.lastestPostContent}></div>
-                  </Link>
-                  <Link
-                    href={ROUTERS.PRODUCTS_DETAIL('18')}
-                    className={Style.lastestPostContent}
-                  >
-                    <p>Sparkling Juice Drink</p>
-                    <div className={Style.lastestPostContent}></div>
-                  </Link>
-                  <Link
-                    href={ROUTERS.PRODUCTS_DETAIL('17')}
-                    className={Style.lastestPostContent}
-                  >
-                    <p>Coffee</p>
-                    <div className={Style.lastestPostContent}></div>
-                  </Link>
-                  <Link
-                    href={ROUTERS.PRODUCTS_DETAIL('8')}
-                    className={Style.lastestPostContent}
-                  >
-                    <p>Energy Drink</p>
-                    <div className={Style.lastestPostContent}></div>
-                  </Link>
-                  <Link
-                    href={ROUTERS.PRODUCTS_DETAIL('4')}
-                    className={Style.lastestPostContent}
-                  >
-                    <p>Aloe Vera Drink</p>
-                    <div className={Style.lastestPostContent}></div>
-                  </Link>
+                  {product.data?.data.map((productData, index) => (
+                    <Link
+                      href={ROUTERS.PRODUCTS_DETAIL(productData.productID)}
+                      className={Style.lastestPostContent}
+                      key={index}
+                    >
+                      <p>{productData.productName}</p>
+                      <div className={Style.lastestPostContent}></div>
+                    </Link>
+                  )) || []}
                 </div>
                 <div className={Style.recruimentBodyLastestPost}>
                   <h1>{translateNews('categories')}</h1>
@@ -438,26 +383,27 @@ export default function NewsPage() {
       <Reveal>
         <div className={Style.carouselProductBackground}>
           <Carousel
+            arrows
+            {...settings}
             slidesToShow={4}
             className={Style.productCarousel}
             autoplay
             responsive={carouselResponsiveSettings}
-            arrows
-            {...settings}
+            infinite={false}
           >
-            {newsProductData?.map((bestSelling, index) => (
+            {product.data?.data.map((productData, index) => (
               <Link
-                href={ROUTERS.PRODUCTS_DETAIL(bestSelling.productDetail)}
+                href={ROUTERS.PRODUCTS_DETAIL(productData.productID)}
                 className={Style.productCard}
                 key={index}
               >
                 <div className={Style.productCardImage}>
-                  <img src={bestSelling.image} alt="" />
+                  <img src={productData.imageProduct} alt="" />
                 </div>
-                <h1>{bestSelling.name}</h1>
-                <h4>{bestSelling.volume}</h4>
+                <h1>{productData.productName}</h1>
+                <h4>{productData.weightProduct}</h4>
               </Link>
-            ))}
+            )) || []}
           </Carousel>
         </div>
       </Reveal>
@@ -486,38 +432,46 @@ export default function NewsPage() {
             >
               <Form
                 name="basic"
-                labelCol={{ span: 8 }}
-                wrapperCol={{ span: 16 }}
-                initialValues={{ remember: true }}
+                form={form}
+                initialValues={initialValue}
                 onFinish={onFinish}
-                onFinishFailed={onFinishFailed}
                 autoComplete="off"
               >
-                <Form.Item<FieldType>
-                  name="firstAndLastName"
+                <Form.Item
+                  name="fullName"
                   rules={[
                     {
                       required: true,
-                      message: 'Please input first and last name!',
+                      message: 'Vui lòng nhập họ và tên!',
                     },
                   ]}
                 >
-                  <Input placeholder={translateNews('firstAndLastName')} />
+                  <Input
+                    placeholder={translateNews('firstAndLastName')}
+                    prefix={<UserOutlined />}
+                  />
                 </Form.Item>
 
-                <Form.Item<FieldType>
+                <Form.Item
                   name="phoneNumber"
                   rules={[
                     {
                       required: true,
-                      message: 'Please input phone number!',
+                      message: 'Vui lòng nhập số điện thoại để được hỗ trợ!',
+                    },
+                    {
+                      pattern: new RegExp(/(84|0[3|5|7|8|9])+([0-9]{8})\b/g),
+                      message: 'Số điện thoại không đúng định dạng',
                     },
                   ]}
                 >
-                  <Input placeholder={translateNews('phoneNumber')} />
+                  <Input
+                    placeholder={translateNews('phoneNumber')}
+                    prefix={<PhoneOutlined />}
+                  />
                 </Form.Item>
 
-                <Form.Item<FieldType>
+                <Form.Item
                   name="email"
                   rules={[
                     {
@@ -526,15 +480,18 @@ export default function NewsPage() {
                     },
                   ]}
                 >
-                  <Input placeholder={translateNews('email')} />
+                  <Input
+                    placeholder={translateNews('email')}
+                    prefix={<MailOutlined />}
+                  />
                 </Form.Item>
 
-                <Form.Item<FieldType>
-                  name="informationNeededSupport"
+                <Form.Item
+                  name="customerCareContent"
                   rules={[
                     {
                       required: true,
-                      message: 'Please input information needed support!',
+                      message: 'Vui lòng nhập nội dung cần hỗ trợ!',
                     },
                   ]}
                 >
@@ -547,7 +504,7 @@ export default function NewsPage() {
 
                 <Form.Item className={Style.dflex}>
                   <div className={Style.btn_see_more}>
-                    <button className={`${Style.dflex}`}>
+                    <button type="submit" className={`${Style.dflex}`}>
                       <p>{translateNews('sendInformation')}</p>
                       <ArrowRightOutlined className={Style.iconBtn} />
                     </button>

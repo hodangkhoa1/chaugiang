@@ -1,5 +1,5 @@
 import useI18n from '@/i18n/useI18N';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import Style from './beverage-packaging-design.module.scss';
 import { Breadcrumb, Col, Row, Image, Carousel, Input, Form } from 'antd';
 import {
@@ -7,56 +7,24 @@ import {
   RightOutlined,
   LeftOutlined,
 } from '@ant-design/icons';
-import { ProductData } from './interface';
+import { ICreateCustomerCare, IFormValues } from './interface';
 import Link from 'next/link';
 import { ROUTERS } from '@/constant/router';
 import { Reveal } from '../commons/reveal';
-import Swal from 'sweetalert2';
 import 'sweetalert2/src/sweetalert2.scss';
 const { TextArea } = Input;
+import { UserOutlined, PhoneOutlined, MailOutlined } from '@ant-design/icons';
+import { useMutation, useQuery } from 'react-query';
+import { createCustomerCare, getListProduct } from './fetcher';
+import { errorToast, successToast } from '@/hook/toast';
+import { API_MESSAGE } from '@/constant/message';
+import { API_PRODUCT } from '@/fetcherAxios/endpoint';
 
-const onFinish = async (values: any) => {
-  try {
-    await fetch('/api/sendEmail', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(values),
-    });
-    Swal.fire({
-      position: 'center',
-      icon: 'success',
-      title: 'Email sent successfully!',
-      showConfirmButton: false,
-      timer: 1500,
-    });
-  } catch (error) {
-    Swal.fire({
-      position: 'center',
-      icon: 'error',
-      title: 'Error sending email!',
-      showConfirmButton: false,
-      timer: 1500,
-    });
-  }
-};
-
-const onFinishFailed = (errorInfo: any) => {
-  Swal.fire({
-    position: 'center',
-    icon: 'error',
-    title: `Failed: ${errorInfo}`,
-    showConfirmButton: false,
-    timer: 1500,
-  });
-};
-
-type FieldType = {
-  firstAndLastName?: string;
-  phoneNumber?: string;
-  email?: string;
-  informationNeededSupport?: string;
+const initialValue = {
+  fullName: '',
+  phoneNumber: '',
+  email: '',
+  customerCareContent: '',
 };
 
 export default function BeveragePackagingDesignPage() {
@@ -64,6 +32,12 @@ export default function BeveragePackagingDesignPage() {
   const { translate: translateBeveragePackagingDesign } = useI18n(
     'beveragePackagingDesign'
   );
+  const [form] = Form.useForm();
+
+  useEffect(() => {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }, []);
 
   const carouselResponsiveSettings = [
     {
@@ -168,18 +142,35 @@ export default function BeveragePackagingDesignPage() {
     prevArrow: <SamplePrevArrow />,
   };
 
-  const [productData, setProductData] = useState<ProductData[]>();
+  const product = useQuery({
+    queryKey: [API_PRODUCT.GET_ALL_PRODUCT],
+    queryFn: () => getListProduct(),
+  });
 
-  useEffect(() => {
-    import('../../data/productInOtherPage.json')
-      .then((response) => {
-        const data: ProductData[] = response.default;
-        setProductData(data);
-      })
-      .catch((error) => {
-        console.error('Error fetching data:', error);
-      });
-  }, []);
+  const createMutation = useMutation({
+    mutationFn: (body: ICreateCustomerCare) => {
+      return createCustomerCare(body);
+    },
+  });
+
+  const onFinish = (formValues: IFormValues) => {
+    const _requestData: ICreateCustomerCare = {
+      fullName: formValues.fullName || '',
+      phoneNumber: formValues.phoneNumber || '',
+      email: formValues.email || '',
+      customerCareContent: formValues.customerCareContent || '',
+    };
+    createMutation.mutate(_requestData, {
+      onSuccess: (data) => {
+        data.status
+          ? (successToast(data.message), form.resetFields())
+          : errorToast(data.message);
+      },
+      onError() {
+        errorToast(API_MESSAGE.ERROR);
+      },
+    });
+  };
 
   return (
     <div>
@@ -337,26 +328,27 @@ export default function BeveragePackagingDesignPage() {
       <Reveal>
         <div className={Style.carouselProductBackground}>
           <Carousel
+            arrows
+            {...settings}
             slidesToShow={4}
             className={Style.productCarousel}
             autoplay
             responsive={carouselResponsiveSettings}
-            arrows
-            {...settings}
+            infinite={false}
           >
-            {productData?.map((product, index) => (
+            {product.data?.data.map((productData, index) => (
               <Link
-                href={ROUTERS.PRODUCTS_DETAIL(product.productDetail)}
+                href={ROUTERS.PRODUCTS_DETAIL(productData.productID)}
                 className={Style.productCard}
                 key={index}
               >
                 <div className={Style.productCardImage}>
-                  <img src={product.image} alt="" />
+                  <img src={productData.imageProduct} alt="" />
                 </div>
-                <h1>{product.name}</h1>
-                <h4>{product.volume}</h4>
+                <h1>{productData.productName}</h1>
+                <h4>{productData.weightProduct}</h4>
               </Link>
-            ))}
+            )) || []}
           </Carousel>
         </div>
       </Reveal>
@@ -468,19 +460,17 @@ export default function BeveragePackagingDesignPage() {
             >
               <Form
                 name="basic"
-                labelCol={{ span: 8 }}
-                wrapperCol={{ span: 16 }}
-                initialValues={{ remember: true }}
+                form={form}
+                initialValues={initialValue}
                 onFinish={onFinish}
-                onFinishFailed={onFinishFailed}
                 autoComplete="off"
               >
-                <Form.Item<FieldType>
-                  name="firstAndLastName"
+                <Form.Item
+                  name="fullName"
                   rules={[
                     {
                       required: true,
-                      message: 'Please input first and last name!',
+                      message: 'Vui lòng nhập họ và tên!',
                     },
                   ]}
                 >
@@ -488,15 +478,20 @@ export default function BeveragePackagingDesignPage() {
                     placeholder={translateBeveragePackagingDesign(
                       'firstAndLastName'
                     )}
+                    prefix={<UserOutlined />}
                   />
                 </Form.Item>
 
-                <Form.Item<FieldType>
+                <Form.Item
                   name="phoneNumber"
                   rules={[
                     {
                       required: true,
-                      message: 'Please input phone number!',
+                      message: 'Vui lòng nhập số điện thoại để được hỗ trợ!',
+                    },
+                    {
+                      pattern: new RegExp(/(84|0[3|5|7|8|9])+([0-9]{8})\b/g),
+                      message: 'Số điện thoại không đúng định dạng',
                     },
                   ]}
                 >
@@ -504,10 +499,11 @@ export default function BeveragePackagingDesignPage() {
                     placeholder={translateBeveragePackagingDesign(
                       'phoneNumber'
                     )}
+                    prefix={<PhoneOutlined />}
                   />
                 </Form.Item>
 
-                <Form.Item<FieldType>
+                <Form.Item
                   name="email"
                   rules={[
                     {
@@ -518,15 +514,16 @@ export default function BeveragePackagingDesignPage() {
                 >
                   <Input
                     placeholder={translateBeveragePackagingDesign('email')}
+                    prefix={<MailOutlined />}
                   />
                 </Form.Item>
 
-                <Form.Item<FieldType>
-                  name="informationNeededSupport"
+                <Form.Item
+                  name="customerCareContent"
                   rules={[
                     {
                       required: true,
-                      message: 'Please input information needed support!',
+                      message: 'Vui lòng nhập nội dung cần hỗ trợ!',
                     },
                   ]}
                 >
@@ -541,7 +538,7 @@ export default function BeveragePackagingDesignPage() {
 
                 <Form.Item className={Style.dflex}>
                   <div className={Style.btn_see_more}>
-                    <button className={`${Style.dflex}`}>
+                    <button type="submit" className={`${Style.dflex}`}>
                       <p>
                         {translateBeveragePackagingDesign('sendInformation')}
                       </p>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Style from './who-we-are.module.scss';
 import { Breadcrumb, Carousel, Col, Form, Image, Input, Row } from 'antd';
 import {
@@ -8,57 +8,32 @@ import {
 } from '@ant-design/icons';
 import useI18n from '@/i18n/useI18N';
 import { Reveal } from '../commons/reveal';
-import Swal from 'sweetalert2';
 import 'sweetalert2/src/sweetalert2.scss';
+import { useMutation, useQuery } from 'react-query';
+import { ICreateCustomerCare, IFormValues } from './interface';
+import { createCustomerCare, getListCertification } from './fetcher';
+import { errorToast, successToast } from '@/hook/toast';
+import { API_MESSAGE } from '@/constant/message';
 const { TextArea } = Input;
 
-const onFinish = async (values: any) => {
-  try {
-    await fetch('/api/sendEmail', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(values),
-    });
-    Swal.fire({
-      position: 'center',
-      icon: 'success',
-      title: 'Email sent successfully!',
-      showConfirmButton: false,
-      timer: 1500,
-    });
-  } catch (error) {
-    Swal.fire({
-      position: 'center',
-      icon: 'error',
-      title: 'Error sending email!',
-      showConfirmButton: false,
-      timer: 1500,
-    });
-  }
+const initialValue = {
+  fullName: '',
+  phoneNumber: '',
+  email: '',
+  customerCareContent: '',
 };
-
-const onFinishFailed = (errorInfo: any) => {
-  Swal.fire({
-    position: 'center',
-    icon: 'error',
-    title: `Failed: ${errorInfo}`,
-    showConfirmButton: false,
-    timer: 1500,
-  });
-};
-
-type FieldType = {
-  firstAndLastName?: string;
-  phoneNumber?: string;
-  email?: string;
-  informationNeededSupport?: string;
-};
+import { UserOutlined, PhoneOutlined, MailOutlined } from '@ant-design/icons';
+import { API_CERTIFICATION } from '@/fetcherAxios/endpoint';
 
 export default function WhoWeArePage() {
   const { translate: translateWhoWeAre } = useI18n('whoWeAre');
   const { translate: translateCommon } = useI18n('common');
+  const [form] = Form.useForm();
+
+  useEffect(() => {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }, []);
 
   const SampleNextArrow = (props: any) => {
     const { className, style, onClick } = props;
@@ -162,6 +137,36 @@ export default function WhoWeArePage() {
       },
     },
   ];
+
+  const createMutation = useMutation({
+    mutationFn: (body: ICreateCustomerCare) => {
+      return createCustomerCare(body);
+    },
+  });
+
+  const onFinish = (formValues: IFormValues) => {
+    const _requestData: ICreateCustomerCare = {
+      fullName: formValues.fullName || '',
+      phoneNumber: formValues.phoneNumber || '',
+      email: formValues.email || '',
+      customerCareContent: formValues.customerCareContent || '',
+    };
+    createMutation.mutate(_requestData, {
+      onSuccess: (data) => {
+        data.status
+          ? (successToast(data.message), form.resetFields())
+          : errorToast(data.message);
+      },
+      onError() {
+        errorToast(API_MESSAGE.ERROR);
+      },
+    });
+  };
+
+  const certification = useQuery({
+    queryKey: [API_CERTIFICATION.GET_ALL_CERTIFICATION],
+    queryFn: () => getListCertification(),
+  });
 
   return (
     <div>
@@ -302,86 +307,20 @@ export default function WhoWeArePage() {
             {...settings}
             responsive={carouselResponsiveSettings}
           >
-            <div className={Style.certificationCard}>
-              <div className={Style.certificationCardImage}>
-                <Image
-                  src="/images/certifications/HALAL.png"
-                  alt="logo"
-                  className={Style.certificationImg}
-                />
+            {certification.data?.data.map((certificationData, index) => (
+              <div key={index} className={Style.certificationCard}>
+                <div className={Style.certificationCardImage}>
+                  <Image
+                    src={certificationData.certificationImage}
+                    alt={`certification${index}`}
+                    width={300}
+                    height={430}
+                    className={Style.certificationCardImg}
+                  />
+                </div>
+                <h1>{certificationData.certificationName}</h1>
               </div>
-              <h1>HALAL</h1>
-            </div>
-            <div className={Style.certificationCard}>
-              <div className={Style.certificationCardImage}>
-                <Image
-                  src="/images/certifications/BSCI.png"
-                  alt="logo"
-                  className={Style.certificationImg}
-                />
-              </div>
-              <h1>BSCI</h1>
-            </div>
-            <div className={Style.certificationCard}>
-              <div className={Style.certificationCardImage}>
-                <Image
-                  src="/images/certifications/FDA.png"
-                  alt="logo"
-                  className={Style.certificationImg}
-                />
-              </div>
-              <h1>FDA</h1>
-            </div>
-            <div className={Style.certificationCard}>
-              <div className={Style.certificationCardImage}>
-                <Image
-                  src="/images/certifications/FSSC.png"
-                  alt="logo"
-                  className={Style.certificationImg}
-                />
-              </div>
-              <h1>FSSC22000</h1>
-            </div>
-            <div className={Style.certificationCard}>
-              <div className={Style.certificationCardImage}>
-                <Image
-                  src="/images/certifications/HALAL.png"
-                  alt="logo"
-                  className={Style.certificationImg}
-                />
-              </div>
-              <h1>HALAL</h1>
-            </div>
-            <div className={Style.certificationCard}>
-              <div className={Style.certificationCardImage}>
-                <Image
-                  src="/images/certifications/BSCI.png"
-                  alt="logo"
-                  className={Style.certificationImg}
-                />
-              </div>
-              <h1>BSCI</h1>
-            </div>
-            <div className={Style.certificationCard}>
-              <div className={Style.certificationCardImage}>
-                <Image
-                  src="/images/certifications/FDA.png"
-                  alt="logo"
-                  className={Style.certificationImg}
-                />
-              </div>
-              <h1>FDA</h1>
-            </div>
-            <div className={Style.certificationCard}>
-              <div className={Style.certificationCardImage}>
-                <Image
-                  src="/images/certifications/FSSC.png"
-                  alt="logo"
-                  className={Style.certificationImg}
-                />
-              </div>
-              <h1>FSSC22000</h1>
-            </div>
+            )) || []}
           </Carousel>
         </div>
       </Reveal>
@@ -543,38 +482,46 @@ export default function WhoWeArePage() {
             >
               <Form
                 name="basic"
-                labelCol={{ span: 8 }}
-                wrapperCol={{ span: 16 }}
-                initialValues={{ remember: true }}
+                form={form}
+                initialValues={initialValue}
                 onFinish={onFinish}
-                onFinishFailed={onFinishFailed}
                 autoComplete="off"
               >
-                <Form.Item<FieldType>
-                  name="firstAndLastName"
+                <Form.Item
+                  name="fullName"
                   rules={[
                     {
                       required: true,
-                      message: 'Please input first and last name!',
+                      message: 'Vui lòng nhập họ và tên!',
                     },
                   ]}
                 >
-                  <Input placeholder={translateWhoWeAre('firstAndLastName')} />
+                  <Input
+                    placeholder={translateWhoWeAre('firstAndLastName')}
+                    prefix={<UserOutlined />}
+                  />
                 </Form.Item>
 
-                <Form.Item<FieldType>
+                <Form.Item
                   name="phoneNumber"
                   rules={[
                     {
                       required: true,
-                      message: 'Please input phone number!',
+                      message: 'Vui lòng nhập số điện thoại để được hỗ trợ!',
+                    },
+                    {
+                      pattern: new RegExp(/(84|0[3|5|7|8|9])+([0-9]{8})\b/g),
+                      message: 'Số điện thoại không đúng định dạng',
                     },
                   ]}
                 >
-                  <Input placeholder={translateWhoWeAre('phoneNumber')} />
+                  <Input
+                    placeholder={translateWhoWeAre('phoneNumber')}
+                    prefix={<PhoneOutlined />}
+                  />
                 </Form.Item>
 
-                <Form.Item<FieldType>
+                <Form.Item
                   name="email"
                   rules={[
                     {
@@ -583,15 +530,18 @@ export default function WhoWeArePage() {
                     },
                   ]}
                 >
-                  <Input placeholder={translateWhoWeAre('email')} />
+                  <Input
+                    placeholder={translateWhoWeAre('email')}
+                    prefix={<MailOutlined />}
+                  />
                 </Form.Item>
 
-                <Form.Item<FieldType>
-                  name="informationNeededSupport"
+                <Form.Item
+                  name="customerCareContent"
                   rules={[
                     {
                       required: true,
-                      message: 'Please input information needed support!',
+                      message: 'Vui lòng nhập nội dung cần hỗ trợ!',
                     },
                   ]}
                 >
@@ -604,7 +554,7 @@ export default function WhoWeArePage() {
 
                 <Form.Item className={Style.dflex}>
                   <div className={Style.btn_see_more}>
-                    <button className={`${Style.dflex}`}>
+                    <button type="submit" className={`${Style.dflex}`}>
                       <p>{translateWhoWeAre('sendInformation')}</p>
                       <ArrowRightOutlined className={Style.iconBtn} />
                     </button>

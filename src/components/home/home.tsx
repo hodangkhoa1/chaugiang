@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import Style from './home.module.scss';
 import { Pagination, Autoplay } from 'swiper/modules';
@@ -12,59 +12,46 @@ import {
 import { Carousel, Col, Row, Image, Form, Input } from 'antd';
 import Link from 'next/link';
 import { ROUTERS } from '@/constant/router';
-import { HomeNewsData, HomeProductData } from './interface';
+import { ICreateCustomerCare, IFormValues } from './interface';
 import useI18n from '@/i18n/useI18N';
 import { Reveal } from '../commons/reveal';
-import Swal from 'sweetalert2';
 import 'sweetalert2/src/sweetalert2.scss';
+import {
+  API_BANNER,
+  API_CERTIFICATION,
+  API_NEWS,
+  API_PRODUCT,
+  API_TYPE_PRODUCT,
+} from '@/fetcherAxios/endpoint';
+import { useMutation, useQuery } from 'react-query';
+import {
+  createCustomerCare,
+  getListBanner,
+  getListCertification,
+  getListNews,
+  getListProduct,
+  getListProductWithType,
+} from './fetcher';
+import { UserOutlined, PhoneOutlined, MailOutlined } from '@ant-design/icons';
+import { errorToast, successToast } from '@/hook/toast';
+import { API_MESSAGE } from '@/constant/message';
 const { TextArea } = Input;
 
-const onFinish = async (values: any) => {
-  try {
-    await fetch('/api/sendEmail', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(values),
-    });
-    Swal.fire({
-      position: 'center',
-      icon: 'success',
-      title: 'Email sent successfully!',
-      showConfirmButton: false,
-      timer: 1500,
-    });
-  } catch (error) {
-    Swal.fire({
-      position: 'center',
-      icon: 'error',
-      title: 'Error sending email!',
-      showConfirmButton: false,
-      timer: 1500,
-    });
-  }
-};
-
-const onFinishFailed = (errorInfo: any) => {
-  Swal.fire({
-    position: 'center',
-    icon: 'error',
-    title: `Failed: ${errorInfo}`,
-    showConfirmButton: false,
-    timer: 1500,
-  });
-};
-
-type FieldType = {
-  firstAndLastName?: string;
-  phoneNumber?: string;
-  email?: string;
-  informationNeededSupport?: string;
+const initialValue = {
+  fullName: '',
+  phoneNumber: '',
+  email: '',
+  customerCareContent: '',
 };
 
 export default function HomePage() {
   const { translate: translateHome } = useI18n('home');
+  const [form] = Form.useForm();
+
+  useEffect(() => {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }, []);
 
   const carouselResponsiveSettings = [
     {
@@ -169,49 +156,51 @@ export default function HomePage() {
     prevArrow: <SamplePrevArrow />,
   };
 
-  const [bestSellingData, setBestSellingData] = useState<HomeProductData[]>();
-  const [newProductData, setNewProductData] = useState<HomeProductData[]>();
-  const [featureProductData, setFeatureProductData] =
-    useState<HomeProductData[]>();
-  const [newsData, setNewsData] = useState<HomeNewsData[]>();
+  const banner = useQuery({
+    queryKey: [API_BANNER.GET_ALL_BANNER],
+    queryFn: () => getListBanner(),
+  });
+  const certification = useQuery({
+    queryKey: [API_CERTIFICATION.GET_ALL_CERTIFICATION],
+    queryFn: () => getListCertification(),
+  });
+  const product = useQuery({
+    queryKey: [API_PRODUCT.GET_ALL_PRODUCT],
+    queryFn: () => getListProduct(),
+  });
+  const typeProduct = useQuery({
+    queryKey: [API_TYPE_PRODUCT.GET_ALL_TYPE_PRODUCT_WITH_NO_AUTHEN],
+    queryFn: () => getListProductWithType(),
+  });
+  const news = useQuery({
+    queryKey: [API_NEWS.GET_ALL_NEWS],
+    queryFn: () => getListNews(),
+  });
 
-  useEffect(() => {
-    import('../../data/bestSelling.json')
-      .then((response) => {
-        const data: HomeProductData[] = response.default;
-        setBestSellingData(data);
-      })
-      .catch((error) => {
-        console.error('Error fetching data:', error);
-      });
+  const createMutation = useMutation({
+    mutationFn: (body: ICreateCustomerCare) => {
+      return createCustomerCare(body);
+    },
+  });
 
-    import('../../data/newProduct.json')
-      .then((response) => {
-        const data: HomeProductData[] = response.default;
-        setNewProductData(data);
-      })
-      .catch((error) => {
-        console.error('Error fetching data:', error);
-      });
-
-    import('../../data/featureProduct.json')
-      .then((response) => {
-        const data: HomeProductData[] = response.default;
-        setFeatureProductData(data);
-      })
-      .catch((error) => {
-        console.error('Error fetching data:', error);
-      });
-
-    import('../../data/newsHome.json')
-      .then((response) => {
-        const data: HomeNewsData[] = response.default;
-        setNewsData(data);
-      })
-      .catch((error) => {
-        console.error('Error fetching data:', error);
-      });
-  }, []);
+  const onFinish = (formValues: IFormValues) => {
+    const _requestData: ICreateCustomerCare = {
+      fullName: formValues.fullName || '',
+      phoneNumber: formValues.phoneNumber || '',
+      email: formValues.email || '',
+      customerCareContent: formValues.customerCareContent || '',
+    };
+    createMutation.mutate(_requestData, {
+      onSuccess: (data) => {
+        data.status
+          ? (successToast(data.message), form.resetFields())
+          : errorToast(data.message);
+      },
+      onError() {
+        errorToast(API_MESSAGE.ERROR);
+      },
+    });
+  };
 
   return (
     <div>
@@ -228,15 +217,13 @@ export default function HomePage() {
         }}
         style={{ animationDelay: `1s` }}
       >
-        <SwiperSlide className={Style.swiperSlide}>
-          <img src="./images/slider_header/slider_background_1.png" alt="" />
-        </SwiperSlide>
-        <SwiperSlide className={Style.swiperSlide}>
-          <img src="./images/slider_header/slider_background_2.png" alt="" />
-        </SwiperSlide>
-        <SwiperSlide className={Style.swiperSlide}>
-          <img src="./images/slider_header/slider_background_3.png" alt="" />
-        </SwiperSlide>
+        {banner.data?.data.map((bannerData, index) => (
+          <SwiperSlide key={index} className={Style.swiperSlide}>
+            <div className={Style.swiperSlideBox}>
+              <img src={bannerData.bannerImage} alt={`banner${index}`} />
+            </div>
+          </SwiperSlide>
+        )) || []}
       </Swiper>
 
       <Reveal>
@@ -258,109 +245,20 @@ export default function HomePage() {
             {...settings}
             responsive={carouselResponsiveSettings}
           >
-            <div className={Style.certificationCard}>
-              <div className={Style.certificationCardImage}>
-                <Image
-                  src="/images/certifications/BRC.png"
-                  alt="logo"
-                  width={300}
-                  height={430}
-                  className={Style.certificationCardImg}
-                />
+            {certification.data?.data.map((certificationData, index) => (
+              <div key={index} className={Style.certificationCard}>
+                <div className={Style.certificationCardImage}>
+                  <Image
+                    src={certificationData.certificationImage}
+                    alt={`certification${index}`}
+                    width={300}
+                    height={430}
+                    className={Style.certificationCardImg}
+                  />
+                </div>
+                <h1>{certificationData.certificationName}</h1>
               </div>
-              <h1>BRC</h1>
-            </div>
-
-            <div className={Style.certificationCard}>
-              <div className={Style.certificationCardImage}>
-                <Image
-                  src="/images/certifications/BSCI.png"
-                  alt="logo"
-                  width={300}
-                  height={430}
-                  className={Style.certificationCardImg}
-                />
-              </div>
-              <h1>BSCI</h1>
-            </div>
-
-            <div className={Style.certificationCard}>
-              <div className={Style.certificationCardImage}>
-                <Image
-                  src="/images/certifications/FDA.png"
-                  alt="logo"
-                  width={300}
-                  height={430}
-                  className={Style.certificationCardImg}
-                />
-              </div>
-              <h1>FDA</h1>
-            </div>
-
-            <div className={Style.certificationCard}>
-              <div className={Style.certificationCardImage}>
-                <Image
-                  src="/images/certifications/FSSC.png"
-                  alt="logo"
-                  width={300}
-                  height={430}
-                  className={Style.certificationCardImg}
-                />
-              </div>
-              <h1>FSSC22000</h1>
-            </div>
-
-            <div className={Style.certificationCard}>
-              <div className={Style.certificationCardImage}>
-                <Image
-                  src="/images/certifications/HACCP.png"
-                  alt="logo"
-                  width={300}
-                  height={430}
-                  className={Style.certificationCardImg}
-                />
-              </div>
-              <h1>HACCP</h1>
-            </div>
-
-            <div className={Style.certificationCard}>
-              <div className={Style.certificationCardImage}>
-                <Image
-                  src="/images/certifications/HALAL.png"
-                  alt="logo"
-                  width={300}
-                  height={430}
-                  className={Style.certificationCardImg}
-                />
-              </div>
-              <h1>HALAL</h1>
-            </div>
-
-            <div className={Style.certificationCard}>
-              <div className={Style.certificationCardImage}>
-                <Image
-                  src="/images/certifications/SMETA.jpg"
-                  alt="logo"
-                  width={300}
-                  height={430}
-                  className={Style.certificationCardImg}
-                />
-              </div>
-              <h1>SMETA</h1>
-            </div>
-
-            <div className={Style.certificationCard}>
-              <div className={Style.certificationCardImage}>
-                <Image
-                  src="/images/certifications/ISO 22000.jpg"
-                  alt="logo"
-                  width={300}
-                  height={430}
-                  className={Style.certificationCardImg}
-                />
-              </div>
-              <h1>ISO 22000</h1>
-            </div>
+            )) || []}
           </Carousel>
         </div>
       </Reveal>
@@ -456,433 +354,132 @@ export default function HomePage() {
             className={Style.productCarousel}
             autoplay
             responsive={carouselResponsiveSettings}
+            infinite={false}
           >
-            <Link
-              href={ROUTERS.PRODUCTS_DETAIL('1')}
-              className={Style.productCard}
-            >
-              <div className={Style.productCardImage}>
-                <img src="images/products/2.png" alt="" />
-              </div>
-              <h1>Pure Coconut Water</h1>
-              <h4>325ml</h4>
-            </Link>
-            <Link
-              href={ROUTERS.PRODUCTS_DETAIL('2')}
-              className={Style.productCard}
-            >
-              <div className={Style.productCardImage}>
-                <img src="images/products/3.png" alt="" />
-              </div>
-              <h1>Coconut Water 100% Pure</h1>
-              <h4>330ml</h4>
-            </Link>
-            <Link href="" className={Style.productCard}>
-              <div className={Style.productCardImage}>
-                <img src="images/products/31.png" alt="" />
-              </div>
-              <h1>Sparkling Watermelon</h1>
-              <h4>330ml</h4>
-            </Link>
-            <Link
-              href={ROUTERS.PRODUCTS_DETAIL('7')}
-              className={Style.productCard}
-            >
-              <div className={Style.productCardImage}>
-                <img src="images/products/9.png" alt="" />
-              </div>
-              <h1>Soya Milk</h1>
-              <h4>330ml</h4>
-            </Link>
-            <Link href="" className={Style.productCard}>
-              <div className={Style.productCardImage}>
-                <img src="images/products/32.png" alt="" />
-              </div>
-              <h1>Passion Fruit</h1>
-              <h4>330ml</h4>
-            </Link>
-            <Link
-              href={ROUTERS.PRODUCTS_DETAIL('22')}
-              className={Style.productCard}
-            >
-              <div className={Style.productCardImage}>
-                <img src="images/products/28.png" alt="" />
-              </div>
-              <h1>Energy Drink CG 109</h1>
-              <h4>250ml</h4>
-            </Link>
-            <Link
-              href={ROUTERS.PRODUCTS_DETAIL('18')}
-              className={Style.productCard}
-            >
-              <div className={Style.productCardImage}>
-                <img src="images/products/23.png" alt="" />
-              </div>
-              <h1>Coffee Latte</h1>
-              <h4>250ml</h4>
-            </Link>
-            <Link
-              href={ROUTERS.PRODUCTS_DETAIL('13')}
-              className={Style.productCard}
-            >
-              <div className={Style.productCardImage}>
-                <img src="images/products/17.png" alt="" />
-              </div>
-              <h1>Aloe Vera 100% Pure</h1>
-              <h4>500ml</h4>
-            </Link>
+            {product.data?.data.map((productData, index) => (
+              <Link
+                key={index}
+                href={ROUTERS.PRODUCTS_DETAIL(productData.productID)}
+                className={Style.productCard}
+              >
+                <div className={Style.productCardImage}>
+                  <img src={productData.imageProduct} alt={`product${index}`} />
+                </div>
+                <h1>{productData.productName}</h1>
+                <h4>{productData.weightProduct}</h4>
+              </Link>
+            )) || []}
           </Carousel>
         </div>
       </Reveal>
 
-      <Reveal>
-        <div className={Style.orderNowBackground}></div>
-      </Reveal>
+      {typeProduct.data?.data.map((typeProductData, index) => (
+        <Reveal key={index}>
+          <div className={Style.backgroundTypeProduct}>
+            <Image
+              className={Style.orderNowBackground}
+              src={typeProductData.imageProduct.toString()}
+              alt="typeProduct"
+              preview={false}
+            />
 
-      <Reveal>
-        <div className={Style.bestSelling}>
-          <Row className={Style.bestSellingTop}>
-            <Col md={24} lg={8} span={24}>
-              <div className={Style.bestSellingTop__left}>
-                <div className={Style.left__cover}>
-                  <div className={Style.images}>
-                    <img src="images/products/nho-xanh.png" alt="" />
-                  </div>
-                  <div className={Style.coverTitle}>
-                    <div className={Style.title}>
-                      <h2>{translateHome('bestSelling')}</h2>
+            <div className={Style.bestSelling}>
+              <Row className={Style.bestSellingTop}>
+                <Col md={24} lg={9} span={24}>
+                  <div className={Style.bestSellingTop__left}>
+                    <div className={Style.left__cover}>
+                      <div className={Style.images}>
+                        <img src="images/products/nho-xanh.png" alt="" />
+                      </div>
+                      <div className={Style.coverTitle}>
+                        <div className={Style.title}>
+                          <h2>{typeProductData.typeProductName}</h2>
+                        </div>
+                      </div>
                     </div>
                   </div>
+                </Col>
+
+                <Col md={24} lg={15} span={24}>
+                  <div className={Style.bestSellingTop__right}>
+                    <div className={Style.right__cover}>
+                      <div className={Style.menuTop}>
+                        {typeProductData.listProduct.map(
+                          (productData, index) => (
+                            <div key={index} className={Style.itemLink}>
+                              <Link href={productData.productID}>
+                                {productData.productName}
+                              </Link>
+                            </div>
+                          )
+                        ) || []}
+                      </div>
+                    </div>
+                  </div>
+                </Col>
+              </Row>
+
+              <div key={index} className={Style.bestSelling}>
+                <div className={Style.bestSellingBottom}>
+                  <Row
+                    gutter={100}
+                    style={{
+                      display: 'flex',
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                    }}
+                  >
+                    <Col md={1} lg={6} span={24}>
+                      <div className={Style.bestSellingBottom__left}>
+                        <div className={Style.images}>
+                          <img src="images/products/1.jpg" alt="" />
+                        </div>
+                      </div>
+                    </Col>
+
+                    <Col md={1} lg={18} span={24} style={{ height: '100%' }}>
+                      <div className={Style.bestSellingBottom__right}>
+                        <div className={Style.carousel}>
+                          <Carousel
+                            slidesToShow={4}
+                            className={Style.bestSellingCarousel}
+                            autoplay
+                            arrows
+                            {...settings}
+                            responsive={carouselResponsiveSettings}
+                            infinite={false}
+                          >
+                            {typeProductData.listProduct.map(
+                              (productData, index) => (
+                                <Link
+                                  href={ROUTERS.PRODUCTS_DETAIL(
+                                    productData.productID
+                                  )}
+                                  className={Style.bestSellingCard}
+                                  key={index}
+                                >
+                                  <div className={Style.bestSellingCardImage}>
+                                    <img
+                                      src={productData.imageProduct}
+                                      alt=""
+                                    />
+                                  </div>
+                                  <h1>{productData.productName}</h1>
+                                  <h1>{productData.weightProduct}</h1>
+                                </Link>
+                              )
+                            ) || []}
+                          </Carousel>
+                        </div>
+                      </div>
+                    </Col>
+                  </Row>
                 </div>
               </div>
-            </Col>
-            <Col md={24} lg={16} span={24}>
-              <div className={Style.bestSellingTop__right}>
-                <div className={Style.right__cover}>
-                  <div className={Style.menuTop}>
-                    <div className={Style.itemLink}>
-                      <Link href={ROUTERS.PRODUCTS_DETAIL('5')}>
-                        Brown Rice Milk Drink
-                      </Link>
-                    </div>
-
-                    <div className={Style.itemLink}>
-                      <Link href={ROUTERS.PRODUCTS_DETAIL('25')}>
-                        Oat Milk Drink
-                      </Link>
-                    </div>
-
-                    <div className={Style.itemLink}>
-                      <Link href={ROUTERS.PRODUCTS_DETAIL('1')}>
-                        Coconut Water
-                      </Link>
-                    </div>
-                  </div>
-
-                  <div className={Style.menuBottom}>
-                    <div className={Style.itemLink}>
-                      <Link href={ROUTERS.PRODUCTS_DETAIL('4')}>
-                        Sparkling Coconut Water
-                      </Link>
-                    </div>
-
-                    <div className={Style.itemLink}>
-                      <Link href="">Fruit Juice Drink</Link>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </Col>
-          </Row>
-
-          <div className={Style.bestSellingBottom}>
-            <Row
-              gutter={100}
-              style={{
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-              }}
-            >
-              <Col md={1} lg={6} span={24}>
-                <div className={Style.bestSellingBottom__left}>
-                  <div className={Style.images}>
-                    <img src="images/products/1.jpg" alt="" />
-                  </div>
-                </div>
-              </Col>
-
-              <Col
-                md={1}
-                lg={18}
-                span={24}
-                style={{ paddingRight: '70px', paddingLeft: '85px' }}
-              >
-                <div className={Style.bestSellingBottom__right}>
-                  <div className={Style.carousel}>
-                    <Carousel
-                      slidesToShow={4}
-                      className={Style.bestSellingCarousel}
-                      autoplay
-                      arrows
-                      {...settings}
-                      responsive={carouselResponsiveSettings}
-                    >
-                      {bestSellingData?.map((bestSelling, index) => (
-                        <Link
-                          href={ROUTERS.PRODUCTS_DETAIL(
-                            bestSelling.productDetail
-                          )}
-                          className={Style.bestSellingCard}
-                          key={index}
-                        >
-                          <div className={Style.bestSellingCardImage}>
-                            <img src={bestSelling.image} alt="" />
-                          </div>
-                          <h1>{bestSelling.name}</h1>
-                          <h1>{bestSelling.volume}</h1>
-                        </Link>
-                      ))}
-                    </Carousel>
-                  </div>
-                </div>
-              </Col>
-            </Row>
+            </div>
           </div>
-        </div>
-      </Reveal>
-
-      <Reveal>
-        <div className={Style.freshSummerDay}></div>
-      </Reveal>
-
-      <Reveal>
-        <div className={`${Style.bestSelling} ${Style.newProduct}`}>
-          <Row className={Style.bestSellingTop}>
-            <Col md={24} lg={8} span={24}>
-              <div className={Style.bestSellingTop__left}>
-                <div className={Style.left__cover}>
-                  <div className={Style.images}>
-                    <img src="images/products/nho-xanh.png" alt="" />
-                  </div>
-                  <div className={Style.coverTitle}>
-                    <div className={Style.title}>
-                      <h2 className={Style.newProductTitle}>
-                        {translateHome('newProduct')}
-                      </h2>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </Col>
-            <Col md={24} lg={16} span={24}>
-              <div className={Style.bestSellingTop__right}>
-                <div className={Style.right__cover}>
-                  <div className={Style.menuTop}>
-                    <div className={Style.itemLink}>
-                      <Link href={ROUTERS.PRODUCTS_DETAIL('13')}>
-                        Aloe Vera Drink
-                      </Link>
-                    </div>
-
-                    <div className={Style.itemLink}>
-                      <Link href={ROUTERS.PRODUCTS_DETAIL('9')}>
-                        Sparkling Fruit Juice
-                      </Link>
-                    </div>
-
-                    <div className={Style.itemLink}>
-                      <Link href={ROUTERS.PRODUCTS_DETAIL('17')}>Coffee</Link>
-                    </div>
-
-                    <div className={Style.itemLink}>
-                      <Link href={ROUTERS.PRODUCTS_DETAIL('19')}>Tea</Link>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </Col>
-          </Row>
-
-          <div className={Style.bestSellingBottom}>
-            <Row
-              gutter={100}
-              style={{
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-              }}
-            >
-              <Col md={1} lg={6} span={24}>
-                <div className={Style.bestSellingBottom__left}>
-                  <div className={Style.images}>
-                    <img src="images/new_product/newProduct.jpg" alt="" />
-                  </div>
-                </div>
-              </Col>
-
-              <Col
-                md={1}
-                lg={18}
-                span={24}
-                style={{ paddingRight: '70px', paddingLeft: '85px' }}
-              >
-                <div className={Style.bestSellingBottom__right}>
-                  <div className={Style.carousel}>
-                    <Carousel
-                      slidesToShow={4}
-                      className={Style.bestSellingCarousel}
-                      autoplay
-                      arrows
-                      {...settings}
-                      responsive={carouselResponsiveSettings}
-                    >
-                      {newProductData?.map((newProduct, index) => (
-                        <Link
-                          href={ROUTERS.PRODUCTS_DETAIL(
-                            newProduct.productDetail
-                          )}
-                          className={Style.bestSellingCard}
-                          key={index}
-                        >
-                          <div className={Style.bestSellingCardImage}>
-                            <img src={newProduct.image} alt="" />
-                          </div>
-                          <h1>{newProduct.name}</h1>
-                          <h1>{newProduct.volume}</h1>
-                        </Link>
-                      ))}
-                    </Carousel>
-                  </div>
-                </div>
-              </Col>
-            </Row>
-          </div>
-        </div>
-      </Reveal>
-
-      <Reveal>
-        <div className={Style.juiceGuava}></div>
-      </Reveal>
-
-      <Reveal>
-        <div className={`${Style.bestSelling} ${Style.featuredProduct}`}>
-          <Row className={Style.bestSellingTop}>
-            <Col md={24} lg={9} span={24}>
-              <div className={Style.bestSellingTop__left}>
-                <div className={Style.left__cover}>
-                  <div className={Style.images}>
-                    <img src="images/products/nho-xanh.png" alt="" />
-                  </div>
-                  <div className={Style.coverTitle}>
-                    <div className={Style.title}>
-                      <h2 className={Style.featuredProductTitle}>
-                        {translateHome('featuredProduct')}
-                      </h2>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </Col>
-            <Col md={24} lg={15} span={24}>
-              <div className={Style.bestSellingTop__right}>
-                <div className={Style.right__cover}>
-                  <div className={Style.menuTop}>
-                    <div className={Style.itemLink}>
-                      <Link href={ROUTERS.PRODUCTS_DETAIL('7')}>
-                        Soy Bean Milk
-                      </Link>
-                    </div>
-
-                    <div className={Style.itemLink}>
-                      <Link href={ROUTERS.PRODUCTS_DETAIL('6')}>
-                        Green Bean Milk
-                      </Link>
-                    </div>
-
-                    <div className={Style.itemLink}>
-                      <Link href={ROUTERS.PRODUCTS_DETAIL('8')}>Corn Milk</Link>
-                    </div>
-
-                    <div className={Style.itemLink}>
-                      <Link href="">Bird&apos;s Nest Drink</Link>
-                    </div>
-                  </div>
-
-                  <div className={Style.menuBottom}>
-                    <div className={Style.itemLink}>
-                      <Link href={ROUTERS.PRODUCTS_DETAIL('13')}>
-                        Aloe Vera
-                      </Link>
-                    </div>
-
-                    <div className={Style.itemLink}>
-                      <Link href={ROUTERS.PRODUCTS_DETAIL('23')}>
-                        Energy Drink
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </Col>
-          </Row>
-
-          <div className={Style.bestSellingBottom}>
-            <Row
-              gutter={100}
-              style={{
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-              }}
-            >
-              <Col md={1} lg={6} span={24}>
-                <div className={Style.bestSellingBottom__left}>
-                  <div className={Style.images}>
-                    <img src="images/products/6.jpg" alt="" />
-                  </div>
-                </div>
-              </Col>
-
-              <Col
-                md={1}
-                lg={18}
-                span={24}
-                style={{ paddingRight: '70px', paddingLeft: '85px' }}
-              >
-                <div className={Style.bestSellingBottom__right}>
-                  <div className={Style.carousel}>
-                    <Carousel
-                      slidesToShow={4}
-                      className={Style.bestSellingCarousel}
-                      autoplay
-                      arrows
-                      {...settings}
-                      responsive={carouselResponsiveSettings}
-                    >
-                      {featureProductData?.map((featureProduct, index) => (
-                        <Link
-                          href={ROUTERS.PRODUCTS_DETAIL(
-                            featureProduct.productDetail
-                          )}
-                          className={Style.bestSellingCard}
-                          key={index}
-                        >
-                          <div className={Style.bestSellingCardImage}>
-                            <img src={featureProduct.image} alt="" />
-                          </div>
-                          <h1>{featureProduct.name}</h1>
-                          <h1>{featureProduct.volume}</h1>
-                        </Link>
-                      ))}
-                    </Carousel>
-                  </div>
-                </div>
-              </Col>
-            </Row>
-          </div>
-        </div>
-      </Reveal>
+        </Reveal>
+      )) || []}
 
       <Reveal>
         <div>
@@ -935,30 +532,32 @@ export default function HomePage() {
 
             <div className={Style.newsBottomCover}>
               <Carousel
-                slidesToShow={4}
-                responsive={carouselResponsiveSettings}
-                className={Style.newsCarousel}
                 arrows
                 {...settings}
+                slidesToShow={4}
+                className={Style.newsCarousel}
+                autoplay
+                responsive={carouselResponsiveSettings}
+                infinite={false}
               >
-                {newsData?.map((news, index) => (
+                {news.data?.data.map((newsData, index) => (
                   <div
                     key={index}
                     className={`${Style.dflex} ${Style.newsItem}`}
                   >
                     <div className={Style.imageTop}>
-                      <img src={news.image} alt="" />
+                      <img src={newsData.newsImage} alt="" />
                     </div>
                     <div className={Style.contentCover}>
                       <div className={Style.content}>
                         <div className={Style.contentTitle}>
-                          <h2>{news.title}</h2>
+                          <h2>{newsData.newsTitle}</h2>
                         </div>
                       </div>
 
                       <div className={Style.btn_see_more}>
                         <Link
-                          href={ROUTERS.NEWS(news.detailID)}
+                          href={ROUTERS.NEWS(newsData.newsID)}
                           className={`${Style.dflex} ${Style.btn_see_more_link}`}
                         >
                           <p>{translateHome('seeMore')}</p>
@@ -967,7 +566,7 @@ export default function HomePage() {
                       </div>
                     </div>
                   </div>
-                ))}
+                )) || []}
               </Carousel>
             </div>
           </div>
@@ -1063,38 +662,46 @@ export default function HomePage() {
             >
               <Form
                 name="basic"
-                labelCol={{ span: 8 }}
-                wrapperCol={{ span: 16 }}
-                initialValues={{ remember: true }}
+                form={form}
+                initialValues={initialValue}
                 onFinish={onFinish}
-                onFinishFailed={onFinishFailed}
                 autoComplete="off"
               >
-                <Form.Item<FieldType>
-                  name="firstAndLastName"
+                <Form.Item
+                  name="fullName"
                   rules={[
                     {
                       required: true,
-                      message: 'Please input first and last name!',
+                      message: 'Vui lòng nhập họ và tên!',
                     },
                   ]}
                 >
-                  <Input placeholder={translateHome('firstAndLastName')} />
+                  <Input
+                    placeholder={translateHome('firstAndLastName')}
+                    prefix={<UserOutlined />}
+                  />
                 </Form.Item>
 
-                <Form.Item<FieldType>
+                <Form.Item
                   name="phoneNumber"
                   rules={[
                     {
                       required: true,
-                      message: 'Please input phone number!',
+                      message: 'Vui lòng nhập số điện thoại để được hỗ trợ!',
+                    },
+                    {
+                      pattern: new RegExp(/(84|0[3|5|7|8|9])+([0-9]{8})\b/g),
+                      message: 'Số điện thoại không đúng định dạng',
                     },
                   ]}
                 >
-                  <Input placeholder={translateHome('phoneNumber')} />
+                  <Input
+                    placeholder={translateHome('phoneNumber')}
+                    prefix={<PhoneOutlined />}
+                  />
                 </Form.Item>
 
-                <Form.Item<FieldType>
+                <Form.Item
                   name="email"
                   rules={[
                     {
@@ -1103,15 +710,18 @@ export default function HomePage() {
                     },
                   ]}
                 >
-                  <Input placeholder={translateHome('email')} />
+                  <Input
+                    placeholder={translateHome('email')}
+                    prefix={<MailOutlined />}
+                  />
                 </Form.Item>
 
-                <Form.Item<FieldType>
-                  name="informationNeededSupport"
+                <Form.Item
+                  name="customerCareContent"
                   rules={[
                     {
                       required: true,
-                      message: 'Please input information needed support!',
+                      message: 'Vui lòng nhập nội dung cần hỗ trợ!',
                     },
                   ]}
                 >
@@ -1124,7 +734,7 @@ export default function HomePage() {
 
                 <Form.Item className={Style.dflex}>
                   <div className={Style.btn_see_more}>
-                    <button className={`${Style.dflex}`}>
+                    <button type="submit" className={`${Style.dflex}`}>
                       <p>{translateHome('sendInformation')}</p>
                       <ArrowRightOutlined className={Style.iconBtn} />
                     </button>

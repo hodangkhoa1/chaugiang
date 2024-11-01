@@ -32,6 +32,10 @@ import { MenuInfo } from 'rc-menu/lib/interface';
 import useI18n from '@/i18n/useI18N';
 const isServer = typeof window === 'undefined';
 const WOW = !isServer ? require('wow.js') : null;
+import { FaAngleUp } from 'react-icons/fa6';
+import { useQuery } from 'react-query';
+import { API_TYPE_PRODUCT } from '@/fetcherAxios/endpoint';
+import { getListTypeProduct } from './fetcher';
 
 const { Text } = Typography;
 const { Header, Content, Footer } = Layout;
@@ -65,58 +69,65 @@ export function AppLayout(props: Props) {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [selectedKey, setSelectedKey] = useState(ROUTERS.HOME);
   const locale = useLocale();
+  const [isShowButtonBackToTop, setIsShowButtonBackToTop] = useState(false);
+  const typeProduct = useQuery({
+    queryKey: [API_TYPE_PRODUCT.GET_ALL_TYPE_PRODUCT_WITH_NO_AUTHEN],
+    queryFn: () => getListTypeProduct(),
+  });
 
-  const items: MenuItem[] = [
-    getItem('Home', ROUTERS.HOME),
+  const items: MenuItem[] = useLoadMenuMobile();
 
-    getItem('Introduce', 'sub1', null, [
-      getItem('Who we are', ROUTERS.WHO_WE_ARE),
-      getItem('Company Profile', ROUTERS.COMPANY_PROFILE),
-      getItem('Catalogue', ROUTERS.CATALOGUE),
-    ]),
+  function useLoadMenuMobile() {
+    const itemList: MenuItem[] = [];
 
-    getItem('Products', 'sub2', null, [
-      getItem('Best selling', 'Best selling', null, [
-        getItem('BROWN RICE MILK DRINK', ROUTERS.PRODUCTS_DETAIL('5')),
-        getItem('OAT MILK DRINK', ROUTERS.PRODUCTS_DETAIL('25')),
-        getItem('COCONUT WATER', ROUTERS.PRODUCTS_DETAIL('1')),
-        getItem('SPARKLING COCONUT', ROUTERS.PRODUCTS_DETAIL('4')),
-        getItem('FRUIT JUICE DRINK', ROUTERS.PRODUCTS_DETAIL('10')),
-      ]),
+    itemList.push(getItem('Home', ROUTERS.HOME));
 
-      getItem('New products', 'New products', null, [
-        getItem('ALOE VERA DRINK', ROUTERS.PRODUCTS_DETAIL('4')),
-        getItem('SPARKLING FRUIT JUICE', ROUTERS.PRODUCTS_DETAIL('18')),
-        getItem('COFFEE', ROUTERS.PRODUCTS_DETAIL('17')),
-        getItem('TEA', ROUTERS.PRODUCTS_DETAIL('17')),
-      ]),
+    itemList.push(
+      getItem('Introduce', 'sub1', null, [
+        getItem('Who we are', ROUTERS.WHO_WE_ARE),
+        getItem('Company Profile', ROUTERS.COMPANY_PROFILE),
+        getItem('Catalogue', ROUTERS.CATALOGUE),
+      ])
+    );
 
-      getItem('Featured product', 'Featured product', null, [
-        getItem('SOY BEAN MILK', ROUTERS.PRODUCTS_DETAIL('5')),
-        getItem('GREEN BEAN MILK', ROUTERS.PRODUCTS_DETAIL('7')),
-        getItem('CORN MILK', ROUTERS.PRODUCTS_DETAIL('6')),
-        getItem("BIRD'S NEST DRINK", ROUTERS.PRODUCTS_DETAIL('8')),
-        getItem('ALOE VERA', ROUTERS.PRODUCTS_DETAIL('8')),
-        getItem('ENERGY DRINK', ROUTERS.PRODUCTS_DETAIL('8')),
-      ]),
-    ]),
+    typeProduct.data?.data.forEach((typeProductData, index) => {
+      itemList.push(
+        getItem(
+          typeProductData.typeProductName,
+          index.toString(),
+          null,
+          typeProductData.listProduct.map((productData) =>
+            getItem(
+              productData.productName,
+              ROUTERS.PRODUCTS_DETAIL(productData.productID)
+            )
+          )
+        )
+      );
+    });
 
-    getItem('Services', 'Services', null, [
-      getItem(
-        'Beverage Product Development',
-        ROUTERS.BEVERAGE_PRODUCT_DEVELOPMENT
-      ),
-      getItem('Beverage packaging design', ROUTERS.BEVERAGE_PACKAGING_DESIGN),
-      getItem(
-        'Private Label Services (OEM/ODM)',
-        ROUTERS.PRIVATE_LABEL_SERVICES
-      ),
-    ]),
+    itemList.push(
+      getItem('Services', 'Services', null, [
+        getItem(
+          'Beverage Product Development',
+          ROUTERS.BEVERAGE_PRODUCT_DEVELOPMENT
+        ),
+        getItem('Beverage packaging design', ROUTERS.BEVERAGE_PACKAGING_DESIGN),
+        getItem(
+          'Private Label Services (OEM/ODM)',
+          ROUTERS.PRIVATE_LABEL_SERVICES
+        ),
+      ])
+    );
 
-    getItem('News', ROUTERS.NEWS('1')),
-    getItem('Contact', ROUTERS.CONTACT),
-    getItem('Recruitment', ROUTERS.RECRUITMENT),
-  ];
+    itemList.push(getItem('News', ROUTERS.NEWS('1')));
+
+    itemList.push(getItem('Contact', ROUTERS.CONTACT));
+
+    itemList.push(getItem('Recruitment', ROUTERS.RECRUITMENT));
+
+    return itemList;
+  }
 
   const handleClickMenuItem = (path: MenuInfo) => {
     setSelectedKey(path.key);
@@ -144,6 +155,27 @@ export function AppLayout(props: Props) {
       live: true,
     }).init();
   }, []);
+
+  const handleScroll = (e: any) => {
+    if (e.target.scrollTop > 0) {
+      setIsShowButtonBackToTop(true);
+    } else {
+      setIsShowButtonBackToTop(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll, {
+      passive: true,
+      capture: true,
+    });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
 
   return (
     <Layout style={{ minHeight: '100vh' }}>
@@ -236,144 +268,35 @@ export function AppLayout(props: Props) {
                       {translateCommon('products')}
                     </Link>
                     <ul className={LayoutStyle.dropdownContent}>
-                      <li className={LayoutStyle.dropdownContentItem}>
-                        <Link href="#" className={LayoutStyle.linkDropdown}>
-                          {translateCommon('bestSelling')}
-                        </Link>
-                        <ul className={LayoutStyle.subMenu}>
-                          <li className={LayoutStyle.subMenuItem}>
-                            <Link
-                              href={ROUTERS.PRODUCTS_DETAIL('5')}
-                              className={LayoutStyle.linkSubMenu}
-                            >
-                              BROWN RICE MILK DRINK
-                            </Link>
-                          </li>
-                          <li className={LayoutStyle.subMenuItem}>
-                            <Link
-                              href={ROUTERS.PRODUCTS_DETAIL('25')}
-                              className={LayoutStyle.linkSubMenu}
-                            >
-                              OAT MILK DRINK
-                            </Link>
-                          </li>
-                          <li className={LayoutStyle.subMenuItem}>
-                            <Link
-                              href={ROUTERS.PRODUCTS_DETAIL('1')}
-                              className={LayoutStyle.linkSubMenu}
-                            >
-                              COCONUT WATER
-                            </Link>
-                          </li>
-                          <li className={LayoutStyle.subMenuItem}>
-                            <Link
-                              href={ROUTERS.PRODUCTS_DETAIL('4')}
-                              className={LayoutStyle.linkSubMenu}
-                            >
-                              SPARKLING COCONUT
-                            </Link>
-                          </li>
-                          <li className={LayoutStyle.subMenuItem}>
-                            <Link
-                              href={ROUTERS.PRODUCTS_DETAIL('10')}
-                              className={LayoutStyle.linkSubMenu}
-                            >
-                              FRUIT JUICE DRINK
-                            </Link>
-                          </li>
-                        </ul>
-                      </li>
-                      <li className={LayoutStyle.dropdownContentItem}>
-                        <Link href="#" className={LayoutStyle.linkDropdown}>
-                          {translateCommon('newProducts')}
-                        </Link>
-                        <ul className={LayoutStyle.subMenu}>
-                          <li className={LayoutStyle.subMenuItem}>
-                            <Link
-                              href={ROUTERS.PRODUCTS_DETAIL('4')}
-                              className={LayoutStyle.linkSubMenu}
-                            >
-                              ALOE VERA DRINK
-                            </Link>
-                          </li>
-                          <li className={LayoutStyle.subMenuItem}>
-                            <Link
-                              href={ROUTERS.PRODUCTS_DETAIL('18')}
-                              className={LayoutStyle.linkSubMenu}
-                            >
-                              SPARKLING FRUIT JUICE
-                            </Link>
-                          </li>
-                          <li className={LayoutStyle.subMenuItem}>
-                            <Link
-                              href={ROUTERS.PRODUCTS_DETAIL('17')}
-                              className={LayoutStyle.linkSubMenu}
-                            >
-                              COFFEE
-                            </Link>
-                          </li>
-                          <li className={LayoutStyle.subMenuItem}>
-                            <Link href="#" className={LayoutStyle.linkSubMenu}>
-                              TEA
-                            </Link>
-                          </li>
-                        </ul>
-                      </li>
-                      <li className={LayoutStyle.dropdownContentItem}>
-                        <Link href="#" className={LayoutStyle.linkDropdown}>
-                          {translateCommon('featuredProduct')}
-                        </Link>
-                        <ul className={LayoutStyle.subMenu}>
-                          <li className={LayoutStyle.subMenuItem}>
-                            <Link
-                              href={ROUTERS.PRODUCTS_DETAIL('5')}
-                              className={LayoutStyle.linkSubMenu}
-                            >
-                              SOY BEAN MILK
-                            </Link>
-                          </li>
-                          <li className={LayoutStyle.subMenuItem}>
-                            <Link
-                              href={ROUTERS.PRODUCTS_DETAIL('7')}
-                              className={LayoutStyle.linkSubMenu}
-                            >
-                              GREEN BEAN MILK
-                            </Link>
-                          </li>
-                          <li className={LayoutStyle.subMenuItem}>
-                            <Link
-                              href={ROUTERS.PRODUCTS_DETAIL('6')}
-                              className={LayoutStyle.linkSubMenu}
-                            >
-                              CORN MILK
-                            </Link>
-                          </li>
-                          <li className={LayoutStyle.subMenuItem}>
-                            <Link
-                              href={ROUTERS.PRODUCTS_DETAIL('8')}
-                              className={LayoutStyle.linkSubMenu}
-                            >
-                              BIRD&apos;S NEST DRINK
-                            </Link>
-                          </li>
-                          <li className={LayoutStyle.subMenuItem}>
-                            <Link
-                              href={ROUTERS.PRODUCTS_DETAIL('8')}
-                              className={LayoutStyle.linkSubMenu}
-                            >
-                              ALOE VERA
-                            </Link>
-                          </li>
-                          <li className={LayoutStyle.subMenuItem}>
-                            <Link
-                              href={ROUTERS.PRODUCTS_DETAIL('8')}
-                              className={LayoutStyle.linkSubMenu}
-                            >
-                              ENERGY DRINK
-                            </Link>
-                          </li>
-                        </ul>
-                      </li>
+                      {typeProduct.data?.data.map((typeProductData, index) => (
+                        <li
+                          key={index}
+                          className={LayoutStyle.dropdownContentItem}
+                        >
+                          <Link href="#" className={LayoutStyle.linkDropdown}>
+                            {typeProductData.typeProductName}
+                          </Link>
+                          <ul className={LayoutStyle.subMenu}>
+                            {typeProductData.listProduct.map(
+                              (productData, index) => (
+                                <li
+                                  key={index}
+                                  className={LayoutStyle.subMenuItem}
+                                >
+                                  <Link
+                                    href={ROUTERS.PRODUCTS_DETAIL(
+                                      productData.productID
+                                    )}
+                                    className={LayoutStyle.linkSubMenu}
+                                  >
+                                    {productData.productName}
+                                  </Link>
+                                </li>
+                              )
+                            )}
+                          </ul>
+                        </li>
+                      )) || []}
                     </ul>
                   </li>
                   <li className={`${LayoutStyle.navItem}`}>
@@ -837,6 +760,14 @@ export function AppLayout(props: Props) {
             </div>
           </Footer>
         </Content>
+
+        <button
+          onClick={topFunction}
+          className={LayoutStyle.scrollToTopBtn}
+          style={{ display: isShowButtonBackToTop ? 'block' : 'none' }}
+        >
+          <FaAngleUp className={LayoutStyle.scrollToTopBtnIcon} />
+        </button>
       </Layout>
     </Layout>
   );

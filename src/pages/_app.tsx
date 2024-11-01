@@ -10,6 +10,8 @@ import { AppLayout } from '@/layout/layout';
 import { useLocaleAnt } from '@/constant';
 import 'wow.js/css/libs/animate.css';
 import 'animate.css';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import { ReactQueryDevtools } from 'react-query-devtools';
 
 const inter = Baloo_2({ subsets: ['latin'] });
 export type NextPageWithLayout<P = Record<string, unknown>, IP = P> = NextPage<
@@ -26,6 +28,13 @@ type AppPropsWithLayout = AppProps & {
 function App({ Component, pageProps }: AppPropsWithLayout) {
   const L = Component.Layout ? Component.Layout : AppLayout;
   const localeApp = useLocaleAnt();
+  const queryClient = new QueryClient({
+    defaultOptions: {
+      queries: {
+        refetchOnWindowFocus: false,
+      },
+    },
+  });
 
   return (
     <ConfigProvider
@@ -40,11 +49,14 @@ function App({ Component, pageProps }: AppPropsWithLayout) {
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
-      <L>
-        <main className={inter.className}>
-          <Component {...pageProps} />
-        </main>
-      </L>
+      <QueryClientProvider client={queryClient}>
+        <L>
+          <main className={inter.className}>
+            <Component {...pageProps} />
+          </main>
+        </L>
+        <ReactQueryDevtools initialIsOpen={false} />
+      </QueryClientProvider>
     </ConfigProvider>
   );
 }

@@ -1,66 +1,65 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Style from './contact.module.scss';
 import { Breadcrumb, Col, Form, Image, Input, Row } from 'antd';
 import {
   EnvironmentOutlined,
   PhoneOutlined,
   MailOutlined,
+  UserOutlined,
 } from '@ant-design/icons';
 import Link from 'next/link';
 import { ArrowRightOutlined } from '@ant-design/icons';
 import { Reveal } from '../commons/reveal';
 import useI18n from '@/i18n/useI18N';
-import Swal from 'sweetalert2';
 import 'sweetalert2/src/sweetalert2.scss';
 const { TextArea } = Input;
+import { useMutation } from 'react-query';
+import { ICreateCustomerCare, IFormValues } from './interface';
+import { createCustomerCare } from './fetcher';
+import { errorToast, successToast } from '@/hook/toast';
+import { API_MESSAGE } from '@/constant/message';
 
-const onFinish = async (values: any) => {
-  try {
-    await fetch('/api/sendEmail', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(values),
-    });
-    Swal.fire({
-      position: 'center',
-      icon: 'success',
-      title: 'Email sent successfully!',
-      showConfirmButton: false,
-      timer: 1500,
-    });
-  } catch (error) {
-    Swal.fire({
-      position: 'center',
-      icon: 'error',
-      title: 'Error sending email!',
-      showConfirmButton: false,
-      timer: 1500,
-    });
-  }
-};
-
-const onFinishFailed = (errorInfo: any) => {
-  Swal.fire({
-    position: 'center',
-    icon: 'error',
-    title: `Failed: ${errorInfo}`,
-    showConfirmButton: false,
-    timer: 1500,
-  });
-};
-
-type FieldType = {
-  firstAndLastName?: string;
-  phoneNumber?: string;
-  email?: string;
-  informationNeededSupport?: string;
+const initialValue = {
+  fullName: '',
+  phoneNumber: '',
+  email: '',
+  customerCareContent: '',
 };
 
 export default function ContactPage() {
   const { translate: translateContact } = useI18n('contact');
   const { translate: translateCommon } = useI18n('common');
+  const [form] = Form.useForm();
+
+  useEffect(() => {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }, []);
+
+  const createMutation = useMutation({
+    mutationFn: (body: ICreateCustomerCare) => {
+      return createCustomerCare(body);
+    },
+  });
+
+  const onFinish = (formValues: IFormValues) => {
+    const _requestData: ICreateCustomerCare = {
+      fullName: formValues.fullName || '',
+      phoneNumber: formValues.phoneNumber || '',
+      email: formValues.email || '',
+      customerCareContent: formValues.customerCareContent || '',
+    };
+    createMutation.mutate(_requestData, {
+      onSuccess: (data) => {
+        data.status
+          ? (successToast(data.message), form.resetFields())
+          : errorToast(data.message);
+      },
+      onError() {
+        errorToast(API_MESSAGE.ERROR);
+      },
+    });
+  };
 
   return (
     <div>
@@ -232,38 +231,46 @@ export default function ContactPage() {
             >
               <Form
                 name="basic"
-                labelCol={{ span: 8 }}
-                wrapperCol={{ span: 16 }}
-                initialValues={{ remember: true }}
+                form={form}
+                initialValues={initialValue}
                 onFinish={onFinish}
-                onFinishFailed={onFinishFailed}
                 autoComplete="off"
               >
-                <Form.Item<FieldType>
-                  name="firstAndLastName"
+                <Form.Item
+                  name="fullName"
                   rules={[
                     {
                       required: true,
-                      message: 'Please input first and last name!',
+                      message: 'Vui lòng nhập họ và tên!',
                     },
                   ]}
                 >
-                  <Input placeholder={translateContact('firstAndLastName')} />
+                  <Input
+                    placeholder={translateContact('firstAndLastName')}
+                    prefix={<UserOutlined />}
+                  />
                 </Form.Item>
 
-                <Form.Item<FieldType>
+                <Form.Item
                   name="phoneNumber"
                   rules={[
                     {
                       required: true,
-                      message: 'Please input phone number!',
+                      message: 'Vui lòng nhập số điện thoại để được hỗ trợ!',
+                    },
+                    {
+                      pattern: new RegExp(/(84|0[3|5|7|8|9])+([0-9]{8})\b/g),
+                      message: 'Số điện thoại không đúng định dạng',
                     },
                   ]}
                 >
-                  <Input placeholder={translateContact('phoneNumber')} />
+                  <Input
+                    placeholder={translateContact('phoneNumber')}
+                    prefix={<PhoneOutlined />}
+                  />
                 </Form.Item>
 
-                <Form.Item<FieldType>
+                <Form.Item
                   name="email"
                   rules={[
                     {
@@ -272,15 +279,18 @@ export default function ContactPage() {
                     },
                   ]}
                 >
-                  <Input placeholder={translateContact('email')} />
+                  <Input
+                    placeholder={translateContact('email')}
+                    prefix={<MailOutlined />}
+                  />
                 </Form.Item>
 
-                <Form.Item<FieldType>
-                  name="informationNeededSupport"
+                <Form.Item
+                  name="customerCareContent"
                   rules={[
                     {
                       required: true,
-                      message: 'Please input information needed support!',
+                      message: 'Vui lòng nhập nội dung cần hỗ trợ!',
                     },
                   ]}
                 >
@@ -293,7 +303,7 @@ export default function ContactPage() {
 
                 <Form.Item className={Style.dflex}>
                   <div className={Style.btn_see_more}>
-                    <button className={`${Style.dflex}`}>
+                    <button type="submit" className={`${Style.dflex}`}>
                       <p>{translateContact('sendInformation')}</p>
                       <ArrowRightOutlined className={Style.iconBtn} />
                     </button>

@@ -1,12 +1,13 @@
-export interface ProductDetailData {
-  id: string;
-  name: string;
-  image: string;
-  star: number;
+export interface IProductDetail {
+  productID: string;
+  productName: string;
+  imageProduct: string;
+  weightProduct: number;
+  starRateProduct: string;
   manufacturedBy: string;
   packingSpecification: string;
-  certificate: string;
-  mOQ: string;
+  certificateProduct: string;
+  moq: string;
   shelflife: string;
   volume: string;
   payment: string;
@@ -21,3 +22,24 @@ export interface ProductDetailData {
   bottomContent4: string;
   bottomContent5: string;
 }
+
+export interface IProduct {
+  productID: string;
+  typeProductID: string;
+  productName: string;
+  imageProduct: string;
+  weightProduct: string;
+}
+
+export interface ProductDetailDataBody {
+  id: string;
+}
+
+export interface IFormValues {
+  fullName: string;
+  phoneNumber: string;
+  email: string;
+  customerCareContent: string;
+}
+
+export type ICreateCustomerCare = Omit<IFormValues, 'customerCareID'>;

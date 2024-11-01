@@ -8,59 +8,32 @@ import {
   StarFilled,
   RightOutlined,
   LeftOutlined,
+  UserOutlined,
+  PhoneOutlined,
+  MailOutlined,
 } from '@ant-design/icons';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import productDetails from '../../../data/productDetail.json';
-import { PrivateLabelServicesProductData } from './interfaceAlsoProduct';
 import { ROUTERS } from '@/constant/router';
 import { Reveal } from '@/components/commons/reveal';
-import Swal from 'sweetalert2';
 import 'sweetalert2/src/sweetalert2.scss';
+import { useMutation, useQuery } from 'react-query';
+import { ICreateCustomerCare, IFormValues } from './interface';
+import {
+  createCustomerCare,
+  getListProduct,
+  getProductDetail,
+} from './fetcher';
+import { errorToast, successToast } from '@/hook/toast';
+import { API_MESSAGE } from '@/constant/message';
+import { API_PRODUCT } from '@/fetcherAxios/endpoint';
 const { TextArea } = Input;
 
-const onFinish = async (values: any) => {
-  try {
-    await fetch('/api/sendEmail', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(values),
-    });
-    Swal.fire({
-      position: 'center',
-      icon: 'success',
-      title: 'Email sent successfully!',
-      showConfirmButton: false,
-      timer: 1500,
-    });
-  } catch (error) {
-    Swal.fire({
-      position: 'center',
-      icon: 'error',
-      title: 'Error sending email!',
-      showConfirmButton: false,
-      timer: 1500,
-    });
-  }
-};
-
-const onFinishFailed = (errorInfo: any) => {
-  Swal.fire({
-    position: 'center',
-    icon: 'error',
-    title: `Failed: ${errorInfo}`,
-    showConfirmButton: false,
-    timer: 1500,
-  });
-};
-
-type FieldType = {
-  firstAndLastName?: string;
-  phoneNumber?: string;
-  email?: string;
-  informationNeededSupport?: string;
+const initialValue = {
+  fullName: '',
+  phoneNumber: '',
+  email: '',
+  customerCareContent: '',
 };
 
 const ProductDetailPage = () => {
@@ -68,24 +41,34 @@ const ProductDetailPage = () => {
   const { translate: translateCommon } = useI18n('common');
   const router = useRouter();
   const { id } = router.query;
-  const productDetailData = getItemById(id as string);
-
-  function getItemById(id: string) {
-    return productDetails.find((item: { id: string }) => item.id === id);
-  }
-
-  const [privateLabelServicesProductData, setPrivateLabelServicesProductData] =
-    useState<PrivateLabelServicesProductData[]>();
+  const [idQuery, setIdQuery] = useState<string>();
+  const [form] = Form.useForm();
 
   useEffect(() => {
-    import('../../../data/productInPrivateLabelService.json')
-      .then((response) => {
-        const data: PrivateLabelServicesProductData[] = response.default;
-        setPrivateLabelServicesProductData(data);
-      })
-      .catch((error) => {
-        console.error('Error fetching data:', error);
-      });
+    if (!id) return;
+    setIdQuery(id as string);
+  }, [id, router]);
+
+  const productDetail = useQuery({
+    queryKey: [API_PRODUCT.GET_PRODUCT_BY_ID, idQuery],
+    queryFn: () => getProductDetail(idQuery as string),
+    enabled: idQuery !== undefined,
+  });
+
+  const product = useQuery({
+    queryKey: [API_PRODUCT.GET_ALL_PRODUCT],
+    queryFn: () => getListProduct(),
+  });
+
+  useEffect(() => {
+    if (productDetail.data?.status === 'false') {
+      router.push(ROUTERS.HOME);
+    }
+  });
+
+  useEffect(() => {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
   }, []);
 
   const carouselResponsiveSettings = [
@@ -191,6 +174,31 @@ const ProductDetailPage = () => {
     prevArrow: <SamplePrevArrow />,
   };
 
+  const createMutation = useMutation({
+    mutationFn: (body: ICreateCustomerCare) => {
+      return createCustomerCare(body);
+    },
+  });
+
+  const onFinish = (formValues: IFormValues) => {
+    const _requestData: ICreateCustomerCare = {
+      fullName: formValues.fullName || '',
+      phoneNumber: formValues.phoneNumber || '',
+      email: formValues.email || '',
+      customerCareContent: formValues.customerCareContent || '',
+    };
+    createMutation.mutate(_requestData, {
+      onSuccess: (data) => {
+        data.status
+          ? (successToast(data.message), form.resetFields())
+          : errorToast(data.message);
+      },
+      onError() {
+        errorToast(API_MESSAGE.ERROR);
+      },
+    });
+  };
+
   return (
     <div style={{ background: '#fff' }}>
       <Reveal>
@@ -219,7 +227,7 @@ const ProductDetailPage = () => {
                 title: `${translateProductDetail('product')}`,
               },
               {
-                title: productDetailData?.name,
+                title: productDetail.data?.data.productName,
               },
             ]}
           />
@@ -232,7 +240,7 @@ const ProductDetailPage = () => {
             <Col lg={8} span={24} className={Style.productElementCol}>
               <div className={`${Style.productElementLeft}`}>
                 <div className={Style.productImg}>
-                  <img src={productDetailData?.image} alt="" />
+                  <img src={productDetail.data?.data.imageProduct} alt="" />
                 </div>
 
                 <div className={`${Style.dflex} ${Style.productView}`}>
@@ -253,7 +261,7 @@ const ProductDetailPage = () => {
             <Col lg={16} span={24} className={Style.productElementCol}>
               <div className={`${Style.productElementRight} ${Style.dflex}`}>
                 <div className={Style.productElementTitle}>
-                  <h3>{productDetailData?.name}</h3>
+                  <h3>{productDetail.data?.data.productName}</h3>
                 </div>
 
                 <div className={`${Style.dflex} ${Style.productLinkImg}`}>
@@ -293,55 +301,55 @@ const ProductDetailPage = () => {
                     className={`${Style.productElementContent} ${Style.dflex}`}
                   >
                     <p>Manfactured by:</p>
-                    <p>{productDetailData?.manufacturedBy}</p>
+                    <p>{productDetail.data?.data.manufacturedBy}</p>
                   </div>
                   <div
                     className={`${Style.productElementContent} ${Style.dflex}`}
                   >
                     <p>Packing Specification:</p>
-                    <p>{productDetailData?.packingSpecification}</p>
+                    <p>{productDetail.data?.data.packingSpecification}</p>
                   </div>
                   <div
                     className={`${Style.productElementContent} ${Style.dflex}`}
                   >
                     <p>Certificate:</p>
-                    <p>{productDetailData?.certificate}</p>
+                    <p>{productDetail.data?.data.certificateProduct}</p>
                   </div>
                   <div
                     className={`${Style.productElementContent} ${Style.dflex}`}
                   >
                     <p>MOQ:</p>
-                    <p>{productDetailData?.mOQ}</p>
+                    <p>{productDetail.data?.data.moq}</p>
                   </div>
                   <div
                     className={`${Style.productElementContent} ${Style.dflex}`}
                   >
                     <p>Shelflife:</p>
-                    <p>{productDetailData?.shelflife}</p>
+                    <p>{productDetail.data?.data.shelflife}</p>
                   </div>
                   <div
                     className={`${Style.productElementContent} ${Style.dflex}`}
                   >
                     <p>Volume:</p>
-                    <p>{productDetailData?.volume}</p>
+                    <p>{productDetail.data?.data.volume}</p>
                   </div>
                   <div
                     className={`${Style.productElementContent} ${Style.dflex}`}
                   >
                     <p>Payment:</p>
-                    <p>{productDetailData?.payment}</p>
+                    <p>{productDetail.data?.data.payment}</p>
                   </div>
                   <div
                     className={`${Style.productElementContent} ${Style.dflex}`}
                   >
                     <p>Selling Points:</p>
-                    <p>{productDetailData?.sellingPoints}</p>
+                    <p>{productDetail.data?.data.sellingPoints}</p>
                   </div>
                   <div
                     className={`${Style.productElementContent} ${Style.dflex}`}
                   >
                     <p>Place of Origin:</p>
-                    <p>{productDetailData?.placeOfOrigin}</p>
+                    <p>{productDetail.data?.data.placeOfOrigin}</p>
                   </div>
                 </div>
 
@@ -353,19 +361,19 @@ const ProductDetailPage = () => {
                 </div>
 
                 <div className={`${Style.dflex} ${Style.productElementNote}`}>
-                  <p>{productDetailData?.note1}</p>
-                  <p>{productDetailData?.note2}</p>
-                  <p>{productDetailData?.note3}</p>
+                  <p>{productDetail.data?.data.note1}</p>
+                  <p>{productDetail.data?.data.note2}</p>
+                  <p>{productDetail.data?.data.note3}</p>
                 </div>
 
                 <div
                   className={`${Style.dflex} ${Style.productElementBottomContent}`}
                 >
-                  <p>{productDetailData?.bottomContent1}</p>
-                  <p>{productDetailData?.bottomContent2}</p>
-                  <p>{productDetailData?.bottomContent3}</p>
-                  <p>{productDetailData?.bottomContent4}</p>
-                  <p>{productDetailData?.bottomContent5}</p>
+                  <p>{productDetail.data?.data.bottomContent1}</p>
+                  <p>{productDetail.data?.data.bottomContent2}</p>
+                  <p>{productDetail.data?.data.bottomContent3}</p>
+                  <p>{productDetail.data?.data.bottomContent4}</p>
+                  <p>{productDetail.data?.data.bottomContent5}</p>
                 </div>
               </div>
             </Col>
@@ -492,26 +500,27 @@ const ProductDetailPage = () => {
       <Reveal>
         <div className={Style.carouselProductBackground}>
           <Carousel
+            arrows
+            {...settings}
             slidesToShow={4}
             className={Style.productCarousel}
             autoplay
             responsive={carouselResponsiveSettings}
-            arrows
-            {...settings}
+            infinite={false}
           >
-            {privateLabelServicesProductData?.map((bestSelling, index) => (
+            {product.data?.data.map((productData, index) => (
               <Link
-                href={ROUTERS.PRODUCTS_DETAIL(bestSelling.productDetail)}
+                href={ROUTERS.PRODUCTS_DETAIL(productData.productID)}
                 className={Style.productCard}
                 key={index}
               >
                 <div className={Style.productCardImage}>
-                  <img src={bestSelling.image} alt="" />
+                  <img src={productData.imageProduct} alt="" />
                 </div>
-                <h1>{bestSelling.name}</h1>
-                <h4>{bestSelling.volume}</h4>
+                <h1>{productData.productName}</h1>
+                <h4>{productData.weightProduct}</h4>
               </Link>
-            ))}
+            )) || []}
           </Carousel>
         </div>
       </Reveal>
@@ -611,40 +620,46 @@ const ProductDetailPage = () => {
             >
               <Form
                 name="basic"
-                labelCol={{ span: 8 }}
-                wrapperCol={{ span: 16 }}
-                initialValues={{ remember: true }}
+                form={form}
+                initialValues={initialValue}
                 onFinish={onFinish}
-                onFinishFailed={onFinishFailed}
                 autoComplete="off"
               >
-                <Form.Item<FieldType>
-                  name="firstAndLastName"
+                <Form.Item
+                  name="fullName"
                   rules={[
                     {
                       required: true,
-                      message: 'Please input first and last name!',
+                      message: 'Vui lòng nhập họ và tên!',
                     },
                   ]}
                 >
                   <Input
                     placeholder={translateProductDetail('firstAndLastName')}
+                    prefix={<UserOutlined />}
                   />
                 </Form.Item>
 
-                <Form.Item<FieldType>
+                <Form.Item
                   name="phoneNumber"
                   rules={[
                     {
                       required: true,
-                      message: 'Please input phone number!',
+                      message: 'Vui lòng nhập số điện thoại để được hỗ trợ!',
+                    },
+                    {
+                      pattern: new RegExp(/(84|0[3|5|7|8|9])+([0-9]{8})\b/g),
+                      message: 'Số điện thoại không đúng định dạng',
                     },
                   ]}
                 >
-                  <Input placeholder={translateProductDetail('phoneNumber')} />
+                  <Input
+                    placeholder={translateProductDetail('phoneNumber')}
+                    prefix={<PhoneOutlined />}
+                  />
                 </Form.Item>
 
-                <Form.Item<FieldType>
+                <Form.Item
                   name="email"
                   rules={[
                     {
@@ -653,15 +668,18 @@ const ProductDetailPage = () => {
                     },
                   ]}
                 >
-                  <Input placeholder={translateProductDetail('email')} />
+                  <Input
+                    placeholder={translateProductDetail('email')}
+                    prefix={<MailOutlined />}
+                  />
                 </Form.Item>
 
-                <Form.Item<FieldType>
-                  name="informationNeededSupport"
+                <Form.Item
+                  name="customerCareContent"
                   rules={[
                     {
                       required: true,
-                      message: 'Please input information needed support!',
+                      message: 'Vui lòng nhập nội dung cần hỗ trợ!',
                     },
                   ]}
                 >
@@ -676,7 +694,7 @@ const ProductDetailPage = () => {
 
                 <Form.Item className={Style.dflex}>
                   <div className={Style.btn_see_more}>
-                    <button className={`${Style.dflex}`}>
+                    <button type="submit" className={`${Style.dflex}`}>
                       <p>{translateProductDetail('sendInformation')}</p>
                       <ArrowRightOutlined className={Style.iconBtn} />
                     </button>

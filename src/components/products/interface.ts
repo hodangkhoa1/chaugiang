@@ -14,3 +14,12 @@ export interface ProductsData {
   coffee: ProductData[];
   energyDrink: ProductData[];
 }
+
+export interface IFormValues {
+  fullName: string;
+  phoneNumber: string;
+  email: string;
+  customerCareContent: string;
+}
+
+export type ICreateCustomerCare = Omit<IFormValues, 'customerCareID'>;

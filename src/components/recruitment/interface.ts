@@ -1,14 +1,22 @@
-export interface RecruitmentProductData {
-  id: string;
-  name: string;
-  image: string;
-  volume: string;
-  productDetail: string;
+export interface IProduct {
+  productID: string;
+  typeProductID: string;
+  productName: string;
+  imageProduct: string;
+  weightProduct: string;
 }
 
-export interface LastestPostsData {
-  id: string;
-  title: string;
-  image: string;
-  detailID: string;
+export interface INews {
+  newsID: string;
+  newsTitle: string;
+  newsImage: string;
 }
+
+export interface IFormValues {
+  fullName: string;
+  phoneNumber: string;
+  email: string;
+  customerCareContent: string;
+}
+
+export type ICreateCustomerCare = Omit<IFormValues, 'customerCareID'>;

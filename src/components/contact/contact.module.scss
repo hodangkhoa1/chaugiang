@@ -251,103 +251,108 @@
     background-size: cover;
     width: 100%;
     height: 845px;
-
+  
     .customerInformationCover {
-        display: flex;
-        align-items: center;
-        justify-content: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      padding-top: 40px;
+  
+      .customerInformationTop {
+        .customerInformationTopCover {
+          position: relative;
+  
+          .customerInformationTitle {
+            text-align: center;
+  
+            h1 {
+              color: #fff;
+              font-size: 45px;
+              margin-bottom: unset;
+              font-weight: bold;
+              text-transform: uppercase;
+              position: relative;
+  
+              &::after {
+                content: '';
+                width: 280px;
+                height: 6px;
+                background: linear-gradient(
+                  to right,
+                  #00894f 50%,
+                  rgb(255, 255, 255) 50%
+                );
+                position: absolute;
+                transform: translate(-50%, -50%);
+                top: 120%;
+                left: 50%;
+              }
+            }
+          }
+        }
+      }
+  
+      .customerInformationCenter {
+        margin-top: 40px;
+  
+        p {
+          margin-bottom: unset;
+          font-size: 18px;
+        }
+      }
+  
+      .customerInformationBottom {
+        margin: 30px 0;
         flex-direction: column;
-        padding-top: 40px;
-
-        .customerInformationTop {
-            .customerInformationTopCover {
-                .customerInformationTitle {
-                    width: 700px;
-                    text-align: center;
-
-                    h1 {
-                        color: #fff;
-                        font-size: 45px;
-                        margin-bottom: unset;
-                        font-weight: bold;
-                        text-transform: uppercase;
-                        position: relative;
-
-                        &::after {
-                            content: "";
-                            width: 280px;
-                            height: 6px;
-                            background: linear-gradient(to right, #00894f 50%, rgb(255, 255, 255) 50%);
-                            position: absolute;
-                            transform: translate(-50%, 50%);
-                            top: 110%;
-                            left: 50%;
-                        }
-                    }
-                }
-            }
+        gap: 20px;
+  
+        input {
+          width: 50rem;
+          height: 50px;
+          background-color: #fff;
+          padding: 10px 20px;
+          font-size: 18px;
+          color: #000;
         }
-
-        .customerInformationCenter {
-            margin-top: 40px;
-
+  
+        .styleTextArea {
+          width: 55rem;
+          background-color: #fff;
+          padding: 10px 20px;
+          font-size: 18px;
+          color: #000;
+          max-width: unset;
+        }
+  
+        .btn_see_more {
+          margin-top: 3rem;
+  
+          button {
+            background: linear-gradient(to right, #8dc63f, #00894f);
+            width: 220px;
+            height: 35px;
+            border-radius: 20px;
+            justify-content: space-around;
+            cursor: pointer;
+  
             p {
-                margin-bottom: unset;
-                font-size: 18px;
+              font-size: 16px;
+              font-weight: bold;
+              text-transform: uppercase;
+              margin-bottom: unset !important;
+              color: #fff;
             }
+  
+            .iconBtn {
+              font-size: 18px;
+              color: #fff;
+            }
+          }
         }
-
-        .customerInformationBottom {
-            margin: 30px 0;
-            flex-direction: column;
-            gap: 20px;
-
-            input {
-                width: 55rem;
-                height: 50px;
-                background-color: #fff;
-                padding: 10px 20px;
-                font-size: 18px;
-                color: #00894F;
-            }
-
-            .styleTextArea {
-                width: 55rem;
-                background-color: #fff;
-                padding: 10px 20px;
-                font-size: 18px;
-                color: #000;
-                max-width: unset;
-            }
-
-            .btn_see_more {
-                margin-top: 3rem;
-
-                button {
-                    background: linear-gradient(to right, #8dc63f, #00894f);
-                    width: 225px;
-                    height: 35px;
-                    border-radius: 20px;
-                    justify-content: space-around;
-                    cursor: pointer;
-
-                    p {
-                        font-size: 16px;
-                        font-weight: bold;
-                        text-transform: uppercase;
-                        margin-bottom: unset !important;
-                        color: #fff;
-                    }
-
-                    .iconBtn {
-                        font-size: 18px;
-                        color: #fff;
-                    }
-                }
-            }
-        }
+      }
     }
-}
+  }
 
 @media only screen and (max-width: 768px) {
     .contactUs {
@@ -373,23 +378,25 @@
 
     .customerInformation {
         .customerInformationCover {
-            .customerInformationTop {
-                .customerInformationTopCover {
-                    .customerInformationTitle {
-                        h1 {
-                            font-size: 31px;
-                        }
-                    }
+          .customerInformationTop {
+            .customerInformationTopCover {
+              .customerInformationTitle {
+                h1 {
+                  font-size: 31px;
                 }
+              }
             }
-
-            .customerInformationBottom {
-
-                input,
-                .styleTextArea {
-                    width: 28rem;
-                }
+          }
+    
+          .customerInformationBottom {
+            input {
+              width: 24rem;
             }
+    
+            .styleTextArea {
+              width: 27rem;
+            }
+          }
         }
-    }
+      }
 }

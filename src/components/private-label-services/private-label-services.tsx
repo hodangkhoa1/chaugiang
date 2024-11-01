@@ -1,5 +1,5 @@
 import useI18n from '@/i18n/useI18N';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import Style from './private-label-services.module.scss';
 import { Breadcrumb, Carousel, Col, Image, Row, Input, Form } from 'antd';
 import {
@@ -7,56 +7,24 @@ import {
   LeftOutlined,
   RightOutlined,
 } from '@ant-design/icons';
-import { PrivateLabelServicesProductData } from './interface';
+import { ICreateCustomerCare, IFormValues } from './interface';
 import Link from 'next/link';
 import { ROUTERS } from '@/constant/router';
 import { Reveal } from '../commons/reveal';
-import Swal from 'sweetalert2';
 import 'sweetalert2/src/sweetalert2.scss';
 const { TextArea } = Input;
+import { UserOutlined, PhoneOutlined, MailOutlined } from '@ant-design/icons';
+import { useMutation, useQuery } from 'react-query';
+import { createCustomerCare, getListProduct } from './fetcher';
+import { errorToast, successToast } from '@/hook/toast';
+import { API_MESSAGE } from '@/constant/message';
+import { API_PRODUCT } from '@/fetcherAxios/endpoint';
 
-const onFinish = async (values: any) => {
-  try {
-    await fetch('/api/sendEmail', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(values),
-    });
-    Swal.fire({
-      position: 'center',
-      icon: 'success',
-      title: 'Email sent successfully!',
-      showConfirmButton: false,
-      timer: 1500,
-    });
-  } catch (error) {
-    Swal.fire({
-      position: 'center',
-      icon: 'error',
-      title: 'Error sending email!',
-      showConfirmButton: false,
-      timer: 1500,
-    });
-  }
-};
-
-const onFinishFailed = (errorInfo: any) => {
-  Swal.fire({
-    position: 'center',
-    icon: 'error',
-    title: `Failed: ${errorInfo}`,
-    showConfirmButton: false,
-    timer: 1500,
-  });
-};
-
-type FieldType = {
-  firstAndLastName?: string;
-  phoneNumber?: string;
-  email?: string;
-  informationNeededSupport?: string;
+const initialValue = {
+  fullName: '',
+  phoneNumber: '',
+  email: '',
+  customerCareContent: '',
 };
 
 export default function PrivateLabelServicesPage() {
@@ -64,20 +32,17 @@ export default function PrivateLabelServicesPage() {
   const { translate: translatePrivateLabelServices } = useI18n(
     'privateLabelServices'
   );
-
-  const [privateLabelServicesProductData, setPrivateLabelServicesProductData] =
-    useState<PrivateLabelServicesProductData[]>();
+  const [form] = Form.useForm();
 
   useEffect(() => {
-    import('../../data/productInPrivateLabelService.json')
-      .then((response) => {
-        const data: PrivateLabelServicesProductData[] = response.default;
-        setPrivateLabelServicesProductData(data);
-      })
-      .catch((error) => {
-        console.error('Error fetching data:', error);
-      });
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
   }, []);
+
+  const product = useQuery({
+    queryKey: [API_PRODUCT.GET_ALL_PRODUCT],
+    queryFn: () => getListProduct(),
+  });
 
   const carouselResponsiveSettings = [
     {
@@ -180,6 +145,31 @@ export default function PrivateLabelServicesPage() {
   const settings = {
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
+  };
+
+  const createMutation = useMutation({
+    mutationFn: (body: ICreateCustomerCare) => {
+      return createCustomerCare(body);
+    },
+  });
+
+  const onFinish = (formValues: IFormValues) => {
+    const _requestData: ICreateCustomerCare = {
+      fullName: formValues.fullName || '',
+      phoneNumber: formValues.phoneNumber || '',
+      email: formValues.email || '',
+      customerCareContent: formValues.customerCareContent || '',
+    };
+    createMutation.mutate(_requestData, {
+      onSuccess: (data) => {
+        data.status
+          ? (successToast(data.message), form.resetFields())
+          : errorToast(data.message);
+      },
+      onError() {
+        errorToast(API_MESSAGE.ERROR);
+      },
+    });
   };
 
   return (
@@ -354,26 +344,27 @@ export default function PrivateLabelServicesPage() {
       <Reveal>
         <div className={Style.carouselProductBackground}>
           <Carousel
+            arrows
+            {...settings}
             slidesToShow={4}
             className={Style.productCarousel}
             autoplay
             responsive={carouselResponsiveSettings}
-            arrows
-            {...settings}
+            infinite={false}
           >
-            {privateLabelServicesProductData?.map((bestSelling, index) => (
+            {product.data?.data.map((productData, index) => (
               <Link
-                href={ROUTERS.PRODUCTS_DETAIL(bestSelling.productDetail)}
+                href={ROUTERS.PRODUCTS_DETAIL(productData.productID)}
                 className={Style.productCard}
                 key={index}
               >
                 <div className={Style.productCardImage}>
-                  <img src={bestSelling.image} alt="" />
+                  <img src={productData.imageProduct} alt="" />
                 </div>
-                <h1>{bestSelling.name}</h1>
-                <h4>{bestSelling.volume}</h4>
+                <h1>{productData.productName}</h1>
+                <h4>{productData.weightProduct}</h4>
               </Link>
-            ))}
+            )) || []}
           </Carousel>
         </div>
       </Reveal>
@@ -483,19 +474,17 @@ export default function PrivateLabelServicesPage() {
             >
               <Form
                 name="basic"
-                labelCol={{ span: 8 }}
-                wrapperCol={{ span: 16 }}
-                initialValues={{ remember: true }}
+                form={form}
+                initialValues={initialValue}
                 onFinish={onFinish}
-                onFinishFailed={onFinishFailed}
                 autoComplete="off"
               >
-                <Form.Item<FieldType>
-                  name="firstAndLastName"
+                <Form.Item
+                  name="fullName"
                   rules={[
                     {
                       required: true,
-                      message: 'Please input first and last name!',
+                      message: 'Vui lòng nhập họ và tên!',
                     },
                   ]}
                 >
@@ -503,24 +492,30 @@ export default function PrivateLabelServicesPage() {
                     placeholder={translatePrivateLabelServices(
                       'firstAndLastName'
                     )}
+                    prefix={<UserOutlined />}
                   />
                 </Form.Item>
 
-                <Form.Item<FieldType>
+                <Form.Item
                   name="phoneNumber"
                   rules={[
                     {
                       required: true,
-                      message: 'Please input phone number!',
+                      message: 'Vui lòng nhập số điện thoại để được hỗ trợ!',
+                    },
+                    {
+                      pattern: new RegExp(/(84|0[3|5|7|8|9])+([0-9]{8})\b/g),
+                      message: 'Số điện thoại không đúng định dạng',
                     },
                   ]}
                 >
                   <Input
                     placeholder={translatePrivateLabelServices('phoneNumber')}
+                    prefix={<PhoneOutlined />}
                   />
                 </Form.Item>
 
-                <Form.Item<FieldType>
+                <Form.Item
                   name="email"
                   rules={[
                     {
@@ -529,15 +524,18 @@ export default function PrivateLabelServicesPage() {
                     },
                   ]}
                 >
-                  <Input placeholder={translatePrivateLabelServices('email')} />
+                  <Input
+                    placeholder={translatePrivateLabelServices('email')}
+                    prefix={<MailOutlined />}
+                  />
                 </Form.Item>
 
-                <Form.Item<FieldType>
-                  name="informationNeededSupport"
+                <Form.Item
+                  name="customerCareContent"
                   rules={[
                     {
                       required: true,
-                      message: 'Please input information needed support!',
+                      message: 'Vui lòng nhập nội dung cần hỗ trợ!',
                     },
                   ]}
                 >
@@ -552,7 +550,7 @@ export default function PrivateLabelServicesPage() {
 
                 <Form.Item className={Style.dflex}>
                   <div className={Style.btn_see_more}>
-                    <button className={`${Style.dflex}`}>
+                    <button type="submit" className={`${Style.dflex}`}>
                       <p>{translatePrivateLabelServices('sendInformation')}</p>
                       <ArrowRightOutlined className={Style.iconBtn} />
                     </button>
