@@ -5,6 +5,7 @@ import {
   EnvironmentOutlined,
   PhoneOutlined,
   MailOutlined,
+  InfoCircleOutlined,
   UserOutlined,
 } from '@ant-design/icons';
 import Link from 'next/link';
@@ -152,6 +153,19 @@ export default function ContactPage() {
                     <p>Foreign Markets:</p>
                     <p>+ (84) 903.722.771 (Mrs.Tứ)</p>
                     <p>+ (84) 353.960.786 (Mr.Gray)s</p>
+                  </div>
+                </div>
+                <div className={`${Style.dflex} ${Style.contactUsBodyHotline}`}>
+                  <InfoCircleOutlined
+                    className={Style.contactUsBodyHotlineIcon}
+                  />
+                  <div>
+                    <p>- Arabic language from 22 countries ( العربیە)</p>
+                    <p>- Russian ( руский)- Kurdish ( کوردی)</p>
+                    <p>Please contact:</p>
+                    <p>Mr David - Sales Manager</p>
+                    <p>Sales@chaugiangfood.com</p>
+                    <p>WhatsApp: 0035794513370</p>
                   </div>
                 </div>
               </Col>
