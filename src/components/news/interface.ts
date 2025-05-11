@@ -1,15 +1,9 @@
-export interface NewsData {
-  id: string;
-  title: string;
-  dateCreate: string;
-  image1: string;
-  title2: string;
-  title2_content1: string;
-  title2_content2: string;
-  image2: string;
-  image3: string;
-  image4: string;
-  image5: string;
+export interface INewsDetail {
+  newsID: string;
+  newsTitle: string;
+  newsImage: string;
+  newsContent: string;
+  dateInserted: string;
 }
 
 export interface IProduct {
@@ -31,6 +25,10 @@ export interface IFormValues {
   phoneNumber: string;
   email: string;
   customerCareContent: string;
+}
+
+export interface NewsDetailDataBody {
+  id: string;
 }
 
 export type ICreateCustomerCare = Omit<IFormValues, 'customerCareID'>;

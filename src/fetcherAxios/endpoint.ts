@@ -22,4 +22,5 @@ export const API_PRODUCT = {
 
 export const API_NEWS = {
   GET_ALL_NEWS: '/get-all-news',
+  GET_NEWS_DETAIL: '/get-news-by-id-no-authen',
 };

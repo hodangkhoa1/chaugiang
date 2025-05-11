@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Style from './news.module.scss';
 import { Breadcrumb, Col, Row, Image, Carousel, Form, Input } from 'antd';
 import {
@@ -9,7 +9,6 @@ import {
   RightOutlined,
   ArrowRightOutlined,
 } from '@ant-design/icons';
-import newsJson from '../../data/news.json';
 import { useRouter } from 'next/router';
 import { ICreateCustomerCare, IFormValues } from './interface';
 import Link from 'next/link';
@@ -20,10 +19,16 @@ import 'sweetalert2/src/sweetalert2.scss';
 const { TextArea } = Input;
 import { UserOutlined, PhoneOutlined, MailOutlined } from '@ant-design/icons';
 import { useMutation, useQuery } from 'react-query';
-import { createCustomerCare, getListNews, getListProduct } from './fetcher';
+import {
+  createCustomerCare,
+  getListNews,
+  getListProduct,
+  getNewsDetail,
+} from './fetcher';
 import { errorToast, successToast } from '@/hook/toast';
 import { API_MESSAGE } from '@/constant/message';
 import { API_NEWS, API_PRODUCT } from '@/fetcherAxios/endpoint';
+import { formatDate } from '@/utils/format';
 
 const initialValue = {
   fullName: '',
@@ -37,20 +42,29 @@ export default function NewsPage() {
   const { translate: translateNews } = useI18n('news');
   const router = useRouter();
   const { id } = router.query;
-  const newsData = getItemById(id as string);
   const [form] = Form.useForm();
+  const [idQuery, setIdQuery] = useState<string>();
+
   const product = useQuery({
     queryKey: [API_PRODUCT.GET_ALL_PRODUCT],
     queryFn: () => getListProduct(),
   });
+
   const news = useQuery({
     queryKey: [API_NEWS.GET_ALL_NEWS],
     queryFn: () => getListNews(),
   });
 
-  function getItemById(id: string) {
-    return newsJson.find((item: { id: string }) => item.id === id);
-  }
+  const newsDetail = useQuery({
+    queryKey: [API_NEWS.GET_NEWS_DETAIL, idQuery],
+    queryFn: () => getNewsDetail(idQuery as string),
+    enabled: idQuery !== undefined,
+  });
+
+  useEffect(() => {
+    if (!id) return;
+    setIdQuery(id as string);
+  }, [id, router]);
 
   useEffect(() => {
     document.body.scrollTop = 0;
@@ -212,7 +226,7 @@ export default function NewsPage() {
                 title: `${translateCommon('news')}`,
               },
               {
-                title: newsData?.title,
+                title: newsDetail?.data?.data.newsTitle,
               },
             ]}
           />
@@ -222,152 +236,125 @@ export default function NewsPage() {
       <Reveal>
         <div className={`${Style.newsTime} ${Style.dflex}`}>
           <ClockCircleOutlined className={Style.newsTimeIcon} />
-          <p>{newsData?.dateCreate}</p>
+          <p>{formatDate(Number(newsDetail?.data?.data.dateInserted))}</p>
           <p>{translateCommon('news')}</p>
           <div className={Style.newsTimeLine}></div>
         </div>
       </Reveal>
 
       <Reveal>
-        <div className={Style.newsTimeBody}>
-          <h1>{newsData?.title}</h1>
+        {newsDetail !== null && newsDetail !== undefined ? (
+          <div className={Style.newsTimeBody}>
+            <h1>{newsDetail?.data?.data.newsTitle}</h1>
 
-          <Row>
-            <Col md={18} lg={18} span={24}>
-              <div className={Style.recruimentBodyLeft}>
-                <Image
-                  src={newsData?.image1}
-                  alt="logo"
-                  width="100%"
-                  height="100%"
-                />
-                <div className={Style.newsContent}>
-                  <h2>{newsData?.title2}</h2>
-                  <p>{newsData?.title2_content1}</p>
-                  <p>{newsData?.title2_content2}</p>
-                </div>
-                <div style={{ marginTop: '20px' }}>
+            <Row>
+              <Col md={18} lg={18} span={24}>
+                <div className={Style.recruimentBodyLeft}>
                   <Image
-                    src={newsData?.image2}
+                    src={newsDetail?.data?.data.newsImage}
                     alt="logo"
                     width="100%"
                     height="100%"
                   />
-                </div>
-                <div style={{ marginTop: '20px' }}>
-                  <Image
-                    src={newsData?.image3}
-                    alt="logo"
-                    width="100%"
-                    height="100%"
+                  <div
+                    style={{ marginTop: '10px' }}
+                    dangerouslySetInnerHTML={{
+                      __html: newsDetail?.data?.data.newsContent ?? '',
+                    }}
                   />
                 </div>
-                <div style={{ marginTop: '20px' }}>
-                  <Image
-                    src={newsData?.image4}
-                    alt="logo"
-                    width="100%"
-                    height="100%"
-                  />
-                </div>
-                <div style={{ marginTop: '20px' }}>
-                  <Image
-                    src={newsData?.image5}
-                    alt="logo"
-                    width="100%"
-                    height="100%"
-                  />
-                </div>
-              </div>
-            </Col>
-            <Col md={6} lg={6} span={24}>
-              <div className={Style.recruimentBodyRight}>
-                <div className={Style.recruimentBodySearch}>
-                  <h1>{translateNews('search')}</h1>
-                  <div className={Style.searchBox}>
-                    <div className={Style.buttonSearch}>
-                      <SearchOutlined className={Style.btnSearch} />
+              </Col>
+              <Col md={6} lg={6} span={24}>
+                <div className={Style.recruimentBodyRight}>
+                  <div className={Style.recruimentBodySearch}>
+                    <h1>{translateNews('search')}</h1>
+                    <div className={Style.searchBox}>
+                      <div className={Style.buttonSearch}>
+                        <SearchOutlined className={Style.btnSearch} />
+                      </div>
+                      <input
+                        className={Style.searchPlace}
+                        type="text"
+                        placeholder={translateCommon('search')}
+                      />
                     </div>
-                    <input
-                      className={Style.searchPlace}
-                      type="text"
-                      placeholder={translateCommon('search')}
-                    />
                   </div>
-                </div>
-                <div className={Style.recruimentBodyLastestPost}>
-                  <h1>{translateNews('lastestPosts')}</h1>
-                  {news.data?.data.map((newsData, index) => (
+                  <div className={Style.recruimentBodyLastestPost}>
+                    <h1>{translateNews('lastestPosts')}</h1>
+                    {news.data?.data.map((newsData, index) => (
+                      <Link
+                        href={ROUTERS.NEWS(newsData.newsID)}
+                        className={Style.lastestPostContent}
+                        key={index}
+                      >
+                        <p>{newsData.newsTitle}</p>
+                        <div className={Style.lastestPostContent}></div>
+                      </Link>
+                    )) || []}
+                  </div>
+                  <div className={Style.recruimentBodyLastestPost}>
+                    <h1>{translateNews('productCagories')}</h1>
+                    {product.data?.data.map((productData, index) => (
+                      <Link
+                        href={ROUTERS.PRODUCTS_DETAIL(productData.productID)}
+                        className={Style.lastestPostContent}
+                        key={index}
+                      >
+                        <p>{productData.productName}</p>
+                        <div className={Style.lastestPostContent}></div>
+                      </Link>
+                    )) || []}
+                  </div>
+                  <div className={Style.recruimentBodyLastestPost}>
+                    <h1>{translateNews('categories')}</h1>
                     <Link
-                      href={ROUTERS.NEWS(newsData.newsID)}
+                      href={ROUTERS.NEWS('1')}
                       className={Style.lastestPostContent}
-                      key={index}
                     >
-                      <p>{newsData.newsTitle}</p>
+                      <p>{translateCommon('news')}</p>
                       <div className={Style.lastestPostContent}></div>
                     </Link>
-                  )) || []}
-                </div>
-                <div className={Style.recruimentBodyLastestPost}>
-                  <h1>{translateNews('productCagories')}</h1>
-                  {product.data?.data.map((productData, index) => (
                     <Link
-                      href={ROUTERS.PRODUCTS_DETAIL(productData.productID)}
+                      href={ROUTERS.RECRUITMENT}
                       className={Style.lastestPostContent}
-                      key={index}
                     >
-                      <p>{productData.productName}</p>
+                      <p>{translateNews('event')}</p>
                       <div className={Style.lastestPostContent}></div>
                     </Link>
-                  )) || []}
-                </div>
-                <div className={Style.recruimentBodyLastestPost}>
-                  <h1>{translateNews('categories')}</h1>
-                  <Link
-                    href={ROUTERS.NEWS('1')}
-                    className={Style.lastestPostContent}
-                  >
-                    <p>{translateCommon('news')}</p>
-                    <div className={Style.lastestPostContent}></div>
-                  </Link>
-                  <Link
-                    href={ROUTERS.RECRUITMENT}
-                    className={Style.lastestPostContent}
-                  >
-                    <p>{translateNews('event')}</p>
-                    <div className={Style.lastestPostContent}></div>
-                  </Link>
-                </div>
-                <div className={Style.recruimentBodyLastestPost}>
-                  <h1>{translateNews('introductionVideo')}</h1>
-                  <div>
-                    <iframe
-                      width="100%"
-                      height="195"
-                      src="https://www.youtube.com/embed/vyqrV-t0sPc?autoplay=1&controls=0&rel=0&mute=0"
-                      title="YouTube video player"
-                      frameBorder="0"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                      allowFullScreen
-                    ></iframe>
+                  </div>
+                  <div className={Style.recruimentBodyLastestPost}>
+                    <h1>{translateNews('introductionVideo')}</h1>
+                    <div>
+                      <iframe
+                        width="100%"
+                        height="195"
+                        src="https://www.youtube.com/embed/vyqrV-t0sPc?autoplay=1&controls=0&rel=0&mute=0"
+                        title="YouTube video player"
+                        frameBorder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowFullScreen
+                      ></iframe>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </Col>
-          </Row>
+              </Col>
+            </Row>
 
-          <div className={`${Style.dflex} ${Style.rating}`}>
-            <StarFilled className={Style.starIcon} />
-            <StarFilled className={Style.starIcon} />
-            <StarFilled className={Style.starIcon} />
-            <StarFilled className={Style.starIcon} />
-            <StarFilled className={Style.starIcon} />
+            <div className={`${Style.dflex} ${Style.rating}`}>
+              <StarFilled className={Style.starIcon} />
+              <StarFilled className={Style.starIcon} />
+              <StarFilled className={Style.starIcon} />
+              <StarFilled className={Style.starIcon} />
+              <StarFilled className={Style.starIcon} />
 
-            <p>5/5 - (1 vote)</p>
+              <p>5/5 - (1 vote)</p>
+            </div>
+            <p className={Style.comment}>0 Conment</p>
+            <div className={Style.commentLine}></div>
           </div>
-          <p className={Style.comment}>0 Conment</p>
-          <div className={Style.commentLine}></div>
-        </div>
+        ) : (
+          <></>
+        )}
       </Reveal>
 
       <Reveal>

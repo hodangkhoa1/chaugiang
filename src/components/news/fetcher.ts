@@ -1,5 +1,11 @@
 import { get, post, ResponseWithPayload } from '@/fetcherAxios';
-import { ICreateCustomerCare, INews, IProduct } from './interface';
+import {
+  ICreateCustomerCare,
+  INews,
+  INewsDetail,
+  IProduct,
+  NewsDetailDataBody,
+} from './interface';
 import {
   API_CUSTOMER_CARE,
   API_NEWS,
@@ -18,4 +24,12 @@ export const getListProduct = () => {
 
 export const getListNews = () => {
   return get<ResponseWithPayload<INews[]>>({})(API_NEWS.GET_ALL_NEWS);
+};
+
+export const getNewsDetail = (id: string) => {
+  return post<NewsDetailDataBody, ResponseWithPayload<INewsDetail>>({
+    data: {
+      id,
+    },
+  })(API_NEWS.GET_NEWS_DETAIL);
 };
